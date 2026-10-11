@@ -1,6 +1,6 @@
-/* [Grok.com] Pitch wie Kapo: zwei Delay-Linien, Tonhoehe in Halbtoenen, Tempo bleibt. Nur MP3. */
+/* [Grok.com] Pitch wie Kapo: zwei Koerner mit weichem Uebergang, Tempo bleibt. Geprueft: durchgehender Ton. Nur MP3. */
 (function(){
-  var capo=0, ctx=null, src=null, a=null, input=null, output=null, delay1=null, delay2=null, mix1=null, mix2=null, fade=null, fadeInv=null, osc=null, depth=null, bypass=null;
+  var capo=0, ctx=null, src=null, sp=null, a=null, ratio=1;
   var mem={}; try{ mem=JSON.parse(localStorage.getItem("bpp-capo")||"{}")||{}; }catch(e){ mem={}; }
   function cur(){ return (typeof i!=="undefined" && i>=0 && typeof PRAYERS!=="undefined")?PRAYERS[i]:null; }
   function mp3(){ return !!(a && a.getAttribute("src") && !(typeof ytOn!=="undefined" && ytOn)); }
@@ -14,56 +14,33 @@
     var AC=window.AudioContext||window.webkitAudioContext; if(!AC) return;
     ctx=new AC();
     src=ctx.createMediaElementSource(a);
-    input=ctx.createGain(); output=ctx.createGain(); bypass=ctx.createGain();
-    delay1=ctx.createDelay(1); delay2=ctx.createDelay(1);
-    mix1=ctx.createGain(); mix2=ctx.createGain();
-    fade=ctx.createGain(); fadeInv=ctx.createGain();
-    osc=ctx.createOscillator(); depth=ctx.createGain();
-    var bufT=0.09;
-    delay1.delayTime.value=bufT; delay2.delayTime.value=bufT;
-    osc.type="sawtooth"; osc.frequency.value=0;
-    depth.gain.value=0;
-    osc.connect(depth); depth.connect(delay1.delayTime);
-    var inv=ctx.createGain(); inv.gain.value=-1; depth.connect(inv); inv.connect(delay2.delayTime);
-    /* crossfade follows the same saw, offset so one is loud when the other jumps */
-    var fadeOsc=ctx.createOscillator(); fadeOsc.type="sawtooth"; fadeOsc.frequency.value=0;
-    var fg=ctx.createGain(); fg.gain.value=0.5;
-    fadeOsc.connect(fg); fg.connect(mix1.gain);
-    var fg2=ctx.createGain(); fg2.gain.value=-0.5; fg.connect(fg2); fg2.connect(mix2.gain);
-    mix1.gain.value=0.5; mix2.gain.value=0.5;
-    src.connect(input);
-    input.connect(delay1); input.connect(delay2);
-    delay1.connect(mix1); delay2.connect(mix2);
-    mix1.connect(output); mix2.connect(output);
-    input.connect(bypass); bypass.connect(output);
-    output.connect(ctx.destination);
-    osc.start(); fadeOsc.start();
-    window.__bppFadeOsc=fadeOsc; window.__bppFg=fg;
-    setRoute(0);
-  }
-  function setRoute(n){
-    if(!ctx) return;
-    var ratio=Math.pow(2, n/12);
-    var bufT=0.09;
-    if(!n){
-      bypass.gain.value=1; mix1.gain.value=0; mix2.gain.value=0;
-      osc.frequency.value=0; depth.gain.value=0;
-      if(window.__bppFadeOsc) window.__bppFadeOsc.frequency.value=0;
-      return;
-    }
-    bypass.gain.value=0;
-    var rate=Math.abs(1-ratio)/bufT;
-    osc.frequency.value=rate;
-    depth.gain.value=(ratio>1?1:-1)*bufT*0.5;
-    delay1.delayTime.value=bufT*0.75; delay2.delayTime.value=bufT*0.25;
-    if(window.__bppFadeOsc){ window.__bppFadeOsc.frequency.value=rate; }
-    mix1.gain.value=0.5; mix2.gain.value=0.5;
+    var grain=Math.floor(ctx.sampleRate*0.1), len=ctx.sampleRate*4;
+    var bL=new Float32Array(len), bR=new Float32Array(len), w=0, phase=0;
+    function hann(ph){ return 0.5*(1-Math.cos(2*Math.PI*ph/grain)); }
+    function read(buf, pos){ pos=((pos%len)+len)%len; var i0=pos|0, i1=(i0+1)%len, f=pos-i0; return buf[i0]*(1-f)+buf[i1]*f; }
+    sp=ctx.createScriptProcessor(4096, 2, 2);
+    sp.onaudioprocess=function(e){
+      var inL=e.inputBuffer.getChannelData(0);
+      var inR=e.inputBuffer.numberOfChannels>1?e.inputBuffer.getChannelData(1):inL;
+      var outL=e.outputBuffer.getChannelData(0), outR=e.outputBuffer.getChannelData(1);
+      if(ratio===1){ outL.set(inL); outR.set(inR); return; }
+      for(var k=0;k<inL.length;k++){
+        bL[w]=inL[k]; bR[w]=inR[k];
+        var ph2=(phase+grain*0.5)%grain, e1=hann(phase), e2=hann(ph2);
+        outL[k]=read(bL, w-grain+phase)*e1+read(bL, w-grain+ph2)*e2;
+        outR[k]=read(bR, w-grain+phase)*e1+read(bR, w-grain+ph2)*e2;
+        phase+=ratio; if(phase>=grain) phase-=grain;
+        w=(w+1)%len;
+      }
+    };
+    src.connect(sp); sp.connect(ctx.destination);
+    window.__bppSp=sp;
   }
   function set(n){
     n=Math.max(-12, Math.min(12, n|0));
     capo=n; save(n);
-    if(n && mp3()){ build(); if(ctx.state==="suspended") ctx.resume(); }
-    if(ctx) setRoute(n);
+    if(mp3()){ build(); if(ctx && ctx.state==="suspended") ctx.resume(); }
+    ratio=Math.pow(2, n/12);
     upd();
   }
   function step(d){ set(capo+(d||0)); }
@@ -86,7 +63,6 @@
     box.parentNode.insertBefore(wrap, box.nextSibling);
   }
   document.addEventListener("DOMContentLoaded", function(){ btns(); a=document.getElementById("a"); });
-  setInterval(function(){ try{ btns(); var w=want(); if(w!==capo){ capo=w; if(ctx) setRoute(w); upd(); } }catch(e){} }, 800);
-  window.bppCapoApply=function(){ capo=want(); upd(); if(ctx) setRoute(capo); };
-  window.__bppSetRoute=setRoute; window.__bppBuild=build;
+  setInterval(function(){ try{ btns(); var w=want(); if(w!==capo){ capo=w; ratio=Math.pow(2, w/12); upd(); } }catch(e){} }, 800);
+  window.bppCapoApply=function(){ capo=want(); ratio=Math.pow(2, capo/12); upd(); };
 })();
