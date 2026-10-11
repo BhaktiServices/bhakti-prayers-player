@@ -13,6 +13,7 @@
   }
   function match(){
     var P=cur(); if(!P) return;
+    if(typeof isPlaying==="function" && !isPlaying()) return; /* [Grok.com] kein Autostart nach dem Laden */
     var yt=typeof ytOn!=="undefined" && ytOn;
     if(yt){ if(!ytOk(P)) showYt(P, (typeof pendingSeek==="number"?pendingSeek:0)||P.youtubeStart||0); return; }
     if(P.audio && !fileOk(P)){
