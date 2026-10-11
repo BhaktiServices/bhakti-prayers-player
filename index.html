@@ -276,8 +276,8 @@ function syncPlayBtn(){
   var u=UI[lang];
   var b=document.getElementById("btnPlay");
   var on=isPlaying();
-  b.textContent=on?u.pause:u.play;
-  b.classList.toggle("on", on);
+  b.textContent=on?u.play:u.pause; /* [Grok.com] zeigt den Zustand, nicht die Aktion */
+  b.classList.toggle("on", !on); /* [Grok.com] Pause blinkt, Play steht */
 }
 function applyUI(){
   var u=UI[lang];
