@@ -38,7 +38,7 @@ window.BPP_BUILD="2.05";
     function sync(b, d, full){ b.disabled=true; b.title=TT.get.call(b)||""; if(full && b.__nm!==nm(nb(d))) paint(b, d); }
     function tick(){
       var nv=window.bppPrayerNav; if(!nv) return;
-      if(!nv.__bpp205){ nv.__bpp205=1; var st=function(x){ if(!x) return; try{ sessionStorage.setItem("bpp-head", x.head||""); }catch(e){} try{ putSong(PRAYERS[x.idx].id, {time:0, line:0}); }catch(e){} play(x.idx, true); };
+      if(!nv.__bpp205){ nv.__bpp205=1; var st=function(x){ if(!x) return; try{ sessionStorage.setItem("bpp-head", x.head||""); }catch(e){} try{ putSong(PRAYERS[x.idx].id, {time:0, line:0}); }catch(e){} play(x.idx, true, (typeof isPlaying==="function") && isPlaying()); /* [Grok.com] Play/Pause behalten */ };
         nv.next=function(){ st(nb(1)); }; nv.prev=function(){ st(nb(-1)); };
         var n0=nv.neighbor; nv.neighbor=function(d, w){ try{ return window.bppAllNb(d, w, snd); }catch(e){ return n0(d, w); } }; }
       [["btnPPrev",-1,0],["btnPNext",1,0],["bppFsPPrev",-1,1],["bppFsPNext",1,1]].forEach(function(x){ var b=document.getElementById(x[0]); if(!b) return; if(!b.__bpp205) fix(x[0], x[1], x[2]); else sync(b, x[1], x[2]); });

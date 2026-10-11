@@ -116,7 +116,7 @@ if(document.readyState==="loading"){ document.write('<script src="v203.js?v=232"
 /* [Grok-Bot] V2.04: Statistik wie im Tadatmya-Vedanta-Player (Aufrufe, Hoerzeit, Orte, aktiv in TOP 10), Namensraum bpp-clbuerger- (v204.js). */
 if(document.readyState==="loading"){ document.write('<script src="v204.js?v=204"><\/script>'); }
 /* [Grok-Bot] V2.05: Android-Benachrichtigung/Sperrbildschirm: Media Session mit PNG-Artwork, Status, Position, Handlern, laufend aktualisiert (v205.js). */
-if(document.readyState==="loading"){ document.write('<script src="v205.js?v=205"><\/script>'); }
+if(document.readyState==="loading"){ document.write('<script src="v205.js?v=206"><\/script>'); }
 /* [Grok-Bot] V2.06: Wiederholen ganze Liste und Ende-Angebot "Naechstes" laufen durch alle Gebete (v183.js?v=213, v206.js). */
 if(document.readyState==="loading"){ document.write('<script src="v206.js?v=206"><\/script>'); }
 /* [Grok-Bot] V2.07: Spultasten -30 -10 +10 +30 auch im Grossbild, Strophe zurueck/vor mit eigenen Symbolen, Offline-Fehler mit Dateinamen (v207.js, v203.js?v=207). */
