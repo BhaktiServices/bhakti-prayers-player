@@ -457,7 +457,7 @@ function togglePlay(){
   if(a.paused){ markPlayOrigin(); a.play().then(syncPlayBtn).catch(function(){ syncPlayBtn(); }); }
   else { a.pause(); persistNow(); syncPlayBtn(); }
 }
-function play(idx, resume){
+function play(idx, resume, auto){ /* [Grok.com] auto false = kein Autostart */
   document.body.classList.add("has-song"); /* [Grok.com] Startbild aus */
   persistNow();
   i=idx;
@@ -479,9 +479,11 @@ function play(idx, resume){
   a.load();
   try{ yt.src=""; ytOn=false; }catch(e){} /* [Grok.com] alter Ton darf nicht weiterlaufen */
   a.setAttribute("data-prayer", P.id);
-  if(P.preferFile && P.audio) showFile(P);
-  else if(P.youtube) showYt(P, pendingSeek||P.youtubeStart);
-  else if(P.audio) showFile(P);
+  if(auto!==false){
+    if(P.preferFile && P.audio) showFile(P);
+    else if(P.youtube) showYt(P, pendingSeek||P.youtubeStart);
+    else if(P.audio) showFile(P);
+  }
   putSong(P.id, { line:line, time:pendingSeek||0, showDe:showDe, showCh:showCh, lang:lang, steps:steps, autoScroll:autoScroll, scrollTempo:scrollTempo });
   rememberTempo();
   paintList(); paintLyrics(); syncPlayBtn(); applyUI();
@@ -582,7 +584,7 @@ layoutLyrics();
   var m=loadMem();
   if(!m.lastId) return;
   var idx=PRAYERS.findIndex(function(p){ return p.id===m.lastId; });
-  if(idx>=0) play(idx, true);
+  if(idx>=0) play(idx, true, false); /* [Grok.com] kein Autostart beim Oeffnen */
 })();
 </script>
 <script src="v223.js?v=223"></script>
