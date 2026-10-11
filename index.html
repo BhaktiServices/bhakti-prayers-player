@@ -131,8 +131,8 @@ body.show-ch .rowline .rch{display:block}
   <audio id="a" controls preload="none" playsinline></audio>
   <div class="row">
     <button type="button" class="gold" id="btnPlay" onclick="togglePlay()"></button>
-    <button type="button" id="btnPrev" onclick="prevLine()"></button>
-    <button type="button" id="btnNext" onclick="nextLine()"></button>
+    <button type="button" id="btnPrev" onclick="prevSong()"></button>
+    <button type="button" id="btnNext" onclick="nextSong()"></button>
     <button type="button" id="btnAuto" onclick="toggleAuto()"></button>
     <button type="button" id="btnScDown" onclick="shiftScroll(-0.05)">−</button>
     <span id="scLab" style="min-width:3.2em;text-align:center;color:#e8c57a;font-size:.85rem"></span>
@@ -492,6 +492,17 @@ function play(idx, resume, auto){ /* [Grok.com] auto false = kein Autostart */
   paintList(); paintLyrics(); syncPlayBtn(); applyUI();
   try{ document.body.focus(); }catch(e){}
 }
+function canPlay(P){ return !!(P && (P.audio || P.youtube)); }
+function stepSong(dir){
+  if(!PRAYERS.length) return;
+  var n=PRAYERS.length, start=(i<0? (dir>0?-1:0) : i);
+  for(var k=1;k<=n;k++){
+    var j=(start+dir*k+n)%n;
+    if(canPlay(PRAYERS[j])){ play(j, true); return; }
+  }
+}
+function nextSong(){ stepSong(1); } /* [Grok.com] naechster spielbarer Gesang */
+function prevSong(){ stepSong(-1); }
 function nextLine(){
   if(i<0) return;
   var gs=stanzaGroups(PRAYERS[i]);
@@ -583,6 +594,14 @@ try{ chMode=localStorage.getItem("bpp-chmode")||(localStorage.getItem("bpp-ch")=
 applyUI();
 paintList();
 layoutLyrics();
+(function sortLikeBook(){
+  var ORDER=["guru-stotram","ashtotram","vaishnava-mantra","guruji-gayatri","gayatri","ganesha-mantra","suprabhatam","govinda","narasimha","ramanuja","vishnu-arati","lakshmi-arati","closing-morning","guru-stotram-abend","ashtotram-abend","kavacham","narasimha-abend","hanuman","bhajare","closing-evening","saprem","closing-arati","vchalisa","hanuman-bhavani","giridhari-arati","guru-arati","mukunda","final-prayers"]; /* [Grok.com] Morgen, Abend, Weitere wie Heft */
+  PRAYERS.sort(function(a,b){
+    var ia=ORDER.indexOf(a.id), ib=ORDER.indexOf(b.id);
+    if(ia<0) ia=1000; if(ib<0) ib=1000;
+    return ia-ib;
+  });
+})();
 (function resumeLast(){
   var m=loadMem();
   if(!m.lastId) return;
