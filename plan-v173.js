@@ -1,11 +1,11 @@
 /* [Grok-Bot] V1.73: Morgen- und Abendliste genau nach dem Inhaltsverzeichnis des Prathana (Sri Vitthal Dham), fuer jeden Wochentag gleich.
    Sonntag bleibt das Abendgebet um 21:00 (Kopfzeile aus listview.js). Ueberschreibt nur die Anordnung, die listview.js erzeugt; listview.js selbst bleibt unveraendert.
-   Ausgeblendete Prayers (window.bppHidden, z. B. Gayatri und Ganesa) stehen grau an ihrem Platz und sind nicht anklickbar. Was noch fehlt (Arati Saprem), steht grau als Platzhalter.
+   Ausgeblendete Prayers (window.bppHidden, z. B. Gayatri und Ganesa) stehen grau an ihrem Platz und sind nicht anklickbar. Arati Saprem ist im Player.
    Das lange Abend-Nrsimha-Prayer steht im Heft nicht als eigener Eintrag (es ist Teil des Kavaca-Videos) und erscheint deshalb nur noch unter "Weitere" und "Alle". */
 (function(){
   if(typeof PRAYERS==="undefined") return;
   var M=["guru-stotram","ashtotram","vaishnava-mantra","guruji-gayatri","ganesha-mantra","gayatri","suprabhatam","govinda","narasimha","ramanuja","vishnu-arati","closing-morning"];
-  var E=["guru-stotram-abend","ashtotram","ganesha-mantra","gayatri","kavacham","hanuman","bhajare","closing-evening","~saprem","closing-arati"];
+  var E=["guru-stotram-abend","ashtotram","ganesha-mantra","gayatri","kavacham","hanuman","bhajare","closing-evening","saprem" /* [Grok.com] jetzt im Player */,"closing-arati"];
   var MISS={ saprem:"\u0100rat\u012b Saprem" };
   var LL=["de","en","fr","es","ru","hi"];
   var NOTYET=["noch nicht im Player","not in the player yet","pas encore dans le lecteur","a\u00fan no est\u00e1 en el reproductor","\u043f\u043e\u043a\u0430 \u043d\u0435\u0442 \u0432 \u043f\u043b\u0435\u0435\u0440\u0435","\u0905\u092d\u0940 \u092a\u094d\u0932\u0947\u092f\u0930 \u092e\u0947\u0902 \u0928\u0939\u0940\u0902"];

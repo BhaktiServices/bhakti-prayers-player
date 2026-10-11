@@ -59,7 +59,7 @@
 /* [Grok-Bot] V1.72: Guru-Stotram-Uebersetzung (Prathana SVD) und Listen-Reihenfolge nach SVD-Inhalt, synchron nachgeladen vor dem Seitenskript. */
 if(document.readyState==="loading"){ document.write('<script src="tr-v172.js?v=177"><\/script>'); }
 /* [Grok-Bot] V1.73: Morgen-/Abendliste nach dem SVD-Inhaltsverzeichnis (Override der Anordnung aus listview.js). */
-if(document.readyState==="loading"){ document.write('<script src="plan-v173.js?v=177"><\/script>'); }
+if(document.readyState==="loading"){ document.write('<script src="plan-v173.js?v=178"><\/script>'); }
 /* [Grok-Bot] V1.74: Suprabhatam- und Govinda-Uebersetzungen nach Prathana SVD, Wochentag-Knoepfe ausgeblendet. */
 if(document.readyState==="loading"){ document.write('<script src="tr-v174.js?v=177"><\/script>'); }
 /* [Grok-Bot] V1.75: Tempo-Auswahl fuer die MP3-Wiedergabe (je Prayer gemerkt, Tonhoehe bleibt). */
