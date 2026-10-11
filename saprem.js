@@ -6,8 +6,9 @@
   PRAYERS.push({
     id:"saprem",
     titel:"Āratī Saprem, Jai Jai Vitthala Parabrahma",
-    autor:"Sri Vitthal Dham · Heft S. 30",
-    quelle:"Dropbox · Arati Saprem mit Übersetzung",
+    autor:"Anuradha Paudwal · T-Series Bhakti Marathi",
+    quelle:"YouTube · Aarti Sprem Vitthal Parbrahma",
+    youtube:"HBTwZqC8MJ8", /* [Grok.com] Aufnahme aus dem Link */
     preferFile:false,
     zeilen:[
       v("Refrain", R+"\n"+R, "Salutations to Lord Vitthala, who is the Parabrahma.", "Verehrung dem Herrn Vitthala, der das Parabrahma ist."),

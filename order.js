@@ -34,7 +34,7 @@
   }
   /* [Grok-Bot] V1.53: Tvam eva mātā wird zweimal gesungen, "2x" hinter der letzten Zeile */
   PRAYERS.forEach(function(p){ p.zeilen.forEach(function(z){ if(/^tvam eva sarva/.test(String(z.sa||""))) z.x2 = true; }); });
-  var ORDER = ["guru-stotram","guru-stotram-abend","guruji-gayatri","gayatri","ganesha-mantra","suprabhatam","govinda","narasimha","ramanuja","vishnu-arati","final-prayers","kavacham","hanuman","bhajare","lakshmi-arati","mukunda"];
+  var ORDER = ["guru-stotram","guru-stotram-abend","guruji-gayatri","gayatri","ganesha-mantra","suprabhatam","govinda","narasimha","ramanuja","vishnu-arati","final-prayers","kavacham","hanuman","bhajare","lakshmi-arati","saprem","mukunda" /* [Grok.com] Arati Saprem */];
   function rank(p){ var r = ORDER.indexOf(p.id); return r < 0 ? 999 : r; }
   var withPos = PRAYERS.map(function(p, n){ return { p:p, n:n }; });
   withPos.sort(function(x, y){ return (rank(x.p) - rank(y.p)) || (x.n - y.n); });
