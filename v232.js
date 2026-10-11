@@ -3,7 +3,7 @@
    YouTube-Marken proportional skaliert auf die tatsächlichen Videolängen
    (morgens ~4:33 / 273 s, abends ~4:19 / 259 s). Om bleibt keine Strophe.
    Alte Nutzer-Marken für guru-stotram werden einmalig gelöscht. */
-window.BPP_BUILD="2.41"; window.BPP_SHOW="2.41"; /* [Grok.com] alle 3 Aenderungen +1 */
+window.BPP_BUILD="2.42"; window.BPP_SHOW="2.42"; /* [Grok.com] alle 3 Aenderungen +1 */
 (function(){
   if(window.bppV232) return; window.bppV232=1;
   var SEQ_FILE={
@@ -43,9 +43,9 @@ window.BPP_BUILD="2.41"; window.BPP_SHOW="2.41"; /* [Grok.com] alle 3 Aenderunge
     localStorage.setItem("bpp-v232-gs","1");
   } }catch(e){}
   function ver(){
-    window.BPP_SHOW="2.41"; window.BPP_BUILD="2.41";
-    var v=document.querySelector("h1 .ver"); if(v && v.textContent!=="V2.41") v.textContent="V2.41";
-    if(document.title!=="Bhakti Prayers Player V2.41") document.title="Bhakti Prayers Player V2.41";
+    window.BPP_SHOW="2.42"; window.BPP_BUILD="2.42";
+    var v=document.querySelector("h1 .ver"); if(v && v.textContent!=="V2.42") v.textContent="V2.42";
+    if(document.title!=="Bhakti Prayers Player V2.42") document.title="Bhakti Prayers Player V2.42";
   }
   if(document.readyState==="loading") document.addEventListener("DOMContentLoaded", function(){ apply(); ver(); }); else ver();
   window.addEventListener("load", function(){ apply(); ver(); });
