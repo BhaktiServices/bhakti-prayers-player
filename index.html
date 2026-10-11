@@ -496,10 +496,11 @@ function play(idx, resume, auto){ /* [Grok.com] auto false = kein Autostart */
 function canPlay(P){ return !!(P && (P.audio || P.youtube)); }
 function stepSong(dir){
   if(!PRAYERS.length) return;
+  var was=isPlaying(); /* [Grok.com] nur weiterspielen, wenn Play schon an war */
   var n=PRAYERS.length, start=(i<0? (dir>0?-1:0) : i);
   for(var k=1;k<=n;k++){
     var j=(start+dir*k+n)%n;
-    if(canPlay(PRAYERS[j])){ play(j, true); return; }
+    if(canPlay(PRAYERS[j])){ play(j, true, was); return; }
   }
 }
 function nextSong(){ stepSong(1); } /* [Grok.com] naechster spielbarer Gesang */
