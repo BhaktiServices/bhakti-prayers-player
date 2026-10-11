@@ -47,10 +47,10 @@
     upd();
   }
   function set(n){
-    if(!mp3()){ upd(); return; }
-    ensure();
-    if(ctx && ctx.state==="suspended") ctx.resume();
-    save(n); apply();
+    n=Math.max(-12, Math.min(12, n|0));
+    capo=n; save(n);
+    if(mp3()){ ensure(); if(ctx && ctx.state==="suspended") ctx.resume(); if(shifter) shifter.set(n); }
+    upd();
   }
   function step(d){ var n=Math.max(-12, Math.min(12, capo+(d||0))); set(n); }
   function upd(){
@@ -59,18 +59,19 @@
     var on=mp3();
     d.disabled=u.disabled=!on;
     if(z) z.disabled=!on;
-    if(lab) lab.textContent=capo?("Ton "+(capo>0?"+":"")+capo):"Ton 0";
+    var word=(typeof UI!=="undefined" && UI[lang] && UI[lang].pitch)||"Pitch";
+    if(lab) lab.textContent=word+" "+(capo>0?"+":"")+capo;
   }
   function btns(){
     if(document.getElementById("capoBox")) return;
     var box=document.getElementById("xpBox"); if(!box) return;
     var wrap=document.createElement("span"); wrap.id="capoBox"; wrap.style.cssText="display:flex;gap:4px;align-items:center";
     function b(id, txt, fn, title){ var el=document.createElement("button"); el.type="button"; el.id=id; el.textContent=txt; el.title=title; el.onclick=fn; return el; }
-    wrap.appendChild(b("btnCapoDown","−",function(){ step(-1); },"Tonhöhe einen Halbton runter, nur MP3"));
-    var lab=document.createElement("span"); lab.id="capoLab"; lab.textContent="Ton 0"; lab.style.cssText="min-width:4.2em;text-align:center;color:#e8c57a;font-size:.85rem";
+    wrap.appendChild(b("btnCapoDown","−",function(){ step(-1); },"Pitch −1, nur MP3"));
+    var lab=document.createElement("span"); lab.id="capoLab"; lab.textContent="Pitch 0"; lab.style.cssText="min-width:4.2em;text-align:center;color:#e8c57a;font-size:.85rem";
     wrap.appendChild(lab);
-    wrap.appendChild(b("btnCapoUp","+",function(){ step(1); },"Tonhöhe einen Halbton rauf, nur MP3"));
-    wrap.appendChild(b("btnCapoZero","0",function(){ set(0); },"Tonhöhe zurück"));
+    wrap.appendChild(b("btnCapoUp","+",function(){ step(1); },"Pitch +1, nur MP3"));
+    wrap.appendChild(b("btnCapoZero","0",function(){ set(0); },"Pitch 0"));
     box.parentNode.insertBefore(wrap, box.nextSibling);
   }
   document.addEventListener("DOMContentLoaded", function(){ btns(); a=document.getElementById("a"); apply(); });

@@ -207,7 +207,7 @@ body.show-ch .rowline .rch{display:block}
 <script src="tr-hi.js?v=3"></script>
 <!-- [Grok.com] follow.js?v=55: Guru Stotram Abend, Om keine Strophe -->
 <script src="follow.js?v=55"></script>
-<script src="capo.js?v=2"></script><!-- [Grok.com] Kapo −5/+5 fuer MP3 -->
+<script src="capo.js?v=3"></script><!-- [Grok.com] Kapo −5/+5 fuer MP3 -->
 <!-- [Grok.com] Guru Stotram Abend: Om ist keine Strophe -->
 <script src="v215.js?v=215"></script>
 <script src="v216.js?v=217"></script>
@@ -232,8 +232,10 @@ var UI={
     next:"N ▶",
     trOff:"Übers. aus",
     trOn:"Übers. an",
-    chOff:"Akk. aus",
-    chOn:"Akk. an",
+    chOff:"Keine Akkorde",
+    chOn:"Akkorde",
+    chLine:"Akkorde je Zeile",
+    pitch:"Tonhöhe",
     foot:"Akkorde: Heft Sri Vitthal Dham. Ton aus Dropbox, wo vorhanden."
   },
   en:{
@@ -246,8 +248,10 @@ var UI={
     next:"N ▶",
     trOff:"Transl. off",
     trOn:"Transl. on",
-    chOff:"Chords off",
-    chOn:"Chords on",
+    chOff:"No Chords",
+    chOn:"Chords",
+    chLine:"Chords each line",
+    pitch:"Pitch",
     foot:"Chords: Sri Vitthal Dham booklet. Audio from Dropbox where available."
   }
 };
@@ -298,7 +302,7 @@ function applyUI(){
   document.getElementById("btnPrev").textContent=u.prev;
   document.getElementById("btnNext").textContent=u.next;
   document.getElementById("btnDe").textContent=showDe?u.trOn:u.trOff;
-  document.getElementById("btnCh").textContent=chMode==="zeile"?"AkkZe":(chMode==="akk"?"Akk":"NoAkk"); /* [Grok.com] */
+  document.getElementById("btnCh").textContent=chLab(); /* [Grok.com] Chords */
   document.getElementById("xpLab").textContent=steps===0?(lang==="de"?"Tonart":"Key"):((steps>0?"+":"")+steps);
   document.getElementById("btnAuto").textContent=autoScroll?(lang==="de"?"Auto an":"Auto on"):(lang==="de"?"Auto aus":"Auto off");
   document.getElementById("btnAuto").classList.toggle("on", autoScroll);
@@ -560,6 +564,7 @@ function applyCh(){
   document.body.classList.toggle("show-ch", showCh);
   document.body.classList.toggle("ch-line", chMode==="zeile");
 }
+function chLab(){ var u=UI[lang]||UI.en; return chMode==="zeile"?(u.chLine||"Chords line"):(chMode==="akk"?(u.chOn||"Chords"):(u.chOff||"No Chords")); }
 function toggleCh(){
   chMode=chMode==="akk"?"zeile":(chMode==="zeile"?"aus":"akk"); /* [Grok.com] Akk, AkkZe, NoAkk */
   applyCh();
@@ -636,6 +641,6 @@ layoutLyrics();
 <script src="v229.js?v=229"></script>
 <script src="v230.js?v=230"></script>
 <script src="v231.js?v=231"></script><!-- [Grok.com] Werte je Stueck, Vorheriges erst an den Anfang -->
-<script src="lang-multi.js?v=1"></script>
+<script src="lang-multi.js?v=22"></script>
 </body>
 </html>
