@@ -5,9 +5,15 @@
   function typing(t){ return t && (t.tagName==="INPUT" || t.tagName==="TEXTAREA" || t.isContentEditable); }
   function big(){ try{ var s=window.bppFsState && window.bppFsState(); return !!(s && s.on); }catch(e){ return false; } }
   function step(dir){
-    if(typeof i==="undefined" || i<0) return;
-    if(dir>0){ if(typeof nextLine==="function") nextLine(); }
-    else { if(typeof prevLine==="function") prevLine(); }
+    if(typeof i==="undefined" || i<0 || typeof PRAYERS==="undefined" || !PRAYERS[i]) return;
+    if(typeof stanzaGroups!=="function" || typeof currentGroupIndex!=="function") return;
+    var gs=stanzaGroups(PRAYERS[i]);
+    var n=currentGroupIndex();
+    if(dir>0){ if(n>=0 && n<gs.length-1) line=gs[n+1].start; else return; }
+    else { if(n>0) line=gs[n-1].start; else return; }
+    if(typeof persistNow==="function") persistNow();
+    if(typeof paintLyrics==="function") paintLyrics();
+    if(typeof syncAutoFromLine==="function") syncAutoFromLine();
   }
   document.addEventListener("keydown", function(e){
     if(e.ctrlKey || e.altKey || e.metaKey || e.shiftKey) return;
@@ -35,6 +41,4 @@
   var box=document.getElementById("lyrics")||document.body;
   box.addEventListener("touchstart", start, {passive:true});
   box.addEventListener("touchend", end, {passive:true});
-  box.addEventListener("pointerdown", function(e){ if(e.pointerType==="touch") start(e); }, {passive:true});
-  box.addEventListener("pointerup", function(e){ if(e.pointerType==="touch") end(e); }, {passive:true});
 })();
