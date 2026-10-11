@@ -172,9 +172,10 @@ function pinStanza(){
   else panel.scrollTop=Math.max(0, panel.scrollTop+(r.top-pr.top)-12);
   var bar=document.querySelector(".bar");
   var gap=bar?bar.getBoundingClientRect().bottom+6:8;
-  r=on.getBoundingClientRect();
   var sc=document.scrollingElement||document.documentElement;
-  if(r.top<gap || r.bottom>window.innerHeight-8) sc.scrollTop=Math.max(0, sc.scrollTop+(r.top-gap));
+  var anchor=first?(panel.querySelector(".songtitle")||panel):on; /* [Grok.com] beim Start den Titel zeigen */
+  var ar=anchor.getBoundingClientRect();
+  if(ar.top<gap || ar.bottom>window.innerHeight-8) sc.scrollTop=Math.max(0, sc.scrollTop+(ar.top-gap));
 }
 function autoLineFromTime(){
   if(!autoScroll || i<0) return;
