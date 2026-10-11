@@ -167,7 +167,9 @@ function pinStanza(){
   if(!panel||!on) return;
   /* [Grok.com] markierte Strophe oben ins Lyrics-Fenster, sofort */
   var pr=panel.getBoundingClientRect(), r=on.getBoundingClientRect();
-  panel.scrollTop=Math.max(0, panel.scrollTop+(r.top-pr.top)-12);
+  var first=on===panel.querySelector(".stanza");
+  if(first) panel.scrollTop=0; /* [Grok.com] Titel bleibt ueber der ersten Strophe */
+  else panel.scrollTop=Math.max(0, panel.scrollTop+(r.top-pr.top)-12);
   var bar=document.querySelector(".bar");
   var gap=bar?bar.getBoundingClientRect().bottom+6:8;
   r=on.getBoundingClientRect();
