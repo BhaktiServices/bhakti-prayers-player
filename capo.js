@@ -8,25 +8,32 @@
   function want(){ var P=cur(); var n=P?mem[P.id]:0; n=n|0; return (n>=-12&&n<=12)?n:0; }
 
   function makeShifter(ac){
-    var ratio=1, grain=Math.floor(ac.sampleRate*0.08), buf=new Float32Array(ac.sampleRate*2), w=0, phase=0;
-    var sp=ac.createScriptProcessor(2048, 1, 1);
+    var ratio=1, grain=Math.floor(ac.sampleRate*0.12), len=ac.sampleRate*4;
+    var bL=new Float32Array(len), bR=new Float32Array(len), w=0, phase=0;
+    var sp=ac.createScriptProcessor(2048, 2, 2);
+    function read(buf, pos){
+      while(pos<0) pos+=len; pos%=len;
+      var i0=pos|0, i1=(i0+1)%len, f=pos-i0;
+      return buf[i0]*(1-f)+buf[i1]*f;
+    }
+    function hann(ph){ return 0.5*(1-Math.cos(2*Math.PI*ph/grain)); }
     sp.onaudioprocess=function(e){
-      var inn=e.inputBuffer.getChannelData(0), out=e.outputBuffer.getChannelData(0);
-      if(ratio===1){ out.set(inn); return; }
-      for(var k=0;k<inn.length;k++){
-        buf[w]=inn[k];
-        var p=w-grain+phase;
-        while(p<0) p+=buf.length;
-        var i0=p|0, i1=(i0+1)%buf.length, f=p-i0;
-        var s=buf[i0]*(1-f)+buf[i1]*f;
-        var env=Math.sin(Math.PI*(phase/grain));
-        out[k]=s*env + inn[k]*(1-env)*0.15;
-        phase+=ratio;
-        if(phase>=grain) phase-=grain;
-        w=(w+1)%buf.length;
+      var inL=e.inputBuffer.getChannelData(0);
+      var inR=e.inputBuffer.numberOfChannels>1?e.inputBuffer.getChannelData(1):inL;
+      var outL=e.outputBuffer.getChannelData(0), outR=e.outputBuffer.getChannelData(1);
+      if(ratio===1){ outL.set(inL); outR.set(inR); return; }
+      for(var k=0;k<inL.length;k++){
+        bL[w]=inL[k]; bR[w]=inR[k];
+        var ph2=(phase+grain*0.5)%grain;
+        var s1L=read(bL, w-grain+phase), s1R=read(bR, w-grain+phase);
+        var s2L=read(bL, w-grain+ph2), s2R=read(bR, w-grain+ph2);
+        var e1=hann(phase), e2=hann(ph2);
+        outL[k]=s1L*e1+s2L*e2; outR[k]=s1R*e1+s2R*e2;
+        phase+=ratio; if(phase>=grain) phase-=grain;
+        w=(w+1)%len;
       }
     };
-    return { node:sp, set:function(semi){ ratio=Math.pow(2, semi/12); } };
+    return { node:sp, set:function(semi){ ratio=Math.pow(2, (semi||0)/12); } };
   }
   function ensure(){
     if(ctx) return;
