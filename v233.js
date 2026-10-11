@@ -36,7 +36,7 @@
     var dx=p.clientX-x0, dy=p.clientY-y0;
     if(Math.abs(dx)<48 || Math.abs(dx)<Math.abs(dy)*1.4) return;
     if(Date.now()-t0>700) return;
-    step(dx<0?1:-1);
+    step(dx<0?-1:1); /* [Grok.com] rechts nach links: vorher, links nach rechts: danach */
   }
   var box=document.getElementById("lyrics")||document.body;
   box.addEventListener("touchstart", start, {passive:true});
