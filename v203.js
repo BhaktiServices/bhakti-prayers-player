@@ -147,8 +147,8 @@ window.BPP_SW="sw.js?v=203";
     b.title="Alle Gesänge für offline laden";
     b.style.cssText="margin-left:8px;font:12px system-ui,sans-serif;color:#1a120c;background:#e6c07b;border:0;border-radius:8px;padding:4px 8px;cursor:pointer";
     b.onclick=function(){ run(); };
-    var foot=document.getElementById("foot");
-    if(foot) foot.appendChild(b); else document.body.appendChild(b);
+    var bar=document.querySelector(".bar .row")||document.querySelector(".bar");
+    if(bar) bar.appendChild(b); else document.body.appendChild(b); /* [Grok.com] sichtbar in der Leiste */
   }
   if(document.readyState==="loading") document.addEventListener("DOMContentLoaded", btn); else btn();
   function showV(){ var s="V"+(window.BPP_SHOW||"2.03"), v=document.querySelector("h1 .ver"); if(v) v.textContent=s; document.title="Bhakti Prayers Player "+s; } /* V2.20: folgt BPP_SHOW */
