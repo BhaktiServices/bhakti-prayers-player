@@ -21,7 +21,7 @@
     if(!buf || !ctx || !capo) return;
     stopShift();
     if(ctx.state==="suspended") ctx.resume();
-    shifter=new window.PitchShifter(ctx, buf, 4096);
+    shifter=new window.PitchShifter(ctx, buf, 8192);
     shifter.tempo=1; shifter.pitchSemitones=capo;
     var pos=a && isFinite(a.currentTime)?a.currentTime:0;
     shifter.percentagePlayed=Math.max(0, Math.min(99, pos/(buf.duration||1)*100));
@@ -72,12 +72,8 @@
   function tick(){
     try{ btns(); }catch(e){}
     var w=want();
-    if(w!==capo){ capo=w; if(w) applyShift(); else stopShift(); upd(); }
-    if(!capo || !shifter || !a || a.paused) return;
-    if(Date.now()-lastSync<1500) return;
-    var played=shifter.timePlayed||0, at=a.currentTime||0;
-    if(Math.abs(played-at)>0.6){ startShift(); }
-    lastSync=Date.now();
+    if(w!==capo){ capo=w; upd(); if(w && !shifter) applyShift(); if(!w) stopShift(); }
+    /* [Grok.com] nicht neu starten, sonst Fetzen */
   }
   document.addEventListener("DOMContentLoaded", function(){ btns(); a=document.getElementById("a"); if(a){ a.addEventListener("play", function(){ if(capo) applyShift(); }); a.addEventListener("pause", function(){ if(shifter){ try{ shifter.disconnect(); }catch(e){} } }); } });
   setInterval(tick, 700);

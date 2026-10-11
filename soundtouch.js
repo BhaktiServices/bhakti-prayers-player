@@ -974,16 +974,16 @@ var getWebAudioNode = function getWebAudioNode(context, filter) {
   node.onaudioprocess = function (event) {
     var left = event.outputBuffer.getChannelData(0);
     var right = event.outputBuffer.getChannelData(1);
-    var framesExtracted = filter.extract(samples, bufferSize);
+    var got = 0;
+    while (got < bufferSize) {
+      var n = filter.extract(samples, bufferSize - got);
+      if (!n) { filter.onEnd(); break; }
+      var i = 0;
+      for (; i < n; i++) { left[got + i] = samples[i * 2]; right[got + i] = samples[i * 2 + 1]; }
+      got += n;
+    }
     sourcePositionCallback(filter.sourcePosition);
-    if (framesExtracted === 0) {
-      filter.onEnd();
-    }
-    var i = 0;
-    for (; i < framesExtracted; i++) {
-      left[i] = samples[i * 2];
-      right[i] = samples[i * 2 + 1];
-    }
+    window.__bppStNode = node; /* [Grok.com] nicht einsammeln */
   };
   return node;
 };
