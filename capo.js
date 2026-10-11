@@ -64,6 +64,6 @@
   }
   function boot(){ a=document.getElementById("a"); btns(); upd(); }
   if(document.readyState==="loading") document.addEventListener("DOMContentLoaded", boot); else boot();
-  setInterval(function(){ try{ if(!a) a=document.getElementById("a"); btns(); var w=want(); if(w!==capo){ capo=w; ratio=Math.pow(2, w/12); if(w && mp3()){ build(); if(ctx&&ctx.state==="suspended") ctx.resume(); } upd(); } }catch(e){} }, 800);
+  setInterval(function(){ try{ if(!a) a=document.getElementById("a"); btns(); var w=want(); if(w!==capo){ capo=w; ratio=Math.pow(2, w/12); } if(capo && mp3() && !sp){ build(); if(ctx&&ctx.state==="suspended") ctx.resume(); } upd(); }catch(e){} }, 500);
   window.bppCapoApply=function(){ capo=want(); ratio=Math.pow(2, capo/12); upd(); };
 })();
