@@ -3,7 +3,7 @@
    ohne Netz aus dem Cache. Alte App-Caches werden beim Aktivieren geloescht.
    MP3 aus audio/: liegen im Cache "bpp-audio-v1" (laedt v203.js im Hintergrund). Abspielen aus dem Cache mit Range-Antworten (206),
    damit Spulen geht. Nicht im Cache: direkt aus dem Netz. YouTube und fremde Server laufen am Service Worker vorbei. */
-var VER="221" /* [Grok.com] Scroll-Fix durchreichen */ /* [Grok.com] alte Abend-MP3 nicht aus dem Cache; [Grok-Bot] V2.20 nach Syntax-Korrektur */, APP="bpp-app-"+VER, AUD="bpp-audio-v1";
+var VER="222" /* [Grok.com] Platzhalter-Cache weg */ /* [Grok.com] Scroll-Fix durchreichen */ /* [Grok.com] alte Abend-MP3 nicht aus dem Cache; [Grok-Bot] V2.20 nach Syntax-Korrektur */, APP="bpp-app-"+VER, AUD="bpp-audio-v1";
 var CORE=["./","index.html","follow.js","v218.js","manifest.json","icon-192.svg","icon-512.svg","version.json","start.jpg"]; /* [Grok.com] */
 self.addEventListener("install", function(e){
   e.waitUntil(caches.open(APP).then(function(c){ return Promise.all(CORE.map(function(u){ return fetch(u, {cache:"no-store"}).then(function(r){ if(r.ok) return c.put(u, r); }).catch(function(){}); })); }).then(function(){ return self.skipWaiting(); }));
@@ -48,10 +48,14 @@ self.addEventListener("fetch", function(e){
   }
   var nav=(r.mode==="navigate");
   var noStore=/\/version\.json$/.test(u.pathname) || u.searchParams.has("t");
-  e.respondWith(fetch(r).then(function(res){
+  var req=nav?new Request(r, {cache:"no-store"}):r; /* [Grok.com] Startseite nie aus altem Cache */
+  e.respondWith(fetch(req).then(function(res){
     if(res && res.ok && res.type==="basic"){
-      var c=res.clone(), key=noStore?u.pathname:(nav?"./":r);
-      caches.open(APP).then(function(ca){ ca.put(key, c); });
+      var c=res.clone();
+      c.text().then(function(txt){
+        if(txt && txt.indexOf("PLACEHOLDER")===0) return; /* [Grok.com] Platzhalter nicht speichern */
+        caches.open(APP).then(function(ca){ ca.put(noStore?u.pathname:(nav?"./":r), c); });
+      });
     }
     return res;
   }).catch(function(){
