@@ -54,7 +54,8 @@ body:not(.menu-full) .row>*:not(#btnPPrev):not(#btnPlay):not(#btnPNext):not(#btn
 body:not(.menu-full) #btnBack10,body:not(.menu-full) #btnFwd10{display:none!important}
 body:not(.menu-full) #btnPPrev{order:1}body:not(.menu-full) #btnPlay{order:2}body:not(.menu-full) #btnPNext{order:3}
 body:not(.menu-full) .bppJmp{order:4}body:not(.menu-full) #btnAuto{order:5}body:not(.menu-full) #btnFs{order:6}
-body:not(.menu-full) #btnCh{order:7}body:not(.menu-full) #btnMenu{order:8}body:not(.menu-full) #btnOffAll{order:9;display:inline-block!important}
+body:not(.menu-full) #btnCh{order:7}body:not(.menu-full) #btnMenu{order:20}body:not(.menu-full) #btnOffAll{order:9;display:inline-block!important}
+body:not(.menu-full) #bppFsBar .row>*:not(#bppFsPPrev):not(#bppFsPlay):not(#bppFsPNext):not(#bppFsJ30b):not(#bppFsJ30f):not(#bppFsCh):not(#bppFsMenu){display:none!important} /* [Grok.com] Grossansicht gleich */
 button{background:#4a372b;color:var(--text);border:1px solid #6b5340;border-radius:7px;padding:8px 12px;min-height:40px;font-family:"Source Sans 3",sans-serif}
 button.gold{background:#8b6914;border-color:var(--gold)}
 #btnPlay{background:var(--gold);color:#1a1208;font-weight:700} /* [Grok.com] Play: gold, steht */
@@ -146,13 +147,13 @@ body.show-ch .rowline .rch{display:block}
     <span class="sep"></span>
     <button type="button" id="btnDe" onclick="event.stopPropagation(); toggleDe();"></button>
     <button type="button" id="btnCh" onclick="toggleCh()"></button>
-    <button type="button" class="gold" id="btnMenu" onclick="toggleMenu()">Menü+</button>
     <span id="xpBox" style="display:flex;gap:4px;align-items:center">
       <button type="button" id="btnXpDown" onclick="shiftSteps(-1)">♭</button>
       <span id="xpLab" style="min-width:4.4em;text-align:center;color:#e8c57a;font-size:.9rem"></span>
       <button type="button" id="btnXpUp" onclick="shiftSteps(1)">♯</button>
       <button type="button" id="btnXpZero" onclick="shiftSteps(0,true)">0</button>
     </span>
+    <button type="button" class="gold" id="btnMenu" onclick="toggleMenu()">Menü+</button>
     <div class="lang">
       <button type="button" id="btnLangDe" onclick="setLang('de')">DE</button>
       <button type="button" id="btnLangEn" onclick="setLang('en')">EN</button>

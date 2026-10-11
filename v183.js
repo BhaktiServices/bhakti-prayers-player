@@ -288,6 +288,9 @@ window.BPP_BUILD="1.83";
     bCh=B("", function(){ opt.ch=!opt.ch; save(); syncOpt(); lastKey=""; draw(true); }, "bppFsCh");
     bTr=B("", function(){ opt.tr=!opt.tr; save(); syncOpt(); lastKey=""; draw(true); }, "bppFsTr");
     B("✕", close, "bppFsClose");
+    var bm=document.createElement("button"); bm.type="button"; bm.id="bppFsMenu"; bm.className="gold"; bm.textContent="Menü+"; bm.style.background="#e6c07b"; bm.style.color="#1a1208"; bm.style.fontWeight="700";
+    bm.onclick=function(e){ e.stopPropagation(); if(typeof toggleMenu==="function") toggleMenu(); bm.textContent=document.body.classList.contains("menu-full")?"Menü−":"Menü+"; }; /* [Grok.com] */
+    r2.appendChild(bm);
     var lastTouchEnd=0, lastTap=0;
     ov.addEventListener("click", function(e){ if(Date.now()-lastTouchEnd<700) return; if(endIs && !(e.target.closest && e.target.closest("button"))){ endOff(); return; } showBar(); });
     ov.addEventListener("dblclick", function(e){ if(Date.now()-lastTouchEnd<700) return; if(bar.contains(e.target)) return; doToggle(); showBar(); });
