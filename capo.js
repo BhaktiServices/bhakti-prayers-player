@@ -62,7 +62,8 @@
     wrap.appendChild(b("btnCapoZero","0",function(){ set(0); },"Pitch 0"));
     box.parentNode.insertBefore(wrap, box.nextSibling);
   }
-  document.addEventListener("DOMContentLoaded", function(){ btns(); a=document.getElementById("a"); });
-  setInterval(function(){ try{ btns(); var w=want(); if(w!==capo){ capo=w; ratio=Math.pow(2, w/12); upd(); } }catch(e){} }, 800);
+  function boot(){ a=document.getElementById("a"); btns(); upd(); }
+  if(document.readyState==="loading") document.addEventListener("DOMContentLoaded", boot); else boot();
+  setInterval(function(){ try{ if(!a) a=document.getElementById("a"); btns(); var w=want(); if(w!==capo){ capo=w; ratio=Math.pow(2, w/12); if(w && mp3()){ build(); if(ctx&&ctx.state==="suspended") ctx.resume(); } upd(); } }catch(e){} }, 800);
   window.bppCapoApply=function(){ capo=want(); ratio=Math.pow(2, capo/12); upd(); };
 })();
