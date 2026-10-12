@@ -3,7 +3,7 @@
    Zeiten: aus den in V1.96 gemessenen Zeilenpausen (Demucs/Whisper, BPP_PAUSES) – je 4. Zeile beginnt eine neue Strophe.
    MP3: 473.8 / 489.2 / 504.4 s, YouTube: 530.5 / 544.7 / 558.9 s; alle uebrigen Zeiten unveraendert (nur Index +2).
    Zeilenakkorde wie bisher (Bb C Dm, erste Zeile Dm Bb C Dm). Uebersetzung des ganzen Abschnitts steht bei Strophe 30. */
-window.BPP_BUILD="2.51"; window.BPP_SHOW="2.51";
+window.BPP_BUILD="2.52"; window.BPP_SHOW="2.52";
 (function(){
   if(typeof PRAYERS==="undefined") return;
   var SPLIT={file:[473.8,489.2,504.4], yt:[530.5,544.7,558.9]};
