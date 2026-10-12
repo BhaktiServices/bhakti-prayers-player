@@ -2,7 +2,7 @@
    Im Modus "je Zeile" stehen die Akkorde ueber der jeweiligen Verszeile (z.lineCh, z.B. Kavacam, Govinda, Hanuman), wo vorhanden;
    sonst bleibt die bisherige Akkordzeile. Text, Strophenwechsel und Autoscroll des Grossbilds bleiben unveraendert.
    Standardansicht: Mitlesen scrollt beim Strophenwechsel sanft (Ziel wie bisher berechnet, dann weich hingescrollt) zur aktuellen Strophe oben; manuelles Scrollen bleibt frei. */
-window.BPP_BUILD="2.50"; window.BPP_SHOW="2.50";
+window.BPP_BUILD="2.51"; window.BPP_SHOW="2.51";
 (function(){
   function mode(){ return typeof chMode!=="undefined"?chMode:"aus"; }
   /* Knopf: globalen Modus weiterschalten, dann den internen Ein/Aus-Zustand des Grossbilds (Kopfzeile = "ueber der Strophe") angleichen */
