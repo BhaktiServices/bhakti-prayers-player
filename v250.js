@@ -36,9 +36,9 @@ window.BPP_BUILD="2.51"; window.BPP_SHOW="2.51";
     ["wheel","touchstart","keydown","mousedown"].forEach(function(ev){ window.addEventListener(ev, stop, {passive:true, capture:true}); });
     function go(L, from, to){
       if(anim && anim.to===to){ L.scrollTop=anim.cur; return; }
-      var t0=performance.now(), D=Math.min(700, 300+Math.abs(to-from)*0.3);
+      var t0=performance.now(), D=Math.min(2200, 1300+Math.abs(to-from)*0.6); /* V2.51: lang und gleichmaessig wie im Grossbild */
       anim={to:to, cur:from}; L.scrollTop=from; var me=anim;
-      (function step(){ if(anim!==me) return; var x=Math.min(1,(performance.now()-t0)/D), e=x<0.5?2*x*x:1-Math.pow(-2*x+2,2)/2;
+      (function step(){ if(anim!==me) return; var x=Math.min(1,(performance.now()-t0)/D), e=-(Math.cos(Math.PI*x)-1)/2;
         me.cur=from+(to-from)*e; L.scrollTop=me.cur; if(x<1) requestAnimationFrame(step); else anim=null; })();
     }
     window.pinStanza=function(){
