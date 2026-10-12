@@ -8,7 +8,7 @@ window.BPP_BUILD="3.05"; window.BPP_SHOW="3.05";
   st.textContent="#bppL6{display:none!important}#legend{display:none!important}#bppSrcEnd #foot{display:none!important}"+
   "#bppSrcEnd .btns{display:flex;flex-wrap:wrap;gap:8px;align-items:center}#bppSrcEnd #btnOffAll{display:inline-flex!important;margin:0!important;font:inherit!important;font-size:.9rem!important;padding:6px 12px!important;min-height:32px}";
   document.head.appendChild(st);
-  function lab(){var b=document.getElementById("btnOffAll");if(!b)return;var l=L();if(b.textContent!==LAB[l])b.textContent=LAB[l];b.title=TIT[l];}
+  function lab(){var b=document.getElementById("btnOffAll");if(!b||b.classList.contains("busy"))return;var l=L();if(b.textContent!==LAB[l])b.textContent=LAB[l];b.title=TIT[l];}
   function build(){
     var w=document.getElementById("bppSrcEnd"), d=document.getElementById("btnDet"), o=document.getElementById("btnOffAll");
     if(!w||!d||!o) return false;
