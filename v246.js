@@ -1,16 +1,15 @@
-/* [Grok-Bot] V2.46: Govinda Prayer – Akkorde ab Strophe 2 nach Angabe des Nutzers.
-   Je Strophe (3 lange Zeilen + Refrain): Zeile 1 "D D7+ D7 G D", Zeile 2 "D G D C D", Zeile 3 wieder wie Zeile 1,
-   Refrain bleibt "D G D C D". Die Akkorde einer Zeile stehen gleichmaessig ueber der Zeile verteilt, erster Akkord am Zeilenanfang, letzter ueber dem letzten Wort(teil), dazwischen gleichmaessig auf Wort-/Wortteilanfaengen.
-   Strophe 1 und Schluss bleiben wie im Heft (D / D7+ / D7 / G D). */
-window.BPP_BUILD="2.48"; window.BPP_SHOW="2.48";
+/* [Grok-Bot] V2.49 (ersetzt V2.46-Muster): Govinda – alle Strophen ab 2 wie Strophe 1 (Nutzer 12.10. 18:02).
+   Strophe 1: Zeile 1 D, Zeile 2 D7+, Zeile 3 D7, Zeile 4 G D, Refrain D G D C D.
+   Ab Strophe 2 gibt es nur 3 Zeilen vor dem Refrain: Zeile 1 D, Zeile 2 D7+, Zeile 3 D7 am Anfang und G D (Strophe-1-Zeile 4) auf den letzten Wortteilen; Refrain unveraendert. */
+window.BPP_BUILD="2.49"; window.BPP_SHOW="2.49";
 (function(){
-  var L1=["D","D7+","D7","G","D"], L2=["D","G","D","C","D"];
+  var PAT=[["D"],["D7+"],["D7","G","D"]];
   function spread(text, chs){
     var t=String(text), n=t.length, st=[0];
     for(var k=1;k<n;k++){ if((t[k-1]===" "||t[k-1]==="-") && t[k]!==" ") st.push(k); }
     var out="", used=-1;
     chs.forEach(function(c,j){
-      var m=chs.length, S=st.length, best=(S>=m)?st[Math.round(j*(S-1)/Math.max(1,m-1))]:Math.round(j*n/m);
+      var m=chs.length, S=st.length, best=(j===0)?0:((S>=m)?st[S-m+j]:Math.round(j*n/m));
       var pos=Math.max(best, out.length+(out.length?1:0));
       while(out.length<pos) out+=" ";
       out+=c;
@@ -24,9 +23,9 @@ window.BPP_BUILD="2.48"; window.BPP_SHOW="2.48";
       g.zeilen.forEach(function(z){
         if(!/^\d+$/.test(String(z.nr)) || +z.nr<2) return;
         var lines=String(z.sa||"").split("\n");
-        var lc=lines.map(function(s,k){ return spread(s, k%2===0?L1:L2); });
+        var lc=lines.map(function(s,k){ return spread(s, PAT[Math.min(k,PAT.length-1)]); });
         if(z.lineCh && z.lineCh.join("|")===lc.join("|")) return;
-        z.lineCh=lc; z.ch=L1.join("  ")+"   "+L2.join("  "); ch=true;
+        z.lineCh=lc; z.ch="D   D7+   D7   G  D"; ch=true;
       });
     }catch(e){}
     return ch;

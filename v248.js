@@ -1,6 +1,6 @@
 /* [Grok-Bot] V2.48: MP3 ist bei allen Gebeten mit MP3 die Standardquelle, YouTube nur ohne MP3 oder wenn der Nutzer aktiv "YT" gewaehlt hat
    (gespeichert in bpp-src). Hinweis "Standard ist YouTube ..." entfernt (alle Sprachen). */
-window.BPP_BUILD="2.48"; window.BPP_SHOW="2.48";
+window.BPP_BUILD="2.49"; window.BPP_SHOW="2.49";
 (function(){
   if(typeof PRAYERS==="undefined") return;
   function src(){ try{ return JSON.parse(localStorage.getItem("bpp-src")||"{}")||{}; }catch(e){ return {}; } }

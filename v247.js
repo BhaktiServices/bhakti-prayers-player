@@ -1,6 +1,6 @@
 /* [Grok-Bot] V2.47: Abschied am Ende der Wiedergabe: Jukebox (start.jpg) mit Text in der eingestellten Sprache,
    blendet in ca. 3 s langsam aus, Tippen/Taste ueberspringt. Kommt, wenn ein Stueck zu Ende ist und danach nichts weiterspielt (MP3 oder YouTube). */
-window.BPP_BUILD="2.48"; window.BPP_SHOW="2.48";
+window.BPP_BUILD="2.49"; window.BPP_SHOW="2.49";
 (function(){
   var TXT={en:"Study and sing the Bhakti Marga Prayers – see you soon!",de:"Lerne und singe die Bhakti-Marga-Gebete – bis bald!",
     fr:"Étudiez et chantez les prières de Bhakti Marga – à bientôt !",es:"Estudia y canta las oraciones de Bhakti Marga – ¡hasta pronto!",

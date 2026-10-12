@@ -1,6 +1,6 @@
 /* [Grok-Bot] V2.45: Akkord-Knopf zeichnet die Liedzeilen neu. Vorher setzte toggleCh nur CSS-Klassen;
    die Zeilenakkorde (lineCh, z.B. Nrsimha Kavacam aus kavacham-chords.js) entstehen aber nur in paintLyrics -> im Modus "AkkZe" fehlten sie. */
-window.BPP_BUILD="2.48"; window.BPP_SHOW="2.48";
+window.BPP_BUILD="2.49"; window.BPP_SHOW="2.49";
 (function(){
   if(typeof toggleCh!=="function") return;
   var orig=toggleCh;
