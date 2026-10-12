@@ -2,7 +2,7 @@
    Je Strophe (3 lange Zeilen + Refrain): Zeile 1 "D D7+ D7 G D", Zeile 2 "D G D C D", Zeile 3 wieder wie Zeile 1,
    Refrain bleibt "D G D C D". Die Akkorde einer Zeile stehen gleichmaessig ueber der Zeile verteilt, erster Akkord am Zeilenanfang, letzter ueber dem letzten Wort(teil), dazwischen gleichmaessig auf Wort-/Wortteilanfaengen.
    Strophe 1 und Schluss bleiben wie im Heft (D / D7+ / D7 / G D). */
-window.BPP_BUILD="2.47"; window.BPP_SHOW="2.47";
+window.BPP_BUILD="2.48"; window.BPP_SHOW="2.48";
 (function(){
   var L1=["D","D7+","D7","G","D"], L2=["D","G","D","C","D"];
   function spread(text, chs){
