@@ -1,6 +1,6 @@
 /* [Grok-Bot] V3.10: Sri Vishwananda Bhajare - anschliessendes "Mhane Chakar Rakho Ji" (Mirabai-Bhajan, Fassung fuer Sri Vishwananda)
    als eigene Strophen 7-9 mit Abschnittsueberschrift. Text und Akkorde wie bisher aus dem Prathana-Heft S. 24 (bhajare.js), Uebersetzung EN/DE dort,
-   FR/ES/RU/HI ergaenzt (nach der Giridhari-Arati-Uebersetzung). Zeiten audio/bhajare.mp3: 214.5 / 229.5 / 237.5 s. */
+   FR/ES/RU/HI ergaenzt. Sprach-Dropdown gold auf dunkel (nach der Giridhari-Arati-Uebersetzung). Zeiten audio/bhajare.mp3: 214.5 / 229.5 / 237.5 s. */
 window.BPP_BUILD="3.10"; window.BPP_SHOW="3.10";
 (function(){
   var TR=[
@@ -25,7 +25,9 @@ window.BPP_BUILD="3.10"; window.BPP_SHOW="3.10";
     var h=document.createElement("div"); h.className="v310h"; var l=(typeof lang!=="undefined"&&HEAD[lang])?lang:(lang==="de"?"de":"en");
     h.textContent=HEAD[l]||HEAD.en; st.parentNode.insertBefore(h,st);
   }
-  var s=document.createElement("style"); s.textContent=".v310h{color:var(--gold,#e0b45a);font-family:'Gentium Book Plus',Georgia,serif;font-size:1.05rem;margin:18px 4px 4px;border-top:1px solid #4a3a2c;padding-top:10px}";
+  var s=document.createElement("style"); s.textContent=".v310h{color:var(--gold,#e0b45a);font-family:'Gentium Book Plus',Georgia,serif;font-size:1.05rem;margin:18px 4px 4px;border-top:1px solid #4a3a2c;padding-top:10px}"+
+    "#langSel{color:#e0b45a!important;background-color:#1a1410!important;border-color:#e0b45a}#langSel option,#langSel option:checked,#langSel option:hover,#langSel option:focus{color:#e0b45a!important;background:#1a1410!important;background-color:#1a1410!important;box-shadow:0 0 0 30px #1a1410 inset}#langSel option:checked{font-weight:700}"+
+    "#bppSel option:checked,#bppSel option:hover{background:#1a1410!important;box-shadow:0 0 0 30px #1a1410 inset}";
   document.head.appendChild(s);
   apply(); setInterval(function(){ apply(); head(); },500);
 })();
