@@ -5,7 +5,7 @@
   st.textContent="#startPic{position:fixed;inset:0;z-index:40;margin:0;background:#1a120c;display:flex;align-items:center;justify-content:center}"
     +"#startPic img{width:min(92vw,900px);max-height:92vh;object-fit:contain;border:0;border-radius:12px;transform:scale(.12);transition:transform 1.35s cubic-bezier(.2,.8,.2,1)}"
     +"#startPic.zoom img{transform:scale(1)}"
-    +"body.player-in #startPic{opacity:0;pointer-events:none;transition:opacity .3s ease}";
+    +"body.player-in #startPic{opacity:0;pointer-events:none;transition:opacity .7s ease}";
   document.head.appendChild(st);
   var fig=document.createElement("figure");
   fig.id="startPic"; fig.className="startpic";
@@ -15,10 +15,10 @@
   function reveal(){
     if(gone) return; gone=true;
     document.body.classList.add("player-in");
-    setTimeout(function(){ var p=document.getElementById("startPic"); if(p) p.remove(); }, 320);
+    setTimeout(function(){ var p=document.getElementById("startPic"); if(p) p.remove(); }, 750);
   }
   requestAnimationFrame(function(){ requestAnimationFrame(function(){ fig.classList.add("zoom"); }); });
-  setTimeout(reveal, 1450);
+  setTimeout(reveal, 2700); /* [Grok-Bot] V2.47: Jukebox steht nach dem Zoom gut 1 s allein */
   window.addEventListener("keydown", reveal, {once:true});
   window.addEventListener("pointerdown", reveal, {once:true});
 })();
