@@ -55,7 +55,7 @@
       v("Refrain", Rch, Rsa, "Govinda, den ersten Purusha, verehre ich.", "I worship Govinda, the original Person."), /* [Grok-Bot] V1.33: fehlte nach Strophe 4 */
       v("5a","D","aṅgāni yasya sakalendriya-vṛttimanti","Jedes Glied sieht, hütet, offenbart die Welten. Gestalt aus Licht und Glück.","Each limb sees, guards and manifests the worlds. A form of light and bliss."),
       v("5b","D7+","paśyanti pānti kalayanti ciraṃ jaganti","",""),
-      v("5c","G     D","ānanda-cinmaya-sad-ujjvala-vigrahasya","","")
+      v("5c","G     D","ānanda-cinmaya-sad-ujjvala-vigrahasya","",""),
       
       v("Refrain", Rch, Rsa, "Govinda, den ersten Purusha, verehre ich.", "I worship Govinda, the original Person."),
       v("6a","D","advaitam acyutam anādim ananta-rūpam","Nicht-zwei, unfallen, anfangslos, immer jung. Den Veden schwer, der Bhakti nah.","Non-dual, unfallen, beginningless, ever young. Rare in the Vedas, near to devotion."),
