@@ -2,7 +2,7 @@
    Die bisherige Liste (#list) bleibt unsichtbar im Hintergrund bestehen: Auswahl klickt den passenden Listeneintrag (Start wie bisher),
    Tagesauswahl, "Alle", Vor/Zurueck/Wiederholen bleiben unveraendert. Das gerade gewaehlte Gebet steht gold im passenden Menue,
    die anderen Menues zeigen ihren Titel. Pro Menue jedes Gebet nur einmal. */
-window.BPP_BUILD="2.53"; window.BPP_SHOW="2.53";
+window.BPP_BUILD="2.54"; window.BPP_SHOW="2.54";
 (function(){
   var LAB={de:["Morgens","Abends","Weitere"],en:["Morning","Evening","More"],fr:["Matin","Soir","Autres"],es:["Mañana","Tarde","Más"],ru:["Утро","Вечер","Ещё"],hi:["प्रातः","सायं","अन्य"]};
   var ICO=["\u2600\uFE0E","\u263E\uFE0E","\u22EF"];
@@ -12,7 +12,7 @@ window.BPP_BUILD="2.53"; window.BPP_SHOW="2.53";
     "#bppSel select{flex:1 1 180px;min-width:0;max-width:100%;appearance:none;-webkit-appearance:none;background:#2a211a url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%23c9a36a' stroke-width='1.6'/%3E%3C/svg%3E\") no-repeat right 10px center;"+
     "color:#f3eee2;border:1px solid #6b5a44;border-radius:9px;padding:8px 30px 8px 11px;font:inherit;font-size:.95rem;cursor:pointer;text-overflow:ellipsis}"+
     "#bppSel select.cur{border-color:#e0b45a;color:#e0b45a;box-shadow:0 0 0 1px #e0b45a inset;font-weight:600}"+
-    "#bppSel select:focus{outline:2px solid #e0b45a;outline-offset:1px}#bppSel option{background:#1a1410;color:#f3eee2}#bppSel option:disabled{color:#7d7366}"+
+    "#bppSel select:focus{outline:2px solid #e0b45a;outline-offset:1px}#bppSel option{background:#1a1410;color:#f3eee2}#bppSel option:disabled{color:#7d7366}#bppSel option.act{color:#e0b45a;font-weight:700;background:#3a2c1c}#bppSel select.cur option{font-weight:normal}#bppSel select.cur option.act{font-weight:700}"+
     "@media(max-width:430px){#bppSel select{flex:1 1 46%}}";
   document.head.appendChild(st);
   function lg(){ var l=(typeof lang!=="undefined"&&lang)||"en"; return LAB[l]?l:"en"; }
@@ -50,12 +50,15 @@ window.BPP_BUILD="2.53"; window.BPP_SHOW="2.53";
     });
     mark();
   }
-  function mark(){
+  function mark(){ /* V2.54: Menue zeigt immer seinen Titel; aktives Menue gold, aktives Gebet in der Liste gold mit Haken */
     if(!box) return; var ci=String(curI()), first=true;
     Array.prototype.forEach.call(box.querySelectorAll("select"), function(se){
       var n=-1; se._g.items.forEach(function(x,k){ if(x.i===ci) n=k; });
-      var on=n>=0 && first && curI()>=0; if(on) first=false; /* Gebet in mehreren Menues: nur das erste gold */
-      var v=on?String(n):""; if(se.value!==v) se.value=v; se.classList.toggle("cur", on);
+      var on=n>=0 && first && curI()>=0; if(on) first=false;
+      if(se.value!=="") se.value="";
+      se.classList.toggle("cur", on);
+      se._g.items.forEach(function(x,k){ var o=se.options[k+1]; if(!o) return; var act=(k===n && curI()>=0), t=(act?"\u2713 ":"")+x.t;
+        if(o.textContent!==t) o.textContent=t; o.classList.toggle("act", act); });
     });
   }
   function boot(){
