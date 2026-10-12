@@ -262,6 +262,12 @@ window.BPP_BUILD="1.83";
     else { holdUntil=Date.now()+20000; }
     manualK=k; curK=k; page=(d<0 && st===null)?Math.max(0,pages(k).length-1):0; lastKey=""; draw(); showBar();
   }
+  /* [Grok-Bot] V3.07: manueller Strophenschritt ohne Spulen (Wischen/Rad/Pfeile); Automatik erst beim naechsten Zeitwechsel wieder (bppFsRelease) */
+  window.bppFsStep=function(d){ if(!isOn) return false; var gs=groups(); if(!gs.length) return true; var pg=pages(curK<0?0:curK);
+    if(d>0 && page<pg.length-1){ page++; } else if(d<0 && page>0){ page--; }
+    else { var k=Math.max(0, Math.min(gs.length-1, (curK<0?0:curK)+d)); if(k===curK) return true; manualK=k; curK=k; page=(d<0)?Math.max(0,pages(k).length-1):0; }
+    holdUntil=Date.now()+864e5; lastKey=""; draw(); return true; };
+  window.bppFsRelease=function(){ if(holdUntil>Date.now()+3e5){ holdUntil=0; lastKey=""; draw(); } };
   function seekTo(t){
     t=Math.max(0,t);
     if(typeof ytOn!=="undefined" && ytOn){ try{ yt.contentWindow.postMessage(JSON.stringify({event:"command",func:"seekTo",args:[t,true]}),"*"); }catch(e){} ytTime=t; }
