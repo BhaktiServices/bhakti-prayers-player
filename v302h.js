@@ -3,6 +3,7 @@
 var H={
 en:["How the Bhakti Prayers Player works",
 "<b>Choose a prayer</b> from the three menus Morning Prayers, Evening Prayers and Other. “All” puts everything in one menu.",
+"<b>Language:</b> choose it at the top right, next to the version number.",
 "<b>Playback:</b> Play/Pause, |◀ ▶| steps back or forward through all prayers, Repeat, −30/−10/+10/+30 seconds, tempo, and YT or MP3 as the source (MP3 is the default).",
 "<b>Follow:</b> the stanzas scroll along with the singing.",
 "<b>Big:</b> full screen. First tap shows the menu, second tap a button.",
@@ -14,6 +15,7 @@ en:["How the Bhakti Prayers Player works",
 "<b>Gold</b> means a setting is on. Tap here, ✕ or Esc to close."],
 de:["So funktioniert der Bhakti Prayers Player",
 "<b>Gebet wählen</b> über die drei Menüs Morgengebete, Abendgebete und Weitere. „Alle“ zeigt alles in einem Menü.",
+"<b>Sprache:</b> oben rechts neben der Versionsnummer wählen.",
 "<b>Wiedergabe:</b> Play/Pause, |◀ ▶| springt durch alle Gebete zurück oder vor, Wiederholen, −30/−10/+10/+30 Sekunden, Tempo, und YT oder MP3 als Quelle (MP3 ist Standard).",
 "<b>Mitlesen:</b> Die Strophen folgen dem Gesang.",
 "<b>Groß:</b> Vollbild. Erster Tipp zeigt das Menü, zweiter Tipp eine Taste.",
@@ -25,6 +27,7 @@ de:["So funktioniert der Bhakti Prayers Player",
 "<b>Gold</b> heißt: eingeschaltet. Zum Schließen hier tippen, ✕ oder Esc."],
 fr:["Comment fonctionne le Bhakti Prayers Player",
 "<b>Choisissez une prière</b> dans les trois menus Prières du matin, Prières du soir et Autres. « Tout » réunit tout dans un seul menu.",
+"<b>Langue :</b> à choisir en haut à droite, à côté du numéro de version.",
 "<b>Lecture :</b> Lecture/Pause, |◀ ▶| passe à la prière précédente ou suivante, Répéter, −30/−10/+10/+30 secondes, tempo, et YT ou MP3 comme source (MP3 par défaut).",
 "<b>Suivre :</b> les strophes défilent avec le chant.",
 "<b>Grand :</b> plein écran. Premier toucher : le menu, deuxième toucher : un bouton.",
@@ -36,6 +39,7 @@ fr:["Comment fonctionne le Bhakti Prayers Player",
 "<b>Doré</b> signifie activé. Touchez ici, ✕ ou Échap pour fermer."],
 es:["Cómo funciona el Bhakti Prayers Player",
 "<b>Elige una oración</b> en los tres menús Oraciones de la mañana, Oraciones de la tarde y Otras. «Todas» lo reúne todo en un menú.",
+"<b>Idioma:</b> se elige arriba a la derecha, junto al número de versión.",
 "<b>Reproducción:</b> Play/Pausa, |◀ ▶| salta a la oración anterior o siguiente, Repetir, −30/−10/+10/+30 segundos, tempo, y YT o MP3 como fuente (MP3 por defecto).",
 "<b>Seguir:</b> las estrofas avanzan con el canto.",
 "<b>Grande:</b> pantalla completa. Primer toque: el menú; segundo toque: un botón.",
@@ -47,6 +51,7 @@ es:["Cómo funciona el Bhakti Prayers Player",
 "<b>Dorado</b> significa activado. Toca aquí, ✕ o Esc para cerrar."],
 ru:["Как работает Bhakti Prayers Player",
 "<b>Выберите молитву</b> в трёх меню: Утренние молитвы, Вечерние молитвы и Другие. «Все» объединяет всё в одно меню.",
+"<b>Язык:</b> выбирается вверху справа, рядом с номером версии.",
 "<b>Воспроизведение:</b> Play/Пауза, |◀ ▶| — к предыдущей или следующей молитве, Повтор, −30/−10/+10/+30 секунд, темп, источник YT или MP3 (по умолчанию MP3).",
 "<b>Следить:</b> строфы прокручиваются вместе с пением.",
 "<b>Крупно:</b> полный экран. Первое касание — меню, второе — кнопка.",
@@ -58,6 +63,7 @@ ru:["Как работает Bhakti Prayers Player",
 "<b>Золотой</b> — значит включено. Коснитесь здесь, ✕ или Esc, чтобы закрыть."],
 hi:["Bhakti Prayers Player कैसे काम करता है",
 "<b>प्रार्थना चुनें</b> तीन मेनू से: प्रातः प्रार्थना, सायं प्रार्थना और अन्य। “सभी” सब कुछ एक मेनू में दिखाता है।",
+"<b>भाषा:</b> ऊपर दाईं ओर, संस्करण संख्या के पास चुनें।",
 "<b>चलाना:</b> Play/रोकें, |◀ ▶| सभी प्रार्थनाओं में पीछे या आगे, दोहराएँ, −30/−10/+10/+30 सेकंड, गति, और स्रोत YT या MP3 (MP3 मानक)।",
 "<b>साथ पढ़ें:</b> छंद गायन के साथ चलते हैं।",
 "<b>बड़ा:</b> पूर्ण स्क्रीन। पहला टैप मेनू, दूसरा टैप बटन।",
@@ -70,8 +76,8 @@ hi:["Bhakti Prayers Player कैसे काम करता है",
 function L(){var l=(typeof lang!=="undefined"&&lang)||"en";return H[l]?l:"en";}
 var st=document.createElement("style");
 st.textContent="h1{cursor:pointer}#bppHelp{position:fixed;inset:0;z-index:2147483500;background:rgba(20,14,10,.96);overflow:auto;-webkit-overflow-scrolling:touch;display:flex;justify-content:center;align-items:flex-start;padding:18px 12px}"+
-"#bppHelp .in{max-width:620px;width:100%;color:#f3eee2;font-size:.95rem;line-height:1.45}#bppHelp img{display:block;width:min(260px,60vw);margin:0 auto 10px;border-radius:12px}"+
-"#bppHelp h2{color:#e0b45a;font-family:'Gentium Book Plus',Georgia,serif;text-align:center;margin:4px 0 10px;font-size:1.3rem}#bppHelp p{margin:6px 0}#bppHelp b{color:#e0b45a}"+
+"#bppHelp .in{max-width:680px;width:100%;color:#f3eee2;font-size:1.12rem;line-height:1.55;padding-bottom:60vh}#bppHelp img{display:block;width:min(260px,60vw);margin:0 auto 10px;border-radius:12px}"+
+"#bppHelp h2{color:#e0b45a;font-family:'Gentium Book Plus',Georgia,serif;text-align:center;margin:4px 0 12px;font-size:1.5rem}#bppHelp p{margin:9px 0}#bppHelp b{color:#e0b45a}"+
 "#bppHelp .jg{text-align:center;font-size:1.15rem;margin-top:12px}#bppHelp .x{position:fixed;top:10px;right:12px;font-size:1.4rem;background:#3a2c1c;color:#f3eee2;border:1px solid #6b5338;border-radius:8px;width:40px;height:40px;cursor:pointer}";
 document.head.appendChild(st);
 function close(){var d=document.getElementById("bppHelp");if(d)d.remove();document.removeEventListener("keydown",esc,true);}
@@ -79,7 +85,15 @@ function esc(e){if(e.key==="Escape"){e.stopPropagation();e.preventDefault();clos
 function open(){if(document.getElementById("bppHelp"))return;var t=H[L()];var d=document.createElement("div");d.id="bppHelp";
  d.innerHTML='<button type="button" class="x" aria-label="X">✕</button><div class="in"><img src="start.jpg?v=1" alt=""><h2>'+t[0]+'</h2>'+t.slice(1).map(function(s){return"<p>"+s+"</p>";}).join("")+'<p class="jg"><b>Jai Gurudev</b></p></div>';
  d.addEventListener("click",function(e){e.stopPropagation();close();});
- document.body.appendChild(d);document.addEventListener("keydown",esc,true);}
+ document.body.appendChild(d);document.addEventListener("keydown",esc,true);
+ /* [Grok-Bot] V3.09: Abspann - langsam nach oben; Wischen/Rad/Beruehren pausiert (manuell scrollen), nach 4 s weiter */
+ var pauseUntil=Date.now()+2500,pos=0,last=performance.now(),SPD=22;
+ function hold(){pauseUntil=Date.now()+4000;}
+ ["touchstart","touchmove","wheel","pointerdown"].forEach(function(ev){d.addEventListener(ev,hold,{passive:true});});
+ (function tick(now){ if(!document.getElementById("bppHelp")) return; var dt=Math.min(0.1,Math.max(0,(now-last)/1000)); last=now;
+   if(Date.now()<pauseUntil){ pos=d.scrollTop; } else { pos+=SPD*dt; d.scrollTop=pos; }
+   requestAnimationFrame(tick); })(last);
+}
 window.bppHelp=open;
 function hook(){var h=document.querySelector("header h1");if(!h)return setTimeout(hook,200);h.addEventListener("click",function(e){if(e.target.closest&&e.target.closest(".lang"))return;e.preventDefault();open();});}
 hook();
