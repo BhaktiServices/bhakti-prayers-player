@@ -19,9 +19,9 @@
    Liste gegliedert wie im Prathana-Heft: Morgengebet, Abendgebet, Weitere. Titel des laufenden Gebets steht ueber den Lyrics. Erklaertexte (Tooltip) fuer alle Tasten. Hinweise "Strophen wie im Heft ..." entfallen. */
 (function(){
   var st=document.createElement("style");
-  st.textContent="body:not(.show-det) .list .quelle{display:none}body:not(.show-det) .list{gap:4px}body:not(.show-det) .list .item{padding:5px 9px;min-height:30px;font-size:.92rem}@media(min-width:800px){body:not(.show-det) .list{grid-template-columns:repeat(4,1fr)}}.listbar{margin:8px 12px 0;display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap}.daybar{display:flex;gap:3px;flex-wrap:wrap}.daybar button{min-width:30px;padding:3px 6px}.daybar button.today{border-color:var(--gold)}.daybar button.on{background:var(--gold);color:#000}.list .item.miss{opacity:.45;cursor:default;font-style:italic}.list .grp{grid-column:1/-1;color:var(--gold);font-size:.8rem;letter-spacing:.06em;text-transform:uppercase;margin:6px 2px 0}.list .grp:first-child{margin-top:0}#lyrTitle{margin:0 12px -4px;color:var(--gold);font-family:'Gentium Book Plus',Georgia,serif;font-size:1.15rem}#lyrTitle small{color:var(--muted);font-family:'Source Sans 3',sans-serif;font-size:.75rem;margin-left:.6em;letter-spacing:.04em}#lyrTitle:empty{display:none}.listbar button{padding:3px 9px;min-height:26px;font-size:.8rem;border-radius:6px}";
+  st.textContent="body:not(.menu-full) #btnDet{display:none!important}body:not(.show-det) .list .quelle{display:none}body:not(.show-det) .list{gap:4px}body:not(.show-det) .list .item{padding:5px 9px;min-height:30px;font-size:.92rem}@media(min-width:800px){body:not(.show-det) .list{grid-template-columns:repeat(4,1fr)}}.listbar{margin:8px 12px 0;display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap}.daybar{display:flex;gap:3px;flex-wrap:wrap}.daybar button{min-width:30px;padding:3px 6px}.daybar button.today{border-color:var(--gold)}.daybar button.on{background:var(--gold);color:#000}.list .item.miss{opacity:.45;cursor:default;font-style:italic}.list .grp{grid-column:1/-1;color:var(--gold);font-size:.8rem;letter-spacing:.06em;text-transform:uppercase;margin:6px 2px 0}.list .grp:first-child{margin-top:0}#lyrTitle{margin:0 12px -4px;color:var(--gold);font-family:'Gentium Book Plus',Georgia,serif;font-size:1.15rem}#lyrTitle small{color:var(--muted);font-family:'Source Sans 3',sans-serif;font-size:.75rem;margin-left:.6em;letter-spacing:.04em}#lyrTitle:empty{display:none}.listbar button{padding:3px 9px;min-height:26px;font-size:.8rem;border-radius:6px}";
   document.head.appendChild(st);
-  var on=false; try{ on=localStorage.getItem("bpp-det")==="1"; }catch(e){}
+  var on=false; try{ if(localStorage.getItem("bpp-det-v246")!=="1"){ localStorage.setItem("bpp-det","0"); localStorage.setItem("bpp-det-v246","1"); } on=localStorage.getItem("bpp-det")==="1"; }catch(e){} /* [Grok-Bot] V2.46: Standard aus, alter Zustand "an" einmalig zurueckgesetzt */
   document.body.classList.toggle("show-det", on);
   var list=document.getElementById("list"); if(!list) return;
   var bar=document.createElement("div"); bar.className="listbar";
@@ -29,7 +29,7 @@
   var LL=["de","en","fr","es","ru","hi"];
   function li(){ var k=(typeof lang==="undefined")?0:LL.indexOf(lang); return k<0?1:k; }
   function tr(a){ return a[li()]||a[1]; }
-  var DET=[["Details","Details","Détails","Detalles","Подробно","विवरण"],["Details aus","Hide details","Masquer détails","Ocultar detalles","Скрыть","विवरण छिपाएँ"]];
+  var DET=[["Herkunft, Quellen","Origin, sources","Origine, sources","Origen, fuentes","Происхождение, источники","उत्पत्ति, स्रोत"],["Herkunft, Quellen aus","Hide origin, sources","Masquer origine, sources","Ocultar origen, fuentes","Скрыть источники","स्रोत छिपाएँ"]]; /* [Grok-Bot] V2.46: war "Details" */
   function lab(){ b.textContent=tr(on?DET[1]:DET[0]); b.classList.toggle("on", on); }
   b.onclick=function(){ on=!on; document.body.classList.toggle("show-det", on); try{ localStorage.setItem("bpp-det", on?"1":"0"); }catch(e){} lab(); };
   bar.appendChild(b); list.parentNode.insertBefore(bar, list); lab();
