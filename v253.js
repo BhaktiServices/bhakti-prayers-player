@@ -4,7 +4,7 @@
    die anderen Menues zeigen ihren Titel. Pro Menue jedes Gebet nur einmal. */
 window.BPP_BUILD="2.54"; window.BPP_SHOW="2.54";
 (function(){
-  var LAB={de:["Morgens","Abends","Weitere"],en:["Morning","Evening","More"],fr:["Matin","Soir","Autres"],es:["Mañana","Tarde","Más"],ru:["Утро","Вечер","Ещё"],hi:["प्रातः","सायं","अन्य"]};
+  var LAB={de:["Morgengebete","Abendgebete","Weitere"],en:["Morning Prayers","Evening Prayers","Other"],fr:["Prières du matin","Prières du soir","Autres"],es:["Oraciones de la mañana","Oraciones de la tarde","Otras"],ru:["Утренние молитвы","Вечерние молитвы","Другие"],hi:["प्रातः प्रार्थना","सायं प्रार्थना","अन्य"]};
   var ICO=["\u2600\uFE0E","\u263E\uFE0E","\u22EF"];
   var st=document.createElement("style");
   st.textContent="#list.v253{display:none!important}"+
