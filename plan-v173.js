@@ -30,7 +30,14 @@
       node.onclick=function(){ play(idx, true); };
       used[idx]=true; frag.appendChild(node);
     }
-    head(hM); M.forEach(put); head(hE); E.forEach(put);
+    /* [Grok-Bot] V3.17: nach SVD-Heften: freitags Laksmi Arati statt Visnu Arati (morgens) und Mukunda Mala (abends), donnerstags Vishwananda Calisa (abends),
+       Tvam eva mata (final-prayers) als Abschluss morgens und abends; diese vier nicht mehr unter "Weitere" */
+    var d=day(), M2=M.map(function(x){ return (d===4&&x==="vishnu-arati")?"lakshmi-arati":(x==="closing-morning"?"final-prayers":x); });
+    var E2=E.filter(function(x){ return x!=="closing-evening"&&x!=="closing-arati"; });
+    if(d===3) E2.splice(E2.indexOf("bhajare")+1,0,"vchalisa"); if(d===4) E2.splice(E2.indexOf("bhajare")+1,0,"mukunda");
+    E2.push("final-prayers");
+    head(hM); M2.forEach(put); head(hE); E2.forEach(put);
+    ["lakshmi-arati","final-prayers","mukunda","vchalisa"].concat(d===4?["vishnu-arati"]:[]).forEach(function(id){ var k=PRAYERS.findIndex(function(p){ return p.id===id; }); if(k>=0) used[k]=true; });
     var rest=[]; PRAYERS.forEach(function(p, idx){ if(!used[idx] && btn[idx] && !hidden(p.id)) rest.push(p.id); });
     if(rest.length){ head(hR || "More"); rest.forEach(put); }
     list.innerHTML=""; list.appendChild(frag);
