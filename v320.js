@@ -13,5 +13,5 @@ window.BPP_BUILD="3.20"; window.BPP_SHOW="3.20";
     if(b.parentNode!==box||b.nextElementSibling!==s){ box.insertBefore(b,s); }
     b.style.right="";
   }
-  setInterval(fix,500);
+  /* V3.21: Blase sitzt jetzt links vom Titel (v321.js); hier nicht mehr verschieben */
 })();
