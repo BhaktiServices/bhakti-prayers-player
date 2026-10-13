@@ -36,8 +36,9 @@
     var E2=E.filter(function(x){ return x!=="closing-evening"&&x!=="closing-arati"; });
     if(d===3) E2.splice(E2.indexOf("bhajare")+1,0,"vchalisa"); if(d===4) E2.splice(E2.indexOf("bhajare")+1,0,"mukunda");
     E2.push("final-prayers");
+    /* [Grok-Bot] V3.25: ashtotram-abend (PV-Astottaram) steht schon in Morgen/Abend -> nicht unter "Weitere"; ueber "Alle" erreichbar */
     head(hM); M2.forEach(put); head(hE); E2.forEach(put);
-    ["lakshmi-arati","final-prayers","mukunda","vchalisa"].concat(d===4?["vishnu-arati"]:[]).forEach(function(id){ var k=PRAYERS.findIndex(function(p){ return p.id===id; }); if(k>=0) used[k]=true; });
+    ["lakshmi-arati","final-prayers","mukunda","vchalisa","ashtotram-abend"].concat(d===4?["vishnu-arati"]:[]).forEach(function(id){ var k=PRAYERS.findIndex(function(p){ return p.id===id; }); if(k>=0) used[k]=true; });
     var rest=[]; PRAYERS.forEach(function(p, idx){ if(!used[idx] && btn[idx] && !hidden(p.id)) rest.push(p.id); });
     if(rest.length){ head(hR || "More"); rest.forEach(put); }
     list.innerHTML=""; list.appendChild(frag);
