@@ -5,7 +5,7 @@
 (function(){
   if(typeof PRAYERS==="undefined") return;
   var M=["guru-stotram","ashtotram","vaishnava-mantra","guruji-gayatri","ganesha-mantra","gayatri","suprabhatam","govinda","narasimha","ramanuja","vishnu-arati","closing-morning"];
-  var E=["guru-stotram-abend","ashtotram","ganesha-mantra","gayatri","kavacham","hanuman","bhajare","closing-evening","saprem" /* [Grok.com] jetzt im Player */,"closing-arati"];
+  var E=["guru-stotram-abend","ashtotram-abend" /* [Grok-Bot] V3.26: Abend-Fassung statt Morgen-Fassung */,"ganesha-mantra","gayatri","kavacham","hanuman","bhajare","closing-evening","saprem" /* [Grok.com] jetzt im Player */,"closing-arati"];
   var MISS={ saprem:"\u0100rat\u012b Saprem" };
   var LL=["de","en","fr","es","ru","hi"];
   var NOTYET=["noch nicht im Player","not in the player yet","pas encore dans le lecteur","a\u00fan no est\u00e1 en el reproductor","\u043f\u043e\u043a\u0430 \u043d\u0435\u0442 \u0432 \u043f\u043b\u0435\u0435\u0440\u0435","\u0905\u092d\u0940 \u092a\u094d\u0932\u0947\u092f\u0930 \u092e\u0947\u0902 \u0928\u0939\u0940\u0902"];
@@ -36,9 +36,9 @@
     var E2=E.filter(function(x){ return x!=="closing-evening"&&x!=="closing-arati"; });
     if(d===3) E2.splice(E2.indexOf("bhajare")+1,0,"vchalisa"); if(d===4) E2.splice(E2.indexOf("bhajare")+1,0,"mukunda");
     E2.push("final-prayers");
-    /* [Grok-Bot] V3.25: ashtotram-abend (PV-Astottaram) steht schon in Morgen/Abend -> nicht unter "Weitere"; ueber "Alle" erreichbar */
+    /* [Grok-Bot] V3.26: ashtotram-abend steht jetzt im Abendmenue (V3.25-Ausschluss entfaellt) */
     head(hM); M2.forEach(put); head(hE); E2.forEach(put);
-    ["lakshmi-arati","final-prayers","mukunda","vchalisa","ashtotram-abend"].concat(d===4?["vishnu-arati"]:[]).forEach(function(id){ var k=PRAYERS.findIndex(function(p){ return p.id===id; }); if(k>=0) used[k]=true; });
+    ["lakshmi-arati","final-prayers","mukunda","vchalisa"].concat(d===4?["vishnu-arati"]:[]).forEach(function(id){ var k=PRAYERS.findIndex(function(p){ return p.id===id; }); if(k>=0) used[k]=true; });
     var rest=[]; PRAYERS.forEach(function(p, idx){ if(!used[idx] && btn[idx] && !hidden(p.id)) rest.push(p.id); });
     if(rest.length){ head(hR || "More"); rest.forEach(put); }
     list.innerHTML=""; list.appendChild(frag);
