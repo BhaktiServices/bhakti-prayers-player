@@ -1,3 +1,4 @@
+/* [Grok-Bot] V3.28: Repo jetzt unter BhaktiServices */
 /* [Grok-Bot] V1.67: Hindi (hi) fuer kavacham, narasimha-abend, narasimha, aus der englischen Prathana-Uebersetzung (Zuordnung ueber window.bppNrEn aus tr-fr.js). */
 (function(){
 if(!window.bppNrTr) return;
@@ -193,7 +194,7 @@ if(document.readyState==="loading"){ document.write('<script src="tr-v170-gov.js
   var YTFIRST={"kavacham":1,"narasimha":1,"govinda":1,"hanuman":1};
   var TON={"guruji-gayatri":"06 Guruji Gayatri","gayatri":"08 Gayatri Mantra","ganesha-mantra":"07 Ganesha Mantra","suprabhatam":"10 Suprabhatam",
     "narasimha":"12 Narasimha Prayer","vishnu-arati":"13 Arati","lakshmi-arati":"14 Lakshmi Arati","closing-morning":"15 Closing Prayers"};
-  var CDN="https://cdn.jsdelivr.net/gh/clbuerger-ctrl/bhakti-prayers-player@main/audio/";
+  var CDN="https://cdn.jsdelivr.net/gh/BhaktiServices/bhakti-prayers-player@main/audio/";
   var ch={}; try{ ch=JSON.parse(localStorage.getItem("bpp-src")||"{}")||{}; }catch(e){ ch={}; }
   var dead=false; try{ dead=sessionStorage.getItem("bpp-ytdead")==="1"; }catch(e){}
   PRAYERS.forEach(function(P){

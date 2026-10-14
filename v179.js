@@ -31,7 +31,7 @@ window.BPP_BUILD="1.79";
   var G=by("giridhari-arati");
   if(G){
     G.audio="audio/giridhari-arati.mp3";
-    G.audioAlt=["https://cdn.jsdelivr.net/gh/clbuerger-ctrl/bhakti-prayers-player@main/audio/giridhari-arati.mp3",
+    G.audioAlt=["https://cdn.jsdelivr.net/gh/BhaktiServices/bhakti-prayers-player@main/audio/giridhari-arati.mp3",
       "https://www.dropbox.com/scl/fo/9jrivp0fkl4bfo9t0dejx/AKil5QqPR9G-UFlMOFLoHQY/Giridhari-Arati.mp3?rlkey=s8lox2d2652b2i133h1jjty3k&dl=1"];
     G.preferFile=true;
     /* Gruppen 0-5 = Strophen 1-6. Refrain 0-42 s, Mira-Strophen dazwischen (nicht im Heft), Schluss ab 282 s. */

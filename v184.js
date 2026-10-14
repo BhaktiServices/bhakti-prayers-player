@@ -14,7 +14,7 @@ window.BPP_BUILD="1.84";
     g.audio="audio/govinda.mp3";
     g.youtube="3tMcSlnV_rc"; g.youtubeStart=5;
     /* preferFile bleibt wie in tr-hi.js: Nutzerwahl (♪/YT) und YouTube-Ausfall gelten weiter */
-    g.audioAlt=["https://cdn.jsdelivr.net/gh/clbuerger-ctrl/bhakti-prayers-player@main/audio/govinda.mp3",
+    g.audioAlt=["https://cdn.jsdelivr.net/gh/BhaktiServices/bhakti-prayers-player@main/audio/govinda.mp3",
       "https://www.dropbox.com/scl/fo/9jrivp0fkl4bfo9t0dejx/ALRtqWJM1YcKX8RHhDN0ijg/Govindam-Prayer-CD.mp3?rlkey=s8lox2d2652b2i133h1jjty3k&dl=1"];
     g.quelle="YouTube: Govindam Prayer (Bhakti Marga Music) \u00b7 MP3: CD Morning Prayers Track 11 (gleiche Melodie, andere Aufnahme) \u00b7 \u00dcbersetzung: Prathana SVD S. 22\u201325";
     g.hinweis=g.hinweisDe="Standard ist YouTube. Die MP3 ist die CD-Fassung derselben Melodie (nicht dieselbe Aufnahme); umschalten mit \u266a / YT.";
