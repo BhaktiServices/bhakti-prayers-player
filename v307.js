@@ -18,6 +18,7 @@ window.BPP_BUILD="3.07"; window.BPP_SHOW="3.07";
   }
   function step(d){
     var now=Date.now(); if(now-lastStep<380) return; lastStep=now;
+    window.bppManualAt=now; /* [Grok-Bot] V3.29: manueller Schritt -> sofort, ohne Gleiten */
     if(fsOn()){ if(window.bppFsStep && window.bppFsStep(d)) hold(); return; }
     stdStep(d);
   }

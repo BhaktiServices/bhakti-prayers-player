@@ -35,6 +35,7 @@ window.BPP_BUILD="2.52"; window.BPP_SHOW="2.52";
     function stop(){ anim=null; }
     ["wheel","touchstart","keydown","mousedown"].forEach(function(ev){ window.addEventListener(ev, stop, {passive:true, capture:true}); });
     function go(L, from, to){
+      if(window.bppManualAt && Date.now()-window.bppManualAt<900){ anim=null; L.scrollTop=to; return; } /* [Grok-Bot] V3.29: manuell sofort */
       if(anim && anim.to===to){ L.scrollTop=anim.cur; return; }
       var t0=performance.now(), D=Math.min(2200, 1300+Math.abs(to-from)*0.6); /* V2.51: lang und gleichmaessig wie im Grossbild */
       anim={to:to, cur:from}; L.scrollTop=from; var me=anim;
