@@ -11,7 +11,7 @@ window.BPP_SW="sw.js?v=203";
   if(window.bppV203) return; window.bppV203=1;
   var AUD="bpp-audio-v1";
   var FILES=["arati-cd13","ashtotram","bhajare","closing-morning","ganesha-mantra","gayatri","giridhari-arati","govinda","guru-stotram-abend3" /* [Grok.com] ohne Om, ersetzt guru-stotram-abend; [Grok-Bot] V2.20: abend3 wie order.js */,
-    "guru-stotram","guruji-gayatri","hanuman","kavacham-b","kavacham","lakshmi-arati","mukunda","narasimha","ramanuja","suprabhatam","vaishnava-mantra"]
+    "guru-stotram","guruji-gayatri","hanuman","kavacham-b","kavacham","lakshmi-arati","mukunda","narasimha","durga-chalisa","panduranga-arati","saprem","narasimha-abend" /* [Grok-Bot] V3.33 */,"ramanuja","suprabhatam","vaishnava-mantra"]
     .map(function(n){ return "audio/"+n+".mp3"; });
   var base=location.href.replace(/[?#].*$/,"").replace(/[^\/]*$/,"");
   function abs(p){ return new URL(p, base); }

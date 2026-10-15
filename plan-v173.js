@@ -35,12 +35,18 @@
     var d=day(), M2=M.map(function(x){ return (d===4&&x==="vishnu-arati")?"lakshmi-arati":(x==="closing-morning"?"final-prayers":x); });
     var E2=E.filter(function(x){ return x!=="closing-evening"&&x!=="closing-arati"; });
     if(d===3) E2.splice(E2.indexOf("bhajare")+1,0,"vchalisa"); if(d===4) E2.splice(E2.indexOf("bhajare")+1,0,"mukunda");
+    /* [Grok-Bot] V3.33: Dienstagabend Durga Calisa (Heft S. 29); Freitag-/Samstagmorgen vedische Gesaenge wie in der Wochenuebersicht; Gruppe "Vedic Chants" am Ende */
+    if(d===1) E2.splice(E2.indexOf("bhajare")+1,0,"durga-chalisa");
+    if(d===6) E2.splice(E2.indexOf("saprem")+1,0,"panduranga-arati");
+    if(d===4) M2.splice(M2.indexOf("narasimha"),0,"sri-suktam","bhu-suktam","nila-suktam"); if(d===5) M2.splice(M2.indexOf("narasimha"),0,"purusa-suktam","vishnu-sahasranama","narayana-suktam");
     E2.push("final-prayers");
     /* [Grok-Bot] V3.26: ashtotram-abend steht jetzt im Abendmenue (V3.25-Ausschluss entfaellt) */
     head(hM); M2.forEach(put); head(hE); E2.forEach(put);
     ["lakshmi-arati","final-prayers","mukunda","vchalisa"].concat(d===4?["vishnu-arati"]:[]).forEach(function(id){ var k=PRAYERS.findIndex(function(p){ return p.id===id; }); if(k>=0) used[k]=true; });
+    var VG=window.BPP_VEDIC||[["Vedic Chants"],[]]; VG[1].forEach(function(id){ var k=PRAYERS.findIndex(function(p){ return p.id===id; }); if(k>=0) used[k]=true; });
     var rest=[]; PRAYERS.forEach(function(p, idx){ if(!used[idx] && btn[idx] && !hidden(p.id)) rest.push(p.id); });
     if(rest.length){ head(hR || "More"); rest.forEach(put); }
+    var vids=VG[1].filter(function(id){ var k=PRAYERS.findIndex(function(p){ return p.id===id; }); return k>=0 && btn[k]; }); if(vids.length){ head(tr(VG[0])); vids.forEach(put); } /* [Grok-Bot] V3.33 */
     list.innerHTML=""; list.appendChild(frag);
     if(window.__ldPaint) window.__ldPaint();
   }

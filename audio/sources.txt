@@ -20,3 +20,8 @@ vaishnava-mantra|APnB6jdCzTSNP053l3ACCV0/Vaishnava-Mantra.mp3
 closing-morning|AJIAbsbis2rnqdqKBibOwCM/Closing-Prayers-Morning.mp3
 arati-cd13|ADY1G3ggJmllZfNIILBmuAI/Arati-CD13-Kandidat.mp3
 giridhari-arati|AKil5QqPR9G-UFlMOFLoHQY/Giridhari-Arati.mp3
+# [Grok-Bot] V3.33: aus Telegram-Kanal "BM Prayers - Waves of love" (Music-Tab), bearbeitet: mono, Hochpass 80 Hz, +2,5 dB @3 kHz, Kompressor, Loudnorm -16 LUFS (2 Durchgaenge), Limiter, MP3 56 kbit/s. Format: id|Telegram: Dateiname (Datum der Veroeffentlichung)
+durga-chalisa|Telegram: Bhakti Marga - Sri Durga Chalisa.mp3 (21.03.2023)
+panduranga-arati|Telegram: Panduranga Arati (Jai Deva Jai Deva).mp3 (24.11.2024)
+saprem|Telegram: Arati Saprem Jai Jai Vitthala Parabrahma (Vitthala Arati).mp3 (23.05.2023)
+narasimha-abend|Telegram: Narasimha Prayer (classic).mp3 (20.04.2023)

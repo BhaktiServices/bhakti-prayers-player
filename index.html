@@ -8,9 +8,9 @@
 <meta property="og:image" content="start.jpg">
 <link rel="manifest" href="manifest.json"><!-- [Grok-Bot] V2.53: PWA wieder installierbar -->
 <meta name="theme-color" content="#1a1410">
-<title>Bhakti Prayers Player V3.32</title>
+<title>Bhakti Prayers Player V3.33</title>
 <script>/* [Grok-Bot] V3.30: zentrale Version - aeltere Skripte (V1.66 usw.) koennen Kopf und Titel nicht mehr kurz ueberschreiben */
-window.BPP_VERSION="3.32";
+window.BPP_VERSION="3.33";
 (function(){
   var V="V"+window.BPP_VERSION, RX=/V\d+\.\d+[a-z]?/g;
   try{
@@ -149,7 +149,7 @@ body.show-ch .rowline .rch{display:block}
 </head>
 <body tabindex="0">
 <header>
-  <h1>Bhakti Prayers Player <span class="ver">V3.32</span><!-- [Grok.com] --></h1>
+  <h1>Bhakti Prayers Player <span class="ver">V3.33</span><!-- [Grok.com] --></h1>
 <script>/* [Grok-Bot] V3.30: Versionswaechter - setzt jede Aenderung an h1 .ver sofort (vor dem Zeichnen) auf BPP_VERSION zurueck */
 (function(){ var h1=document.querySelector("header h1"); if(!h1) return;
   var V="V"+window.BPP_VERSION, RX=/V\d+\.\d+[a-z]?/g;
@@ -232,9 +232,10 @@ body.show-ch .rowline .rch{display:block}
 <script src="ashtotram.js?v=3"></script>
 <script src="saprem.js?v=3"></script>
 <script src="vchalisa.js?v=1"></script>
+<script src="prayers-v333.js?v=1"></script><!-- [Grok-Bot] V3.33 Durga Calisa, Panduranga Arati, Vedic Chants -->
 <script src="v222.js?v=222"></script><!-- [Grok.com] YouTube Bhakti Marga Music, nur wo noch keins steht -->
 <script src="v221.js?v=222"></script><!-- [Grok.com] Heft-Reihenfolge, Ashtottaram --><!-- [Grok.com] Om aus der Abend-MP3, nicht in den Lyrics -->
-<script src="listview.js?v=10"></script>
+<script src="listview.js?v=11"></script>
 <script src="tr-en.js?v=1"></script>
 <script src="tr-fr.js?v=1"></script>
 <script src="tr-es.js?v=1"></script>
@@ -242,7 +243,7 @@ body.show-ch .rowline .rch{display:block}
 <script src="vaishnava.js?v=9"></script><!-- [Grok.com] Vaishnava Mantra -->
 <script src="tr-hi.js?v=4"></script>
 <!-- [Grok.com] follow.js?v=56: Guru Stotram Abend, Om keine Strophe -->
-<script src="follow.js?v=57"></script><!-- [Grok.com] Saprem im Verzeichnis -->
+<script src="follow.js?v=58"></script><!-- [Grok.com] Saprem im Verzeichnis -->
 <script src="soundtouch.js?v=2"></script><!-- [Grok.com] SoundTouch Pitch -->
 <script src="capo.js?v=11"></script><!-- [Grok.com] Kapo −5/+5 fuer MP3 -->
 <!-- [Grok.com] Guru Stotram Abend: Om ist keine Strophe -->
@@ -250,8 +251,8 @@ body.show-ch .rowline .rch{display:block}
 <script src="v216.js?v=217"></script>
 <script src="v217.js?v=217"></script>
 <script src="v218.js?v=221"></script><!-- [Grok.com] Version bleibt V2.19 -->
-<script src="v232.js?v=24"></script>
-<script src="v203.js?v=210"></script><!-- [Grok.com] Offline-Knopf --><!-- [Grok-Bot] V2.32 Guru Stotram Timing -->
+<script src="v232.js?v=25"></script>
+<script src="v203.js?v=333"></script><!-- [Grok.com] Offline-Knopf --><!-- [Grok-Bot] V2.32 Guru Stotram Timing -->
 <script>
 var i=-1, line=0, showDe=false, showCh=false, chMode="aus", lang="de", pendingSeek=0, lastSave=0, ytOn=false, ytPlaying=false, steps=0, autoScroll=false, scrollTempo=1;
 var a=document.getElementById("a");
@@ -655,7 +656,7 @@ applyUI();
 paintList();
 layoutLyrics();
 (function sortLikeBook(){
-  var ORDER=["guru-stotram","ashtotram","vaishnava-mantra","guruji-gayatri","gayatri","ganesha-mantra","suprabhatam","govinda","narasimha","ramanuja","vishnu-arati","lakshmi-arati","closing-morning","guru-stotram-abend","ashtotram-abend","kavacham","narasimha-abend","hanuman","bhajare","closing-evening","saprem","closing-arati","vchalisa","hanuman-bhavani","giridhari-arati","guru-arati","mukunda","final-prayers"]; /* [Grok.com] Morgen, Abend, Weitere wie Heft */
+  var ORDER=["guru-stotram","ashtotram","vaishnava-mantra","guruji-gayatri","gayatri","ganesha-mantra","suprabhatam","govinda","narasimha","ramanuja","vishnu-arati","lakshmi-arati","closing-morning","guru-stotram-abend","ashtotram-abend","kavacham","narasimha-abend","hanuman","bhajare","closing-evening","saprem","closing-arati","vchalisa","durga-chalisa","hanuman-bhavani","giridhari-arati","guru-arati","panduranga-arati","mukunda","sri-suktam","bhu-suktam","nila-suktam","purusa-suktam","vishnu-sahasranama","narayana-suktam","final-prayers"]; /* [Grok.com] Morgen, Abend, Weitere wie Heft */
   PRAYERS.sort(function(a,b){
     var ia=ORDER.indexOf(a.id), ib=ORDER.indexOf(b.id);
     if(ia<0) ia=1000; if(ib<0) ib=1000;
@@ -678,7 +679,7 @@ layoutLyrics();
 <script src="v229.js?v=229"></script>
 <script src="v230.js?v=230"></script>
 <script src="v231.js?v=231"></script><!-- [Grok.com] Werte je Stueck, Vorheriges erst an den Anfang -->
-<script src="v233.js?v=25"></script><!-- [Grok.com] Pfeil und Wischen: Strophe -->
+<script src="v233.js?v=26"></script><!-- [Grok.com] Pfeil und Wischen: Strophe -->
 <script src="v234.js?v=1"></script><!-- [Grok.com] Kavacam AutoScroll neu -->
 <script src="v245.js?v=1"></script><!-- [Grok-Bot] V2.45 Kavacam Zeilenakkorde -->
 <script src="v246.js?v=2"></script><!-- [Grok-Bot] V2.46 Govinda-Akkorde ab Str. 2 -->
@@ -722,6 +723,7 @@ layoutLyrics();
 <!-- [Grok-Bot] V3.28 Umzug nach BhaktiServices: CDN-Links angepasst -->
 <script src="lang-multi.js?v=22"></script>
 <script src="v329.js?v=5"></script><!-- [Grok-Bot] V3.29 manuelles Blaettern sofort -->
-<script src="v331.js?v=2"></script><!-- [Grok-Bot] V3.31 Kavaca direkt grosse Schrift -->
+<script src="v331.js?v=3"></script><!-- [Grok-Bot] V3.31 Kavaca direkt grosse Schrift -->
+<script src="v333.js?v=1"></script><!-- [Grok-Bot] V3.33 neue Prayers, Aufnahmen, Strophenzeiten -->
 </body>
 </html>
