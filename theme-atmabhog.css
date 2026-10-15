@@ -45,3 +45,6 @@ select.cur,select#selRate.off1{border-color:var(--gold)!important;color:var(--go
 #bppFsTop{color:#9EA6BF!important}
 #bppFsPlay{border-radius:50%!important}
 #bppFsPlay svg,#bppFsPlay svg *{fill:#041236!important;color:#041236!important}
+/* [Grok-Bot] V3.34: Play/Pause-Symbol im Grossbild navy auf Gold (Kontrast) */
+#bppFs #bppFsPlay i.pl{border-left-color:#041236!important}
+#bppFs #bppFsPlay i.pa{border-left-color:#041236!important;border-right-color:#041236!important}
