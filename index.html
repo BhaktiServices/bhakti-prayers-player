@@ -8,7 +8,21 @@
 <meta property="og:image" content="start.jpg">
 <link rel="manifest" href="manifest.json"><!-- [Grok-Bot] V2.53: PWA wieder installierbar -->
 <meta name="theme-color" content="#1a1410">
-<title>Bhakti Prayers Player</title>
+<title>Bhakti Prayers Player V3.30</title>
+<script>/* [Grok-Bot] V3.30: zentrale Version - aeltere Skripte (V1.66 usw.) koennen Kopf und Titel nicht mehr kurz ueberschreiben */
+window.BPP_VERSION="3.30";
+(function(){
+  var V="V"+window.BPP_VERSION, RX=/V\d+\.\d+[a-z]?/g;
+  try{
+    var d=Object.getOwnPropertyDescriptor(Document.prototype,"title");
+    Object.defineProperty(document,"title",{configurable:true,get:function(){return d.get.call(this);},set:function(v){d.set.call(this,String(v).replace(RX,V));}});
+  }catch(e){}
+  window.bppFixVer=function(root){
+    var r=root||document; var els=r.querySelectorAll?r.querySelectorAll("h1 .ver"):[];
+    for(var k=0;k<els.length;k++){ if(els[k].textContent!==V) els[k].textContent=V; }
+  };
+})();
+</script>
 <style>/* [Grok-Bot] V3.10: bis zur Jukebox nichts von der Oberflaeche zeigen */html,body{background:#1a120c}body:not(.bpp-shown)>*:not(#startPic){visibility:hidden!important}</style>
 <script>setTimeout(function(){document.body&&document.body.classList.add("bpp-shown")},5000);</script>
 <script>/* [Grok-Bot] V3.15: Direktlink ?p= -> Jukebox-Intro ueberspringen */if(/[?&]p=/.test(location.search)){document.write("<style>#startPic{display:none!important}body:not(.bpp-shown)>*:not(#startPic){visibility:visible!important}</style>");}</script>
@@ -135,7 +149,23 @@ body.show-ch .rowline .rch{display:block}
 </head>
 <body tabindex="0">
 <header>
-  <h1>Bhakti Prayers Player <span class="ver">V3.29</span><!-- [Grok.com] --></h1>
+  <h1>Bhakti Prayers Player <span class="ver">V3.30</span><!-- [Grok.com] --></h1>
+<script>/* [Grok-Bot] V3.30: Versionswaechter - setzt jede Aenderung an h1 .ver sofort (vor dem Zeichnen) auf BPP_VERSION zurueck */
+(function(){ var h1=document.querySelector("header h1"); if(!h1) return;
+  var V="V"+window.BPP_VERSION, RX=/V\d+\.\d+[a-z]?/g;
+  function lock(el){ if(!el||el.__bppLock) return; el.__bppLock=1;
+    ["textContent","innerText","innerHTML"].forEach(function(p){
+      var o=Object.getOwnPropertyDescriptor(Node.prototype,p)||Object.getOwnPropertyDescriptor(HTMLElement.prototype,p)||Object.getOwnPropertyDescriptor(Element.prototype,p); if(!o||!o.set) return;
+      try{ Object.defineProperty(el,p,{configurable:true,get:function(){return o.get.call(this);},set:function(v){o.set.call(this,String(v).replace(RX,V));}}); }catch(e){}
+    });
+    if(el.textContent!==V) el.textContent=V;
+  }
+  window.bppLockVer=lock; lock(h1.querySelector(".ver"));
+  if(!window.MutationObserver) return;
+  new MutationObserver(function(){ lock(h1.querySelector(".ver")); window.bppFixVer(h1); }).observe(h1,{childList:true,subtree:true,characterData:true});
+  /* falls h1 spaeter ersetzt wird */
+  new MutationObserver(function(){ window.bppFixVer(document); }).observe(document.querySelector("header")||document.body,{childList:true});
+})();</script>
   <p class="sub" id="sub" style="display:none"></p><!-- [Grok.com] Play/Pause-Satz aus -->
   <p class="legend" id="legend"></p>
 </header>
@@ -220,7 +250,7 @@ body.show-ch .rowline .rch{display:block}
 <script src="v216.js?v=217"></script>
 <script src="v217.js?v=217"></script>
 <script src="v218.js?v=221"></script><!-- [Grok.com] Version bleibt V2.19 -->
-<script src="v232.js?v=21"></script>
+<script src="v232.js?v=22"></script>
 <script src="v203.js?v=210"></script><!-- [Grok.com] Offline-Knopf --><!-- [Grok-Bot] V2.32 Guru Stotram Timing -->
 <script>
 var i=-1, line=0, showDe=false, showCh=false, chMode="aus", lang="de", pendingSeek=0, lastSave=0, ytOn=false, ytPlaying=false, steps=0, autoScroll=false, scrollTempo=1;
@@ -648,7 +678,7 @@ layoutLyrics();
 <script src="v229.js?v=229"></script>
 <script src="v230.js?v=230"></script>
 <script src="v231.js?v=231"></script><!-- [Grok.com] Werte je Stueck, Vorheriges erst an den Anfang -->
-<script src="v233.js?v=22"></script><!-- [Grok.com] Pfeil und Wischen: Strophe -->
+<script src="v233.js?v=23"></script><!-- [Grok.com] Pfeil und Wischen: Strophe -->
 <script src="v234.js?v=1"></script><!-- [Grok.com] Kavacam AutoScroll neu -->
 <script src="v245.js?v=1"></script><!-- [Grok-Bot] V2.45 Kavacam Zeilenakkorde -->
 <script src="v246.js?v=2"></script><!-- [Grok-Bot] V2.46 Govinda-Akkorde ab Str. 2 -->
