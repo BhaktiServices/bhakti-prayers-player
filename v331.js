@@ -3,7 +3,7 @@
    (Klasse .measure = inline-block) war diese Zeile deshalb so breit wie das Fenster -> Faktor --sc blieb 1 (kleine Schrift).
    Erst ein spaeteres Neu-Einpassen (z.B. nach dem Akkord-Knopf) traf den Moment ohne Inline-Stil und vergroesserte.
    Fix: beim Messen gilt fuer diese Zeile immer inline-block; nach dem Einpassen wird sie sofort wieder auf die Fensterbreite verkleinert. */
-window.BPP_BUILD="3.31"; window.BPP_SHOW="3.31";
+window.BPP_BUILD="3.32"; window.BPP_SHOW="3.32";
 (function(){
   var st=document.createElement("style");
   st.textContent="#lyrics.measure .rowline .sa .ln.bpp1z{display:inline-block!important}";

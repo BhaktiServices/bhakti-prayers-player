@@ -3,7 +3,7 @@
    ohne Netz aus dem Cache. Alte App-Caches werden beim Aktivieren geloescht.
    MP3 aus audio/: liegen im Cache "bpp-audio-v1" (laedt v203.js im Hintergrund). Abspielen aus dem Cache mit Range-Antworten (206),
    damit Spulen geht. Nicht im Cache: direkt aus dem Netz. YouTube und fremde Server laufen am Service Worker vorbei. */
-var VER="222" /* [Grok.com] Platzhalter-Cache weg */ /* [Grok.com] Scroll-Fix durchreichen */ /* [Grok.com] alte Abend-MP3 nicht aus dem Cache; [Grok-Bot] V2.20 nach Syntax-Korrektur */, APP="bpp-app-"+VER, AUD="bpp-audio-v1";
+var VER="332" /* [Grok-Bot] V3.32 Mukunda neu */ /* [Grok.com] Platzhalter-Cache weg */ /* [Grok.com] Scroll-Fix durchreichen */ /* [Grok.com] alte Abend-MP3 nicht aus dem Cache; [Grok-Bot] V2.20 nach Syntax-Korrektur */, APP="bpp-app-"+VER, AUD="bpp-audio-v1";
 var CORE=["./","index.html","follow.js","v218.js","manifest.json","icon-192.svg","icon-512.svg","version.json","start.jpg"]; /* [Grok.com] */
 self.addEventListener("install", function(e){
   e.waitUntil(caches.open(APP).then(function(c){ return Promise.all(CORE.map(function(u){ return fetch(u, {cache:"no-store"}).then(function(r){ if(r.ok) return c.put(u, r); }).catch(function(){}); })); }).then(function(){ return self.skipWaiting(); }));
@@ -11,7 +11,7 @@ self.addEventListener("install", function(e){
 self.addEventListener("activate", function(e){
   e.waitUntil(caches.keys().then(function(ks){ return Promise.all(ks.filter(function(k){ return k!==APP && k!==AUD; }).map(function(k){ return caches.delete(k); })); }).then(function(){
     return caches.open(AUD).then(function(c){ return c.keys().then(function(keys){
-      return Promise.all(keys.filter(function(q){ return /guru-stotram-abend\.mp3/.test(q.url); }).map(function(q){ return c.delete(q); }));
+      return Promise.all(keys.filter(function(q){ return /(guru-stotram-abend|\/mukunda)\.mp3/.test(q.url); }).map(function(q){ return c.delete(q); }));
     }); }); /* [Grok-Bot] V2.20: eine Klammer zu viel entfernt (Skriptfehler, Service Worker liess sich nicht installieren) */
   }).then(function(){ return self.clients.claim(); }));
 });
