@@ -8,9 +8,9 @@
 <meta property="og:image" content="start.jpg">
 <link rel="manifest" href="manifest.json"><!-- [Grok-Bot] V2.53: PWA wieder installierbar -->
 <meta name="theme-color" content="#1a1410">
-<title>Bhakti Prayers Player V3.33</title>
+<title>Bhakti Prayers Player V3.34</title>
 <script>/* [Grok-Bot] V3.30: zentrale Version - aeltere Skripte (V1.66 usw.) koennen Kopf und Titel nicht mehr kurz ueberschreiben */
-window.BPP_VERSION="3.33";
+window.BPP_VERSION="3.34";
 (function(){
   var V="V"+window.BPP_VERSION, RX=/V\d+\.\d+[a-z]?/g;
   try{
@@ -146,10 +146,11 @@ body.show-ch .rowline .rch{display:block}
 .rowline .x2{color:var(--gold);font-size:.7em;font-style:normal;font-weight:600;opacity:.85}
 /* [Grok.com] Startbild, sichtbar bis ein Gebet gewaehlt ist */
 </style>
+<link rel="stylesheet" href="theme-atmabhog.css?v=2"><!-- [Grok-Bot] V3.34 atmabhog-Theme -->
 </head>
 <body tabindex="0">
 <header>
-  <h1>Bhakti Prayers Player <span class="ver">V3.33</span><!-- [Grok.com] --></h1>
+  <h1>Bhakti Prayers Player <span class="ver">V3.34</span><!-- [Grok.com] --></h1>
 <script>/* [Grok-Bot] V3.30: Versionswaechter - setzt jede Aenderung an h1 .ver sofort (vor dem Zeichnen) auf BPP_VERSION zurueck */
 (function(){ var h1=document.querySelector("header h1"); if(!h1) return;
   var V="V"+window.BPP_VERSION, RX=/V\d+\.\d+[a-z]?/g;
@@ -251,7 +252,7 @@ body.show-ch .rowline .rch{display:block}
 <script src="v216.js?v=217"></script>
 <script src="v217.js?v=217"></script>
 <script src="v218.js?v=221"></script><!-- [Grok.com] Version bleibt V2.19 -->
-<script src="v232.js?v=25"></script>
+<script src="v232.js?v=26"></script>
 <script src="v203.js?v=333"></script><!-- [Grok.com] Offline-Knopf --><!-- [Grok-Bot] V2.32 Guru Stotram Timing -->
 <script>
 var i=-1, line=0, showDe=false, showCh=false, chMode="aus", lang="de", pendingSeek=0, lastSave=0, ytOn=false, ytPlaying=false, steps=0, autoScroll=false, scrollTempo=1;
@@ -679,7 +680,7 @@ layoutLyrics();
 <script src="v229.js?v=229"></script>
 <script src="v230.js?v=230"></script>
 <script src="v231.js?v=231"></script><!-- [Grok.com] Werte je Stueck, Vorheriges erst an den Anfang -->
-<script src="v233.js?v=26"></script><!-- [Grok.com] Pfeil und Wischen: Strophe -->
+<script src="v233.js?v=27"></script><!-- [Grok.com] Pfeil und Wischen: Strophe -->
 <script src="v234.js?v=1"></script><!-- [Grok.com] Kavacam AutoScroll neu -->
 <script src="v245.js?v=1"></script><!-- [Grok-Bot] V2.45 Kavacam Zeilenakkorde -->
 <script src="v246.js?v=2"></script><!-- [Grok-Bot] V2.46 Govinda-Akkorde ab Str. 2 -->
@@ -725,5 +726,6 @@ layoutLyrics();
 <script src="v329.js?v=5"></script><!-- [Grok-Bot] V3.29 manuelles Blaettern sofort -->
 <script src="v331.js?v=3"></script><!-- [Grok-Bot] V3.31 Kavaca direkt grosse Schrift -->
 <script src="v333.js?v=1"></script><!-- [Grok-Bot] V3.33 neue Prayers, Aufnahmen, Strophenzeiten -->
+<script src="v334.js?v=1"></script><!-- [Grok-Bot] V3.34 atmabhog-Theme -->
 </body>
 </html>

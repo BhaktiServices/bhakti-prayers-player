@@ -1,0 +1,47 @@
+/* [Grok-Bot] V3.34: Theme nach atmabhog.org (nur Optik).
+   Palette: Navy #041236 (Grund), #16254C (Flaeche), #2F3C5F (Taste), Gold #D6BF90 (Akzent/"an"), Creme #E8DBC0, Hell #F1F4FF, Grau #777E95.
+   Schriften: Figtree (OFL, lokal unter fonts/) fuer Oberflaeche; Ueberschriften Nunito Sans als freier Ersatz fuer Avenir Next;
+   Lyrics bleiben Gentium Book Plus (volle IAST-Diakritika). */
+/* Schriften lokal (OFL, im Repo unter fonts/, keine Anfrage an Google) */
+@font-face{font-family:'Figtree';font-style:normal;font-weight:400 700;font-display:swap;src:url(fonts/Figtree-400-700-latin-ext.woff2) format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;}
+@font-face{font-family:'Figtree';font-style:normal;font-weight:400 700;font-display:swap;src:url(fonts/Figtree-400-700-latin.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;}
+@font-face{font-family:'Nunito Sans';font-style:normal;font-weight:600 700;font-display:swap;src:url(fonts/NunitoSans-600-700-latin-ext.woff2) format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;}
+@font-face{font-family:'Nunito Sans';font-style:normal;font-weight:600 700;font-display:swap;src:url(fonts/NunitoSans-600-700-latin.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;}
+:root{--bg:#041236;--card:#16254C;--gold:#D6BF90;--text:#F1F4FF;--muted:#B9BFD3;--lyric:#F5F6F7;
+  --ab-btn:#2F3C5F;--ab-line:rgba(241,244,255,.15);--ab-cream:#E8DBC0;--ab-shadow:0 10px 15px -3px rgba(0,0,0,.25),0 4px 6px -4px rgba(0,0,0,.25)}
+html,body{background:#041236!important}
+body{font-family:Figtree,"Source Sans 3",sans-serif;color:var(--text);
+  background:radial-gradient(1200px 600px at 50% -200px,#16254C 0%,rgba(4,18,54,0) 70%),#041236!important}
+h1{font-family:"Nunito Sans","Avenir Next",Figtree,sans-serif!important;font-weight:700!important;letter-spacing:.02em;color:var(--gold)!important}
+h1 .ver{color:#777E95!important;font-weight:600}
+.bar,.now{background:rgba(4,18,54,.92)!important;backdrop-filter:blur(6px);border-bottom:1px solid var(--ab-line)!important}
+/* Tasten: Standard = Navy-Pille, "an" = Gold mit Navy-Schrift */
+button,select{font-family:Figtree,sans-serif!important;font-weight:600}
+button{background:var(--ab-btn)!important;color:var(--text)!important;border:1px solid var(--ab-line)!important;border-radius:9999px!important;box-shadow:none}
+button:hover{border-color:rgba(214,191,144,.6)!important}
+button.on,button.gold,#btnMenu,#btnPlay,.daybar button.on,#bppFsMenu,#bppFsCh.on,#bppFsPlay{background:var(--gold)!important;color:#041236!important;border-color:var(--gold)!important}
+button.on *,#btnPlay *,#bppFsPlay *{color:#041236!important;fill:#041236!important}
+@keyframes bppBlink{0%,100%{background:#D6BF90;color:#041236}50%{background:#F3E6C6;color:#041236;box-shadow:0 0 0 3px #D6BF90}}
+select{background:var(--ab-btn)!important;color:var(--text)!important;border:1px solid var(--ab-line)!important;border-radius:12px!important}
+select.cur,select#selRate.off1{border-color:var(--gold)!important;color:var(--gold)!important}
+.item{border-radius:12px!important}
+.item.active{background:rgba(214,191,144,.18)!important;color:var(--gold)!important}
+.grp{color:var(--gold)!important;font-family:"Nunito Sans",Figtree,sans-serif;font-weight:700}
+/* Lyrics-Fenster */
+.panel{background:#16254C!important;border:1px solid var(--ab-line)!important;border-radius:16px!important;box-shadow:var(--ab-shadow)}
+#lyrics .songtitle{color:var(--gold)!important;border-bottom-color:var(--ab-line)!important}
+.stanza{border-radius:12px}
+.stanza.on{background:rgba(214,191,144,.16)!important;box-shadow:inset 5px 0 0 #D6BF90,0 0 0 1px rgba(214,191,144,.75)!important}
+.stanza.on .sa{color:#fff!important}
+.stanza.on .head .vn{color:#F3E6C6!important}
+.head .vn{color:var(--gold)!important;font-family:Figtree,sans-serif!important}
+.rowline .de,.stanza>.de{color:#CBD1E3!important}
+.rowline.refrain{border-top-color:rgba(214,191,144,.35)!important}
+.quelle,.hint,footer,.legend,.sub{color:#9EA6BF!important}
+#ytBox{border-radius:12px!important}
+/* Grossbild */
+#bppFs{background:#041236!important;color:#F1F4FF!important}
+#bppFsBar{background:rgba(22,37,76,.94)!important;border:1px solid var(--ab-line);border-radius:16px!important;box-shadow:var(--ab-shadow)}
+#bppFsTop{color:#9EA6BF!important}
+#bppFsPlay{border-radius:50%!important}
+#bppFsPlay svg,#bppFsPlay svg *{fill:#041236!important;color:#041236!important}
