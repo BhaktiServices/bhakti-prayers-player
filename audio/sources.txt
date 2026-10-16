@@ -25,3 +25,5 @@ durga-chalisa|Telegram: Bhakti Marga - Sri Durga Chalisa.mp3 (21.03.2023)
 panduranga-arati|Telegram: Panduranga Arati (Jai Deva Jai Deva).mp3 (24.11.2024)
 saprem|Telegram: Arati Saprem Jai Jai Vitthala Parabrahma (Vitthala Arati).mp3 (23.05.2023)
 narasimha-abend|Telegram: Narasimha Prayer (classic).mp3 (20.04.2023)
+# [Grok-Bot] V3.40: alle uebrigen MP3 (21 Dateien + 2 identische Kopien guru-stotram-abend2/3) mit derselben Kette bearbeitet wie mukunda (V3.32):
+#   mono, Hochpass 80 Hz, +2,5 dB @3 kHz, Kompressor 2,5:1, Loudnorm -16 LUFS (2 Durchgaenge je Datei), Limiter, 44,1 kHz (soxr), 56 kbit/s. Dauer unveraendert (<=13 ms Ende), kein Versatz.
