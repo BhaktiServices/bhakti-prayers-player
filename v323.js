@@ -13,7 +13,7 @@ window.BPP_BUILD="3.23"; window.BPP_SHOW="3.23";
         L.splice(0,2,"oṁ namo bhagavate nārasiṁhāya"); z.sa=L.join("\n");
         if(z.lineCh&&z.lineCh.length===L.length+1){ var a=z.lineCh[0]||"", b=z.lineCh[1]||""; z.lineCh.splice(0,2,a+Array(Math.max(2,19-a.length)).join(" ")+b); }
         ch=true;
-      } else if(L[0]==="oṁ kṣrauṁ namo bhagavate"&&/^nārasiṁhāya /.test(L[1]||"")){
+      } else if(false&&/* V3.37: Str. 43 wieder wie Heft (Prathana): "oṁ kṣrauṁ namo bhagavate / nārasiṁhāya jvālā māline" */L[0]==="oṁ kṣrauṁ namo bhagavate"&&/^nārasiṁhāya /.test(L[1]||"")){
         L[0]="oṁ kṣrauṁ namo bhagavate nārasiṁhāya"; L[1]=L[1].replace(/^nārasiṁhāya /,""); z.sa=L.join("\n"); ch=true;
       }
     });

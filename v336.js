@@ -3,7 +3,7 @@
    die Akkorde je Zeile ein -> Box waechst, ihre Oberkante rutscht um die halbe Zusatzhoehe hoch, der berechnete Abstand stimmt nicht mehr.
    Fix: dieselbe Umwandlung wie v250 sofort beim Befuellen (vor dem Messen).
    Zweitens: in der ausgleitenden alten Strophe (.bppGhost) hatten die Akkorde je Zeile keine Schriftgroesse (volle Textgroesse, ueber der neuen Strophe) -> .42em und gelb wie im Grossbild. */
-window.BPP_BUILD="3.36"; window.BPP_SHOW="3.36";
+window.BPP_BUILD="3.37"; window.BPP_SHOW="3.37";
 (function(){
   function mode(){ return typeof chMode!=="undefined"?chMode:"aus"; }
   function norm(s){ return String(s).replace(/\s+/g," ").trim(); }
