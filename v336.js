@@ -3,7 +3,7 @@
    die Akkorde je Zeile ein -> Box waechst, ihre Oberkante rutscht um die halbe Zusatzhoehe hoch, der berechnete Abstand stimmt nicht mehr.
    Fix: dieselbe Umwandlung wie v250 sofort beim Befuellen (vor dem Messen).
    Zweitens: in der ausgleitenden alten Strophe (.bppGhost) hatten die Akkorde je Zeile keine Schriftgroesse (volle Textgroesse, ueber der neuen Strophe) -> .42em und gelb wie im Grossbild. */
-window.BPP_BUILD="3.37"; window.BPP_SHOW="3.37";
+window.BPP_BUILD="3.38"; window.BPP_SHOW="3.38";
 (function(){
   function mode(){ return typeof chMode!=="undefined"?chMode:"aus"; }
   function norm(s){ return String(s).replace(/\s+/g," ").trim(); }
@@ -21,9 +21,10 @@ window.BPP_BUILD="3.37"; window.BPP_SHOW="3.37";
       var el=kids[j];
       if(el.classList.contains("fch") && el.classList.contains("vl") && !el.classList.contains("v250")){
         var grp=[], q=j+1; while(q<kids.length && kids[q].classList.contains("vl") && !kids[q].classList.contains("fch")){ grp.push(kids[q]); q++; }
-        if(grp.length && grp.every(function(g){ return m[norm(g.textContent)]!==undefined; })){
+        var cs338=window.bppV338Ch?bppV338Ch(grp.map(function(g){ return norm(g.textContent); }), bx):null; /* V3.38 je Strophe */
+        if(grp.length && (cs338 || grp.every(function(g){ return m[norm(g.textContent)]!==undefined; }))){
           el.parentNode.removeChild(el);
-          grp.forEach(function(g){ var c=m[norm(g.textContent)]; if(!c) return; var d=document.createElement("div"); d.className="fch vl v250"; d.textContent=sh(c); g.parentNode.insertBefore(d,g); });
+          grp.forEach(function(g,gi){ var c=cs338?cs338[gi]:m[norm(g.textContent)]; if(!c) return; var d=document.createElement("div"); d.className="fch vl v250"; d.textContent=sh(c); g.parentNode.insertBefore(d,g); });
         }
         j=q; continue;
       }

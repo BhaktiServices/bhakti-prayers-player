@@ -68,11 +68,12 @@ window.BPP_BUILD="2.52"; window.BPP_SHOW="2.52";
     var m=map(), changed=false, j=0;
     while(j<kids.length){
       var el=kids[j];
-      if(el.classList.contains("fch") && el.classList.contains("vl")){
+      if(el.classList.contains("fch") && el.classList.contains("vl") && !el.classList.contains("v250")){ /* V3.38: schon umgewandelte nicht erneut */
         var grp=[], q=j+1; while(q<kids.length && kids[q].classList.contains("vl") && !kids[q].classList.contains("fch")){ grp.push(kids[q]); q++; }
-        if(grp.length && grp.every(function(g){ return m[norm(g.textContent)]!==undefined; })){
+        var cs338=window.bppV338Ch?bppV338Ch(grp.map(function(g){ return norm(g.textContent); }), bx):null; /* V3.38 je Strophe */
+        if(grp.length && (cs338 || grp.every(function(g){ return m[norm(g.textContent)]!==undefined; }))){
           el.parentNode.removeChild(el);
-          grp.forEach(function(g){ var c=m[norm(g.textContent)]; if(!c) return; var d=document.createElement("div"); d.className="fch vl v250"; d.textContent=sh(c); g.parentNode.insertBefore(d, g); });
+          grp.forEach(function(g,gi){ var c=cs338?cs338[gi]:m[norm(g.textContent)]; if(!c) return; var d=document.createElement("div"); d.className="fch vl v250"; d.textContent=sh(c); g.parentNode.insertBefore(d, g); });
           changed=true;
         }
         j=q; continue;

@@ -3,7 +3,7 @@
    ohne Netz aus dem Cache. Alte App-Caches werden beim Aktivieren geloescht.
    MP3 aus audio/: liegen im Cache "bpp-audio-v1" (laedt v203.js im Hintergrund). Abspielen aus dem Cache mit Range-Antworten (206),
    damit Spulen geht. Nicht im Cache: direkt aus dem Netz. YouTube und fremde Server laufen am Service Worker vorbei. */
-var VER="337" /* [Grok-Bot] V3.37 Kavaca Str. 43 + Timing */ /* [Grok-Bot] V3.36 Grossbild-Ueberlapp */ /* [Grok-Bot] V3.35 Kavaca-Akkorde */ /* [Grok-Bot] V3.34 Theme */ /* [Grok-Bot] V3.33 neue Prayers */ /* V3.32 Mukunda neu */ /* [Grok.com] Platzhalter-Cache weg */ /* [Grok.com] Scroll-Fix durchreichen */ /* [Grok.com] alte Abend-MP3 nicht aus dem Cache; [Grok-Bot] V2.20 nach Syntax-Korrektur */, APP="bpp-app-"+VER, AUD="bpp-audio-v1";
+var VER="338" /* [Grok-Bot] V3.38 Grossbild-Zeilenakkorde */ /* [Grok-Bot] V3.37 Kavaca Str. 43 + Timing */ /* [Grok-Bot] V3.36 Grossbild-Ueberlapp */ /* [Grok-Bot] V3.35 Kavaca-Akkorde */ /* [Grok-Bot] V3.34 Theme */ /* [Grok-Bot] V3.33 neue Prayers */ /* V3.32 Mukunda neu */ /* [Grok.com] Platzhalter-Cache weg */ /* [Grok.com] Scroll-Fix durchreichen */ /* [Grok.com] alte Abend-MP3 nicht aus dem Cache; [Grok-Bot] V2.20 nach Syntax-Korrektur */, APP="bpp-app-"+VER, AUD="bpp-audio-v1";
 var CORE=["./","index.html","follow.js","v218.js","manifest.json","icon-192.svg","icon-512.svg","version.json","start.jpg"]; /* [Grok.com] */
 self.addEventListener("install", function(e){
   e.waitUntil(caches.open(APP).then(function(c){ return Promise.all(CORE.map(function(u){ return fetch(u, {cache:"no-store"}).then(function(r){ if(r.ok) return c.put(u, r); }).catch(function(){}); })); }).then(function(){ return self.skipWaiting(); }));
