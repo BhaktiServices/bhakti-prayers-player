@@ -22,7 +22,7 @@ window.BPP_BUILD="3.41"; window.BPP_SHOW="3.41";
   window.addEventListener("appinstalled", function(){ installed=true; deferred=null; sync(); });
   var css=document.createElement("style");
   css.textContent="#btnInstall{display:inline-flex;align-items:center;gap:6px;margin:0;font:inherit;font-size:.9rem;padding:6px 12px;min-height:32px;cursor:pointer}"+
-    "#bppInstHint{position:fixed;left:50%;bottom:16px;transform:translateX(-50%);z-index:99999;max-width:min(92vw,460px);padding:14px 16px;border-radius:14px;"+
+    "#bppInstHint{position:fixed;left:50%;bottom:16px;transform:translateX(-50%);z-index:99999;width:min(92vw,460px);box-sizing:border-box;padding:14px 16px;border-radius:14px;"+
     "background:#16254C;color:#fff;border:1px solid rgba(255,255,255,.18);box-shadow:0 8px 30px rgba(0,0,0,.45);font-size:.95rem;line-height:1.45}"+
     "#bppInstHint button{margin-top:10px;float:right;padding:4px 16px;min-height:30px;cursor:pointer}";
   document.head.appendChild(css);
