@@ -3,7 +3,7 @@
    YouTube-Marken proportional skaliert auf die tatsächlichen Videolängen
    (morgens ~4:33 / 273 s, abends ~4:19 / 259 s). Om bleibt keine Strophe.
    Alte Nutzer-Marken für guru-stotram werden einmalig gelöscht. */
-window.BPP_BUILD="3.43"; window.BPP_SHOW="3.43"; /* [Grok.com] alle 3 Aenderungen +1 */
+window.BPP_BUILD="3.44"; window.BPP_SHOW="3.44"; /* [Grok.com] alle 3 Aenderungen +1 */
 (function(){
   if(window.bppV232) return; window.bppV232=1;
   var SEQ_FILE={
@@ -43,11 +43,11 @@ window.BPP_BUILD="3.43"; window.BPP_SHOW="3.43"; /* [Grok.com] alle 3 Aenderunge
     localStorage.setItem("bpp-v232-gs","1");
   } }catch(e){}
   function ver(){
-    window.BPP_SHOW="3.43"; window.BPP_BUILD="3.43";
-    var v=document.querySelector("h1 .ver"); if(v && v.textContent!=="V3.43") v.textContent="V3.43";
-    if(document.title!=="Bhakti Prayers Player V3.43") document.title="Bhakti Prayers Player V3.43";
+    window.BPP_SHOW="3.44"; window.BPP_BUILD="3.44";
+    var v=document.querySelector("h1 .ver"); if(v && v.textContent!=="V3.44") v.textContent="V3.44";
+    if(document.title!=="Bhakti Prayers Player V3.44") document.title="Bhakti Prayers Player V3.44";
   }
   if(document.readyState==="loading") document.addEventListener("DOMContentLoaded", function(){ apply(); ver(); }); else ver();
   window.addEventListener("load", function(){ apply(); ver(); });
-  setInterval(function(){ apply(); if(window.BPP_BUILD!=="3.43") window.BPP_BUILD="3.43"; }, 800);
+  setInterval(function(){ apply(); if(window.BPP_BUILD!=="3.44") window.BPP_BUILD="3.44"; }, 800);
 })();
