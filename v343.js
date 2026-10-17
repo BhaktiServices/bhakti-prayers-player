@@ -1,6 +1,6 @@
 /* [Grok-Bot] V3.43: Knopf "Atma Bhog" (Link https://www.atmabhog.org, neuer Tab) in der linken Kopfspalte neben der Hilfe-Blase,
    AtmaBhog-Stil (Navy, Gold #D6BF90, Figtree), nur Text (kein fremdes Logo). Tooltip je Sprache. Rechte Spalte (Version, Sprache) bleibt frei. */
-window.BPP_BUILD="3.44"; window.BPP_SHOW="3.44";
+window.BPP_BUILD="3.45"; window.BPP_SHOW="3.45";
 (function(){
   if(window.bppV343) return; window.bppV343=1;
   var T={
@@ -31,7 +31,7 @@ window.BPP_BUILD="3.44"; window.BPP_SHOW="3.44";
       ["click","pointerdown","touchstart"].forEach(function(ev){ a.addEventListener(ev,function(e){ e.stopPropagation(); },{passive:true}); });
     }
     if(a.parentNode!==c) c.insertBefore(a,c.firstChild);
-    var t=T[L()]; if(a.title!==t){ a.title=t; a.setAttribute("aria-label","Atma Bhog – "+t); }
+    var t=T[L()]; if(window.bppV345){ if(a.title) a.removeAttribute("title"); if(a.getAttribute("aria-label")!=="Atma Bhog – "+t) a.setAttribute("aria-label","Atma Bhog – "+t); } else if(a.title!==t){ a.title=t; a.setAttribute("aria-label","Atma Bhog – "+t); } /* V3.45: eigener Tooltip statt title */
   }
   build(); setInterval(build,500);
 })();
