@@ -114,7 +114,7 @@ if(document.readyState==="loading"){ document.write('<script src="v202.js?v=202"
 /* [Grok-Bot] V2.03: Offline - App-Dateien und alle MP3 aus audio/ im Cache (Service Worker sw.js?v=203, Range fuer Spulen), Fortschritt "Offline: n/N" (v203.js). */
 if(document.readyState==="loading"){ document.write('<script src="v203.js?v=333"><\/script>'); }
 /* [Grok-Bot] V2.04: Statistik wie im Tadatmya-Vedanta-Player (Aufrufe, Hoerzeit, Orte, aktiv in TOP 10), Namensraum bpp-clbuerger- (v204.js). */
-if(document.readyState==="loading"){ document.write('<script src="v204.js?v=204"><\/script>'); }
+if(document.readyState==="loading"){ document.write('<script src="v204.js?v=205"><\/script>'); }
 /* [Grok-Bot] V2.05: Android-Benachrichtigung/Sperrbildschirm: Media Session mit PNG-Artwork, Status, Position, Handlern, laufend aktualisiert (v205.js). */
 if(document.readyState==="loading"){ document.write('<script src="v205.js?v=206"><\/script>'); }
 /* [Grok-Bot] V2.06: Wiederholen ganze Liste und Ende-Angebot "Naechstes" laufen durch alle Gebete (v183.js?v=213, v206.js). */

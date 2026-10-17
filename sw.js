@@ -4,23 +4,31 @@
    MP3 aus audio/: liegen im Cache "bpp-audio-v1" (laedt v203.js im Hintergrund). Abspielen aus dem Cache mit Range-Antworten (206),
    damit Spulen geht. Nicht im Cache: direkt aus dem Netz. YouTube und fremde Server laufen am Service Worker vorbei. */
 var VER="341" /* [Grok-Bot] V3.41 Offline repariert, Schriften lokal, App installieren */ /* [Grok-Bot] V3.40 Ton aller MP3 bearbeitet, Audio-Cache v2 */ /* [Grok-Bot] V3.39 Grossbild-X */ /* [Grok-Bot] V3.38 Grossbild-Zeilenakkorde */ /* [Grok-Bot] V3.37 Kavaca Str. 43 + Timing */ /* [Grok-Bot] V3.36 Grossbild-Ueberlapp */ /* [Grok-Bot] V3.35 Kavaca-Akkorde */ /* [Grok-Bot] V3.34 Theme */ /* [Grok-Bot] V3.33 neue Prayers */ /* V3.32 Mukunda neu */ /* [Grok.com] Platzhalter-Cache weg */ /* [Grok.com] Scroll-Fix durchreichen */ /* [Grok.com] alte Abend-MP3 nicht aus dem Cache; [Grok-Bot] V2.20 nach Syntax-Korrektur */, APP="bpp-app-"+VER, AUD="bpp-audio-v2";
-var CORE=["./","index.html","follow.js","v218.js","manifest.json","icon-192.svg","icon-512.svg","icon-192.png","icon-512.png","icon-maskable-192.png","icon-maskable-512.png","apple-touch-icon.png","fonts/fonts-local.css","version.json","start.jpg"]; /* [Grok.com] */
+var CORE=["./","index.html","follow.js","v218.js","manifest.json","icon-192.svg","icon-512.svg","icon-192.png","icon-512.png","icon-maskable-192.png","icon-maskable-512.png","apple-touch-icon.png","fonts/fonts-local.css","lib/mqtt.min.js","v204.js?v=205","version.json","start.jpg"]; /* [Grok.com] */
 self.addEventListener("install", function(e){
-  /* [Grok-Bot] V3.41: zusaetzlich ALLE lokalen Skripte/Styles aus index.html (mit ?v=) und die Schriften aus den CSS-Dateien vorab speichern */
+  /* [Grok-Bot] V3.41: zusaetzlich ALLE lokalen Dateien vorab speichern: aus index.html (src/href mit ?v=), rekursiv aus nachgeladenen
+     Skripten (document.write / src="...js") und die Schriften aus den CSS-Dateien (url(...woff2)) */
   e.waitUntil(caches.open(APP).then(function(c){
-    function put(u){ return fetch(u, {cache:"no-store"}).then(function(r){ if(r.ok) return c.put(u, r.clone()).then(function(){ return r; }); }).catch(function(){}); }
-    return Promise.all(CORE.map(put)).then(function(){
-      return fetch("index.html", {cache:"no-store"}).then(function(r){ return r.text(); }).then(function(h){
-        var L=[], m, rx=/(?:src|href)=["']([^"':]+\.(?:js|css|json|svg|png|jpg|webp|woff2)(?:\?[^"']*)?)["']/g;
-        while((m=rx.exec(h))){ if(L.indexOf(m[1])<0) L.push(m[1]); }
-        return Promise.all(L.map(function(u){ return put(u).then(function(r){
-          if(!r || !/\.css(\?|$)/.test(u)) return;
-          return r.text().then(function(css){ var F=[], k, ux=/url\(["']?([^"')]+\.woff2)["']?\)/g;
-            while((k=ux.exec(css))){ F.push(new URL(k[1], new URL(u, self.registration.scope)).href); }
-            return Promise.all(F.map(put)); });
-        }); }));
+    var seen={};
+    function abs(u, from){ try{ return new URL(u, from||self.registration.scope).href; }catch(x){ return null; } }
+    function scan(u, txt){
+      var L=[], m, rx;
+      if(/\.css(\?|$)/.test(u)){ rx=/url\(["']?([^"')]+\.(?:woff2|png|svg|jpg))["']?\)/g; }
+      else { rx=/(?:src|href)=\\?["']([^"':\\]+\.(?:js|css|json|svg|png|jpg|webp|woff2)(?:\?[^"'\\]*)?)\\?["']/g; }
+      while((m=rx.exec(txt))){ var x=abs(m[1], /\.css(\?|$)/.test(u)?u:null); if(x && x.indexOf(self.registration.scope)===0) L.push(x); }
+      return Promise.all(L.map(get));
+    }
+    function get(u){
+      u=abs(u); if(!u || seen[u]) return Promise.resolve(); seen[u]=1;
+      return fetch(u, {cache:"no-store"}).then(function(r){
+        if(!r.ok) return;
+        var keep=r.clone();
+        return c.put(u, keep).then(function(){
+          if(/\.(js|css|html)(\?|$)|\/$/.test(u)) return r.text().then(function(t){ return scan(u, t); });
+        });
       }).catch(function(){});
-    });
+    }
+    return Promise.all(CORE.map(get));
   }).then(function(){ return self.skipWaiting(); }));
 });
 self.addEventListener("activate", function(e){

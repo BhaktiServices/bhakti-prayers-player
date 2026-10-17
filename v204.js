@@ -100,7 +100,7 @@ window.BPP_BUILD="2.04";
         setInterval(function(){ if(document.visibilityState==="hidden" && !playing()) return; pub(); }, 75000);
       }catch(e){}
     }
-    if(window.mqtt) go(); else { var s=document.createElement("script"); s.src="https://cdn.jsdelivr.net/npm/mqtt@4.3.7/dist/mqtt.min.js"; s.async=true; s.onload=go; document.head.appendChild(s); }
+    if(window.mqtt) go(); else { var s=document.createElement("script"); s.src="lib/mqtt.min.js"; s.async=true; s.onload=go; s.onerror=function(){}; /* [Grok-Bot] V3.41 lokal (MIT), offline still */ document.head.appendChild(s); }
   }
   window.addEventListener("pagehide", clearMine);
   document.addEventListener("visibilitychange", function(){ if(document.visibilityState==="visible") pub(); });
