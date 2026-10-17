@@ -3,15 +3,30 @@
    ohne Netz aus dem Cache. Alte App-Caches werden beim Aktivieren geloescht.
    MP3 aus audio/: liegen im Cache "bpp-audio-v1" (laedt v203.js im Hintergrund). Abspielen aus dem Cache mit Range-Antworten (206),
    damit Spulen geht. Nicht im Cache: direkt aus dem Netz. YouTube und fremde Server laufen am Service Worker vorbei. */
-var VER="340" /* [Grok-Bot] V3.40 Ton aller MP3 bearbeitet, Audio-Cache v2 */ /* [Grok-Bot] V3.39 Grossbild-X */ /* [Grok-Bot] V3.38 Grossbild-Zeilenakkorde */ /* [Grok-Bot] V3.37 Kavaca Str. 43 + Timing */ /* [Grok-Bot] V3.36 Grossbild-Ueberlapp */ /* [Grok-Bot] V3.35 Kavaca-Akkorde */ /* [Grok-Bot] V3.34 Theme */ /* [Grok-Bot] V3.33 neue Prayers */ /* V3.32 Mukunda neu */ /* [Grok.com] Platzhalter-Cache weg */ /* [Grok.com] Scroll-Fix durchreichen */ /* [Grok.com] alte Abend-MP3 nicht aus dem Cache; [Grok-Bot] V2.20 nach Syntax-Korrektur */, APP="bpp-app-"+VER, AUD="bpp-audio-v2";
-var CORE=["./","index.html","follow.js","v218.js","manifest.json","icon-192.svg","icon-512.svg","version.json","start.jpg"]; /* [Grok.com] */
+var VER="341" /* [Grok-Bot] V3.41 Offline repariert, Schriften lokal, App installieren */ /* [Grok-Bot] V3.40 Ton aller MP3 bearbeitet, Audio-Cache v2 */ /* [Grok-Bot] V3.39 Grossbild-X */ /* [Grok-Bot] V3.38 Grossbild-Zeilenakkorde */ /* [Grok-Bot] V3.37 Kavaca Str. 43 + Timing */ /* [Grok-Bot] V3.36 Grossbild-Ueberlapp */ /* [Grok-Bot] V3.35 Kavaca-Akkorde */ /* [Grok-Bot] V3.34 Theme */ /* [Grok-Bot] V3.33 neue Prayers */ /* V3.32 Mukunda neu */ /* [Grok.com] Platzhalter-Cache weg */ /* [Grok.com] Scroll-Fix durchreichen */ /* [Grok.com] alte Abend-MP3 nicht aus dem Cache; [Grok-Bot] V2.20 nach Syntax-Korrektur */, APP="bpp-app-"+VER, AUD="bpp-audio-v2";
+var CORE=["./","index.html","follow.js","v218.js","manifest.json","icon-192.svg","icon-512.svg","icon-192.png","icon-512.png","icon-maskable-192.png","icon-maskable-512.png","apple-touch-icon.png","fonts/fonts-local.css","version.json","start.jpg"]; /* [Grok.com] */
 self.addEventListener("install", function(e){
-  e.waitUntil(caches.open(APP).then(function(c){ return Promise.all(CORE.map(function(u){ return fetch(u, {cache:"no-store"}).then(function(r){ if(r.ok) return c.put(u, r); }).catch(function(){}); })); }).then(function(){ return self.skipWaiting(); }));
+  /* [Grok-Bot] V3.41: zusaetzlich ALLE lokalen Skripte/Styles aus index.html (mit ?v=) und die Schriften aus den CSS-Dateien vorab speichern */
+  e.waitUntil(caches.open(APP).then(function(c){
+    function put(u){ return fetch(u, {cache:"no-store"}).then(function(r){ if(r.ok) return c.put(u, r.clone()).then(function(){ return r; }); }).catch(function(){}); }
+    return Promise.all(CORE.map(put)).then(function(){
+      return fetch("index.html", {cache:"no-store"}).then(function(r){ return r.text(); }).then(function(h){
+        var L=[], m, rx=/(?:src|href)=["']([^"':]+\.(?:js|css|json|svg|png|jpg|webp|woff2)(?:\?[^"']*)?)["']/g;
+        while((m=rx.exec(h))){ if(L.indexOf(m[1])<0) L.push(m[1]); }
+        return Promise.all(L.map(function(u){ return put(u).then(function(r){
+          if(!r || !/\.css(\?|$)/.test(u)) return;
+          return r.text().then(function(css){ var F=[], k, ux=/url\(["']?([^"')]+\.woff2)["']?\)/g;
+            while((k=ux.exec(css))){ F.push(new URL(k[1], new URL(u, self.registration.scope)).href); }
+            return Promise.all(F.map(put)); });
+        }); }));
+      }).catch(function(){});
+    });
+  }).then(function(){ return self.skipWaiting(); }));
 });
 self.addEventListener("activate", function(e){
   e.waitUntil(caches.keys().then(function(ks){ return Promise.all(ks.filter(function(k){ return k!==APP && k!==AUD; }).map(function(k){ return caches.delete(k); })); }).then(function(){
     return caches.open(AUD).then(function(c){ return c.keys().then(function(keys){
-      return Promise.all(keys.filter(function(q){ return /(guru-stotram-abend|\/mukunda)\.mp3/.test(q.url); }).map(function(q){ return c.delete(q); }));
+      return Promise.all(keys.filter(function(q){ return /guru-stotram-abend\.mp3/.test(q.url); }).map(function(q){ return c.delete(q); }));
     }); }); /* [Grok-Bot] V2.20: eine Klammer zu viel entfernt (Skriptfehler, Service Worker liess sich nicht installieren) */
   }).then(function(){ return self.clients.claim(); }));
 });
@@ -51,11 +66,11 @@ self.addEventListener("fetch", function(e){
   var req=nav?new Request(r, {cache:"no-store"}):r; /* [Grok.com] Startseite nie aus altem Cache */
   e.respondWith(fetch(req).then(function(res){
     if(res && res.ok && res.type==="basic"){
-      var c=res.clone();
+      var c=res.clone(), c2=res.clone(); /* [Grok-Bot] V3.41: zweite Kopie zum Speichern (die erste ist nach text() verbraucht -> put schlug bisher still fehl) */
       c.text().then(function(txt){
         if(txt && txt.indexOf("PLACEHOLDER")===0) return; /* [Grok.com] Platzhalter nicht speichern */
-        caches.open(APP).then(function(ca){ ca.put(noStore?u.pathname:(nav?"./":r), c); });
-      });
+        caches.open(APP).then(function(ca){ ca.put(noStore?u.pathname:(nav?"./":r), c2); });
+      }).catch(function(){});
     }
     return res;
   }).catch(function(){

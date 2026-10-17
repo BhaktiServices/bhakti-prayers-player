@@ -28,5 +28,5 @@ window.BPP_SW="sw.js?v=218";
   setInterval(function(){ point(); skipOm(); }, 400);
   var el=document.getElementById("a");
   if(el) ["loadedmetadata","play","playing"].forEach(function(ev){ el.addEventListener(ev, skipOm); });
-  try{ if("serviceWorker" in navigator) navigator.serviceWorker.register("sw.js?v=218", {scope:"./"}); }catch(e){}
+  try{ if("serviceWorker" in navigator) navigator.serviceWorker.register("sw.js?v=218", {scope:"./"}).catch(function(){}); /* [Grok-Bot] V3.41 offline still */ }catch(e){}
 })();
