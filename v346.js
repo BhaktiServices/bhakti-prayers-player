@@ -2,7 +2,7 @@
    S. 38 Abend, gleicher Wortlaut) als Schluss: Str. 10-12. Akkorde aus chords.pdf (S. 14: G C F C ... / F C G C).
    Die MP3 (arati-cd13, 325 s) endet mit "om jai jagadisa hare" (Whisper-Pruefung 240-325 s): kein Chakar-Teil -> Str. 10-12 ohne Zeitmarke,
    seqFile bleibt unveraendert (Mitlesen endet bei Str. 1-Wdh.). Eigener Eintrag "Giridhari Arati" (Weitere) unveraendert. */
-window.BPP_BUILD="3.46"; window.BPP_SHOW="3.46";
+window.BPP_BUILD="3.47"; window.BPP_SHOW="3.47";
 (function(){
   if(window.bppV346) return; window.bppV346=1;
   var E={en:"",ue:"",fr:"",es:"",ru:"",hi:""};

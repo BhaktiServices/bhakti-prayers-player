@@ -254,6 +254,8 @@ window.BPP_BUILD="1.83";
   function showBar(){ bar.classList.remove("hid"); clearTimeout(hideT); if(endIs) return; hideT=setTimeout(function(){ if(!endIs) bar.classList.add("hid"); }, 3000); }
   function go(d){
     var gs=groups(), pg=pages(curK<0?0:curK);
+    /* [Grok-Bot] V3.47: bei Mitlesen an wie manuelles Blaettern -> Spulen erst nach 800 ms (v347.js) */
+    if(window.bppV347 && typeof autoScroll!=="undefined" && autoScroll && timed() && window.bppFsStep){ window.bppFsStep(d); window.bppManualAt=Date.now(); showBar(); return; }
     if(d>0 && page<pg.length-1 && !(timed() && playing())){ page++; holdUntil=Date.now()+20000; lastKey=""; draw(); return; }
     if(d<0 && page>0 && !(timed() && playing())){ page--; holdUntil=Date.now()+20000; lastKey=""; draw(); return; }
     var k=Math.max(0, Math.min(gs.length-1, (curK<0?0:curK)+d)); if(k===curK && d!==0){ return; }

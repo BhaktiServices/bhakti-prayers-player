@@ -26,6 +26,7 @@ window.BPP_BUILD="3.07"; window.BPP_SHOW="3.07";
   /* Freigabe: sobald die Zeit-Strophe wechselt (oder Wiedergabe neu gestartet wird) */
   setInterval(function(){
     if(!held) return;
+    if(window.bppSeekPending) return; /* [Grok-Bot] V3.47: waehrend der Spul-Wartezeit nicht freigeben */
     var playing=false; try{ playing=isPlaying(); }catch(e){}
     if(!playing) return;
     var k=timeK(); if(k0===null){ k0=k; return; }
