@@ -4,6 +4,7 @@
     if(typeof PRAYERS==="undefined") return;
     var k=PRAYERS.find(function(p){ return p.id==="kavacham"; });
     if(!k) return;
+    if(window.bppV351) return; /* [Grok-Bot] V3.54: sonst gewinnen die alten Schaetzzeiten (Str. 4 erst bei 65 s statt 58,3 s) seit V3.52 */
     var seq=[
       [7,0],[27,1],[45,2],[65,3],[85,4],[106,5],[125,6],[145,7],[165,8],[188,9],
       [205,10],[226,11],[245,12],[265,13],[285,14],[305,15],[324,16],[342,17],[358,18],[375,19],

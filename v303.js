@@ -1,7 +1,7 @@
 /* [Grok-Bot] V3.03: "Herkunft, Quellen" am Ende der Lyrics; Tipp blendet Quellenbereich ein (Default aus), aus nach 10 s oder beim Hochscrollen */
 window.BPP_BUILD="3.03"; window.BPP_SHOW="3.03";
 (function(){
-  var T={de:["Herkunft","Ton","Hinweis"],en:["Source","Audio","Note"],fr:["Source","Audio","Remarque"],es:["Fuente","Audio","Nota"],ru:["Источник","Аудио","Примечание"],hi:["स्रोत","ऑडियो","टिप्पणी"]};
+  var T={de:["Herkunft","Ton","Hinweis"],en:["Source","Audio","Note"],fr:["Source","Audio","Remarque"],es:["Fuente","Audio","Nota"],ru:["Источник","Аудио","Примечание"],hi:["स्रोत","ऑडियो","टिप्पणी"],pt:["Fonte","Áudio","Nota"]};
   function L(){var l=(typeof lang!=="undefined"&&lang)||"en";return T[l]?l:"en";}
   var st=document.createElement("style");
   st.textContent="#bppSrcEnd{margin:14px 12px 24px;display:flex;flex-direction:column;align-items:flex-start;gap:8px}"+

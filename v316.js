@@ -1,7 +1,7 @@
 /* [Grok-Bot] V3.16: kleine Sprechblase "Hilfe – hier klicken" neben der Hauptueberschrift, oeffnet die Hilfe (Jukebox-Overlay) */
 window.BPP_BUILD="3.16"; window.BPP_SHOW="3.16";
 (function(){
-  var T={de:"Hilfe – hier klicken",en:"Help – click here",fr:"Aide – cliquez ici",es:"Ayuda – haz clic aquí",ru:"Помощь – нажмите здесь",hi:"सहायता – यहाँ क्लिक करें"};
+  var T={de:"Hilfe – hier klicken",en:"Help – click here",fr:"Aide – cliquez ici",es:"Ayuda – haz clic aquí",ru:"Помощь – нажмите здесь",hi:"सहायता – यहाँ क्लिक करें",pt:"Ajuda – clique aqui"};
   var st=document.createElement("style");
   st.textContent="#bppHelpTip{position:relative;display:inline-block;vertical-align:middle;margin-left:12px;padding:2px 8px;border:1px solid #b8955088;border-radius:10px;color:#c9a560;background:#2a1f1688;"+
     "font:400 .72rem/1.4 system-ui,sans-serif;letter-spacing:0;text-transform:none;cursor:pointer;white-space:nowrap}"+

@@ -164,7 +164,7 @@ window.BPP_BUILD="1.87";
     "#bppFsBar button.str{font-size:15px;min-width:58px;padding:0 8px}#bppFsBar button.j30{font-size:15px;min-width:52px}"+
     "@media(max-width:400px){#bppFsBar button.str{min-width:54px;padding:0 6px}#bppFsBar button.j30{min-width:48px;padding:0 6px}}";
   document.head.appendChild(css);
-  var STR={de:["‹ Str.","Str. ›"],en:["‹ Verse","Verse ›"],fr:["‹ Str.","Str. ›"],es:["‹ Estr.","Estr. ›"],ru:["‹ Стр.","Стр. ›"],hi:["‹ पद","पद ›"]};
+  var STR={de:["‹ Str.","Str. ›"],en:["‹ Verse","Verse ›"],fr:["‹ Str.","Str. ›"],es:["‹ Estr.","Estr. ›"],ru:["‹ Стр.","Стр. ›"],hi:["‹ पद","पद ›"],pt:["‹ Verso","Verso ›"]};
   function arrange(){
     var bar=document.getElementById("bppFsBar"); if(!bar) return;
     var L=STR[(typeof lang!=="undefined" && STR[lang])?lang:"en"];

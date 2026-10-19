@@ -1,7 +1,7 @@
 /* [Grok-Bot] V3.19: am Ende der Hilfe dezent "Fragen und Anregungen": Telegram @bhaktadas1008 oder E-Mail */
 window.BPP_BUILD="3.19"; window.BPP_SHOW="3.19";
 (function(){
-  var T={de:["Fragen und Anregungen:","oder"],en:["Questions and suggestions:","or"],fr:["Questions et suggestions :","ou"],es:["Preguntas y sugerencias:","o"],ru:["Вопросы и предложения:","или"],hi:["प्रश्न और सुझाव:","या"]};
+  var T={de:["Fragen und Anregungen:","oder"],en:["Questions and suggestions:","or"],fr:["Questions et suggestions :","ou"],es:["Preguntas y sugerencias:","o"],ru:["Вопросы и предложения:","или"],hi:["प्रश्न और सुझाव:","या"],pt:["Perguntas e sugestões:","ou"]};
   var st=document.createElement("style");
   st.textContent="#bppHelp .bppContact{text-align:center;font-size:.8rem;color:#a89a84;margin-top:22px}#bppHelp .bppContact a{color:#c9a560;text-decoration:underline}";
   document.head.appendChild(st);

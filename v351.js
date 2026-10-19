@@ -8,7 +8,7 @@
    (2) Scroll-Seek geaendert (v347/v348/v183): Wischen/Mausrad/Trackpad/Pfeil hoch-runter = nur Ansicht, Mitlesen pausiert, 2 s nach dem letzten
    Schritt zurueck zur laufenden Strophe; Spulen nur per Tipp/Klick auf eine Strophe (V3.49) bzw. im Grossbild mit den Knoepfen < > und
    Pfeil links/rechts (explizit, nach 800 ms); keine gestrichelte Vormarkierung mehr; Hinweis "nicht in der Aufnahme" nur bei Tipp/Klick. */
-window.BPP_BUILD="3.53"; window.BPP_SHOW="3.53";
+window.BPP_BUILD="3.54"; window.BPP_SHOW="3.54";
 (function(){
   if(window.bppV351) return; window.bppV351=1;
   var L4=["Dm  Bb  C  Dm","Bb  C  Dm","Bb  C  Dm"], CH="Dm  Bb  C  Dm   Bb  C  Dm   Bb  C  Dm   Bb  C  Dm";
@@ -18,14 +18,14 @@ window.BPP_BUILD="3.53"; window.BPP_SHOW="3.53";
     fr:"Sri Vishwananda ! Gurudeva, Gurudeva, Gurudeva – victoire, victoire au Gurudeva !",
     es:"¡Sri Vishwananda! Gurudeva, Gurudeva, Gurudeva – ¡victoria, victoria a Gurudeva!",
     ru:"Шри Вишвананда! Гурудева, Гурудева, Гурудева – слава, слава Гурудеве!",
-    hi:"श्री विश्वानन्द! गुरुदेव, गुरुदेव, गुरुदेव – गुरुदेव की जय हो, जय हो!"};
+    hi:"श्री विश्वानन्द! गुरुदेव, गुरुदेव, गुरुदेव – गुरुदेव की जय हो, जय हो!",pt:"Sri Vishwananda! Gurudeva, Gurudeva, Gurudeva – vitória, vitória para Gurudeva!"};
   var S55={nr:"55", ch:"Dm  Bb  C  Dm   Bb  C  Dm", lineCh:["Dm  Bb  C  Dm","Bb  C  Dm"], sa:"gurudev gurudev\nśrī viśvānanda gurudev (3x)",
     en:"Gurudeva, Gurudeva – Sri Vishwananda Gurudeva!",
     ue:"Gurudeva, Gurudeva – Śrī Vishwananda Gurudeva!",
     fr:"Gurudeva, Gurudeva – Sri Vishwananda Gurudeva !",
     es:"Gurudeva, Gurudeva – ¡Sri Vishwananda Gurudeva!",
     ru:"Гурудева, Гурудева – Шри Вишвананда Гурудева!",
-    hi:"गुरुदेव, गुरुदेव – श्री विश्वानन्द गुरुदेव!"};
+    hi:"गुरुदेव, गुरुदेव – श्री विश्वानन्द गुरुदेव!",pt:"Gurudeva, Gurudeva – Sri Vishwananda Gurudeva!"};
   var END=[[846.2,49],[861.7,49],[877.2,49],[902.8,50],[908.0,51],[919.0,52],[937.3,53],[954.0,54]];
   function marks(s){ var m=[]; s.forEach(function(e){ if(m[e[1]]==null) m[e[1]]=e[0]; }); return m; }
   function cp(o){ var c={}; for(var k in o) c[k]=(o[k] && o[k].slice)?o[k].slice():o[k]; return c; }

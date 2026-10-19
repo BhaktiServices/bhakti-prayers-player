@@ -3,7 +3,7 @@
    Kein Tipp bei Wischen/Scrollen (Bewegung > 10 px, Blaetterschritt kurz davor), langem Druecken (> 600 ms) oder markiertem Text.
    Links/Knoepfe/Eingaben in den Lyrics bleiben unberuehrt. Tipp auf die laufende Strophe: nur nach oben holen (keine Selbstkorrektur-Marke mehr
    bei Mitlesen an). Mitlesen aus: altes Verhalten (el.onclick). Grossbild unveraendert (eigenes Overlay, erster Tipp = Menue). */
-window.BPP_BUILD="3.53"; window.BPP_SHOW="3.53";
+window.BPP_BUILD="3.54"; window.BPP_SHOW="3.54";
 (function(){
   if(window.bppV349) return; window.bppV349=1;
   var down=null;
@@ -52,7 +52,7 @@ window.BPP_BUILD="3.53"; window.BPP_SHOW="3.53";
 (function(){
   if(window.bppV349o) return; window.bppV349o=1;
   var MSG={de:"Für Großansicht Handy quer drehen",en:"Turn your phone sideways for the Big view",fr:"Tournez le téléphone pour la vue Grand",
-    es:"Gira el móvil para la vista Grande",ru:"Поверните телефон горизонтально для режима «Крупно»",hi:"बड़ा दृश्य के लिए फ़ोन को तिरछा घुमाएँ"};
+    es:"Gira el móvil para la vista Grande",ru:"Поверните телефон горизонтально для режима «Крупно»",hi:"बड़ा दृश्य के लिए फ़ोन को तिरछा घुमाएँ",pt:"Vire o celular de lado para a visão Grande"};
   function touchDev(){ try{ return matchMedia("(pointer:coarse)").matches && !matchMedia("(pointer:fine)").matches; }catch(e){ return false; } }
   function portrait(){ return (window.innerHeight||0) > (window.innerWidth||0); }
   function lockFn(){ return !!(screen.orientation && typeof screen.orientation.lock==="function"); }

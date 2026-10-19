@@ -35,7 +35,7 @@ window.BPP_BUILD="1.84";
   document.head.appendChild(css);
   var L={de:["Voriges Prayer","N\u00e4chstes Prayer"],en:["Previous prayer","Next prayer"],fr:["Pri\u00e8re pr\u00e9c\u00e9dente","Pri\u00e8re suivante"],
     es:["Oraci\u00f3n anterior","Oraci\u00f3n siguiente"],ru:["\u041f\u0440\u0435\u0434\u044b\u0434\u0443\u0449\u0430\u044f \u043c\u043e\u043b\u0438\u0442\u0432\u0430","\u0421\u043b\u0435\u0434\u0443\u044e\u0449\u0430\u044f \u043c\u043e\u043b\u0438\u0442\u0432\u0430"],
-    hi:["\u092a\u093f\u091b\u0932\u0940 \u092a\u094d\u0930\u093e\u0930\u094d\u0925\u0928\u093e","\u0905\u0917\u0932\u0940 \u092a\u094d\u0930\u093e\u0930\u094d\u0925\u0928\u093e"]};
+    hi:["\u092a\u093f\u091b\u0932\u0940 \u092a\u094d\u0930\u093e\u0930\u094d\u0925\u0928\u093e","\u0905\u0917\u0932\u0940 \u092a\u094d\u0930\u093e\u0930\u094d\u0925\u0928\u093e"],pt:["Oração anterior","Próxima oração"]};
   function T(k){ var l=(typeof lang!=="undefined" && L[lang])?L[lang]:L.en; return l[k]; }
   function esc(s){ return String(s).replace(/[&<>]/g,function(c){ return {"&":"&amp;","<":"&lt;",">":"&gt;"}[c]; }); }
   function skip(d){ try{ if(typeof window.bppSkip==="function") window.bppSkip(d); }catch(e){} }

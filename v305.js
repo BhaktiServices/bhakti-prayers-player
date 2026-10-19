@@ -1,8 +1,8 @@
 /* [Grok-Bot] V3.05: Akkorde-Hinweis + "Prayers runterladen" (ex "Alle offline") unter die Lyrics, Ausspracheleiste nur noch in der Hilfe, Zeile 6 entfaellt */
 window.BPP_BUILD="3.05"; window.BPP_SHOW="3.05";
 (function(){
-  var LAB={de:"Prayers runterladen",en:"Download prayers",fr:"Télécharger les prières",es:"Descargar oraciones",ru:"Скачать молитвы",hi:"प्रार्थनाएँ डाउनलोड करें"};
-  var TIT={de:"Alle MP3s für die Offline-Nutzung speichern",en:"Save all MP3s for offline use",fr:"Enregistrer tous les MP3 hors ligne",es:"Guardar todos los MP3 sin conexión",ru:"Сохранить все MP3 для офлайн",hi:"सभी MP3 ऑफ़लाइन सहेजें"};
+  var LAB={de:"Prayers runterladen",en:"Download prayers",fr:"Télécharger les prières",es:"Descargar oraciones",ru:"Скачать молитвы",hi:"प्रार्थनाएँ डाउनलोड करें",pt:"Baixar orações"};
+  var TIT={de:"Alle MP3s für die Offline-Nutzung speichern",en:"Save all MP3s for offline use",fr:"Enregistrer tous les MP3 hors ligne",es:"Guardar todos los MP3 sin conexión",ru:"Сохранить все MP3 для офлайн",hi:"सभी MP3 ऑफ़लाइन सहेजें",pt:"Salvar todos os MP3 para uso offline"};
   function L(){var l=(typeof lang!=="undefined"&&lang)||"en";return LAB[l]?l:"en";}
   var st=document.createElement("style");
   st.textContent="#bppL6{display:none!important}#legend{display:none!important}#bppSrcEnd #foot{display:none!important}"+

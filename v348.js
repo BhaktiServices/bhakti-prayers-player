@@ -4,7 +4,7 @@
    Neu: unsichtbarer Leerraum unter der letzten Strophe (#lyrics::after, Hoehe per --bppTail), genau so gross, dass auch die letzte Strophe
    (bzw. letzte Reihe bei 2/3 Spalten) oben im Fenster stehen kann. Dazu ein kurzer Hinweis (6 Sprachen), wenn man bei "Mitlesen an" auf eine
    Strophe ohne Zeitmarke blaettert (nicht in der Aufnahme, z.B. Vishnu-Arati 10-12): dann wird nicht gespult. Grossbild unveraendert (je Strophe). */
-window.BPP_BUILD="3.53"; window.BPP_SHOW="3.53";
+window.BPP_BUILD="3.54"; window.BPP_SHOW="3.54";
 (function(){
   if(window.bppV348) return; window.bppV348=1;
   var GAP=12;
@@ -38,7 +38,7 @@ window.BPP_BUILD="3.53"; window.BPP_SHOW="3.53";
   /* Hinweis: Strophe ohne Zeitmarke */
   var MSG={de:"Diese Strophe ist nicht in der Aufnahme – kein Spulen.",en:"This stanza is not in the recording – no seeking.",
     fr:"Cette strophe n’est pas dans l’enregistrement – pas de saut.",es:"Esta estrofa no está en la grabación – sin salto.",
-    ru:"Этой строфы нет в записи – перемотки нет.",hi:"यह श्लोक रिकॉर्डिंग में नहीं है – आगे-पीछे नहीं होगा।"};
+    ru:"Этой строфы нет в записи – перемотки нет.",hi:"यह श्लोक रिकॉर्डिंग में नहीं है – आगे-पीछे नहीं होगा।",pt:"Esta estrofe não está na gravação – sem salto."};
   var lastM=window.bppManualAt||0, tm=null, hideT=null;
   function fsOn(){ var f=document.getElementById("bppFs"); return !!(f && f.classList.contains("on")); }
   function shownK(){ try{ if(fsOn()){ var s=bppFsState(); return s.k; } return currentGroupIndex(); }catch(e){ return -1; } }

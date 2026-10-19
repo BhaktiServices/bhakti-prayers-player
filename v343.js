@@ -1,6 +1,6 @@
 /* [Grok-Bot] V3.43: Knopf "Atma Bhog" (Link https://www.atmabhog.org, neuer Tab) in der linken Kopfspalte neben der Hilfe-Blase,
    AtmaBhog-Stil (Navy, Gold #D6BF90, Figtree), nur Text (kein fremdes Logo). Tooltip je Sprache. Rechte Spalte (Version, Sprache) bleibt frei. */
-window.BPP_BUILD="3.53"; window.BPP_SHOW="3.53";
+window.BPP_BUILD="3.54"; window.BPP_SHOW="3.54";
 (function(){
   if(window.bppV343) return; window.bppV343=1;
   var T={
@@ -9,7 +9,7 @@ window.BPP_BUILD="3.53"; window.BPP_SHOW="3.53";
     fr:"Dans Atma Bhog, vous trouverez tous les kirtans, abhangs, bhajans et prières de Bhakti Marga, bien classés avec une interface soignée … enjoy.",
     es:"En Atma Bhog encontraréis todos los kirtans, abhangs, bhajans y oraciones de Bhakti Marga, bien ordenados y con una interfaz cuidada … enjoy.",
     ru:"В Atma Bhog вы найдёте все киртаны, абханги, бхаджаны и молитвы Бхакти Марги — удобно рассортированные, с красивым интерфейсом … enjoy.",
-    hi:"आत्म भोग में भक्ति मार्ग के सभी कीर्तन, अभंग, भजन और प्रार्थनाएँ सुव्यवस्थित और सुंदर इंटरफ़ेस के साथ मिलेंगी … enjoy."
+    hi:"आत्म भोग में भक्ति मार्ग के सभी कीर्तन, अभंग, भजन और प्रार्थनाएँ सुव्यवस्थित और सुंदर इंटरफ़ेस के साथ मिलेंगी … enjoy.",pt:"No Atma Bhog você encontra todos os kirtans, abhangs, bhajans e orações do Bhakti Marga, bem organizados e com uma bela interface … aproveite."
   };
   var css=document.createElement("style");
   css.textContent="#bppAtma{order:-1;display:inline-flex;align-items:center;gap:5px;margin:0 12px 0 0;padding:3px 11px 3px 10px;border:1px solid #D6BF90;border-radius:9999px;"+

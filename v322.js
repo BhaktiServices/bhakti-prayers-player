@@ -21,7 +21,7 @@ window.BPP_BUILD="3.22"; window.BPP_SHOW="3.22";
        "И всё же Своими безграничными руками Он поддерживает, защищает и питает космическое проявление. Я в почтении склоняюсь перед Господом, принявшим облик трансцендентного льва."],
    hi:["भगवान नृसिंह उच्च स्वर में गर्जना करते हैं और दूसरों को भी गर्जना कराते हैं। अपनी असंख्य भुजाओं से वे असुरों को चीर डालते हैं और इस प्रकार उनका वध करते हैं।",
        "वे इस पृथ्वी-लोक तथा उच्चतर लोकों में दिति की आसुरी सन्तानों को सदा खोजते और पीड़ित करते रहते हैं, उन्हें नीचे पटकते और तितर-बितर कर देते हैं। सब दिशाओं में असुरों का संहार करते हुए वे महान क्रोध से गर्जते हैं।",
-       "फिर भी अपने असीम हाथों से वे ब्रह्माण्डीय सृष्टि का पालन, रक्षण और पोषण करते हैं। दिव्य सिंह का रूप धारण करने वाले उन भगवान को मैं सादर प्रणाम करता हूँ।"]};
+       "फिर भी अपने असीम हाथों से वे ब्रह्माण्डीय सृष्टि का पालन, रक्षण और पोषण करते हैं। दिव्य सिंह का रूप धारण करने वाले उन भगवान को मैं सादर प्रणाम करता हूँ।"],pt:["O Senhor Nṛsiṁha ruge alto e faz com que outros rujam. Com Suas multidões de armas Ele rasga os demônios e os mata dessa maneira.","Ele está sempre procurando e atormentando os descendentes demoníacos de Diti, tanto neste planeta terrestre quanto nos planetas superiores, e Ele os joga para baixo e os espalha. Ele grita com grande raiva enquanto destrói os demônios em todas as direções.","No entanto, com Suas mãos ilimitadas Ele sustenta, protege e nutre a manifestação cósmica. Ofereço minhas respeitosas reverências ao Senhor, que assumiu a forma de um leão transcendental."]};
   S.de=S.ue;
   function apply(){
     if(typeof PRAYERS==="undefined") return false;

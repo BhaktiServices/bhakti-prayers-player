@@ -2,10 +2,10 @@
    S. 38 Abend, gleicher Wortlaut) als Schluss: Str. 10-12. Akkorde aus chords.pdf (S. 14: G C F C ... / F C G C).
    Die MP3 (arati-cd13, 325 s) endet mit "om jai jagadisa hare" (Whisper-Pruefung 240-325 s): kein Chakar-Teil -> Str. 10-12 ohne Zeitmarke,
    seqFile bleibt unveraendert (Mitlesen endet bei Str. 1-Wdh.). Eigener Eintrag "Giridhari Arati" (Weitere) unveraendert. */
-window.BPP_BUILD="3.53"; window.BPP_SHOW="3.53";
+window.BPP_BUILD="3.54"; window.BPP_SHOW="3.54";
 (function(){
   if(window.bppV346) return; window.bppV346=1;
-  var E={en:"",ue:"",fr:"",es:"",ru:"",hi:""};
+  var E={en:"",ue:"",fr:"",es:"",ru:"",hi:"",pt:""};
   function z(nr,sa,ch,tr){ var o={nr:nr,sa:sa,ch:ch}; for(var k in E) o[k]=(tr&&tr[k])||""; return o; }
   var T10={
     en:"Keep me as Your servant, O Giridhari Lala, keep me as Your servant.",
@@ -13,21 +13,21 @@ window.BPP_BUILD="3.53"; window.BPP_SHOW="3.53";
     fr:"Garde-moi comme Ton serviteur, ô Giridhari Lala, garde-moi comme Ton serviteur.",
     es:"Tenme como Tu servidor, oh Giridhari Lala, tenme como Tu servidor.",
     ru:"Оставь меня Своим слугой, о Гиридхари Лала, оставь меня Своим слугой.",
-    hi:"मुझे अपना चाकर रखो, हे गिरधारी लाल, मुझे अपना चाकर रखो।"};
+    hi:"मुझे अपना चाकर रखो, हे गिरधारी लाल, मुझे अपना चाकर रखो।",pt:"Guarda-me como Teu servo, ó Giridhari Lala, guarda-me como Teu servo."};
   var T11={
     en:"Keep me as Your servant, keep me as Your servant, keep me as Your servant, Lord.",
     ue:"Behalte mich als Deinen Diener, behalte mich als Deinen Diener, behalte mich als Deinen Diener, Herr.",
     fr:"Garde-moi comme Ton serviteur, garde-moi comme Ton serviteur, garde-moi comme Ton serviteur, Seigneur.",
     es:"Tenme como Tu servidor, tenme como Tu servidor, tenme como Tu servidor, Señor.",
     ru:"Оставь меня Своим слугой, оставь меня Своим слугой, оставь меня Своим слугой, Господь.",
-    hi:"मुझे अपना चाकर रखो, मुझे अपना चाकर रखो, मुझे अपना चाकर रखो, प्रभु।"};
+    hi:"मुझे अपना चाकर रखो, मुझे अपना चाकर रखो, मुझे अपना चाकर रखो, प्रभु।",pt:"Guarda-me como Teu servo, guarda-me como Teu servo, guarda-me como Teu servo, Senhor."};
   var T12={
     en:"Keep me as Your servant, O Giridhari Lala; keep me as Your servant, O Shyam. Keep me as Your servant, O Giridhari Lala; keep me as Your servant, O Govinda. Keep me as Your servant, O Giridhari Lala, keep me as Your servant.",
     ue:"Behalte mich als Deinen Diener, o Giridhari Lala; behalte mich als Deinen Diener, o Shyam. Behalte mich als Deinen Diener, o Giridhari Lala; behalte mich als Deinen Diener, o Govinda. Behalte mich als Deinen Diener, o Giridhari Lala, behalte mich als Deinen Diener.",
     fr:"Garde-moi comme Ton serviteur, ô Giridhari Lala ; garde-moi comme Ton serviteur, ô Shyam. Garde-moi comme Ton serviteur, ô Giridhari Lala ; garde-moi comme Ton serviteur, ô Govinda. Garde-moi comme Ton serviteur, ô Giridhari Lala, garde-moi comme Ton serviteur.",
     es:"Tenme como Tu servidor, oh Giridhari Lala; tenme como Tu servidor, oh Shyam. Tenme como Tu servidor, oh Giridhari Lala; tenme como Tu servidor, oh Govinda. Tenme como Tu servidor, oh Giridhari Lala, tenme como Tu servidor.",
     ru:"Оставь меня Своим слугой, о Гиридхари Лала; оставь меня Своим слугой, о Шьям. Оставь меня Своим слугой, о Гиридхари Лала; оставь меня Своим слугой, о Говинда. Оставь меня Своим слугой, о Гиридхари Лала, оставь меня Своим слугой.",
-    hi:"मुझे अपना चाकर रखो, हे गिरधारी लाल; मुझे अपना चाकर रखो, हे श्याम। मुझे अपना चाकर रखो, हे गिरधारी लाल; मुझे अपना चाकर रखो, हे गोविंद। मुझे अपना चाकर रखो, हे गिरधारी लाल, मुझे अपना चाकर रखो।"};
+    hi:"मुझे अपना चाकर रखो, हे गिरधारी लाल; मुझे अपना चाकर रखो, हे श्याम। मुझे अपना चाकर रखो, हे गिरधारी लाल; मुझे अपना चाकर रखो, हे गोविंद। मुझे अपना चाकर रखो, हे गिरधारी लाल, मुझे अपना चाकर रखो।",pt:"Guarda-me como Teu servo, ó Giridhari Lala; guarda-me como Teu servo, ó Shyam. Guarda-me como Teu servo, ó Giridhari Lala; guarda-me como Teu servo, ó Govinda. Guarda-me como Teu servo, ó Giridhari Lala, guarda-me como Teu servo."};
   var L="G   C   F   C", E2="G   C";
   var ADD=[
     z("10a","mane chākar rākho jī giridhārī lāla",L), z("10b","chākar rākho jī giridhārī lāla",L),

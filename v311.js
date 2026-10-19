@@ -8,7 +8,7 @@ window.BPP_BUILD="3.11"; window.BPP_SHOW="3.11";
     fr:["Les %n prières sont enregistrées hors ligne","%k/%n hors ligne · erreurs : %e","Hors ligne – téléchargement impossible","Espace de stockage insuffisant","Téléchargement …"],
     es:["Las %n oraciones guardadas sin conexión","%k/%n sin conexión · errores: %e","Sin conexión – no se puede descargar","No hay espacio suficiente","Descargando …"],
     ru:["Все %n молитв сохранены офлайн","%k/%n офлайн · ошибки: %e","Нет сети – загрузка невозможна","Недостаточно памяти","Загрузка …"],
-    hi:["सभी %n प्रार्थनाएँ ऑफ़लाइन सहेजी गईं","%k/%n ऑफ़लाइन · त्रुटि: %e","ऑफ़लाइन – डाउनलोड संभव नहीं","डिवाइस में जगह कम है","डाउनलोड हो रहा है …"]};
+    hi:["सभी %n प्रार्थनाएँ ऑफ़लाइन सहेजी गईं","%k/%n ऑफ़लाइन · त्रुटि: %e","ऑफ़लाइन – डाउनलोड संभव नहीं","डिवाइस में जगह कम है","डाउनलोड हो रहा है …"],pt:["Todas as %n orações salvas offline","%k/%n salvas offline · erros: %e","Offline – não é possível baixar","Espaço insuficiente neste aparelho","Baixando …"]};
   function t(k){ var l=(typeof lang!=="undefined"&&T[lang])?lang:"en"; return T[l][k]; }
   var st=document.createElement("style");
   st.textContent="#btnOffAll.busy{background:#e0b45a!important;color:#1a1208!important;font-weight:700;box-shadow:0 0 0 2px #e0b45a66}"+
@@ -44,5 +44,5 @@ window.BPP_BUILD="3.11"; window.BPP_SHOW="3.11";
   var n=0,iv=setInterval(function(){ var b=document.getElementById("btnOffAll"); if(b&&!b._v311){ b._v311=1; b.onclick=null; b.addEventListener("click",go,true); }
     if((b&&b._v311)||++n>100) clearInterval(iv); },300);
   /* Beschriftung zurueck: v305 setzt sie jede Sekunde; leer -> sofort neu */
-  setInterval(function(){ var b=document.getElementById("btnOffAll"); if(b&&!busy&&!b.textContent){ b.textContent=({de:"Prayers runterladen",en:"Download prayers",fr:"Télécharger les prières",es:"Descargar oraciones",ru:"Скачать молитвы",hi:"प्रार्थनाएँ डाउनलोड करें"})[(typeof lang!=="undefined"&&lang)]||"Download prayers"; } },200);
+  setInterval(function(){ var b=document.getElementById("btnOffAll"); if(b&&!busy&&!b.textContent){ b.textContent=({de:"Prayers runterladen",en:"Download prayers",fr:"Télécharger les prières",es:"Descargar oraciones",ru:"Скачать молитвы",hi:"प्रार्थनाएँ डाउनलोड करें",pt:"Baixar orações"})[(typeof lang!=="undefined"&&lang)]||"Download prayers"; } },200);
 })();

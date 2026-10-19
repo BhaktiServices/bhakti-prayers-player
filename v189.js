@@ -183,6 +183,7 @@ window.BPP_BUILD="1.89";
     if(my){ var P=(typeof i!=="undefined"&&i>=0)?PRAYERS[i]:null, show=!!(P&&P.youtube&&P.audio), on=(typeof ytOn!=="undefined" && !!ytOn);
       my.style.display=show?"":"none"; my.classList.toggle("on", on);
       var t=on?(de()?"YouTube ist an (Tippen: MP3)":"YouTube is on (tap: MP3)"):(de()?"MP3 spielt (Tippen: YouTube)":"MP3 is playing (tap: YouTube)");
+      if(typeof lang!=="undefined"&&lang==="pt") t=on?"YouTube ligado (toque: MP3)":"MP3 tocando (toque: YouTube)"; /* [Grok-Bot] V3.54 */
       if(my.title!==t){ my.title=t; my.setAttribute("aria-label", t); my.setAttribute("aria-pressed", on?"true":"false"); } }
   }
   function sync(){

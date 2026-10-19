@@ -3,10 +3,10 @@
    (bei Autoplay-Sperre grosser Play-Hinweis). Jukebox-Intro wird bei Direktlink uebersprungen (Inline-Skript im head). Teilen-Knopf beim Gebetstitel. */
 window.BPP_BUILD="3.15"; window.BPP_SHOW="3.15";
 (function(){
-  var LS=["de","en","fr","es","ru","hi"];
+  var LS=["de","en","fr","es","ru","hi","pt"];
   function L(){ return (typeof lang!=="undefined"&&LS.indexOf(lang)>=0)?lang:"en"; }
   var TX={de:["Link kopiert","Gebet teilen","Zum Abspielen tippen"],en:["Link copied","Share prayer","Tap to play"],fr:["Lien copié","Partager la prière","Touchez pour écouter"],
-    es:["Enlace copiado","Compartir oración","Toca para reproducir"],ru:["Ссылка скопирована","Поделиться молитвой","Нажмите, чтобы слушать"],hi:["लिंक कॉपी हो गया","प्रार्थना साझा करें","चलाने के लिए टैप करें"]};
+    es:["Enlace copiado","Compartir oración","Toca para reproducir"],ru:["Ссылка скопирована","Поделиться молитвой","Нажмите, чтобы слушать"],hi:["लिंक कॉपी हो गया","प्रार्थना साझा करें","चलाने के लिए टैप करें"],pt:["Link copiado","Compartilhar oração","Toque para tocar"]};
   var st=document.createElement("style");
   st.textContent="#bppShare{margin-left:.5em;background:none;border:1px solid #6b5338;color:#e0b45a;border-radius:8px;padding:0 .4em;font-size:.85em;line-height:1.5;cursor:pointer;vertical-align:middle}"+
     "#bppToast{position:fixed;left:50%;bottom:40px;transform:translateX(-50%);z-index:80;background:#2a1f16;color:#e0b45a;border:1px solid #e0b45a;border-radius:10px;padding:8px 14px;font:15px system-ui,sans-serif}"+

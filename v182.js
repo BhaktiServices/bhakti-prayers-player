@@ -17,7 +17,7 @@ window.BPP_BUILD="1.82";
     fr:["⛶ Grand","Plein écran : seulement la strophe actuelle, très grande","Accords","Traduction","Fermer"],
     es:["⛶ Grande","Pantalla completa: solo la estrofa actual, muy grande","Acordes","Traducción","Cerrar"],
     ru:["⛶ Крупно","Полный экран: только текущая строфа, очень крупно","Аккорды","Перевод","Закрыть"],
-    hi:["⛶ बड़ा","पूर्ण स्क्रीन: केवल वर्तमान पद, बहुत बड़ा","कॉर्ड","अनुवाद","बंद करें"]};
+    hi:["⛶ बड़ा","पूर्ण स्क्रीन: केवल वर्तमान पद, बहुत बड़ा","कॉर्ड","अनुवाद","बंद करें"],pt:["⛶ Grande","Tela cheia: só a estrofe atual, bem grande","Acordes","Tradução","Fechar"]};
   function T(k){ var l=(typeof lang!=="undefined" && L[lang])?L[lang]:L.en; return l[k]; }
   var css=document.createElement("style");
   css.textContent="#bppFs{position:fixed;inset:0;z-index:2147483000;background:#0b0b0d;color:#f3eee2;display:none;overflow:hidden;font-family:inherit;touch-action:manipulation;user-select:none;-webkit-user-select:none}"+

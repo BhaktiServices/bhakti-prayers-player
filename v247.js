@@ -4,7 +4,7 @@ window.BPP_BUILD="2.52"; window.BPP_SHOW="2.52";
 (function(){
   var TXT={en:"Study and sing the Bhakti Marga Prayers – see you soon!",de:"Lerne und singe die Bhakti-Marga-Gebete – bis bald!",
     fr:"Étudiez et chantez les prières de Bhakti Marga – à bientôt !",es:"Estudia y canta las oraciones de Bhakti Marga – ¡hasta pronto!",
-    ru:"Изучайте и пойте молитвы Бхакти Марги – до скорой встречи!",hi:"भक्ति मार्ग की प्रार्थनाएँ सीखें और गाएँ – फिर मिलेंगे!"};
+    ru:"Изучайте и пойте молитвы Бхакти Марги – до скорой встречи!",hi:"भक्ति मार्ग की प्रार्थनाएँ सीखें और गाएँ – फिर मिलेंगे!",pt:"Estude e cante as orações do Bhakti Marga – até breve!"};
   var st=document.createElement("style");
   st.textContent="#bppBye{position:fixed;inset:0;z-index:2147483600;background:#1a120c;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;opacity:1;transition:opacity 2.2s ease-in .8s;cursor:pointer}"+
     "#bppBye.out{opacity:0}#bppBye img{width:min(70vw,560px);max-height:62vh;object-fit:contain;border-radius:12px}"+

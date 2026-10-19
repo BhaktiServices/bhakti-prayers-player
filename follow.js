@@ -57,36 +57,36 @@
   setInterval(function(){ if(typeof ytOn!=="undefined" && ytOn && typeof yt!=="undefined"){ try{ yt.contentWindow.postMessage(JSON.stringify({event:"listening",id:1}),"*"); }catch(e){} } }, 1500);
 })();
 /* [Grok-Bot] V1.72: Guru-Stotram-Uebersetzung (Prathana SVD) und Listen-Reihenfolge nach SVD-Inhalt, synchron nachgeladen vor dem Seitenskript. */
-if(document.readyState==="loading"){ document.write('<script src="tr-v172.js?v=177"><\/script>'); }
+if(document.readyState==="loading"){ document.write('<script src="tr-v172.js?v=178"><\/script>'); }
 /* [Grok-Bot] V1.73: Morgen-/Abendliste nach dem SVD-Inhaltsverzeichnis (Override der Anordnung aus listview.js). */
-if(document.readyState==="loading"){ document.write('<script src="plan-v173.js?v=333"><\/script>'); }
+if(document.readyState==="loading"){ document.write('<script src="plan-v173.js?v=334"><\/script>'); }
 /* [Grok-Bot] V1.74: Suprabhatam- und Govinda-Uebersetzungen nach Prathana SVD, Wochentag-Knoepfe ausgeblendet. */
-if(document.readyState==="loading"){ document.write('<script src="tr-v174.js?v=177"><\/script>'); }
+if(document.readyState==="loading"){ document.write('<script src="tr-v174.js?v=178"><\/script>'); }
 /* [Grok-Bot] V1.75: Tempo-Auswahl fuer die MP3-Wiedergabe (je Prayer gemerkt, Tonhoehe bleibt). */
 if(document.readyState==="loading"){ document.write('<script src="rate-v175.js?v=177"><\/script>'); }
 /* [Grok-Bot] V1.76: Zeitmarken als Abfolge [Zeit, Strophe] (Narasimha mit Ruecksprung 4->3), Taste "Mitlesen", Tasten -/+ nur wo sie wirken. */
-if(document.readyState==="loading"){ document.write('<script src="seq-v176.js?v=177"><\/script>'); }
+if(document.readyState==="loading"){ document.write('<script src="seq-v176.js?v=178"><\/script>'); }
 /* [Grok-Bot] V1.77: Schutz gegen Seitenfehler bei langsamer Verbindung: Zeitgeber in autoscroll.js und follow.js warten, bis autoScroll, ytOn, i und line definiert sind.
    Dazu v177.js: Tasten -/+ ueberall aus, Bhajare-Text und -Abfolge, Versionspruefung (version.json). Zusatzdateien mit ?v=177, damit kein alter Stand aus dem Cache kommt. */
-if(document.readyState==="loading"){ document.write('<script src="v177.js?v=177"><\/script>'); }
+if(document.readyState==="loading"){ document.write('<script src="v177.js?v=178"><\/script>'); }
 /* [Grok-Bot] V1.78: Akkorde Giridhari Arati und Vishnu Arati Str. 2-9 nach "Morning Prayer SVD with Chords" (v178.js). */
 if(document.readyState==="loading"){ document.write('<script src="v178.js?v=178"><\/script>'); }
 /* [Grok-Bot] V1.79: Hanuman Chalisa Uebersetzung nach SVD-Heft S. 46-48, Vishnu Arati Str. 1 Akkorde Musikerheft, Giridhari Arati mit Ton (v179.js). */
-if(document.readyState==="loading"){ document.write('<script src="v179.js?v=179"><\/script>'); }
+if(document.readyState==="loading"){ document.write('<script src="v179.js?v=180"><\/script>'); }
 /* [Grok-Bot] V1.80: Giridhari Arati mit den Mira-Strophen der Aufnahme, Uebersetzung und Abfolge (v180.js). */
-if(document.readyState==="loading"){ document.write('<script src="v180.js?v=180"><\/script>'); }
+if(document.readyState==="loading"){ document.write('<script src="v180.js?v=181"><\/script>'); }
 /* [Grok-Bot] V1.81-V1.83: Ganzseiten-Modus zum Mitlesen (v183.js ersetzt v181/v182: Ende-Bildschirm, voriges/naechstes Prayer, Wiederholen). */
-if(document.readyState==="loading"){ document.write('<script src="v183.js?v=351"><\/script>'); }
+if(document.readyState==="loading"){ document.write('<script src="v183.js?v=352"><\/script>'); }
 /* [Grok-Bot] V1.84: Govinda-MP3 (CD, gleiche Melodie wie YouTube) und voriges/naechstes Prayer im Vollbild immer sichtbar (v184.js). */
-if(document.readyState==="loading"){ document.write('<script src="v184.js?v=184"><\/script>'); }
+if(document.readyState==="loading"){ document.write('<script src="v184.js?v=185"><\/script>'); }
 /* [Grok-Bot] V1.85-V1.87: Mitlesen (Ashtotram Name fuer Name, geschaetzte Marken je Quelle, alte Strophen-Tipps entschaerft), Vollbild-Menue nur nach Tippen,
    V1.87: Strophenwechsel am Ende des Gesangs (Pausentabelle), gemessene Marken Ashtotram, Vaishnava Mantra, Kavaca (v187.js ersetzt v186.js). */
-if(document.readyState==="loading"){ document.write('<script src="v187.js?v=187"><\/script>'); }
+if(document.readyState==="loading"){ document.write('<script src="v187.js?v=188"><\/script>'); }
 /* V1.88: Mitlesen haelt an, solange die MP3 noch laedt (v188.js). */
 if(document.readyState==="loading"){ document.write('<script src="v188.js?v=188"><\/script>'); }
 /* [Grok-Bot] V1.89: Grossbild-Vorschau der ersten Zeile der naechsten Strophe bzw. des naechsten Teils waehrend der letzten Zeile, Ashtotram im Grossbild als Laufband,
    Tastenfarben einheitlich (gold = an/aktiv) und einfarbige Symbole (v189.js; v183.js?v=189 mit Symbolen und Teilwechsel-Haken). */
-if(document.readyState==="loading"){ document.write('<script src="v189.js?v=191"><\/script>'); }
+if(document.readyState==="loading"){ document.write('<script src="v189.js?v=192"><\/script>'); }
 /* [Grok-Bot] V1.90: Grossbild teilt lange Strophen nur, wenn die Schrift dadurch wirklich groesser wird (v190.js; v183.js?v=190 mit Haken bppFsSplitOk). */
 if(document.readyState==="loading"){ document.write('<script src="v190.js?v=190"><\/script>'); }
 /* [Grok-Bot] V1.91: Grossbild-Vorschau in voller Groesse (65 %), Strophe gleitet waehrend der letzten Zeile hoch, nahtloser Wechsel (v191.js; v189.js?v=191). */
@@ -98,7 +98,7 @@ if(document.readyState==="loading"){ document.write('<script src="v193.js?v=193"
 if(document.readyState==="loading"){ document.write('<script src="v194.js?v=202"><\/script>'); }
 /* [Grok-Bot] V1.95: Grossbild – die ganze naechste Strophe faehrt waehrend der letzten Zeile von unten hoch, nahtloser Wechsel (v195.js ersetzt v191.js);
    Quellenwahl als Zweier-Auswahl "YT | MP3". Laufband (v189) und Tastenschutz (v194) unveraendert. */
-if(document.readyState==="loading"){ document.write('<script src="v195.js?v=196"><\/script>'); }
+if(document.readyState==="loading"){ document.write('<script src="v195.js?v=197"><\/script>'); }
 /* [Grok-Bot] V1.96: Kavaca Stotram - Strophenzeiten MP3 und YouTube neu gemessen (Abfolge + Pausentabelle), alte Strophen-Tipps ohne Wirkung. */
 if(document.readyState==="loading"){ document.write('<script src="v196.js?v=196"><\/script>'); }
 /* [Grok.com] V1.98: Hanuman Chalisa spielt die Bhavani-Datei. BPP_BUILD muss nach v196 stehen, sonst setzt v177 die Anzeige wieder auf 1.96. */
@@ -120,7 +120,7 @@ if(document.readyState==="loading"){ document.write('<script src="v205.js?v=206"
 /* [Grok-Bot] V2.06: Wiederholen ganze Liste und Ende-Angebot "Naechstes" laufen durch alle Gebete (v183.js?v=213, v206.js). */
 if(document.readyState==="loading"){ document.write('<script src="v206.js?v=206"><\/script>'); }
 /* [Grok-Bot] V2.07: Spultasten -30 -10 +10 +30 auch im Grossbild, Strophe zurueck/vor mit eigenen Symbolen, Offline-Fehler mit Dateinamen (v207.js, v203.js?v=207). */
-if(document.readyState==="loading"){ document.write('<script src="v207.js?v=207"><\/script>'); }
+if(document.readyState==="loading"){ document.write('<script src="v207.js?v=208"><\/script>'); }
 /* [Grok-Bot] V2.08: Neustart laedt nur fehlende/geaenderte MP3 (Groesse per HEAD statt ETag), Offline-Stand sofort sichtbar (v203.js?v=208, v208.js). */
 if(document.readyState==="loading"){ document.write('<script src="v208.js?v=208"><\/script>'); }
 /* [Grok-Bot] V2.09: Strophentasten (Leiste und Grossbild) und Tastatur V/N entfernt, keine manuellen Strophen-Overrides mehr (v209.js). */

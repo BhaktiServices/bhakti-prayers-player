@@ -1,12 +1,12 @@
 /* [Grok-Bot] V3.52: Tastenkuerzel fuer alle Knoepfe (im Hover-Text), Menue+ immer ganz rechts hinter Spalten,
    Spalten immer sichtbar, Abschnitt "Tastenkuerzel" in der Hilfe (6 Sprachen).
    Flacker-Ursache (Hanuman, Mitlesen springt links/rechts) behoben in v224.js (alte Marken alle 1,5 s). */
-window.BPP_BUILD="3.53"; window.BPP_SHOW="3.53";
+window.BPP_BUILD="3.54"; window.BPP_SHOW="3.54";
 (function(){
   function $(i){ return document.getElementById(i); }
   function lg(){ var l=(typeof lang!=="undefined"&&lang)||"en"; return SPC[l]?l:"en"; }
-  var SPC={de:"Leertaste",en:"Space",fr:"Espace",es:"Espacio",ru:"Пробел",hi:"स्पेस"};
-  var MENU={de:"Weitere Knöpfe ein/aus",en:"More buttons on/off",fr:"Plus de boutons",es:"Más botones",ru:"Больше кнопок",hi:"और बटन"};
+  var SPC={de:"Leertaste",en:"Space",fr:"Espace",es:"Espacio",ru:"Пробел",hi:"स्पेस",pt:"Espaço"};
+  var MENU={de:"Weitere Knöpfe ein/aus",en:"More buttons on/off",fr:"Plus de boutons",es:"Más botones",ru:"Больше кнопок",hi:"और बटन",pt:"Mais botões lig./desl."};
   /* Taste -> Knopf. Leertaste/P, N/V, Pfeile, Bild auf/ab, Esc bleiben wie bisher (index, v313, v307, v183). */
   var K={"j":"btnBack30","l":"btnFwd30",",":"btnBack10",".":"btnFwd10","N":"btnPNext","V":"btnPPrev",
     "r":"btnRep","m":"btnAuto","g":"btnFs","t":"btnDe","a":"btnCh","s":"btnCols","+":"btnMenu",
@@ -33,6 +33,7 @@ window.BPP_BUILD="3.53"; window.BPP_SHOW="3.53";
   function titles(){
     var l=lg();
     Object.keys(LAB).forEach(function(id){ var b=$(id); if(!b) return;
+      if(id==="btnMenu"){ var mt=MENU[l]+" (+)"; if(b.title!==mt) b.title=mt; return; } /* V3.54: Sprache wechselt auch hier */
       if(id==="btnPNext"||id==="btnPPrev"){ /* v205: Titel = "Teil vor ': '" + Gebetsname -> Taste in den ersten Teil */
         var p0=String(b.title||"").split(": ")[0]; if(p0&&p0.indexOf("("+LAB[id]+")")<0) b.title=p0+" ("+LAB[id]+")"; return; }
       if(id==="btnMenu"&&!b.__base352&&!b.title) b.title=MENU[l];
@@ -55,7 +56,7 @@ window.BPP_BUILD="3.53"; window.BPP_SHOW="3.53";
     fr:["Raccourcis clavier","Espace / P lecture/pause · J / L −30/+30 s · , / . −10/+10 s · N / V strophe suivante/précédente · ⇧N / ⇧V prière suivante/précédente · ↑ ↓ PgPréc PgSuiv tourner les strophes · M suivre · G grand · Échap quitter grand · A accords · T traduction · S colonnes · + Menu+ · R répéter · Y YouTube/MP3 · B / # / X accords plus bas/haut/original · 8 / 9 / 0 hauteur −/+/0 · Q origine, sources · O télécharger · I installer l’app · W partager · H / ? aide. Les touches figurent aussi dans l’info-bulle des boutons ; inactives pendant la saisie ou avec Ctrl/Alt/Cmd."],
     es:["Atajos de teclado","Espacio / P reproducir/pausa · J / L −30/+30 s · , / . −10/+10 s · N / V estrofa siguiente/anterior · ⇧N / ⇧V oración siguiente/anterior · ↑ ↓ RePág AvPág pasar estrofas · M seguir · G grande · Esc salir de grande · A acordes · T traducción · S columnas · + Menú+ · R repetir · Y YouTube/MP3 · B / # / X acordes abajo/arriba/original · 8 / 9 / 0 tono −/+/0 · Q origen, fuentes · O descargar · I instalar app · W compartir · H / ? ayuda. Las teclas aparecen también en el texto emergente de cada botón; no actúan al escribir en un campo ni con Ctrl/Alt/Cmd."],
     ru:["Горячие клавиши","Пробел / P пуск/пауза · J / L −30/+30 с · , / . −10/+10 с · N / V следующий/предыдущий куплет · ⇧N / ⇧V следующая/предыдущая молитва · ↑ ↓ PgUp PgDn листать куплеты · M следить · G крупно · Esc выйти из крупного · A аккорды · T перевод · S колонки · + Меню+ · R повтор · Y YouTube/MP3 · B / # / X аккорды ниже/выше/исходно · 8 / 9 / 0 высота −/+/0 · Q источник · O скачать молитвы · I установить приложение · W поделиться · H / ? помощь. Клавиши видны и во всплывающей подсказке кнопок; не работают при вводе текста и с Ctrl/Alt/Cmd."],
-    hi:["कीबोर्ड शॉर्टकट","स्पेस / P चलाएँ/रोकें · J / L −30/+30 सेकंड · , / . −10/+10 सेकंड · N / V अगला/पिछला पद · ⇧N / ⇧V अगली/पिछली प्रार्थना · ↑ ↓ PgUp PgDn पद पलटें · M साथ पढ़ें · G बड़ा · Esc बड़े से बाहर · A कॉर्ड · T अनुवाद · S कॉलम · + मेनू+ · R दोहराएँ · Y YouTube/MP3 · B / # / X कॉर्ड नीचे/ऊपर/मूल · 8 / 9 / 0 पिच −/+/0 · Q स्रोत · O प्रार्थनाएँ डाउनलोड · I ऐप इंस्टॉल · W साझा करें · H / ? मदद। बटन पर माउस रखने पर भी कुंजी दिखती है; किसी फ़ील्ड में लिखते समय या Ctrl/Alt/Cmd के साथ काम नहीं करती।"]};
+    hi:["कीबोर्ड शॉर्टकट","स्पेस / P चलाएँ/रोकें · J / L −30/+30 सेकंड · , / . −10/+10 सेकंड · N / V अगला/पिछला पद · ⇧N / ⇧V अगली/पिछली प्रार्थना · ↑ ↓ PgUp PgDn पद पलटें · M साथ पढ़ें · G बड़ा · Esc बड़े से बाहर · A कॉर्ड · T अनुवाद · S कॉलम · + मेनू+ · R दोहराएँ · Y YouTube/MP3 · B / # / X कॉर्ड नीचे/ऊपर/मूल · 8 / 9 / 0 पिच −/+/0 · Q स्रोत · O प्रार्थनाएँ डाउनलोड · I ऐप इंस्टॉल · W साझा करें · H / ? मदद। बटन पर माउस रखने पर भी कुंजी दिखती है; किसी फ़ील्ड में लिखते समय या Ctrl/Alt/Cmd के साथ काम नहीं करती।"],pt:["Atalhos de teclado","Espaço / P tocar/pausa · J / L −30/+30 s · , / . −10/+10 s · N / V estrofe seguinte/anterior · ⇧N / ⇧V oração seguinte/anterior · ↑ ↓ PgUp PgDn virar estrofes · M acompanhar · G grande · Esc sair do grande · A acordes · T tradução · S colunas · + Menu+ · R repetir · Y YouTube/MP3 · B / # / X acordes abaixo/acima/original · 8 / 9 / 0 altura −/+/0 · Q origem, fontes · O baixar orações · I instalar app · W compartilhar · H / ? ajuda. As teclas aparecem também no texto ao passar o mouse sobre cada botão; não funcionam ao digitar num campo nem com Ctrl/Alt/Cmd."]};
   function help(){ var d=$("bppHelp"); if(!d||d.__k352) return; d.__k352=1; var t=HT[lg()]||HT.en, jg=d.querySelector(".jg"); if(!jg) return;
     var p=document.createElement("p"); p.innerHTML="<b>"+t[0]+":</b> "+t[1]; jg.parentNode.insertBefore(p,jg); }
   function tick(){ try{ order(); }catch(e){} try{ titles(); }catch(e){} try{ help(); }catch(e){} }

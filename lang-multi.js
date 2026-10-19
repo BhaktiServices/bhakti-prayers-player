@@ -1,17 +1,18 @@
 /* [Grok-Bot] V1.53: Sprachen DE EN FR ES RU HI. Beim ersten Start automatisch nach Browsersprache (Deutsch -> DE, Franzoesisch -> FR, Spanisch -> ES, Russisch -> RU, Hindi -> HI, Englisch -> EN; sonst DE in deutscher Zeitzone, sonst EN). Eine von Hand gewaehlte Sprache wird gemerkt. Uebersetzungen kommen aus tr-*.js (Feld z.fr, z.es, z.ru, z.hi), fehlt eine Zeile, wird Englisch gezeigt. */
 (function(){
-  var LANGS=["de","en","fr","es","ru","hi"];
+  var LANGS=["de","en","fr","es","ru","hi","pt"];
   UI.fr={ sub:"Lecture / pause ou barre d'espace. N et V : une strophe.", now:"Choisir un chant", play:"Lecture", pause:"Pause", prev:"◀ V", next:"N ▶", trOff:"Trad. non", trOn:"Trad. oui", chOff:"Pas d'accords", chOn:"Accords", chLine:"Accords par ligne", pitch:"Hauteur", foot:"Accords : livret Sri Vitthal Dham. Audio depuis Dropbox si disponible." };
   UI.es={ sub:"Reproducir / pausa o barra espaciadora. N y V: una estrofa.", now:"Elige un canto", play:"Play", pause:"Pausa", prev:"◀ V", next:"N ▶", trOff:"Trad. no", trOn:"Trad. sí", chOff:"Sin acordes", chOn:"Acordes", chLine:"Acordes por línea", pitch:"Tono", foot:"Acordes: cuadernillo Sri Vitthal Dham. Audio de Dropbox cuando existe." };
   UI.ru={ sub:"Воспроизведение / пауза или пробел. N и V: на строфу.", now:"Выберите песнопение", play:"Play", pause:"Пауза", prev:"◀ V", next:"N ▶", trOff:"Перевод выкл", trOn:"Перевод вкл", chOff:"Без аккордов", chOn:"Аккорды", chLine:"Аккорды по строке", pitch:"Тон", foot:"Аккорды: брошюра Sri Vitthal Dham. Аудио из Dropbox, где есть." };
   UI.hi={ sub:"चलाएँ / रोकें या स्पेस। N और V: एक श्लोक।", now:"एक प्रार्थना चुनें", play:"चलाएँ", pause:"रोकें", prev:"◀ V", next:"N ▶", trOff:"अनुवाद बंद", trOn:"अनुवाद चालू", chOff:"कोई कॉर्ड नहीं", chOn:"कॉर्ड", chLine:"हर पंक्ति पर कॉर्ड", pitch:"सुर", foot:"कॉर्ड: Sri Vitthal Dham पुस्तिका। ऑडियो Dropbox से, जहाँ उपलब्ध।" };
+  UI.pt={ sub:"Tocar / Pausa ou barra de espaço. N e V: uma estrofe.", legend:"ā ī ū sustentar longo  ·  ṃ ṅ ñ ṇ nasal  ·  ś ṣ sh suave / forte  ·  ṛ ri", now:"Escolha uma oração", play:"Tocar", pause:"Pausa", prev:"◀ V", next:"N ▶", trOff:"Trad. desl.", trOn:"Trad. lig.", chOff:"Sem acordes", chOn:"Acordes", chLine:"Acordes por linha", pitch:"Altura", foot:"Acordes: livreto Sri Vitthal Dham. Áudio do Dropbox quando disponível." }; /* [Grok-Bot] V3.54 Portugues */
   var X={
     de:{ hold:"lang halten", sh:"weiches / hartes sch", key:"Tonart", on:"Auto an", off:"Auto aus" },
     en:{ hold:"hold long", sh:"soft / hard sh", key:"Key", on:"Auto on", off:"Auto off" },
     fr:{ hold:"tenir long", sh:"ch doux / dur", key:"Ton", on:"Auto oui", off:"Auto non" },
     es:{ hold:"alargar", sh:"sh suave / fuerte", key:"Tono", on:"Auto sí", off:"Auto no" },
     ru:{ hold:"тянуть долго", sh:"мягкое / твёрдое ш", key:"Тон", on:"Авто вкл", off:"Авто выкл" },
-    hi:{ hold:"दीर्घ", sh:"श / ष", key:"सुर", on:"ऑटो चालू", off:"ऑटो बंद" }
+    hi:{ hold:"दीर्घ", sh:"श / ष", key:"सुर", on:"ऑटो चालू", off:"ऑटो बंद" },pt:{"hold":"sustentar longo","sh":"sh suave / forte","key":"Tom","on":"Auto lig.","off":"Auto desl."}
   };
   function cap(l){ return l.charAt(0).toUpperCase()+l.slice(1); }
   function detect(){

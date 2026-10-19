@@ -33,7 +33,7 @@
     fr:["Suivre","Suivre : la strophe suit l'enregistrement (oui / non)"],
     es:["Seguir","Seguir: la estrofa sigue la grabación (sí / no)"],
     ru:["Следить","Следить: строфа следует за записью (вкл / выкл)"],
-    hi:["साथ पढ़ें","साथ पढ़ें: पद रिकॉर्डिंग के साथ चलता है (चालू / बंद)"]};
+    hi:["साथ पढ़ें","साथ पढ़ें: पद रिकॉर्डिंग के साथ चलता है (चालू / बंद)"],pt:["Acompanhar","Acompanhar: a estrofe segue a gravação (lig. / desl.)"]};
   function lab(){
     var b=document.getElementById("btnAuto"); if(!b) return;
     var L=LAB[(typeof lang!=="undefined" && LAB[lang])?lang:"en"], on=!!(typeof autoScroll!=="undefined" && autoScroll);

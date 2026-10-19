@@ -231,6 +231,8 @@ window.bppPv191=1; /* schaltet die alte Vorschau in v189.js ab */
     var p=cur(), hasY=!!(p && p.youtube), hasM=!!(p && p.audio), isYt=(typeof ytOn!=="undefined" && !!ytOn);
     grp.style.display=(hasY || hasM)?"":"none"; if(!(hasY || hasM)) return;
     var d=de();
+    var q=(typeof lang!=="undefined"&&lang==="pt"); /* [Grok-Bot] V3.54 Portugues */
+    if(q){ set(bY, hasY, isYt, "YouTube tocando", "Mudar para YouTube", "Sem YouTube para esta oração"); set(bM, hasM, !isYt, "MP3 tocando", "Mudar para MP3", "Sem MP3 para esta oração"); return; }
     set(bY, hasY, isYt, d?"YouTube spielt":"YouTube is playing", d?"Auf YouTube umschalten":"Switch to YouTube", d?"Kein YouTube fuer dieses Prayer":"No YouTube for this prayer");
     set(bM, hasM, !isYt, d?"MP3 spielt":"MP3 is playing", d?"Auf MP3 umschalten":"Switch to MP3", d?"Keine MP3 fuer dieses Prayer":"No MP3 for this prayer");
   }

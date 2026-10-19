@@ -11,7 +11,7 @@ window.BPP_BUILD="2.07";
   var TX={de:["Strophe zur\u00fcck (Taste V)","Strophe vor (Taste N)","Strophe"],en:["Previous stanza (key V)","Next stanza (key N)","Stanza"],
     fr:["Strophe pr\u00e9c\u00e9dente (touche V)","Strophe suivante (touche N)","Strophe"],es:["Estrofa anterior (tecla V)","Estrofa siguiente (tecla N)","Estrofa"],
     ru:["\u041f\u0440\u0435\u0434\u044b\u0434\u0443\u0449\u0430\u044f \u0441\u0442\u0440\u043e\u0444\u0430 (V)","\u0421\u043b\u0435\u0434\u0443\u044e\u0449\u0430\u044f \u0441\u0442\u0440\u043e\u0444\u0430 (N)","\u0421\u0442\u0440\u043e\u0444\u0430"],
-    hi:["\u092a\u093f\u091b\u0932\u093e \u092a\u0926 (V)","\u0905\u0917\u0932\u093e \u092a\u0926 (N)","\u092a\u0926"]};
+    hi:["\u092a\u093f\u091b\u0932\u093e \u092a\u0926 (V)","\u0905\u0917\u0932\u093e \u092a\u0926 (N)","\u092a\u0926"],pt:["Estrofe anterior (tecla V)","Próxima estrofe (tecla N)","Estrofe"]};
   function tx(){ return TX[(typeof lang!=="undefined" && TX[lang])?lang:"en"]; }
   var st=document.createElement("style");
   st.textContent=".bppSt{display:inline-block;width:1.45em;height:1.45em;vertical-align:-.35em}"+

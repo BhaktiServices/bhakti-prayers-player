@@ -2,7 +2,7 @@
 window.BPP_BUILD="3.14"; window.BPP_SHOW="3.14";
 (function(){
   var U="https://t.me/wavesoflove_prayers";
-  var T={de:"Allgemeine Quelle",en:"General source",fr:"Source générale",es:"Fuente general",ru:"Общий источник",hi:"सामान्य स्रोत"};
+  var T={de:"Allgemeine Quelle",en:"General source",fr:"Source générale",es:"Fuente general",ru:"Общий источник",hi:"सामान्य स्रोत",pt:"Fonte geral"};
   var st=document.createElement("style");
   st.textContent="#bppTg a{color:#e0b45a;text-decoration:underline}";
   document.head.appendChild(st);

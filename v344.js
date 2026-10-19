@@ -2,12 +2,12 @@
    Zeilenweises Grid: Strophen nebeneinander, Lesereihenfolge links->rechts, dann naechste Reihe; jede Strophe ein Block (Akkorde, Uebersetzung).
    Unter 700 px immer 1 Spalte, 3 Spalten erst ab 1100 px. Schriftgroesse je Spaltenbreite. Mitlesen scrollt zur Reihe der aktiven Strophe
    (pinStanza nutzt die Oberkante der Strophe). Grossbild unveraendert. */
-window.BPP_BUILD="3.53"; window.BPP_SHOW="3.53";
+window.BPP_BUILD="3.54"; window.BPP_SHOW="3.54";
 (function(){
   if(window.bppV344) return; window.bppV344=1;
   var KEY="bpp-cols", GAP=22;
-  var LAB={de:"Spalten",en:"Columns",fr:"Colonnes",es:"Columnas",ru:"Колонки",hi:"कॉलम"};
-  var TIT={de:"Strophen in 1, 2 oder 3 Spalten nebeneinander",en:"Stanzas in 1, 2 or 3 columns side by side",fr:"Strophes sur 1, 2 ou 3 colonnes",es:"Estrofas en 1, 2 o 3 columnas",ru:"Строфы в 1, 2 или 3 колонки",hi:"श्लोक 1, 2 या 3 कॉलम में"};
+  var LAB={de:"Spalten",en:"Columns",fr:"Colonnes",es:"Columnas",ru:"Колонки",hi:"कॉलम",pt:"Colunas"};
+  var TIT={de:"Strophen in 1, 2 oder 3 Spalten nebeneinander",en:"Stanzas in 1, 2 or 3 columns side by side",fr:"Strophes sur 1, 2 ou 3 colonnes",es:"Estrofas en 1, 2 o 3 columnas",ru:"Строфы в 1, 2 или 3 колонки",hi:"श्लोक 1, 2 या 3 कॉलम में",pt:"Estrofes em 1, 2 ou 3 colunas lado a lado"};
   function want(){ var v=parseInt(localStorage.getItem(KEY)||"1",10); return v>=1&&v<=3?v:1; }
   function maxCols(){ var w=window.innerWidth||1000; return w<700?1:(w<1100?2:3); }
   function eff(){ return Math.min(want(), maxCols()); }

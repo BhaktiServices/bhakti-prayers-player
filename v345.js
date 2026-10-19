@@ -2,7 +2,7 @@
    Hover/Fokus am Rechner, langes Druecken am Handy (kurzes Tippen oeffnet wie bisher den Link). Bleibt im Bildschirm (Position und Schrift
    werden angepasst), schwebt ueber dem Inhalt (position:fixed) - es springt nichts. */
 window.bppV345=1;
-window.BPP_BUILD="3.53"; window.BPP_SHOW="3.53";
+window.BPP_BUILD="3.54"; window.BPP_SHOW="3.54";
 (function(){
   var T={
     de:["Im Atma Bhog findet Ihr gut sortiert","mit feiner Bedienoberfläche alle Kirtans, Abhangs,","Bhajans und Prayers von Bhakti Marga … enjoy."],
@@ -10,7 +10,7 @@ window.BPP_BUILD="3.53"; window.BPP_SHOW="3.53";
     fr:["Dans Atma Bhog, vous trouverez, bien classés","et avec une interface soignée, tous les kirtans, abhangs,","bhajans et prières de Bhakti Marga … enjoy."],
     es:["En Atma Bhog encontraréis, bien ordenados","y con una interfaz cuidada, todos los kirtans, abhangs,","bhajans y oraciones de Bhakti Marga … enjoy."],
     ru:["В Atma Bhog вы найдёте, удобно рассортированные","и с красивым интерфейсом, все киртаны, абханги,","бхаджаны и молитвы Бхакти Марги … enjoy."],
-    hi:["आत्म भोग में सुव्यवस्थित रूप से","और सुंदर इंटरफ़ेस के साथ सभी कीर्तन, अभंग,","भजन और भक्ति मार्ग की प्रार्थनाएँ मिलेंगी … enjoy."]
+    hi:["आत्म भोग में सुव्यवस्थित रूप से","और सुंदर इंटरफ़ेस के साथ सभी कीर्तन, अभंग,","भजन और भक्ति मार्ग की प्रार्थनाएँ मिलेंगी … enjoy."],pt:["No Atma Bhog você encontra, bem organizados","e com uma bela interface, todos os kirtans, abhangs,","bhajans e orações do Bhakti Marga … aproveite."]
   };
   var css=document.createElement("style");
   css.textContent="#bppAtmaTip{position:fixed;z-index:2147483600;left:0;top:0;padding:9px 14px;border:1px solid #D6BF90;border-radius:12px;background:#041236;color:#D6BF90;"+
