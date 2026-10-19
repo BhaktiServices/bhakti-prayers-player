@@ -6,7 +6,7 @@
    bei mehrfach vorkommenden Strophen in Blaetterrichtung. Dann seek (Datei oder YouTube seekTo), Mitlesen laeuft weiter; Pause bleibt Pause.
    Strophen ohne Zeit (z.B. Vishnu-Arati 10-12) und die gerade laufende Strophe: kein Spulen. Mitlesen aus: Blaettern bleibt reine Ansicht.
    Programmatisches Mitscrollen setzt bppManualAt nie -> loest kein Spulen aus. */
-window.BPP_BUILD="3.50"; window.BPP_SHOW="3.50";
+window.BPP_BUILD="3.51"; window.BPP_SHOW="3.51";
 (function(){
   if(window.bppV347) return; window.bppV347=1;
   var DELAY=800, lastM=window.bppManualAt||0, timer=null, startK=null;
@@ -91,11 +91,24 @@ window.BPP_BUILD="3.50"; window.BPP_SHOW="3.50";
     release();
     try{ if(!fsOn() && typeof pinStanza==="function") setTimeout(pinStanza,30); }catch(e){}
   }
+  /* [Grok-Bot] V3.51: Scrollen/Wischen/Mausrad = nur Ansicht; Mitlesen pausiert, 2 s nach dem letzten Schritt zurueck zur laufenden Strophe.
+     Spulen nur noch bei explizitem Klick (Tipp auf Strophe V3.49, Grossbild-Knoepfe/Pfeile links-rechts: bppExplicitM). */
+  var VIEW=2000;
+  function back(){
+    clear(); release();
+    if(fsOn() || !follow()) return;
+    try{ var tk=timeK(), gs=stanzaGroups(P()), n=currentGroupIndex();
+      if(tk!=null && gs[tk] && n!==tk){ line=gs[tk].start; try{ persistNow(); }catch(e){} paintLyrics(); }
+      setTimeout(pinStanza,30); }catch(e){}
+  }
+  function viewOnly(){ clearTimeout(timer); window.bppSeekPending=true; startK=null; pre(null); bar(false); timer=setTimeout(back, VIEW); }
   function onManual(){
     if(!follow() || !P()){ clear(); return; }
+    if(window.bppV351 && window.bppExplicitM!==window.bppManualAt){ viewOnly(); return; }
     if(startK===null) startK=timeK();
     window.bppSeekPending=true;
     clearTimeout(timer); timer=setTimeout(fire, DELAY);
+    if(window.bppV351) return; /* V3.51: keine gestrichelte Vormarkierung / kein Fortschrittsstrich mehr */
     setTimeout(function(){ if(window.bppSeekPending) pre(shownK()); }, 40);
     bar(true);
   }
@@ -105,7 +118,7 @@ window.BPP_BUILD="3.50"; window.BPP_SHOW="3.50";
   }, 60);
   window.bppV347Manual=function(){ window.bppManualAt=Date.now(); };
   window.bppV347Starts=startsOf;
-  window.bppV347Fire=function(){ clearTimeout(timer); timer=null; window.bppSeekPending=true; fire(); }; /* V3.49: Tipp auf Strophe -> sofort */
+  window.bppV347Fire=function(){ lastM=window.bppManualAt||0; clearTimeout(timer); timer=null; window.bppSeekPending=true; fire(); }; /* V3.49: Tipp auf Strophe -> sofort */
   /* Prayer-Wechsel / Mitlesen aus waehrend der Wartezeit -> abbrechen */
   var lastP=null; setInterval(function(){ var p=P(), id=p?p.id:null; if(id!==lastP){ lastP=id; clear(); } if(timer && !follow()) clear(); }, 200);
 })();

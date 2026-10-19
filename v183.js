@@ -252,10 +252,10 @@ window.BPP_BUILD="1.83";
   function syncPlay(){ if(!bPlay) return; var on=playing(), c=on?"pa":"pl"; bPlay.classList.toggle("on", on); var ic=bPlay.firstChild; if(!ic || ic.className!==c) bPlay.innerHTML="<i class='"+c+"'></i>"; bPlay.title=on?"Pause":"Play"; bPlay.setAttribute("aria-label", bPlay.title); }
   function doToggle(){ try{ togglePlay(); }catch(e){} holdUntil=0; syncPlay(); [150,400,900].forEach(function(t){ setTimeout(function(){ syncPlay(); draw(); }, t); }); }
   function showBar(){ bar.classList.remove("hid"); clearTimeout(hideT); if(endIs) return; hideT=setTimeout(function(){ if(!endIs) bar.classList.add("hid"); }, 3000); }
-  function go(d){
+  function go(d,how){
     var gs=groups(), pg=pages(curK<0?0:curK);
     /* [Grok-Bot] V3.47: bei Mitlesen an wie manuelles Blaettern -> Spulen erst nach 800 ms (v347.js) */
-    if(window.bppV347 && typeof autoScroll!=="undefined" && autoScroll && timed() && window.bppFsStep){ window.bppFsStep(d); window.bppManualAt=Date.now(); showBar(); return; }
+    if(window.bppV347 && typeof autoScroll!=="undefined" && autoScroll && timed() && window.bppFsStep){ window.bppFsStep(d); window.bppManualAt=Date.now(); if(how!=="swipe") window.bppExplicitM=window.bppManualAt; showBar(); return; } /* V3.51: Knoepfe/Pfeile = expliziter Klick */
     if(d>0 && page<pg.length-1 && !(timed() && playing())){ page++; holdUntil=Date.now()+20000; lastKey=""; draw(); return; }
     if(d<0 && page>0 && !(timed() && playing())){ page--; holdUntil=Date.now()+20000; lastKey=""; draw(); return; }
     var k=Math.max(0, Math.min(gs.length-1, (curK<0?0:curK)+d)); if(k===curK && d!==0){ return; }
@@ -307,7 +307,7 @@ window.BPP_BUILD="1.83";
     ov.addEventListener("touchend", function(e){ if(x0===null) return; var t=e.changedTouches[0], dx=t.clientX-x0, dy=t.clientY-y0; x0=null;
       lastTouchEnd=Date.now(); if(bar.contains(e.target) || (endBox && endBox.contains(e.target))) return;
       if(endIs && Math.abs(dx)<20 && Math.abs(dy)<20){ endOff(); lastTap=0; return; }
-      if(Math.abs(dx)>50 && Math.abs(dx)>Math.abs(dy)*1.3){ go(dx<0?1:-1); lastTap=0; }
+      if(Math.abs(dx)>50 && Math.abs(dx)>Math.abs(dy)*1.3){ go(dx<0?1:-1,"swipe"); lastTap=0; }
       else if(Math.abs(dx)<20 && Math.abs(dy)<20){ if(lastTouchEnd-lastTap<350){ lastTap=0; doToggle(); } else lastTap=lastTouchEnd; showBar(); } }, {passive:true});
     document.addEventListener("keydown", function(e){ if(!isOn) return;
       if(e.key==="Escape"){ close(); } else if(e.key==="ArrowRight"||e.key==="PageDown"){ go(1); e.preventDefault(); } else if(e.key==="ArrowLeft"||e.key==="PageUp"){ go(-1); e.preventDefault(); }

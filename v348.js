@@ -4,7 +4,7 @@
    Neu: unsichtbarer Leerraum unter der letzten Strophe (#lyrics::after, Hoehe per --bppTail), genau so gross, dass auch die letzte Strophe
    (bzw. letzte Reihe bei 2/3 Spalten) oben im Fenster stehen kann. Dazu ein kurzer Hinweis (6 Sprachen), wenn man bei "Mitlesen an" auf eine
    Strophe ohne Zeitmarke blaettert (nicht in der Aufnahme, z.B. Vishnu-Arati 10-12): dann wird nicht gespult. Grossbild unveraendert (je Strophe). */
-window.BPP_BUILD="3.50"; window.BPP_SHOW="3.50";
+window.BPP_BUILD="3.51"; window.BPP_SHOW="3.51";
 (function(){
   if(window.bppV348) return; window.bppV348=1;
   var GAP=12;
@@ -58,5 +58,5 @@ window.BPP_BUILD="3.50"; window.BPP_SHOW="3.50";
     var has=false; try{ has=window.bppV347Starts(k).length>0; }catch(e){ has=true; }
     if(!has) toast();
   }
-  setInterval(function(){ var m=window.bppManualAt||0; if(m!==lastM){ lastM=m; clearTimeout(tm); tm=setTimeout(check, 900); } }, 60);
+  setInterval(function(){ var m=window.bppManualAt||0; if(m!==lastM){ lastM=m; if(window.bppV351 && window.bppExplicitM!==m) return; clearTimeout(tm); tm=setTimeout(check, 900); } }, 60);
 })();
