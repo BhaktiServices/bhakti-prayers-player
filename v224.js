@@ -13,9 +13,14 @@
     var a=96, b=452, n=20;
     for(var i=0;i<n;i++) seq.push([Math.round((a+(b-a)*i/n)*10)/10, 3+i]);
     seq.push([454.5,23],[508,24]);
+    /* [Grok-Bot] V3.52: nicht mehr alle 1,5 s die alten linearen Marken setzen, wenn v306 (gemessen) schon gilt -
+       sonst kurzes Zurueckspringen auf die Vorstrophe (Mitlesen flackerte z.B. Str. 5/6 bei 2 Spalten) */
+    if(!(h.marksFile && h.marksFile[6]===139.5)){
     h.seqYt=seq; h.seqFile=seq;
     var m=[]; seq.forEach(function(e){ if(m[e[1]]==null) m[e[1]]=e[0]; });
     h.marksYt=m; h.marksFile=m;
+    }
+    if(h.zeilen.some(function(z){ return /rāmaji se rāma/.test(z.sa||""); }))
     h.zeilen=h.zeilen.filter(function(z){ return !/rāmaji se rāma/.test(z.sa||""); });
     h.zeilen.forEach(function(z,i){ z.nr=String(i+1); z.x2=false; }); /* [Grok.com] Kanakadas ohne Ramaji-Refrain */
     try{

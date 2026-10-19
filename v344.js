@@ -2,7 +2,7 @@
    Zeilenweises Grid: Strophen nebeneinander, Lesereihenfolge links->rechts, dann naechste Reihe; jede Strophe ein Block (Akkorde, Uebersetzung).
    Unter 700 px immer 1 Spalte, 3 Spalten erst ab 1100 px. Schriftgroesse je Spaltenbreite. Mitlesen scrollt zur Reihe der aktiven Strophe
    (pinStanza nutzt die Oberkante der Strophe). Grossbild unveraendert. */
-window.BPP_BUILD="3.51"; window.BPP_SHOW="3.51";
+window.BPP_BUILD="3.52"; window.BPP_SHOW="3.52";
 (function(){
   if(window.bppV344) return; window.bppV344=1;
   var KEY="bpp-cols", GAP=22;
@@ -26,7 +26,7 @@ window.BPP_BUILD="3.51"; window.BPP_SHOW="3.51";
     var pad=0, st=box.querySelector(".stanza"); if(st){ var s2=getComputedStyle(st); pad=parseFloat(s2.paddingLeft||0)+parseFloat(s2.paddingRight||0)+parseFloat(s2.borderLeftWidth||0)+parseFloat(s2.borderRightWidth||0); }
     box.style.setProperty("--sc","1"); box.classList.remove("fitwrap"); box.classList.add("measure");
     var Lm=0; box.querySelectorAll(".rowline .sa .ln").forEach(function(el){ var x=el.getBoundingClientRect().width; if(x>Lm) Lm=x; });
-    box.classList.remove("measure"); if(!Lm) return;
+    box.classList.remove("measure"); if(!Lm){ box.__v344sc="1"; return; } /* [Grok-Bot] V3.52: sonst Endlosschleife im MutationObserver (leere Lyrics) */
     var sc=(colW-pad-16)/Lm; if(sc>2.0) sc=2.0;
     if(sc<0.72){ sc=0.72; box.classList.add("fitwrap"); }
     box.__v344sc=String(Math.floor(sc*1000)/1000); box.style.setProperty("--sc",box.__v344sc);
@@ -59,7 +59,7 @@ window.BPP_BUILD="3.51"; window.BPP_SHOW="3.51";
     var mx=maxCols(), n=eff();
     var t=L(LAB)+" "+n; if(b.textContent!==t) b.textContent=t; b.title=L(TIT);
     b.classList.toggle("on", n>1);
-    var hide=mx<2; if(b.style.display!==(hide?"none":"")) b.style.display=hide?"none":"";
+    var hide=false; /* [Grok-Bot] V3.52: Spalten immer sichtbar */ if(b.style.display!==(hide?"none":"")) b.style.display=hide?"none":"";
   }
   var lastMx=maxCols(), rt=null;
   window.addEventListener("resize",function(){ clearTimeout(rt); rt=setTimeout(function(){ var mx=maxCols(); sync(); if(mx!==lastMx){ lastMx=mx; relayout(); } },150); });

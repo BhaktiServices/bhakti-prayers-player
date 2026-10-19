@@ -8,6 +8,7 @@
   function marks(s){ var m=[]; s.forEach(function(e){ if(m[e[1]]==null) m[e[1]]=e[0]; }); return m; }
   function apply(){
     if(typeof PRAYERS==="undefined") return;
+    if(window.bppV351) return; /* [Grok-Bot] V3.52: V3.51-Schlusszeiten nicht kurz ueberschreiben */
     var k=PRAYERS.find(function(p){ return p.id==="kavacham"; }); if(!k||!k.seqFile) return;
     var base=k.seqFile.filter(function(e){ return e[1]<45; });
     var s=base.concat(NEW);
