@@ -1,7 +1,7 @@
 /* [Grok-Bot] V2.33: Giridhārī Āratī – Strophen-Nummerierung durchgehend (wie Prathana SVD S. 28).
    Alte a/b/c-Suffixe entfernt, nr jetzt fortlaufend 1–13, damit Anzeige und Gruppierung linear sind.
    Bestehende Texte und Übersetzungen bleiben unverändert. */
-window.BPP_BUILD="3.52"; window.BPP_SHOW="3.52";
+window.BPP_BUILD="3.53"; window.BPP_SHOW="3.53";
 (function(){
   if(window.bppV233) return; window.bppV233=1;
   function apply(){
@@ -26,9 +26,9 @@ window.BPP_BUILD="3.52"; window.BPP_SHOW="3.52";
   window.addEventListener("load", apply);
   setInterval(apply, 1000);
   function ver(){
-    window.BPP_SHOW="3.52"; window.BPP_BUILD="3.52";
-    var v=document.querySelector("h1 .ver"); if(v && v.textContent!=="V3.52") v.textContent="V3.52";
-    if(document.title!=="Bhakti Prayers Player V3.52") document.title="Bhakti Prayers Player V3.52";
+    window.BPP_SHOW="3.53"; window.BPP_BUILD="3.53";
+    var v=document.querySelector("h1 .ver"); if(v && v.textContent!=="V3.53") v.textContent="V3.53";
+    if(document.title!=="Bhakti Prayers Player V3.53") document.title="Bhakti Prayers Player V3.53";
   }
   if(document.readyState==="loading") document.addEventListener("DOMContentLoaded", ver); else ver();
   setInterval(ver, 1500);
