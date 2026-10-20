@@ -3,7 +3,7 @@
    Kein Tipp bei Wischen/Scrollen (Bewegung > 10 px, Blaetterschritt kurz davor), langem Druecken (> 600 ms) oder markiertem Text.
    Links/Knoepfe/Eingaben in den Lyrics bleiben unberuehrt. Tipp auf die laufende Strophe: nur nach oben holen (keine Selbstkorrektur-Marke mehr
    bei Mitlesen an). Mitlesen aus: altes Verhalten (el.onclick). Grossbild unveraendert (eigenes Overlay, erster Tipp = Menue). */
-window.BPP_BUILD="3.56"; window.BPP_SHOW="3.56";
+window.BPP_BUILD="3.57"; window.BPP_SHOW="3.57";
 (function(){
   if(window.bppV349) return; window.bppV349=1;
   var down=null;
