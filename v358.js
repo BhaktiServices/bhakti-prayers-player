@@ -47,7 +47,7 @@
       b.classList.add("m358"); if(b.textContent!==s[0]) b.textContent=s[0];
       var lv=s[1]===true?2:(s[1]===false?0:s[1]); if(b.classList.contains("act358")!==(lv===2)) b.classList.toggle("act358",lv===2); if(b.classList.contains("s358")!==(lv===1)) b.classList.toggle("s358",lv===1);
       if(b.classList.contains("on")) b.classList.remove("on"); if(b.classList.contains("gold")) b.classList.remove("gold");
-      var ti=(s[2]||s[0])+" ("+KEY[id]+")"; if(b.title!==ti) b.title=ti; if(b.getAttribute("aria-label")!==s[0]) b.setAttribute("aria-label",s[0]);
+      if(id!=="btnMenu"){ var ti=(s[2]||s[0])+(id==="btnPlay"?"":" ("+KEY[id]+")"); if(id==="btnPlay"&&b.title.indexOf(ti+" (")===0){} else if(b.title!==ti) b.title=ti; } if(b.getAttribute("aria-label")!==s[0]) b.setAttribute("aria-label",s[0]);
       b.setAttribute("aria-pressed",lv?"true":"false"); });
     var r=$("btnRep"); if(r){ var rp=+(localStorage.getItem("bpp-rep")||0); rp=rp===1||rp===2?rp:0; r.classList.add("m358"); r.classList.remove("on","gold");
       if(r.classList.contains("s358")!==(rp===1)) r.classList.toggle("s358",rp===1); if(r.classList.contains("act358")!==(rp===2)) r.classList.toggle("act358",rp===2); }
