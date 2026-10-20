@@ -1,6 +1,6 @@
 /* [Grok-Bot] V3.39: Grossbild - Schliessen-X immer sichtbar (oben rechts, dezent in der Farbe der Kopfzeile),
    nicht erst nach Tipp/Menue-Einblendung. Tipp auf das X schliesst sofort; jeder andere erste Tipp zeigt wie bisher nur die Leiste. */
-window.BPP_BUILD="3.55"; window.BPP_SHOW="3.55";
+window.BPP_BUILD="3.56"; window.BPP_SHOW="3.56";
 (function(){
   var css=document.createElement("style");
   css.textContent="#bppFsX{position:absolute;top:2px;right:4px;z-index:5;width:40px;height:40px;padding:0;border:0;border-radius:50%;"+
