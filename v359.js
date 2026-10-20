@@ -43,3 +43,16 @@
   function all(){ [].forEach.call(document.querySelectorAll("button[id]"),guard); }
   all(); setInterval(all,500);
 })();
+/* [Grok-Bot] V3.59: Tastenkuerzel lassen den sichtbaren Knopf kurz aufleuchten (250 ms Glow, nur box-shadow/filter, kein Layout-Sprung).
+   Tastenkuerzel loesen b.click() aus (nicht "trusted") -> genau diese Klicks leuchten; echte Maus-/Touch-Klicks nicht. */
+(function(){
+  var st=document.createElement("style");
+  st.textContent=".bpp359g{box-shadow:0 0 12px 3px rgba(255,214,120,.9)!important;outline:2px solid rgba(255,214,120,.95)!important;outline-offset:1px!important;filter:brightness(1.2)}";
+  document.head.appendChild(st);
+  var map={btnPlay:"bppFsPlay"};
+  function fl(b){ if(!b||b.offsetParent===null) return; b.classList.remove("bpp359g"); void b.offsetWidth; b.classList.add("bpp359g");
+    clearTimeout(b.__g359); b.__g359=setTimeout(function(){ b.classList.remove("bpp359g"); },260); }
+  document.addEventListener("click",function(e){ if(e.isTrusted) return;
+    var b=e.target&&e.target.closest&&e.target.closest("button"); if(!b) return;
+    fl(b); if(map[b.id]) fl(document.getElementById(map[b.id])); },true);
+})();
