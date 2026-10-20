@@ -1,6 +1,6 @@
 /* [Grok-Bot] V3.43: Knopf "Atma Bhog" (Link https://www.atmabhog.org, neuer Tab) in der linken Kopfspalte neben der Hilfe-Blase,
    AtmaBhog-Stil (Navy, Gold #D6BF90, Figtree), nur Text (kein fremdes Logo). Tooltip je Sprache. Rechte Spalte (Version, Sprache) bleibt frei. */
-window.BPP_BUILD="3.58"; window.BPP_SHOW="3.58";
+window.BPP_BUILD="3.59"; window.BPP_SHOW="3.59";
 (function(){
   if(window.bppV343) return; window.bppV343=1;
   var T={

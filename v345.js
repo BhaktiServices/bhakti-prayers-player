@@ -2,7 +2,7 @@
    Hover/Fokus am Rechner, langes Druecken am Handy (kurzes Tippen oeffnet wie bisher den Link). Bleibt im Bildschirm (Position und Schrift
    werden angepasst), schwebt ueber dem Inhalt (position:fixed) - es springt nichts. */
 window.bppV345=1;
-window.BPP_BUILD="3.58"; window.BPP_SHOW="3.58";
+window.BPP_BUILD="3.59"; window.BPP_SHOW="3.59";
 (function(){
   var T={
     de:["Im Atma Bhog findet Ihr gut sortiert","mit feiner Bedienoberfläche alle Kirtans, Abhangs,","Bhajans und Prayers von Bhakti Marga … enjoy."],
