@@ -37,7 +37,7 @@ window.BPP_BUILD="3.07"; window.BPP_SHOW="3.07";
   window.addEventListener("keydown",function(e){
     if(typing(e.target)||e.altKey||e.ctrlKey||e.metaKey) return;
     if(document.getElementById("bppHelp")) return;
-    var d=(e.key==="ArrowDown"||e.key==="PageDown")?1:(e.key==="ArrowUp"||e.key==="PageUp")?-1:0;
+    var d=(e.key==="PageDown")?1:(e.key==="PageUp")?-1:0; /* [Grok-Bot] V3.60: Pfeil hoch/runter markiert nur (v360.js) */
     if(!d) return;
     if(!fsOn() && (typeof i==="undefined"||i<0)) return;
     e.preventDefault(); e.stopImmediatePropagation(); step(d);

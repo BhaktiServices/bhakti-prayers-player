@@ -1,7 +1,7 @@
 /* [Grok-Bot] V3.52: Tastenkuerzel fuer alle Knoepfe (im Hover-Text), Menue+ immer ganz rechts hinter Spalten,
    Spalten immer sichtbar, Abschnitt "Tastenkuerzel" in der Hilfe (6 Sprachen).
    Flacker-Ursache (Hanuman, Mitlesen springt links/rechts) behoben in v224.js (alte Marken alle 1,5 s). */
-window.BPP_BUILD="3.59"; window.BPP_SHOW="3.59";
+window.BPP_BUILD="3.60"; window.BPP_SHOW="3.60";
 (function(){
   function $(i){ return document.getElementById(i); }
   function lg(){ var l=(typeof lang!=="undefined"&&lang)||"en"; return SPC[l]?l:"en"; }

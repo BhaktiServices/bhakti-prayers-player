@@ -8,7 +8,7 @@
    (2) Scroll-Seek geaendert (v347/v348/v183): Wischen/Mausrad/Trackpad/Pfeil hoch-runter = nur Ansicht, Mitlesen pausiert, 2 s nach dem letzten
    Schritt zurueck zur laufenden Strophe; Spulen nur per Tipp/Klick auf eine Strophe (V3.49) bzw. im Grossbild mit den Knoepfen < > und
    Pfeil links/rechts (explizit, nach 800 ms); keine gestrichelte Vormarkierung mehr; Hinweis "nicht in der Aufnahme" nur bei Tipp/Klick. */
-window.BPP_BUILD="3.59"; window.BPP_SHOW="3.59";
+window.BPP_BUILD="3.60"; window.BPP_SHOW="3.60";
 (function(){
   if(window.bppV351) return; window.bppV351=1;
   var L4=["Dm  Bb  C  Dm","Bb  C  Dm","Bb  C  Dm"], CH="Dm  Bb  C  Dm   Bb  C  Dm   Bb  C  Dm   Bb  C  Dm";
