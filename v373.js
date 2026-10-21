@@ -2,7 +2,7 @@
    Nach 3 s, oder frueher sobald der Lagesensor "hochkant gehalten" meldet, wird die Sperre komplett geloest (unlock, keine Hochformat-Sperre),
    damit sich die Grossansicht frei mit dem Handy dreht. Beim Verlassen der Grossansicht ebenfalls unlock. Ersetzt v372.js; die zweite
    Sperre aus v349.js ist abgeschaltet. iOS: Sensor-Erlaubnis im selben Tipp, ohne Lock einfach aktuelle Lage. Desktop unveraendert. */
-window.BPP_BUILD="3.73"; window.BPP_SHOW="3.73";
+/* [Grok-Bot] V3.75: Sperrdauer 6 s, Sensor-Freigabe entfernt. */
 (function(){
   if(window.bppV373) return; window.bppV373=1;
   var coarse=window.matchMedia("(pointer:coarse)");
@@ -12,15 +12,10 @@ window.BPP_BUILD="3.73"; window.BPP_SHOW="3.73";
   function free(){ try{ var o=so(); if(o && typeof o.unlock==="function") o.unlock(); }catch(e){} window.bppV373Free=(window.bppV373Free||0)+1; }
   function perm(){ [window.DeviceOrientationEvent, window.DeviceMotionEvent].forEach(function(E){
     try{ if(E && typeof E.requestPermission==="function") E.requestPermission().catch(function(){}); }catch(e){} }); }
-  function start(id){
+  function start(id){ /* [Grok-Bot] V3.75: immer volle 6 s quer gesperrt, keine vorzeitige Freigabe per Sensor */
     var o=so(); if(!o || typeof o.lock!=="function") return;
-    var hoch=0, done=false, t=null;
-    function end(){ if(done) return; done=true; clearTimeout(t); removeEventListener("deviceorientation", onO); removeEventListener("devicemotion", onM); if(id===run) free(); }
-    function onO(e){ if(e.gamma==null||e.beta==null) return; if(Math.abs(e.beta)>45&&Math.abs(e.gamma)<35&&++hoch>=3) end(); }
-    function onM(e){ var a=e.accelerationIncludingGravity; if(!a||a.x==null||a.y==null) return; var x=Math.abs(a.x), y=Math.abs(a.y); if(y>6&&y>x*1.5&&++hoch>=3) end(); }
-    addEventListener("deviceorientation", onO); addEventListener("devicemotion", onM);
     try{ var p=o.lock("landscape"); if(p&&p.catch) p.catch(function(){}); }catch(e){}
-    t=setTimeout(end, 3000);
+    setTimeout(function(){ if(id===run) free(); }, 6000);
   }
   function hook(){
     var b=document.getElementById("btnFs"); if(!b || b._v373) return; b._v373=1;
