@@ -3,7 +3,7 @@
    Kein Tipp bei Wischen/Scrollen (Bewegung > 10 px, Blaetterschritt kurz davor), langem Druecken (> 600 ms) oder markiertem Text.
    Links/Knoepfe/Eingaben in den Lyrics bleiben unberuehrt. Tipp auf die laufende Strophe: nur nach oben holen (keine Selbstkorrektur-Marke mehr
    bei Mitlesen an). Mitlesen aus: altes Verhalten (el.onclick). Grossbild unveraendert (eigenes Overlay, erster Tipp = Menue). */
-window.BPP_BUILD="3.72"; window.BPP_SHOW="3.72";
+window.BPP_BUILD="3.73"; window.BPP_SHOW="3.73";
 (function(){
   if(window.bppV349) return; window.bppV349=1;
   var down=null;
@@ -82,7 +82,7 @@ window.BPP_BUILD="3.72"; window.BPP_SHOW="3.72";
       try{ var r=ov && ov.requestFullscreen && ov.requestFullscreen(); if(r && r.then) r.then(go, function(){ hint(); }); else go(); }catch(e){ hint(); }
     }
   }
-  function opened(){ if(!touchDev()) return; setTimeout(tryLock, 250); }
+  function opened(){ return; /* [Grok-Bot] V3.73: keine eigene Querformat-Sperre mehr (sperrte nach v372 erneut); Sperre/Freigabe nur noch in v373.js */ }
   function closed(){
     clearTimeout(hideT); var h=document.getElementById("bppRot"); if(h) h.classList.remove("on");
     if(!touchDev()) return;
