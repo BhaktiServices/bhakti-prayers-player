@@ -2,7 +2,7 @@
    Zeilenweises Grid: Strophen nebeneinander, Lesereihenfolge links->rechts, dann naechste Reihe; jede Strophe ein Block (Akkorde, Uebersetzung).
    Unter 700 px immer 1 Spalte, 3 Spalten erst ab 1100 px. Schriftgroesse je Spaltenbreite. Mitlesen scrollt zur Reihe der aktiven Strophe
    (pinStanza nutzt die Oberkante der Strophe). Grossbild unveraendert. */
-window.BPP_BUILD="3.62"; window.BPP_SHOW="3.62";
+window.BPP_BUILD="3.63"; window.BPP_SHOW="3.63";
 (function(){
   if(window.bppV344) return; window.bppV344=1;
   var KEY="bpp-cols", GAP=22;
