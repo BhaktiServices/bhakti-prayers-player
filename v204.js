@@ -77,7 +77,7 @@ window.BPP_BUILD="2.04";
   var BROKER="wss://broker.emqx.io:8084/mqtt", TOPIC="bpp/clbuerger/presence/v1/", WIN=10*60*1000, peers={}, client=null, sid="", city="", country="";
   try{ sid=sessionStorage.getItem("bpp-presence-id"); if(!sid){ sid="s"+Math.random().toString(16).slice(2)+Date.now().toString(16); sessionStorage.setItem("bpp-presence-id", sid); } }catch(e){ sid="s"+Math.random().toString(16).slice(2); }
   function livePaint(){
-    var el=document.getElementById("bpp-live"); if(!el) return;
+    var el=document.getElementById("bpp-live"); if(!el) return; el.textContent=""; return; /* [Grok-Bot] V3.70 */
     var now=Date.now(), by={};
     Object.keys(peers).forEach(function(id){ var p=peers[id]; if(!p || now-p.t>WIN){ delete peers[id]; return; } if(!p.c && !p.o) return; var l=[p.c, p.o].filter(Boolean).join(", "); by[l]=(by[l]||0)+1; });
     var rows=Object.keys(by).map(function(k){ return {n:k, c:by[k]}; }).sort(function(a, b){ return b.c-a.c || a.n.localeCompare(b.n); }).slice(0, 10);
@@ -87,6 +87,7 @@ window.BPP_BUILD="2.04";
   function pub(){ if(!client || !client.connected) return; var b=body(); try{ client.publish(TOPIC+sid, b, {qos:0, retain:true}); peers[sid]=JSON.parse(b); livePaint(); }catch(e){} }
   function clearMine(){ if(client && sid) try{ client.publish(TOPIC+sid, "", {qos:0, retain:true}); }catch(e){} }
   function connect(){
+    return; /* [Grok-Bot] V3.70: "aktiv in" entfernt; keine eigene Presence-Verbindung mehr. Die 24-h-Orte (v366.js) laufen ueber das visits-Topic und lesen alte Presence-Eintraege selbst mit. */
     if(client || !navigator.onLine) return;
     function go(){ if(!window.mqtt) return;
       try{
