@@ -6,7 +6,7 @@
    bei mehrfach vorkommenden Strophen in Blaetterrichtung. Dann seek (Datei oder YouTube seekTo), Mitlesen laeuft weiter; Pause bleibt Pause.
    Strophen ohne Zeit (z.B. Vishnu-Arati 10-12) und die gerade laufende Strophe: kein Spulen. Mitlesen aus: Blaettern bleibt reine Ansicht.
    Programmatisches Mitscrollen setzt bppManualAt nie -> loest kein Spulen aus. */
-window.BPP_BUILD="3.64"; window.BPP_SHOW="3.64";
+window.BPP_BUILD="3.65"; window.BPP_SHOW="3.65";
 (function(){
   if(window.bppV347) return; window.bppV347=1;
   var DELAY=800, lastM=window.bppManualAt||0, timer=null, startK=null;
