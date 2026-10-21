@@ -4,7 +4,7 @@
    dann jaya nrsinga dev/prahlad (Str. 18) und gurudev (Str. 19). Dadurch lag das Mitlesen ab ca. 1 min falsch und am Ende voellig daneben.
    Neu als Abfolge (seqFile): 0 2.0 | 1 44.8 | 0 89.5 | 1 132.2 | 0 173.0 | 1 206.6 | 2 244.0 | 3 262.3 | 2 279.6 | 3 297.3 | 17 346.5 | 18 379.9.
    Str. 5-17 bleiben als Text ohne Zeitmarke (kein Spulen, Hinweis wie V3.48). Gemerkte alte Selbstkorrektur-Marken dieses Prayers werden einmal geloescht. */
-window.BPP_BUILD="3.73"; window.BPP_SHOW="3.73";
+window.BPP_BUILD="3.74"; window.BPP_SHOW="3.74";
 (function(){
   if(window.bppV350) return; window.bppV350=1;
   var SEQ=[[2.0,0],[44.8,1],[89.5,0],[132.2,1],[173.0,0],[206.6,1],[244.0,2],[262.3,3],[279.6,2],[297.3,3],[346.5,17],[379.9,18]];

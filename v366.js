@@ -23,7 +23,7 @@
     Object.keys(seen).forEach(function(k){ var p=seen[k]; if(!p||now-p.t>DAY||(!p.c&&!p.o)) return; var id=k.split("|")[1];
       var l=[p.c,p.o].filter(Boolean).join(", "); var key=l+"|"+id; if(sess[key]) return; sess[key]=1; by[l]=(by[l]||0)+1; });
     var rows=Object.keys(by).sort(function(a,b){ return by[b]-by[a]||a.localeCompare(b); });
-    el.innerHTML=rows.length?"Orte letzte 24 h ("+rows.length+"): "+rows.map(function(r){ return esc(r)+(by[r]>1?" \u00d7"+by[r]:""); }).join(" \u00b7 "):"";
+    el.innerHTML="Orte letzte 24 h ("+rows.length+"): "+(rows.length?rows.map(function(r){ return esc(r)+(by[r]>1?" \u00d7"+by[r]:""); }).join(" \u00b7 "):"noch keine Daten"); /* [Grok-Bot] V3.74: Zeile immer sichtbar */
   }
   function pub(){ if(!cl||!cl.connected||(!me.c&&!me.o)) return; var b=JSON.stringify({c:me.c.slice(0,64),o:me.o.slice(0,8),t:Date.now()});
     try{ cl.publish(V+sid,b,{qos:0,retain:true}); }catch(e){} seen["v|"+sid]=JSON.parse(b); paint(); }
@@ -35,8 +35,10 @@
         clearTimeout(go.t); go.t=setTimeout(paint,300); });
     }catch(e){ cl=null; } }
   function start(){ fetch("https://get.geojs.io/v1/ip/geo.json").then(function(r){ return r.json(); }).then(function(g){ me.c=String(g&&g.city||"").trim(); me.o=String(g&&(g.country_code||g.country)||"").trim(); pub(); }).catch(function(){});
-    var w=setInterval(function(){ if(window.mqtt){ clearInterval(w); go(); } },1000); }
-  setInterval(pub,5*60*1000); setInterval(paint,30000);
+    /* [Grok-Bot] V3.74: MQTT-Bibliothek selbst laden. Bis V3.69 lud v204.js sie beim Aufbau der Presence-Verbindung; seit V3.70 fehlte sie -> keine Verbindung, Zeile leer. */
+    if(!window.mqtt && !document.querySelector('script[src^="lib/mqtt.min.js"]')){ var sc=document.createElement("script"); sc.src="lib/mqtt.min.js"; sc.async=true; sc.onerror=function(){}; document.head.appendChild(sc); }
+    paint(); var w=setInterval(function(){ if(window.mqtt){ clearInterval(w); go(); } },1000); }
+  setInterval(pub,5*60*1000); setInterval(paint,30000); setTimeout(paint,800);
   if(document.readyState==="complete") setTimeout(start,1500); else addEventListener("load",function(){ setTimeout(start,1500); });
   window.bppOrte24=function(){ return seen; };
 })();
