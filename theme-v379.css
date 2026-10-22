@@ -1,0 +1,49 @@
+/* [Grok-Bot] V3.79: drei Stile. Nacht = bisheriges atmabhog-Navy (keine Aenderung). Morgen = hell (Creme/Navy, Gold dunkel), Abend = warm-golden (Braun/Bernstein).
+   .th-dim = gedaempft bei Bewoelkung/Regen. Gilt auch fuer Grossansicht (#bppFs) und Hilfe. */
+html.th-abend{--bg:#1E130B;--card:#2B1C11;--gold:#E2B864;--text:#FFF3E0;--muted:#D8C3A3;--lyric:#FFF8EC;--ab-btn:#4A3220;--ab-line:rgba(255,236,205,.16)}
+html.th-abend,html.th-abend body{background:#1E130B!important}
+html.th-abend body{background:radial-gradient(1200px 600px at 50% -200px,#4A2C14 0%,rgba(30,19,11,0) 70%),#1E130B!important}
+html.th-abend .bar,html.th-abend .now{background:rgba(30,19,11,.92)!important}
+html.th-abend .panel{background:#2B1C11!important}
+html.th-abend .stanza.on{background:rgba(226,184,100,.17)!important;box-shadow:inset 5px 0 0 #E2B864,0 0 0 1px rgba(226,184,100,.75)!important}
+html.th-abend button.on,html.th-abend button.gold,html.th-abend #btnMenu,html.th-abend #btnPlay,html.th-abend #bppFsPlay,html.th-abend #bppFsMenu,html.th-abend #bppFsCh.on{background:#E2B864!important;color:#1E130B!important;border-color:#E2B864!important}
+html.th-abend .rowline .de,html.th-abend .stanza>.de{color:#E6D2B4!important}
+html.th-abend .quelle,html.th-abend .hint,html.th-abend footer,html.th-abend .legend,html.th-abend .sub{color:#BFA888!important}
+html.th-abend #bppFs{background:#1E130B!important;color:#FFF3E0!important}
+html.th-abend #bppFsBar{background:rgba(43,28,17,.94)!important}
+html.th-abend #bppHelp{background:rgba(30,19,11,.97)!important}
+
+html.th-morgen{--bg:#F6F0E2;--card:#FFFDF8;--gold:#8A6420;--text:#1E2340;--muted:#5C6178;--lyric:#141A33;--ab-btn:#E8DFCB;--ab-line:rgba(30,35,64,.18)}
+html.th-morgen,html.th-morgen body{background:#F6F0E2!important;color:#1E2340}
+html.th-morgen body{background:radial-gradient(1200px 600px at 50% -200px,#FFFFFF 0%,rgba(246,240,226,0) 70%),#F6F0E2!important}
+html.th-morgen .bar,html.th-morgen .now{background:rgba(246,240,226,.94)!important}
+html.th-morgen button,html.th-morgen select{background:#E8DFCB!important;color:#1E2340!important}
+html.th-morgen button.on,html.th-morgen button.gold,html.th-morgen #btnMenu,html.th-morgen #btnPlay,html.th-morgen #bppFsPlay,html.th-morgen #bppFsMenu,html.th-morgen #bppFsCh.on{background:#C9A35A!important;color:#1A1405!important;border-color:#8A6420!important}
+html.th-morgen select.cur{color:#8A6420!important;border-color:#8A6420!important}
+html.th-morgen .panel{background:#FFFDF8!important;box-shadow:0 6px 14px -6px rgba(30,35,64,.25)}
+html.th-morgen .stanza.on{background:rgba(201,163,90,.20)!important;box-shadow:inset 5px 0 0 #A57A2A,0 0 0 1px rgba(138,100,32,.6)!important}
+html.th-morgen .stanza.on .sa,html.th-morgen .rowline .sa{color:#141A33!important}
+html.th-morgen .stanza.on .head .vn{color:#6B4A10!important}
+html.th-morgen .head .ch,html.th-morgen .rowline .lch,html.th-morgen .rowline .rch{color:#9A5B00!important}
+html.th-morgen .rowline .de,html.th-morgen .stanza>.de{color:#4A4F66!important}
+html.th-morgen .quelle,html.th-morgen .hint,html.th-morgen footer,html.th-morgen .legend,html.th-morgen .sub,html.th-morgen h1 .ver{color:#5C6178!important}
+html.th-morgen .item.active{background:rgba(201,163,90,.25)!important;color:#6B4A10!important}
+html.th-morgen #bppFs{background:#FBF7EE!important;color:#141A33!important}
+html.th-morgen #bppFsBox .fch{color:#9A5B00!important}
+html.th-morgen #bppFsBox .ftr{color:#4A4F66!important}
+html.th-morgen #bppFsBar{background:rgba(232,223,203,.96)!important}
+html.th-morgen #bppFsTop{color:#5C6178!important}
+html.th-morgen #bppFsBar button{color:#1E2340!important}
+html.th-morgen #bppHelp{background:rgba(246,240,226,.98)!important}
+html.th-morgen #bppHelp .in{color:#1E2340!important}
+html.th-morgen #bppHelp b,html.th-morgen #bppHelp h2{color:#8A6420!important}
+
+/* gedaempft (Wolken/Regen/Nebel) */
+html.th-morgen.th-dim{--bg:#E6E2D8;--card:#F2EFE8}
+html.th-morgen.th-dim,html.th-morgen.th-dim body{background:#E6E2D8!important}
+html.th-morgen.th-dim .bar,html.th-morgen.th-dim .now{background:rgba(230,226,216,.94)!important}
+html.th-morgen.th-dim .panel{background:#F2EFE8!important}
+html.th-abend.th-dim,html.th-abend.th-dim body{background:#19120D!important}
+html.th-abend.th-dim .panel{background:#251B14!important}
+html.th-nacht.th-dim body{background:#06102A!important}
+#bppTheme{font-size:.8rem;min-width:30px;height:24px;padding:0 7px!important;margin-right:6px;line-height:1;vertical-align:middle;font-family:system-ui,"Segoe UI Symbol",sans-serif!important}
