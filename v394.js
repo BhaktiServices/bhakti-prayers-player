@@ -1,5 +1,5 @@
 /* [Grok-Bot] V3.94: Str. 18 final-prayers umsortiert (Text in v389.js); Hilfeabsatz "Unter den Lyrics: Herkunft, Quellen" ans Ende der Hilfe (Text unveraendert) */
-window.BPP_BUILD="3.94"; window.BPP_SHOW="3.94";
+// build via v395
 (function(){
   var K=["Below the lyrics:", "Unter den Lyrics:", "Sous les paroles :", "Debajo de la letra:", "Под текстом:", "पाठ के नीचे:", "Abaixo da letra:"];
   setInterval(function(){ var d=document.getElementById("bppHelp"); if(!d) return;
