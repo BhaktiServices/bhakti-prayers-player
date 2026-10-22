@@ -1,0 +1,26 @@
+/* [Grok-Bot] V3.81: Fusszeile/Statistik – solider Grund, klare Schrift >= 13px, Kontrast >= 7:1 in allen Stilen (auch gedaempft). */
+#bpp-stats,#bpp-orte24{font-size:13px!important;line-height:1.45!important;opacity:1!important;font-weight:500!important;text-align:right;
+  margin:0 8px!important;padding:6px 10px!important;border-radius:0!important;max-height:none!important;overflow:visible!important;text-shadow:none!important}
+#bpp-stats{border-radius:10px 10px 0 0!important;padding-top:8px!important}
+#bpp-orte24{border-radius:0 0 10px 10px!important;padding-bottom:9px!important;margin-bottom:10px!important}
+footer,.legend{font-size:13px!important;opacity:1!important}
+#bppOff{font-size:13px!important;opacity:1!important}
+/* Nacht */
+#bpp-stats,#bpp-orte24{background:#0A1A44!important;color:#F1F4FF!important}
+footer,.legend{color:#E4E8F3!important}
+#bppOff{background:#0A1A44!important;color:#F1F4FF!important;border:1px solid #6E7898!important}
+/* Abend */
+html.th-abend #bpp-stats,html.th-abend #bpp-orte24,html.th-abend #bppOff{background:#140C06!important;color:#FFF3E0!important}
+html.th-abend footer,html.th-abend .legend{color:#F3E3C8!important}
+/* Morgen */
+html.th-morgen #bpp-stats,html.th-morgen #bpp-orte24,html.th-morgen #bppOff{background:#FFFFFF!important;color:#141A33!important;border-color:#8F8A7C!important}
+html.th-morgen footer,html.th-morgen .legend,html.th-morgen .legend b{color:#1E2340!important}
+/* [Grok-Bot] V3.81: Versionsnummer zentriert direkt unter der Ueberschrift */
+header h1{text-align:center!important}
+header h1 .ver{display:block!important;position:static!important;float:none!important;text-align:center!important;font-size:13px!important;line-height:1.2!important;margin:2px auto 0!important;letter-spacing:.04em;opacity:1!important;color:#E4E8F3!important}
+html.th-abend header h1 .ver{color:#F3E3C8!important}
+html.th-morgen header h1 .ver{color:#1E2340!important}
+header h1 .ver{flex:0 0 100%!important;order:99!important}
+@media(min-width:761px){header h1 .lang.l307{order:2!important;flex:1 1 0!important;justify-content:flex-end!important;position:static!important;min-width:max-content}}
+/* [Grok-Bot] V3.81: Atma-Bhog-Knopf rechts in der Titelzeile des Prayers */
+#bppAtma{order:99!important;margin:0 0 0 auto!important;font-size:12px!important;padding:3px 10px!important;align-self:center}

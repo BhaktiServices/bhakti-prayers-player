@@ -23,14 +23,15 @@ window.BPP_BUILD="3.81"; window.BPP_SHOW="3.81";
   document.head.appendChild(css);
   function L(){ var l=(typeof lang!=="undefined"&&lang)||"en"; return T[l]?l:"en"; }
   function build(){
-    var c=document.getElementById("bppHelpCol"); if(!c) return;
+    /* [Grok-Bot] V3.81: Knopf nicht mehr im Kopf (stoerte die zentrierte Ueberschrift), sondern rechts in der Titelzeile des Prayers (neben Teilen ⤴), sonst unter den Menues */
+    var sh=document.getElementById("bppShare"), c=(sh&&sh.parentNode)||document.getElementById("bppSel"); if(!c) return;
     var a=document.getElementById("bppAtma");
     if(!a){
       a=document.createElement("a"); a.id="bppAtma"; a.href="https://www.atmabhog.org"; a.target="_blank"; a.rel="noopener";
       a.innerHTML="<span>Atma</span><span class='t2'>Bhog</span><svg viewBox='0 0 12 12' aria-hidden='true'><path d='M4 2h6v6M10 2 3 9' fill='none' stroke='currentColor' stroke-width='1.4'/></svg>";
       ["click","pointerdown","touchstart"].forEach(function(ev){ a.addEventListener(ev,function(e){ e.stopPropagation(); },{passive:true}); });
     }
-    if(a.parentNode!==c) c.insertBefore(a,c.firstChild);
+    if(a.parentNode!==c||c.lastChild!==a) c.appendChild(a);
     var t=T[L()]; if(window.bppV345){ if(a.title) a.removeAttribute("title"); if(a.getAttribute("aria-label")!=="Atma Bhog – "+t) a.setAttribute("aria-label","Atma Bhog – "+t); } else if(a.title!==t){ a.title=t; a.setAttribute("aria-label","Atma Bhog – "+t); } /* V3.45: eigener Tooltip statt title */
   }
   build(); setInterval(build,500);
