@@ -7,13 +7,7 @@ window.BPP_BUILD="3.81"; window.BPP_SHOW="3.81";
   var T={de:["Übersetzung einblenden","Übersetzung ausblenden"],en:["Show translation","Hide translation"],fr:["Afficher la traduction","Masquer la traduction"],
     es:["Mostrar traducción","Ocultar traducción"],ru:["Показать перевод","Скрыть перевод"],hi:["अनुवाद दिखाएँ","अनुवाद छिपाएँ"],pt:["Mostrar tradução","Ocultar tradução"]};
   var CL={de:"Schließen",en:"Close",fr:"Fermer",es:"Cerrar",ru:"Закрыть",hi:"बंद करें",pt:"Fechar"};
-  var HLP={de:"<b>Groß – Übersetzung:</b> Der Knopf „Aa“ oben rechts neben dem ✕ blendet die Übersetzung ein oder aus (gold = an), gleich wie in der normalen Ansicht. Das ✕ ist immer sichtbar. <i>(von Grok ergänzt)</i>",
-    en:"<b>Big – translation:</b> the “Aa” button at the top right next to ✕ shows or hides the translation (gold = on), same as in the normal view. The ✕ is always visible. <i>(added by Grok)</i>",
-    fr:"<b>Grand – traduction :</b> le bouton « Aa » en haut à droite à côté du ✕ affiche ou masque la traduction (doré = activé), comme dans la vue normale. Le ✕ est toujours visible. <i>(ajouté par Grok)</i>",
-    es:"<b>Grande – traducción:</b> el botón «Aa» arriba a la derecha junto a ✕ muestra u oculta la traducción (dorado = activo), igual que en la vista normal. La ✕ siempre está visible. <i>(añadido por Grok)</i>",
-    ru:"<b>Крупно – перевод:</b> кнопка «Aa» вверху справа рядом с ✕ показывает или скрывает перевод (золото = вкл.), как и в обычном виде. ✕ всегда видна. <i>(добавлено Grok)</i>",
-    hi:"<b>बड़ा – अनुवाद:</b> ऊपर दाईं ओर ✕ के पास “Aa” बटन अनुवाद दिखाता या छिपाता है (सुनहरा = चालू), सामान्य दृश्य की तरह। ✕ हमेशा दिखता है। <i>(Grok द्वारा जोड़ा गया)</i>",
-    pt:"<b>Grande – tradução:</b> o botão “Aa” no canto superior direito ao lado do ✕ mostra ou oculta a tradução (dourado = ligado), como na vista normal. O ✕ está sempre visível. <i>(acrescentado por Grok)</i>"};
+  var HLP={"de": "<b>Groß – Übersetzung:</b> Die Taste „Aa“ unten in der Leiste der Großansicht (einmal tippen, dann erscheint die Leiste) blendet die Übersetzung ein oder aus (gold = an), gleich wie in der normalen Ansicht. Das ✕ oben rechts ist immer sichtbar. <i>(von Grok ergänzt)</i>", "en": "<b>Big – translation:</b> the “Aa” button in the bottom bar of the Big view (tap once to show the bar) shows or hides the translation (gold = on), same as in the normal view. The ✕ at the top right is always visible. <i>(added by Grok)</i>", "fr": "<b>Grand – traduction :</b> le bouton « Aa » dans la barre du bas de la vue Grand (toucher une fois pour afficher la barre) affiche ou masque la traduction (doré = activé), comme dans la vue normale. Le ✕ en haut à droite est toujours visible. <i>(ajouté par Grok)</i>", "es": "<b>Grande – traducción:</b> el botón «Aa» en la barra inferior de la vista Grande (tocar una vez para mostrar la barra) muestra u oculta la traducción (dorado = activo), igual que en la vista normal. La ✕ arriba a la derecha siempre está visible. <i>(añadido por Grok)</i>", "ru": "<b>Крупно – перевод:</b> кнопка «Aa» в нижней панели режима «Крупно» (коснитесь один раз, чтобы показать панель) показывает или скрывает перевод (золото = вкл.), как и в обычном виде. ✕ вверху справа всегда видна. <i>(добавлено Grok)</i>", "hi": "<b>बड़ा – अनुवाद:</b> बड़ा दृश्य की निचली पट्टी में “Aa” बटन (पट्टी दिखाने के लिए एक बार टैप करें) अनुवाद दिखाता या छिपाता है (सुनहरा = चालू), सामान्य दृश्य की तरह। ऊपर दाईं ओर ✕ हमेशा दिखता है। <i>(Grok द्वारा जोड़ा गया)</i>", "pt": "<b>Grande – tradução:</b> o botão “Aa” na barra inferior da vista Grande (tocar uma vez para mostrar a barra) mostra ou oculta a tradução (dourado = ligado), como na vista normal. O ✕ no canto superior direito está sempre visível. <i>(acrescentado por Grok)</i>"};
   function lg(){ var l=(typeof lang!=="undefined"&&lang)||"en"; return T[l]?l:"en"; }
   var css=document.createElement("style");
   css.textContent=
@@ -23,7 +17,7 @@ window.BPP_BUILD="3.81"; window.BPP_SHOW="3.81";
     "#bppFs #bppFsX{right:calc(6px + env(safe-area-inset-right,0px))!important}"+
     "#bppFs #bppFsTr381{right:calc(56px + env(safe-area-inset-right,0px))!important;font-size:16px!important}"+
     "#bppFs #bppFsTr381.on{background:#D6BF90!important;color:#041236!important;border-color:#D6BF90!important}"+
-    "#bppFs #bppFsTop{right:108px!important}"+
+    "#bppFs #bppFsTop{right:58px!important}"+
     "html.th-abend #bppFs #bppFsX,html.th-abend #bppFs #bppFsTr381{background:#4A3220!important}"+
     "html.th-abend #bppFs #bppFsTr381.on{background:#E2B864!important;color:#1E130B!important;border-color:#E2B864!important}"+
     "html.th-morgen #bppFs #bppFsX,html.th-morgen #bppFs #bppFsTr381{background:#FFFFFF!important;color:#141A33!important;border-color:#141A33!important}"+
@@ -31,23 +25,21 @@ window.BPP_BUILD="3.81"; window.BPP_SHOW="3.81";
   document.head.appendChild(css);
   function de(){ return typeof showDe!=="undefined" && !!showDe; }
   function fsTr(){ var b=document.getElementById("bppFsTr"); return b?b.classList.contains("on"):null; }
+  /* [Grok-Bot] V3.83: oberer Knopf "Aa" entfernt; nur der untere Uebersetzungs-Knopf der Grossansicht (#bppFsTr, v183) bleibt.
+     Er wird in beide Richtungen mit der normalen Ansicht (showDe, gemerkt in localStorage "bpp-de") abgeglichen. */
+  var lastF=null, lastD=null;
   function sync(){
     var ov=document.getElementById("bppFs"); if(!ov) return;
+    var old=document.getElementById("bppFsTr381"); if(old) old.remove();
     var x=document.getElementById("bppFsX"); if(x){ x.style.removeProperty("color"); var c=CL[lg()]; if(x.title!==c){ x.title=c; x.setAttribute("aria-label",c); } }
-    var b=document.getElementById("bppFsTr381");
-    if(!b){ b=document.createElement("button"); b.type="button"; b.id="bppFsTr381"; b.textContent="Aa";
-      function stop(e){ e.stopPropagation(); }
-      b.addEventListener("touchstart",stop,{passive:true}); b.addEventListener("touchend",stop,{passive:true}); b.addEventListener("pointerdown",stop);
-      b.addEventListener("click",function(e){ e.stopPropagation(); e.preventDefault();
-        var want=!de(); try{ if(typeof toggleDe==="function") toggleDe(); }catch(err){}
-        if(de()!==want){ try{ if(window.bppV356NoTr) window.bppV356NoTr(); }catch(err){} }
-        sync(); });
-      ov.appendChild(b); }
-    var on=de();
-    /* Grossansicht-eigene Option (v183 opt.tr) an die normale Ansicht angleichen */
-    var f=fsTr(); if(f!==null && f!==on){ var ib=document.getElementById("bppFsTr"); if(ib) ib.click(); }
-    b.classList.toggle("on",on); b.setAttribute("aria-pressed",on?"true":"false");
-    var t=T[lg()][on?1:0]; if(b.title!==t){ b.title=t; b.setAttribute("aria-label",t); }
+    var ib=document.getElementById("bppFsTr"); if(!ib) return;
+    var d=de(), f=ib.classList.contains("on");
+    if(lastF!==null && f!==lastF && f!==d){ /* unten in Gross umgeschaltet -> normale Ansicht nachziehen */
+      try{ if(typeof toggleDe==="function") toggleDe(); }catch(e){} d=de();
+      if(d!==f){ ib.click(); f=ib.classList.contains("on"); } }
+    else if(f!==d){ ib.click(); f=ib.classList.contains("on"); }
+    lastF=f; lastD=d;
+    var t=T[lg()][f?1:0]; if(ib.title!==t){ ib.title=t; ib.setAttribute("aria-label",t); }
   }
   setInterval(sync,300);
   setInterval(function(){ var d=document.getElementById("bppHelp"); if(!d) return; var ref=d.querySelector(".h379")||d.querySelector(".kb357")||d.querySelector(".jg"); if(!ref) return;
