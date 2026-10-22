@@ -1,7 +1,7 @@
 /* [Grok-Bot] V3.52: Tastenkuerzel fuer alle Knoepfe (im Hover-Text), Menue+ immer ganz rechts hinter Spalten,
    Spalten immer sichtbar, Abschnitt "Tastenkuerzel" in der Hilfe (6 Sprachen).
    Flacker-Ursache (Hanuman, Mitlesen springt links/rechts) behoben in v224.js (alte Marken alle 1,5 s). */
-window.BPP_BUILD="3.77"; window.BPP_SHOW="3.77";
+window.BPP_BUILD="3.78"; window.BPP_SHOW="3.78";
 (function(){
   function $(i){ return document.getElementById(i); }
   function lg(){ var l=(typeof lang!=="undefined"&&lang)||"en"; return SPC[l]?l:"en"; }
@@ -58,7 +58,7 @@ window.BPP_BUILD="3.77"; window.BPP_SHOW="3.77";
     ru:["Горячие клавиши","Пробел / P пуск/пауза · J / L −30/+30 с · , / . −10/+10 с · N / V следующий/предыдущий куплет · ⇧N / ⇧V следующая/предыдущая молитва · ↑ ↓ PgUp PgDn листать куплеты · M следить · G крупно · Esc выйти из крупного · A аккорды · T перевод · S колонки · + Меню+ · R повтор · Y YouTube/MP3 · B / # / X аккорды ниже/выше/исходно · 8 / 9 / 0 высота −/+/0 · Q источник · O скачать молитвы · I установить приложение · W поделиться · H / ? помощь. Клавиши видны и во всплывающей подсказке кнопок; не работают при вводе текста и с Ctrl/Alt/Cmd."],
     hi:["कीबोर्ड शॉर्टकट","स्पेस / P चलाएँ/रोकें · J / L −30/+30 सेकंड · , / . −10/+10 सेकंड · N / V अगला/पिछला पद · ⇧N / ⇧V अगली/पिछली प्रार्थना · ↑ ↓ PgUp PgDn पद पलटें · M साथ पढ़ें · G बड़ा · Esc बड़े से बाहर · A कॉर्ड · T अनुवाद · S कॉलम · + मेनू+ · R दोहराएँ · Y YouTube/MP3 · B / # / X कॉर्ड नीचे/ऊपर/मूल · 8 / 9 / 0 पिच −/+/0 · Q स्रोत · O प्रार्थनाएँ डाउनलोड · I ऐप इंस्टॉल · W साझा करें · H / ? मदद। बटन पर माउस रखने पर भी कुंजी दिखती है; किसी फ़ील्ड में लिखते समय या Ctrl/Alt/Cmd के साथ काम नहीं करती।"],pt:["Atalhos de teclado","Espaço / P tocar/pausa · J / L −30/+30 s · , / . −10/+10 s · N / V estrofe seguinte/anterior · ⇧N / ⇧V oração seguinte/anterior · ↑ ↓ PgUp PgDn virar estrofes · M acompanhar · G grande · Esc sair do grande · A acordes · T tradução · S colunas · + Menu+ · R repetir · Y YouTube/MP3 · B / # / X acordes abaixo/acima/original · 8 / 9 / 0 altura −/+/0 · Q origem, fontes · O baixar orações · I instalar app · W compartilhar · H / ? ajuda. As teclas aparecem também no texto ao passar o mouse sobre cada botão; não funcionam ao digitar num campo nem com Ctrl/Alt/Cmd."]};
   function help(){ var d=$("bppHelp"); if(!d||d.__k352) return; d.__k352=1; var t=HT[lg()]||HT.en, jg=d.querySelector(".jg"); if(!jg) return;
-    var p=document.createElement("p"); p.innerHTML="<b>"+t[0]+":</b> "+t[1]; jg.parentNode.insertBefore(p,jg); }
+    var p=document.createElement("p"); p.className="kb352"; /* [Grok-Bot] V3.78 Klasse zum Verschieben ans Ende (v378.js) */ p.innerHTML="<b>"+t[0]+":</b> "+t[1]; jg.parentNode.insertBefore(p,jg); }
   function tick(){ try{ order(); }catch(e){} try{ titles(); }catch(e){} try{ help(); }catch(e){} }
   tick(); setInterval(tick,400);
   /* Titel, die andere Skripte neu setzen (z.B. Naechstes Gebet, Wiederholen), sofort wieder mit Taste versehen */
