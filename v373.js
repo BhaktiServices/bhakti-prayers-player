@@ -12,10 +12,24 @@
   function free(){ try{ var o=so(); if(o && typeof o.unlock==="function") o.unlock(); }catch(e){} window.bppV373Free=(window.bppV373Free||0)+1; }
   function perm(){ [window.DeviceOrientationEvent, window.DeviceMotionEvent].forEach(function(E){
     try{ if(E && typeof E.requestPermission==="function") E.requestPermission().catch(function(){}); }catch(e){} }); }
-  function start(id){ /* [Grok-Bot] V3.75: immer volle 6 s quer gesperrt, keine vorzeitige Freigabe per Sensor */
+  /* [Grok-Bot] V3.76: kein unlock() mehr in der Grossansicht (folgt bei ausgeschalteter Autorotation der Systemsperre -> Hochkant).
+     6 s quer gesperrt, danach Lage per Sensor (devicemotion Schwerkraft bzw. deviceorientation) auswerten und mit Hysterese
+     (neue Lage >= 0,8 s stabil) selbst lock("landscape") / lock("portrait") setzen. Ohne Sensordaten bleibt Querformat gesperrt. */
+  function start(id){
     var o=so(); if(!o || typeof o.lock!=="function") return;
-    try{ var p=o.lock("landscape"); if(p&&p.catch) p.catch(function(){}); }catch(e){}
-    setTimeout(function(){ if(id===run) free(); }, 6000);
+    var cur="landscape", cand=null, since=0, live=false;
+    function lk(x){ try{ var p=o.lock(x); if(p&&p.catch) p.catch(function(){}); }catch(e){} cur=x; window.bppV376Cur=x; }
+    function seen(x){ if(!live||id!==run||!x) return; if(x===cur){ cand=null; return; }
+      var n=Date.now(); if(cand!==x){ cand=x; since=n; return; } if(n-since>=800){ cand=null; lk(x); } }
+    function onM(e){ var a=e.accelerationIncludingGravity; if(!a||a.x==null||a.y==null) return; var x=Math.abs(a.x), y=Math.abs(a.y);
+      seen(x>6&&x>y*1.5?"landscape":(y>6&&y>x*1.5?"portrait":null)); }
+    function onO(e){ if(e.gamma==null||e.beta==null) return; var g=Math.abs(e.gamma), bt=Math.abs(e.beta);
+      seen(g>60&&bt<35?"landscape":(bt>55&&g<30?"portrait":null)); }
+    addEventListener("devicemotion", onM); addEventListener("deviceorientation", onO);
+    lk("landscape");
+    setTimeout(function(){ live=true; }, 6000);
+    var w=setInterval(function(){ if(id!==run){ clearInterval(w); removeEventListener("devicemotion", onM); removeEventListener("deviceorientation", onO); }
+      else if(cand && Date.now()-since>=800){ var c=cand; cand=null; lk(c); } }, 200);
   }
   function hook(){
     var b=document.getElementById("btnFs"); if(!b || b._v373) return; b._v373=1;
