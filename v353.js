@@ -1,6 +1,6 @@
 /* [Grok-Bot] V3.53: Prayers ohne MP3-Aufnahme: Zeichen ∅ hinter dem Namen in allen Menues (+ Hover "ohne Aufnahme", 6 Sprachen),
    kurzer Hinweis (ca. 3 s, Stil V3.48) bei Play / Leertaste / P / Mitlesen / M, eine Zeile in der Hilfe. */
-window.BPP_BUILD="3.89"; window.BPP_SHOW="3.89";
+window.BPP_BUILD="3.90"; window.BPP_SHOW="3.90";
 (function(){
   if(window.bppV353) return; window.bppV353=1;
   var SYM="\u2205"; /* ∅ */
