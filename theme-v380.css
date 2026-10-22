@@ -1,0 +1,48 @@
+/* [Grok-Bot] V3.80: Lesbarkeit vor Stil. Ziel: alle Texte >= 4.5:1 (WCAG AA), Prayer-Text/Akkorde >= 7:1 (AAA), in allen Stilen inkl. gedaempft.
+   Keine halbtransparenten Schriften mehr (opacity), helle/dunkle Grundfarben fuer Hinweise, Fusszeile, Sprechblase, Hilfe, Grossansicht. */
+/* alle Stile */
+#bppFsX,#bppFsX *{opacity:1!important}
+#bpp-stats,#bpp-orte24,#bppOff,.notr,#bppNoTr369,.bpp353,.bpp378,#bppHelp .esc355,#bppHelp .bppContact{opacity:1!important}
+h1 .ver{opacity:1!important}
+/* Nacht (Navy) */
+html:not(.th-morgen):not(.th-abend) h1 .ver{color:#C4CADB!important}
+html:not(.th-morgen):not(.th-abend) #bpp-stats,html:not(.th-morgen):not(.th-abend) #bpp-orte24{color:#E2D3B4!important}
+html:not(.th-morgen):not(.th-abend) .notr,html:not(.th-morgen):not(.th-abend) #bppNoTr369{color:#D5DAE8!important}
+html:not(.th-morgen):not(.th-abend) #bppFsX{background:#2F3C5F!important;color:#FFFFFF!important}
+html:not(.th-morgen):not(.th-abend) .quelle,html:not(.th-morgen):not(.th-abend) .hint,html:not(.th-morgen):not(.th-abend) footer,html:not(.th-morgen):not(.th-abend) .legend,html:not(.th-morgen):not(.th-abend) .sub{color:#C4CADB!important}
+/* Abend */
+html.th-abend h1 .ver,html.th-abend .quelle,html.th-abend .hint,html.th-abend footer,html.th-abend .legend,html.th-abend .sub{color:#E3D0B2!important}
+html.th-abend #bpp-stats,html.th-abend #bpp-orte24,html.th-abend .notr,html.th-abend #bppNoTr369{color:#EAD9BE!important}
+html.th-abend #bppFsX{background:#4A3220!important;color:#FFFFFF!important}
+html.th-abend #bppHelpTip{background:#2B1C11!important;color:#EFC97A!important}
+/* Morgen (hell): dunkle Schrift, Gold nur noch dunkel */
+html.th-morgen{--gold:#5E420C;--muted:#3E4358}
+html.th-morgen h1,html.th-morgen #lyrTitle,html.th-morgen .songtitle,html.th-morgen .grp,html.th-morgen .head .vn,html.th-morgen .rowline .x2{color:#5E420C!important}
+html.th-morgen h1 .ver,html.th-morgen .quelle,html.th-morgen .hint,html.th-morgen footer,html.th-morgen .legend,html.th-morgen .legend b,html.th-morgen .sub{color:#3E4358!important}
+html.th-morgen #bpp-stats,html.th-morgen #bpp-orte24,html.th-morgen .notr,html.th-morgen #bppNoTr369,html.th-morgen #bppOff{color:#33384D!important}
+html.th-morgen #bppOff{background:#EDE5D2!important;border-color:#8F8A7C!important}
+html.th-morgen #bppHelpTip{background:#5E420C!important;color:#FFFFFF!important;border-color:#5E420C!important}
+html.th-morgen #bppHelpTip *{color:#FFFFFF!important}
+html.th-morgen select,html.th-morgen select option{color:#141A33!important;background:#EFE7D4!important}
+html.th-morgen select.cur{color:#4A3308!important;border-color:#5E420C!important}
+html.th-morgen button{color:#141A33!important}
+html.th-morgen .head .ch,html.th-morgen .rowline .lch,html.th-morgen .rowline .rch{color:#7A3E00!important}
+html.th-morgen .rowline .de,html.th-morgen .stanza>.de{color:#2F3448!important}
+html.th-morgen .item,html.th-morgen .item *{color:#141A33}
+html.th-morgen .item.active,html.th-morgen .item.active *{color:#4A3308!important}
+html.th-morgen #bppFsX{background:#E8DFCB!important;color:#141A33!important}
+html.th-morgen #bppFsTop,html.th-morgen #bppFsTop *{color:#33384D!important}
+html.th-morgen #bppFsBox .fch{color:#7A3E00!important}
+html.th-morgen #bppFsBox .ftr{color:#2F3448!important}
+html.th-morgen #bppHelp .in,html.th-morgen #bppHelp p{color:#141A33!important}
+html.th-morgen #bppHelp b,html.th-morgen #bppHelp h2,html.th-morgen #bppHelp .kbh357{color:#5E420C!important}
+html.th-morgen #bppHelp .kb357{background:#EFE7D4!important;border-color:#8F7A4A!important}
+html.th-morgen #bppHelp .kb357 kbd{border-color:#5E5A4C!important;color:#141A33!important}
+html.th-morgen #bppHelp .bppContact,html.th-morgen #bppHelp .esc355{color:#33384D!important}
+html.th-morgen #bppHelp a{color:#5E2E00!important}
+html.th-morgen #bppHelp .x{background:#E8DFCB!important;color:#141A33!important;border-color:#8F8A7C!important}
+html.th-morgen #bppNoTime,html.th-morgen #bppRot{color:#141A33!important;background:#FFFDF8!important;border-color:#5E420C!important}
+html.th-morgen .stanza.on .head .vn{color:#3A2806!important}
+html.th-morgen.th-dim .head .vn{color:#4A3308!important}
+html.th-morgen #bppFsMenu,html.th-morgen #bppFsMenu *{color:#0E0A02!important}
+html:not(.th-morgen) select{color:#FFFFFF!important}
