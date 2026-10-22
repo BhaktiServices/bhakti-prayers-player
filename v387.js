@@ -49,7 +49,8 @@ window.BPP_BUILD="3.87"; window.BPP_SHOW="3.87";
     try{ if(!navigator.onLine||!window.caches) return; var u=new URL(F,location.href).href;
       caches.open("bpp-audio-v2").then(function(c){ return c.match(u).then(function(r){ if(!r) return fetch(u,{cache:"no-store"}).then(function(x){ if(x.ok) return c.put(u,x); }); }); }).catch(function(){}); }catch(e){}
   }
-  function help(){ var d=document.getElementById("bppHelp"); if(!d) return; var ref=d.querySelector(".h381"); if(!ref) return;
+  function help(){ /* [Grok-Bot] V3.94: Hilfeabsatz entfernt */ var d=document.getElementById("bppHelp"); var q=d&&d.querySelector(".h387"); if(q) q.remove(); }
+  function help_alt(){ var d=document.getElementById("bppHelp"); if(!d) return; var ref=d.querySelector(".h381"); if(!ref) return;
     var p=d.querySelector(".h387"); if(!p){ p=document.createElement("p"); p.className="h387"; }
     var h=H[lg()]; if(p.innerHTML!==h) p.innerHTML=h;
     if(p.parentNode!==ref.parentNode||p.nextSibling!==ref) ref.parentNode.insertBefore(p,ref); }

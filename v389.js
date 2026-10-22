@@ -43,7 +43,8 @@ window.BPP_BUILD="3.89"; window.BPP_SHOW="3.89";
     try{ if(typeof i!=="undefined"&&PRAYERS[i]===P&&typeof paintLyrics==="function"){ line=0; paintLyrics(); } }catch(e){}
     return P;
   }
-  function help(){ var d=document.getElementById("bppHelp"); if(!d) return; var ref=d.querySelector(".h387"); if(!ref) return;
+  function help(){ /* [Grok-Bot] V3.94: Hilfeabsatz entfernt */ var d=document.getElementById("bppHelp"); var q=d&&d.querySelector(".h389"); if(q) q.remove(); }
+  function help_alt(){ var d=document.getElementById("bppHelp"); if(!d) return; var ref=d.querySelector(".h387"); if(!ref) return;
     var p=d.querySelector(".h389"); if(!p){ p=document.createElement("p"); p.className="h389"; }
     var h=H[lg()]; if(p.innerHTML!==h) p.innerHTML=h;
     if(p.parentNode!==ref.parentNode||p.nextSibling!==ref) ref.parentNode.insertBefore(p,ref); }
