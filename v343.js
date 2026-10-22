@@ -1,6 +1,6 @@
 /* [Grok-Bot] V3.43: Knopf "Atma Bhog" (Link https://www.atmabhog.org, neuer Tab) in der linken Kopfspalte neben der Hilfe-Blase,
    AtmaBhog-Stil (Navy, Gold #D6BF90, Figtree), nur Text (kein fremdes Logo). Tooltip je Sprache. Rechte Spalte (Version, Sprache) bleibt frei. */
-window.BPP_BUILD="3.81"; window.BPP_SHOW="3.81";
+window.BPP_BUILD="3.82"; window.BPP_SHOW="3.82";
 (function(){
   if(window.bppV343) return; window.bppV343=1;
   var T={
@@ -24,7 +24,7 @@ window.BPP_BUILD="3.81"; window.BPP_SHOW="3.81";
   function L(){ var l=(typeof lang!=="undefined"&&lang)||"en"; return T[l]?l:"en"; }
   function build(){
     /* [Grok-Bot] V3.81: Knopf nicht mehr im Kopf (stoerte die zentrierte Ueberschrift), sondern rechts in der Titelzeile des Prayers (neben Teilen ⤴), sonst unter den Menues */
-    var sh=document.getElementById("bppShare"), c=(sh&&sh.parentNode)||document.getElementById("bppSel"); if(!c) return;
+    var c=document.querySelector("header h1"); if(!c) return; /* [Grok-Bot] V3.82: unter der Ueberschrift, rechtsbuendig zum Titeltext (Lage: v382.js) */
     var a=document.getElementById("bppAtma");
     if(!a){
       a=document.createElement("a"); a.id="bppAtma"; a.href="https://www.atmabhog.org"; a.target="_blank"; a.rel="noopener";

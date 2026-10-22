@@ -23,4 +23,4 @@ html.th-morgen header h1 .ver{color:#1E2340!important}
 header h1 .ver{flex:0 0 100%!important;order:99!important}
 @media(min-width:761px){header h1 .lang.l307{order:2!important;flex:1 1 0!important;justify-content:flex-end!important;position:static!important;min-width:max-content}}
 /* [Grok-Bot] V3.81: Atma-Bhog-Knopf rechts in der Titelzeile des Prayers */
-#bppAtma{order:99!important;margin:0 0 0 auto!important;font-size:12px!important;padding:3px 10px!important;align-self:center}
+
