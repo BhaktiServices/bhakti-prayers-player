@@ -1,7 +1,7 @@
 /* [Grok-Bot] V3.41: Knopf "Als App installieren" unter den Lyrics (neben "Prayers runterladen", Standard-Stil, Gold nur beim Tippen-Hinweis).
    Chrome/Edge/Android: beforeinstallprompt abfangen, beim Tippen prompt(). iOS/iPadOS Safari: Hinweis "Teilen -> Zum Home-Bildschirm".
    Andere Browser ohne Installations-Dialog (z.B. Firefox): Hinweis auf das Browser-Menue. Ausgeblendet, wenn die App schon als App laeuft. */
-window.BPP_BUILD="3.85"; window.BPP_SHOW="3.85";
+window.BPP_BUILD="3.86"; window.BPP_SHOW="3.86";
 (function(){
   if(window.bppV341) return; window.bppV341=1;
   var deferred=null, installed=false;
