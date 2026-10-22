@@ -6,10 +6,10 @@
 window.BPP_BUILD="3.89"; window.BPP_SHOW="3.89";
 (function(){
   if(window.bppV389) return; window.bppV389=1;
-  var ID="final-prayers", F="audio/final-prayers-sunday.mp3";
+  var ID="final-prayers", F="audio/final-prayers-sunday2.mp3" /* [Grok-Bot] V3.91 gekuerzt */;
   var CDN="https://cdn.jsdelivr.net/gh/BhaktiServices/bhakti-prayers-player@main/"+F;
-  var T=[8,28,46,64,88,110,128,150,165,196,218,236, 270,292,305,313,320,325,354,378,390,406];
-  var SEQ=T.map(function(t,k){ return [k?t:0,k]; }), SEQYT=SEQ.map(function(e){ return [e[0]+8060,e[1]]; });
+  var T=[0,17,35,53,77,99,117,139,154,185,207,225,259,281,294,302,309,317,343,367,379,395]; /* [Grok-Bot] V3.91: MP3 vorne 11,0 s gekuerzt, Marken -11 s, Str. 18 auf Beginn "prem se bolo" */
+  var SEQ=T.map(function(t,k){ return [k?t:0,k]; }), SEQYT=SEQ.map(function(e){ return [e[0]+8071,e[1]]; });
   var TI={de:"Viṣṇu Bhagavān Āratī mit Final Prayers",en:"Viṣṇu Bhagavān Āratī with Final Prayers",fr:"Viṣṇu Bhagavān Āratī avec Final Prayers",
     es:"Viṣṇu Bhagavān Āratī con Final Prayers",ru:"Вишну Бхагаван Арати с Final Prayers",hi:"विष्णु भगवान आरती और Final Prayers",pt:"Viṣṇu Bhagavān Āratī com Final Prayers"};
   var H={
@@ -30,8 +30,12 @@ window.BPP_BUILD="3.89"; window.BPP_SHOW="3.89";
     if(hooked===P) return P;
     var fin=P.zeilen.map(cp); fin.forEach(function(z){ var n=parseInt(z.nr,10); if(n) z.nr=String(n+12); });
     ZZ=A.zeilen.map(cp).concat(fin);
-    var Q="Str. 1–12 Viṣṇu Āratī: "+(A.quelle||"")+" · Str. 13–22 Final Prayers: "+(P.quelle||"").replace(/ · Ton:.*$/,"")+" · Ton: Sunday Prayers (YouTube WpcqK0Y7YjE, ab 2:14:20 bis Ende)";
-    var PR={zeilen:ZZ,_v324:ZZ,audio:F,audioAlt:[CDN],preferFile:true,youtube:"WpcqK0Y7YjE",youtubeStart:8060,seqFile:SEQ,marksFile:T.map(function(t,k){return k?t:0;}),
+    /* [Grok-Bot] V3.91: Str. 18 zeilenweise mit Aufnahme abgeglichen – nicht gesungene Lobpreisungen einzeln in Klammern, gesungene ergaenzt */
+    fin.forEach(function(z){ if(z.nr!=="18"||z._v391) return; z._v391=1;
+      z.sa="prem se bolo\n… śrī lakṣmī nārāyaṇa bhagavān kī jay\n… śrī rādhā kṛṣṇa[?] bhagavān[?] kī jay (von Grok ergänzt)\n(… śrī gāyatrī devī mātā kī jay)\n(… śrī viṭṭhala rukmiṇī śipiviṣṭa kī jay)\n(… śrī dattātreya bhagavān kī jay)\n(… śrī gaurī śaṅkara bhagavān kī jay)\n(… śrī viṭṭhala giridhārī parabrahmaṇe kī jay)\n… śrī mahāvatār kriyā bābājī kī jay\n… śrī rāmānujācārya kī jay\nprem se bolo sat-gurudeva śrī swāmī\nvishwananda mahāprabhu kī … jay!";
+      if(z.lineCh&&z.lineCh.length<12) z.lineCh=z.lineCh.concat([""]); });
+    var Q="Str. 1–12 Viṣṇu Āratī: "+(A.quelle||"")+" · Str. 13–22 Final Prayers: "+(P.quelle||"").replace(/ · Ton:.*$/,"")+" · Ton: Sunday Prayers (YouTube WpcqK0Y7YjE, ab 2:14:31 bis Ende)";
+    var PR={zeilen:ZZ,_v324:ZZ,audio:F,audioAlt:[CDN],preferFile:true,youtube:"WpcqK0Y7YjE",youtubeStart:8071,seqFile:SEQ,marksFile:T.map(function(t,k){return k?t:0;}),
       seqYt:SEQYT,marksYt:SEQYT.map(function(e){return e[0];}),quelle:Q,hinweis:A.hinweis||P.hinweis};
     Object.keys(PR).forEach(function(k){ Object.defineProperty(P,k,{configurable:true,enumerable:true,get:function(){ return PR[k]; },set:function(){}}); });
     Object.defineProperty(P,"titel",{configurable:true,enumerable:true,get:function(){ return TI[lg()]; },set:function(){}});
