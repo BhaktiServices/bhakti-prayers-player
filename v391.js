@@ -1,6 +1,6 @@
 /* [Grok-Bot] V3.91: Statistik-Box (#bpp-stats, #bpp-orte24) in der gewaehlten UI-Sprache (7 Sprachen, Zahlenformat je Sprache),
    sofort beim Sprachwechsel. Alte Datei final-prayers-sunday.mp3 aus dem Offline-Speicher entfernt (neu: final-prayers-sunday2.mp3, vorne gekuerzt). */
-window.BPP_BUILD="3.91"; window.BPP_SHOW="3.91";
+// build via v392
 (function(){
   if(window.bppV391) return; window.bppV391=1;
   var L={
