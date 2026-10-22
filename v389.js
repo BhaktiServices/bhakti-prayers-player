@@ -34,7 +34,7 @@ window.BPP_BUILD="3.89"; window.BPP_SHOW="3.89";
     fin.forEach(function(z){ if(z.nr!=="18"||z._v392) return; z._v392=1; /* [Grok-Bot] V3.92 Wortlaut gesungener Teil vom Nutzer */
       z.sa="prem se bolo\n… śrī lakṣmī nārāyaṇa bhagavān kī... jai!\n… śrī Bhutabhrsteshwarnath nrisimha bhagavan ki... jai!\n… śrī rādha kṛṣṇa kanhaiya-lāla kī... jai!\n… śrī mahāvatāra kriyā bābāji kī... jai!\n… śrī rāmānuja ācārya kī... jai!\nprem se bolo sat-gurudeva śrī swāmī\nvishwananda mahāprabhu kī... jai!\n(… śrī gāyatrī devī mātā kī jay)\n(… śrī viṭṭhala rukmiṇī śipiviṣṭa kī jay)\n(… śrī dattātreya bhagavān kī jay)\n(… śrī gaurī śaṅkara bhagavān kī jay)\n(… śrī viṭṭhala giridhārī parabrahmaṇe kī jay)";
       if(z.lineCh&&z.lineCh.length<14) z.lineCh=z.lineCh.concat(["","",""]).slice(0,14); });
-    var Q="Str. 1–12 Viṣṇu Āratī: "+(A.quelle||"")+" · Str. 13–22 Final Prayers: "+(P.quelle||"").replace(/ · Ton:.*$/,"")+" · Ton: Sunday Prayers (YouTube WpcqK0Y7YjE, ab 2:14:31 bis Ende)";
+    var Q="Str. 1–12 Viṣṇu Āratī: "+(A.quelle||"")+" · Str. 13–22 Final Prayers: "+(P.quelle||"").replace(/ · Ton:.*$/,"")+" · Ton: Sunday Prayers (YouTube WpcqK0Y7YjE, ab 2:14:31 bis Ende) · Akkorde Str. 13 (Tvam eva) und 19 (Mahā Sudarśana) abgeglichen mit SPN Morning & Evening Prayers, S. 18";
     var PR={zeilen:ZZ,_v324:ZZ,audio:F,audioAlt:[CDN],preferFile:true,youtube:"WpcqK0Y7YjE",youtubeStart:8071,seqFile:SEQ,marksFile:T.map(function(t,k){return k?t:0;}),
       seqYt:SEQYT,marksYt:SEQYT.map(function(e){return e[0];}),quelle:Q,hinweis:A.hinweis||P.hinweis};
     Object.keys(PR).forEach(function(k){ Object.defineProperty(P,k,{configurable:true,enumerable:true,get:function(){ return PR[k]; },set:function(){}}); });
