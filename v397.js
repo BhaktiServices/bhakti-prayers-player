@@ -21,8 +21,10 @@
       if(!h.classList.contains(R)||moved){ h.classList.add(R); setTimeout(function(){ dispatchEvent(new Event("resize")); },30); } }
     else if(w||h.classList.contains(R)){ if(w){ while(w.firstChild) ov.insertBefore(w.firstChild,w); w.remove(); } h.classList.remove(R);
       setTimeout(function(){ dispatchEvent(new Event("resize")); },30); } }
-  function sync(){ if(!on()){ want=false; set(false); return; } set(want&&portrait()); }
+  /* [Grok-Bot] V4.01: CSS-Drehung nur als Erst-Ansicht; sobald sich die echte Lage aendert (Drehen, resize, orientationchange), endgueltig aus */
+  var o0=null; function lage(){ return portrait()?"p":"l"; }
+  function sync(){ if(!on()){ want=false; o0=null; set(false); return; } if(want&&o0&&lage()!==o0){ want=false; window.bppRot401Off=(window.bppRot401Off||0)+1; } set(want&&portrait()); }
   document.addEventListener("click",function(e){ if(!(e.target&&e.target.closest&&e.target.closest("#btnFs"))||!phone()) return;
-    setTimeout(function(){ if(on()&&portrait()){ want=true; sync(); } },900); },true);
-  addEventListener("resize",function(){ setTimeout(sync,80); }); setInterval(sync,400);
+    setTimeout(function(){ if(on()&&portrait()){ want=true; o0=lage(); sync(); } },900); },true);
+  addEventListener("resize",function(){ setTimeout(sync,80); }); addEventListener("orientationchange",function(){ setTimeout(sync,80); }); try{ screen.orientation.addEventListener("change",function(){ setTimeout(sync,80); }); }catch(e){} setInterval(sync,400);
 })();
