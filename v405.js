@@ -1,7 +1,7 @@
 /* [Grok-Bot] V4.05: Zusatz-Aufnahme "Prabhus" fuer das Ashtottaram (108 Namen), morgens und abends.
    Quelle: YouTube 6QSuy1M0c84, 24:17-28:36 (Vorgabe des Nutzers), bearbeitet wie V3.67 (Hochpass 80 Hz, -16 LUFS, mono 56 kbit/s) als audio/ashtotram-prabhus.mp3 (259 s).
    Namenmarken: Stimme per demucs getrennt, Pausen + faster-whisper-Abgleich; 100 von 108 gemessen, unsicher (keine Marke): 13, 100, 101, 103-107.
-   Standard bleibt die bisherige Aufnahme; Taste unter dem Titel, Wahl in localStorage "bpp-prabhus-<id>". Ersatz ohne MP3: YouTube ab 1457 s. */
+   Standard bleibt die bisherige Aufnahme; Taste unter dem Titel, Wahl in localStorage "bpp-prabhus-<id>". YT-Version (Taste MP3/YT, wie bei den anderen Gebeten): YouTube 6QSuy1M0c84 ab 1457 s (bis 1716 s); preferFile folgt der MP3/YT-Wahl. */
 window.BPP_BUILD="4.05"; window.BPP_SHOW="4.05";
 (function(){
   if(window.bppV405) return; window.bppV405=1;
@@ -13,7 +13,7 @@ window.BPP_BUILD="4.05"; window.BPP_SHOW="4.05";
   function on(id){ try{ return localStorage.getItem(key(id))==="prabhus"; }catch(e){ return false; } }
   function marks(o){ return M.map(function(x){ return x==null?null:Math.round((x+o)*10)/10; }); }
   function seq(o){ var s=[]; M.forEach(function(x,k){ if(x!=null) s.push([Math.round((x+o)*10)/10,k]); }); return s; }
-  var R={audio:F, audioAlt:["https://cdn.jsdelivr.net/gh/BhaktiServices/bhakti-prayers-player@main/"+F], preferFile:true, youtube:YT, youtubeStart:S,
+  var R={audio:F, audioAlt:["https://cdn.jsdelivr.net/gh/BhaktiServices/bhakti-prayers-player@main/"+F], youtube:YT, youtubeStart:S,
     seqFile:seq(0), marksFile:marks(0), seqYt:seq(S), marksYt:marks(S)};
   var hooked={};
   function hook(){ if(typeof PRAYERS==="undefined") return;
@@ -37,7 +37,7 @@ window.BPP_BUILD="4.05"; window.BPP_SHOW="4.05";
     b.classList.toggle("on",o); b.setAttribute("aria-pressed",o?"true":"false"); }
   function src(){ var b=document.getElementById("bppSrcInfo"), c=cur(); if(!b||!b.innerHTML||!has(c)) return; if(b.querySelector(".hq405")) return;
     var u="https://www.youtube.com/watch?v="+YT+"&t="+S+"s";
-    b.insertAdjacentHTML("beforeend",'<br><span class="hq405"><b>'+HQ[lg()]+':</b> YouTube <a href="'+u+'" target="_blank" rel="noopener">'+u+'</a>, 24:17–28:36</span>'); }
+    b.insertAdjacentHTML("beforeend",'<br><span class="hq405"><b>'+HQ[lg()]+':</b> YouTube <a href="'+u+'" target="_blank" rel="noopener">'+u+'</a>, 24:17–28:36 (MP3 und YT-Version)</span>'); }
   function pre(){ try{ if(!navigator.onLine||!window.caches) return; caches.open("bpp-audio-v2").then(function(c){ var u=new URL(F,location.href).href;
       c.match(u).then(function(r){ if(!r) return fetch(u,{cache:"no-store"}).then(function(x){ if(x.ok) return c.put(u,x); }); }).catch(function(){}); }).catch(function(){}); }catch(e){} }
   window.bppPrabhus405=function(){ var c=cur(); return {id:c&&c.id, has:has(c), on:!!(c&&on(c.id)), audio:c&&c.audio}; };
