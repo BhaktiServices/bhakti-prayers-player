@@ -16,13 +16,13 @@ window.BPP_BUILD="3.79"; window.BPP_SHOW="3.79";
     ru:{auto:"Авто",morgen:"Утро (светлый)",abend:"Вечер (тёплый)",nacht:"Ночь (тёмный)",st:"Стиль",now:"сейчас",cl:"нажатие"},
     hi:{auto:"स्वतः",morgen:"सुबह (हल्का)",abend:"शाम (गर्म)",nacht:"रात (गहरा)",st:"शैली",now:"अभी",cl:"क्लिक"},
     pt:{auto:"Auto",morgen:"Manhã (claro)",abend:"Noite cedo (quente)",nacht:"Noite (escuro)",st:"Estilo",now:"agora",cl:"clique"}};
-  /* [Grok-Bot] V3.94: Saetze zu Klick/Auto/Open-Meteo entfernt */ var HLP={de:"<b>Stil</b> (Knopf oben rechts vor der Sprache): Auto, Morgen (hell), Abend (warm-golden) oder Nacht (dunkel). <i>(von Grok ergänzt)</i>",
-    en:"<b>Style</b> (button at the top right, before the language): Auto, Morning (light), Evening (warm golden) or Night (dark). <i>(added by Grok)</i>",
-    fr:"<b>Style</b> (bouton en haut à droite, avant la langue) : Auto, Matin (clair), Soir (doré chaud) ou Nuit (sombre). <i>(ajouté par Grok)</i>",
-    es:"<b>Estilo</b> (botón arriba a la derecha, antes del idioma): Auto, Mañana (claro), Tarde (dorado cálido) o Noche (oscuro). <i>(añadido por Grok)</i>",
-    ru:"<b>Стиль</b> (кнопка вверху справа, перед языком): Авто, Утро (светлый), Вечер (тёплый золотой) или Ночь (тёмный). <i>(добавлено Grok)</i>",
-    hi:"<b>शैली</b> (ऊपर दाईं ओर, भाषा से पहले बटन): स्वतः, सुबह (हल्का), शाम (गर्म सुनहरा) या रात (गहरा)। <i>(Grok द्वारा जोड़ा गया)</i>",
-    pt:"<b>Estilo</b> (botão no canto superior direito, antes do idioma): Auto, Manhã (claro), Noite cedo (dourado quente) ou Noite (escuro). <i>(acrescentado por Grok)</i>"};
+  /* [Grok-Bot] V3.94: Saetze zu Klick/Auto/Open-Meteo entfernt */ var HLP={de:"<b>Stil</b> (Knopf oben rechts vor der Sprache): Auto, Morgen, Abend oder Nacht. <i>(von Grok ergänzt)</i>",
+    en:"<b>Style</b> (button at the top right, before the language): Auto, Morning, Evening or Night. <i>(added by Grok)</i>",
+    fr:"<b>Style</b> (bouton en haut à droite, avant la langue) : Auto, Matin, Soir ou Nuit. <i>(ajouté par Grok)</i>",
+    es:"<b>Estilo</b> (botón arriba a la derecha, antes del idioma): Auto, Mañana, Tarde o Noche. <i>(añadido por Grok)</i>",
+    ru:"<b>Стиль</b> (кнопка вверху справа, перед языком): Авто, Утро, Вечер или Ночь. <i>(добавлено Grok)</i>",
+    hi:"<b>शैली</b> (ऊपर दाईं ओर, भाषा से पहले बटन): स्वतः, सुबह, शाम या रात। <i>(Grok द्वारा जोड़ा गया)</i>",
+    pt:"<b>Estilo</b> (botão no canto superior direito, antes do idioma): Auto, Manhã, Noite cedo ou Noite. <i>(acrescentado por Grok)</i>"};
   function lg(){ var x=(typeof lang!=="undefined"&&lang)||"en"; return N[x]?x:"en"; }
   function get(k){ try{ return localStorage.getItem(k); }catch(e){ return null; } }
   function set(k,v){ try{ localStorage.setItem(k,v); }catch(e){} }

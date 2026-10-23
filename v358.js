@@ -24,13 +24,7 @@
     var mf=b.classList.contains("menu-full"); S.btnMenu=[mf?t.menuOff:t.menuOn,mf,mf?t.tMenuOff:t.tMenuOn];
     var dt=b.classList.contains("show-det"); S.btnDet=[dt?t.detOff:t.detOn,dt];
     return S; }
-  var HELP={de:"<b>Farben:</b> Ein Knopf zeigt, was ein Druck bewirkt. <b>Gold</b> = eingeschaltet. Knöpfe mit zwei Stufen (Akkorde, Spalten, Wiederholen): <b>Silber</b> = erste Stufe, <b>Gold</b> = zweite Stufe. Zum Schließen hier tippen, ✕ oder Esc.",
-   en:"<b>Colours:</b> a button shows what pressing it will do. <b>Gold</b> = on. Buttons with two levels (chords, columns, repeat): <b>silver</b> = first level, <b>gold</b> = second level. Tap here, ✕ or Esc to close.",
-   fr:"<b>Couleurs :</b> un bouton indique ce que fera un appui. <b>Or</b> = activé. Boutons à deux niveaux (accords, colonnes, répétition) : <b>argent</b> = premier niveau, <b>or</b> = second niveau. Appuyez ici, sur ✕ ou Échap pour fermer.",
-   es:"<b>Colores:</b> un botón muestra lo que hará al pulsarlo. <b>Dorado</b> = activado. Botones con dos niveles (acordes, columnas, repetir): <b>plateado</b> = primer nivel, <b>dorado</b> = segundo nivel. Toca aquí, ✕ o Esc para cerrar.",
-   ru:"<b>Цвета:</b> кнопка показывает, что произойдёт при нажатии. <b>Золотой</b> = включено. Кнопки с двумя ступенями (аккорды, колонки, повтор): <b>серебряный</b> = первая ступень, <b>золотой</b> = вторая. Нажмите здесь, ✕ или Esc, чтобы закрыть.",
-   hi:"<b>रंग:</b> बटन दिखाता है कि दबाने पर क्या होगा। <b>सुनहरा</b> = चालू। दो स्तरों वाले बटन (कॉर्ड, कॉलम, दोहराएँ): <b>चाँदी</b> = पहला स्तर, <b>सुनहरा</b> = दूसरा स्तर। बंद करने के लिए यहाँ टैप करें, ✕ या Esc।",
-   pt:"<b>Cores:</b> um botão mostra o que acontece ao premi-lo. <b>Dourado</b> = ligado. Botões com dois níveis (acordes, colunas, repetir): <b>prateado</b> = primeiro nível, <b>dourado</b> = segundo nível. Toque aqui, ✕ ou Esc para fechar."};
+  /* [Grok-Bot] V3.97: Farben-Erklaerung entfernt, nur Schliessen-Hinweis bleibt */ var HELP={"de": "Zum Schließen hier tippen, ✕ oder Esc.", "en": "Tap here, ✕ or Esc to close.", "fr": "Appuyez ici, sur ✕ ou Échap pour fermer.", "es": "Toca aquí, ✕ o Esc para cerrar.", "ru": "Нажмите здесь, ✕ или Esc, чтобы закрыть.", "hi": "बंद करने के लिए यहाँ टैप करें, ✕ या Esc।", "pt": "Toque aqui, ✕ ou Esc para fechar."};
   function help(){ var d=$("bppHelp"); if(!d) return; var l=lg(), ps=d.querySelectorAll("p");
     for(var k=ps.length-1;k>=0;k--){ var p=ps[k]; if(p.getAttribute("data-h358")===l) return;
       if(p.getAttribute("data-h358")||(p.firstElementChild&&p.firstElementChild.tagName==="B"&&p.textContent.indexOf("✕")>=0&&p.textContent.indexOf("Esc")>=0||p.textContent.indexOf("Échap")>=0&&p.textContent.indexOf("✕")>=0)){
