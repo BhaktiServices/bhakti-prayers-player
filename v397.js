@@ -2,7 +2,7 @@
    Ist 0,9 s nach dem Tipp auf "Groß" die Ansicht noch hochkant (lock fehlt oder wurde abgelehnt), wird #bppFs per CSS um 90 Grad gedreht
    (Breite = 100vh, Hoehe = 100vw). Haelt man das Handy wirklich quer: keine CSS-Drehung. Beim Verlassen von Gross zurueckgesetzt.
    Mit funktionierendem lock() (Chrome) ist die Ansicht dann schon quer -> keine Aenderung. */
-window.BPP_BUILD="3.97"; window.BPP_SHOW="3.97";
+// build via v398
 (function(){
   if(window.bppV397) return; window.bppV397=1;
   var coarse=window.matchMedia("(pointer:coarse)"), R="rot397", want=false;

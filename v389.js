@@ -8,7 +8,7 @@ window.BPP_BUILD="3.89"; window.BPP_SHOW="3.89";
   if(window.bppV389) return; window.bppV389=1;
   var ID="final-prayers", F="audio/final-prayers-sunday2.mp3" /* [Grok-Bot] V3.91 gekuerzt */;
   var CDN="https://cdn.jsdelivr.net/gh/BhaktiServices/bhakti-prayers-player@main/"+F;
-  var T=[0,17,35,53,77,99,117,139,154,185,207,225,259,281,294,302,309,317,343,367,379,395]; /* [Grok-Bot] V3.91: MP3 vorne 11,0 s gekuerzt, Marken -11 s, Str. 18 auf Beginn "prem se bolo" */
+  var T=[0,17,35,53,77,99,117,139,154,185,207,225,259,281,294,302,309,317,343,367,376,404]; /* [Grok-Bot] V3.98: Str. 21 379->376 ("jai jai śrī rādhe" 6:15,6), Str. 22 395->404 ("puṇḍalīk varade" 6:44,3), per Gesangsspur (demucs) + Whisper */ /* [Grok-Bot] V3.91: MP3 vorne 11,0 s gekuerzt, Marken -11 s, Str. 18 auf Beginn "prem se bolo" */
   var SEQ=T.map(function(t,k){ return [k?t:0,k]; }), SEQYT=SEQ.map(function(e){ return [e[0]+8071,e[1]]; });
   var TI={de:"Viṣṇu Bhagavān Āratī mit Final Prayers",en:"Viṣṇu Bhagavān Āratī with Final Prayers",fr:"Viṣṇu Bhagavān Āratī avec Final Prayers",
     es:"Viṣṇu Bhagavān Āratī con Final Prayers",ru:"Вишну Бхагаван Арати с Final Prayers",hi:"विष्णु भगवान आरती और Final Prayers",pt:"Viṣṇu Bhagavān Āratī com Final Prayers"};
