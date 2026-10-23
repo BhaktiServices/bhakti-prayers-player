@@ -1,7 +1,7 @@
 /* [Grok-Bot] V4.01: Gross dreht mit dem Handy (S21/DuckDuckGo). Am Handy keine Ausrichtungs-Sperre mehr: screen.orientation.lock() wird
    abgeschaltet und beim Eintritt in Gross unlock() aufgerufen; die CSS-Drehung aus v397.js gilt nur noch als Erst-Ansicht und endet bei jeder
    echten Lageaenderung. Bei resize, orientationchange und screen.orientation change wird neu gelayoutet. */
-window.BPP_BUILD="4.01"; window.BPP_SHOW="4.01";
+// build via v402
 (function(){
   if(window.bppV401) return; window.bppV401=1;
   var coarse=window.matchMedia("(pointer:coarse)");
