@@ -2,7 +2,7 @@
    Quelle: YouTube 6QSuy1M0c84, 24:17-28:36 (Vorgabe des Nutzers), bearbeitet wie V3.67 (Hochpass 80 Hz, -16 LUFS, mono 56 kbit/s) als audio/ashtotram-prabhus.mp3 (259 s).
    Namenmarken: Stimme per demucs getrennt, Pausen + faster-whisper-Abgleich; 100 von 108 gemessen, unsicher (keine Marke): 13, 100, 101, 103-107.
    Standard bleibt die bisherige Aufnahme; Taste unter dem Titel, Wahl in localStorage "bpp-prabhus-<id>". YT-Version (Taste MP3/YT, wie bei den anderen Gebeten): YouTube 6QSuy1M0c84 ab 1457 s (bis 1716 s); preferFile folgt der MP3/YT-Wahl. */
-window.BPP_BUILD="4.05"; window.BPP_SHOW="4.05";
+// build via v406
 (function(){
   if(window.bppV405) return; window.bppV405=1;
   var YT="6QSuy1M0c84", S=1457, M=[0.1, 3.0, 6.1, 11.3, 13.8, 15.9, 18.3, 20.6, 22.9, 25.0, 27.2, 29.4, null, 34.1, 36.7, 38.7, 41.4, 44.0, 46.6, 49.4, 51.9, 56.0, 58.3, 60.7, 63.9, 66.1, 68.5, 70.7, 73.5, 75.7, 77.7, 79.8, 82.5, 84.8, 86.9, 89.0, 91.0, 93.3, 95.7, 98.1, 100.3, 102.7, 105.2, 107.3, 109.4, 111.5, 113.7, 115.7, 117.8, 120.1, 122.3, 124.4, 126.7, 129.2, 131.7, 134.6, 137.1, 139.2, 141.8, 143.8, 145.9, 148.0, 150.5, 152.6, 154.7, 157.0, 159.2, 161.3, 163.6, 165.9, 168.1, 170.2, 172.2, 174.5, 176.8, 178.9, 181.1, 183.4, 185.6, 188.1, 190.4, 192.5, 194.9, 197.3, 199.5, 201.8, 204.2, 206.3, 208.4, 210.4, 212.4, 214.7, 216.8, 218.8, 221.1, 223.3, 225.3, 227.5, 229.5, null, null, 238.5, null, null, null, null, null, 255.0], F="audio/ashtotram-prabhus.mp3", IDS=["ashtotram","ashtotram-abend"];
