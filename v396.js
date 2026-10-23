@@ -1,7 +1,7 @@
 /* [Grok-Bot] V3.96: Gross am Handy wieder quer. v373.js ruft lock("landscape") 50 ms nach dem Tipp auf; ist das Vollbild dann noch nicht aktiv
    (echtes Android braucht laenger), lehnt der Browser ab und es gab keinen zweiten Versuch. Jetzt: nach Eintritt ins Vollbild bis ca. 1,5 s
    mehrfach lock("landscape"), bis es klappt. Sensor-Logik aus v373.js bleibt unveraendert. */
-window.BPP_BUILD="3.96"; window.BPP_SHOW="3.96";
+// build via v397
 (function(){
   if(window.bppV396) return; window.bppV396=1;
   var coarse=window.matchMedia("(pointer:coarse)"), t=0;
