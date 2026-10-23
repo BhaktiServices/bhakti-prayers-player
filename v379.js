@@ -35,13 +35,16 @@ window.BPP_BUILD="3.79"; window.BPP_SHOW="3.79";
     var c=(Math.cos(90.833*rad)/(Math.cos(lat*rad)*Math.cos(dec))-Math.tan(lat*rad)*Math.tan(dec)); if(c>1||c<-1) return null;
     var ha=Math.acos(c)/rad, mid=new Date(Date.UTC(d.getFullYear(),d.getMonth(),d.getDate())).getTime();
     return {rise:mid+(720-4*(lon+ha)-eq)*6e4, set:mid+(720-4*(lon-ha)-eq)*6e4}; }
-  function guessPos(){ if(W&&W.lat!=null) return [W.lat,W.lon]; var off=-new Date().getTimezoneOffset()/60; return [48, off*15]; }
+  function guessPos(){ if(W&&W.lat!=null) return [W.lat,W.lon]; var off=-new Date(new Date().getFullYear(),0,1).getTimezoneOffset()/60; return [48, off*15]; } /* [Grok-Bot] V3.99: Normalzeit statt Sommerzeit */
   function sun(){ var now=Date.now(), today=new Date().toDateString();
     if(W&&W.day===today&&W.rise&&W.set) return {rise:W.rise,set:W.set};
     var p=guessPos(); return sunCalc(p[0],p[1],new Date())||{rise:new Date().setHours(7,0,0,0),set:new Date().setHours(19,0,0,0)}; }
-  function autoTheme(){ var s=sun(), t=Date.now();
-    if(t>=s.rise && t<s.set-90*6e4) return "morgen";
-    if(t>=s.set-90*6e4 && t<s.set+60*6e4) return "abend";
+  /* [Grok-Bot] V3.99: Morgen ab 60 min vor Sonnenaufgang (spaetestens 05:00), Abend ab 90 min vor Sonnenuntergang (spaetestens 17:00)
+     bis 60 min nach Sonnenuntergang (mindestens bis 21:00), sonst Nacht - damit Morgen- und Abendgebete im passenden Stil sind */
+  function hm(h,m){ return new Date().setHours(h,m||0,0,0); }
+  function autoTheme(){ var s=sun(), t=Date.now(), a=Math.min(s.rise-60*6e4,hm(5)), b=Math.min(s.set-90*6e4,hm(17)), c=Math.max(s.set+60*6e4,hm(21));
+    if(t>=a && t<b) return "morgen";
+    if(t>=b && t<c) return "abend";
     return "nacht"; }
   function dim(){ if(!W||Date.now()-W.at>3*3600e3) return false; var c=W.code|0; return (W.cloud>=75)||c===45||c===48||c>=51; }
   function eff(){ return mode==="auto"?autoTheme():mode; }
@@ -68,6 +71,7 @@ window.BPP_BUILD="3.79"; window.BPP_SHOW="3.79";
   }
   window.bppTheme379=function(){ return {mode:mode, theme:eff(), dim:mode==="auto"&&dim(), wx:W}; };
   apply(); document.addEventListener("DOMContentLoaded", apply);
+  document.addEventListener("visibilitychange", function(){ if(!document.hidden){ apply(); fetchWx(); } }); window.addEventListener("focus", apply); /* [Grok-Bot] V3.99 */
   setInterval(apply, 60000); setInterval(btn, 1000); setTimeout(fetchWx, 2500); setInterval(fetchWx, 10*6e4);
   /* Hilfe: Absatz Stil (vor den Tastenkuerzeln) */
   setInterval(function(){ var d=document.getElementById("bppHelp"); if(!d) return; var ref=d.querySelector(".kb357")||d.querySelector(".kb352")||d.querySelector(".jg"); if(!ref) return;

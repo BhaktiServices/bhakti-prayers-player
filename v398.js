@@ -3,7 +3,7 @@
    Strg(+Umschalt)+Pfeil spulte im Gross 10/30 s UND blaetterte zusaetzlich eine Strophe.
    Jetzt: Pfeil links/rechts allein tut auch im Gross nichts, Strg(+Umschalt)+Pfeil spult nur (v226).
    Bild auf/ab, Pfeil hoch/runter+Enter, Leertaste, Esc unveraendert. Wischen unveraendert. */
-window.BPP_BUILD="3.98"; window.BPP_SHOW="3.98";
+// build via v399
 (function(){
   if(window.bppV398) return; window.bppV398=1;
   function fsOn(){ var f=document.getElementById("bppFs"); return !!(f&&f.classList.contains("on")); }
