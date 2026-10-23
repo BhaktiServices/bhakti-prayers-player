@@ -2,7 +2,7 @@
    personenbezogenen Daten). Zaehlung wie bei "Orte" (v204.js) mit countapi.mileshilliard.com (nur hit/get): Schluessel je ID und Tag/Monat/gesamt,
    nur beim ersten Treffer (Wert 1) wird der Geraetezaehler erhoeht. "Aufrufe" (= Starts, einmal je Sitzung) bleiben unveraendert.
    Geraete gibt es erst ab V4.06 (23.10.2026); fuer die Zeit davor keine Zahl. Anzeige als eigene Zeile direkt unter den Aufrufen, 7 Sprachen. */
-window.BPP_BUILD="4.06"; window.BPP_SHOW="4.06";
+// build via v407
 (function(){
   if(window.bppV406) return; window.bppV406=1;
   var API="https://countapi.mileshilliard.com/api/v1", CK="bpp-clbuerger-";

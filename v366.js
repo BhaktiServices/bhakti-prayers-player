@@ -20,12 +20,12 @@
   function paint(){ var s=document.getElementById("bpp-stats"); if(!s) return; var el=document.getElementById("bpp-orte24");
     if(!el){ el=document.createElement("div"); el.id="bpp-orte24"; s.parentNode.insertBefore(el,s.nextSibling); }
     var now=Date.now(), by={}, sess={};
-    Object.keys(seen).forEach(function(k){ var p=seen[k]; if(!p||now-p.t>DAY||(!p.c&&!p.o)) return; var id=k.split("|")[1];
-      var l=[p.c,p.o].filter(Boolean).join(", "); var key=l+"|"+id; if(sess[key]) return; sess[key]=1; by[l]=(by[l]||0)+1; });
+    Object.keys(seen).forEach(function(k){ var p=seen[k]; if(!p||now-p.t>DAY||(!p.c&&!p.o)) return; var id=p.d||k.split("|")[1]; /* [Grok-Bot] V4.07: je Geraet (bpp-device-id) statt je Sitzung */
+      var l=p.c?(p.c+(p.o?" ("+p.o+")":"")):p.o; /* [Grok-Bot] V4.07: Stadt (Land) */ var key=l+"|"+id; if(sess[key]) return; sess[key]=1; by[l]=(by[l]||0)+1; });
     var rows=Object.keys(by).sort(function(a,b){ return by[b]-by[a]||a.localeCompare(b); });
-    el.innerHTML="Orte letzte 24 h ("+rows.length+"): "+(rows.length?rows.map(function(r){ return esc(r)+(by[r]>1?" \u00d7"+by[r]:""); }).join(" \u00b7 "):"noch keine Daten"); /* [Grok-Bot] V3.74: Zeile immer sichtbar */
+    el.innerHTML="Orte letzte 24 h ("+rows.length+"): "+(rows.length?rows.map(function(r){ return esc(r)+(by[r]>3?" \u00d7"+by[r]:"") /* [Grok-Bot] V4.07: Anzahl erst ab 4 */; }).join(" \u00b7 "):"noch keine Daten"); /* [Grok-Bot] V3.74: Zeile immer sichtbar */
   }
-  function pub(){ if(!cl||!cl.connected||(!me.c&&!me.o)) return; var b=JSON.stringify({c:me.c.slice(0,64),o:me.o.slice(0,8),t:Date.now()});
+  function pub(){ if(!cl||!cl.connected||(!me.c&&!me.o)) return; var b=JSON.stringify({c:me.c.slice(0,64),o:me.o.slice(0,8),d:(function(){ try{ return (localStorage.getItem("bpp-device-id")||"").slice(0,32); }catch(e){ return ""; } })(),t:Date.now()});
     try{ cl.publish(V+sid,b,{qos:0,retain:true}); }catch(e){} seen["v|"+sid]=JSON.parse(b); paint(); }
   function go(){ if(cl||!window.mqtt||!navigator.onLine) return;
     try{ cl=window.mqtt.connect("wss://broker.emqx.io:8084/mqtt",{clientId:"bppv-"+sid.slice(0,16),clean:true,reconnectPeriod:8000,connectTimeout:12000});
