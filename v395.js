@@ -1,5 +1,5 @@
 /* [Grok-Bot] V3.95: Hilfeabsatz "Offline / Prayers runterladen" als 2. Absatz direkt nach "Gebet waehlen" (7 Sprachen, Text unveraendert) */
-window.BPP_BUILD="3.95"; window.BPP_SHOW="3.95";
+// build via v396
 (function(){
   var O=["Offline:","Hors ligne :","Sin conexión:","Офлайн:","ऑफ़लाइन:"];
   var C=["Choose a prayer","Gebet wählen","Choisir une prière","Elegir una oración","Выбор молитвы","प्रार्थना चुनें","Escolha uma oração"];
