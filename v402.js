@@ -1,13 +1,13 @@
 /* [Grok-Bot] V4.02: Zusatz-Aufnahme "SPN live" (The Ashram - Shree Peetha Nilaya, YouTube-Kanal UC39WcMmercUJuwX7_SxgB_A).
-   Morgen: "Morning Prayers LIVE from the Bhutabhrteshwarnath Mandir" 9bXeGlXplEA (22./23.10.2026); Abend: "Evening Arati LIVE" vvbn9bu7wM4 (22.10.2026).
+   Morgen: "Morning Prayers LIVE from the Bhutabhrteshwarnath Mandir" 9bXeGlXplEA (23.10.2026); Abend: "Evening Arati LIVE" vvbn9bu7wM4 (22.10.2026).
    Abschnitte per Pausen + Spracherkennung (faster-whisper, demucs) gefunden, geschnitten (Hochpass 80 Hz, -16 LUFS, mono 56 kbit/s) als audio/<id>-spn-live.mp3.
    Strophenmarken per Chroma-DTW gegen die bisherige Aufnahme gemessen; bei Sri/Bhu/Nila Suktam und Nrisimha unsicher -> nur Startmarke.
    Standard bleibt die bisherige Aufnahme; Taste unter dem Titel, Wahl in localStorage "bpp-spn-<id>". Ersatz ohne MP3: YouTube ab Startzeit. */
-window.BPP_BUILD="4.02"; window.BPP_SHOW="4.02";
+// build via v403
 (function(){
   if(window.bppV402) return; window.bppV402=1;
   var D={"suprabhatam": {"yt": "9bXeGlXplEA", "s": 1295, "m": [4.0, 31.5, 52.9, 73.6, 94.2, 114.9, 135.9, 156.6, 177.0, 197.6, 217.4, 237.9, null, 278.4, 298.7, 322.0]}, "govinda": {"yt": "9bXeGlXplEA", "s": 1641, "m": [null, 23.1, null, null, 103.6, 131.7, null, null, null, 233.4, 258.1, null, null, null, null, 386.5, 412.7, 438.2, 469.0, 491.8, 514.5, 539.2, 565.2, 589.9, null, null, 665.3, 691.1, 719.2]}, "sri-suktam": {"yt": "9bXeGlXplEA", "s": 2421, "m": [0.0]}, "bhu-suktam": {"yt": "9bXeGlXplEA", "s": 2670, "m": [0.0]}, "nila-suktam": {"yt": "9bXeGlXplEA", "s": 2820, "m": [0.0]}, "narasimha": {"yt": "9bXeGlXplEA", "s": 3609, "m": [0.0]}, "lakshmi-arati": {"yt": "9bXeGlXplEA", "s": 4876, "m": [0.2, 24.2, 48.9, 73.7, 98.4, 130.5, 166.7, 193.2, 224.6]}, "vishnu-arati": {"yt": "vvbn9bu7wM4", "s": 34, "m": [0.0, 38.4, 75.7, 104.5, 126.5, 149.1, 170.8, 194.5, 218.7]}};
-  var NAME={"9bXeGlXplEA":"Morning Prayers LIVE, 22./23.10.2026","vvbn9bu7wM4":"Evening Arati LIVE, 22.10.2026"};
+  var NAME={"9bXeGlXplEA":"Morning Prayers LIVE, 23.10.2026","vvbn9bu7wM4":"Evening Arati LIVE, 22.10.2026"};
   var B={"de":["Aufnahme: SPN live","Aufnahme: bisherige"],"en":["Recording: SPN live","Recording: previous"],"fr":["Enregistrement : SPN live","Enregistrement : précédent"],"es":["Grabación: SPN live","Grabación: anterior"],"ru":["Запись: SPN live","Запись: прежняя"],"hi":["रिकॉर्डिंग: SPN live","रिकॉर्डिंग: पिछली"],"pt":["Gravação: SPN live","Gravação: anterior"]};
   var HQ={"de":"Aufnahme SPN live","en":"Recording SPN live","fr":"Enregistrement SPN live","es":"Grabación SPN live","ru":"Запись SPN live","hi":"रिकॉर्डिंग SPN live","pt":"Gravação SPN live"};
   function lg(){ return (typeof lang!=="undefined"&&B[lang])?lang:"en"; }
