@@ -4,6 +4,10 @@ window.BPP_BUILD="4.17"; window.BPP_SHOW="4.17";
 (function(){
   if(window.bppV415) return; window.bppV415=1;
   var TIPS={"de":["Aufnahme Prabhujis","Aufnahme Matajis"],"en":["Recording Prabhujis","Recording Matajis"],"fr":["Enregistrement Prabhujis","Enregistrement Matajis"],"es":["Grabación Prabhujis","Grabación Matajis"],"ru":["Запись Прабхуджис","Запись Матаджис"],"hi":["प्रभुजीस रिकॉर्डिंग","माताजीस रिकॉर्डिंग"],"pt":["Gravação Prabhujis","Gravação Matajis"]};
+  var st=document.createElement("style");
+  st.textContent="#bppRec387,#bppRec388,#bppRec405,#bppRec408,#bppRec415{margin-left:.4em;font-size:.7rem;padding:1px 5px;min-height:22px;vertical-align:middle;border-radius:5px;background:#6a3a5a;border:1px solid #9a5a7a;color:#f0d0e0}"+
+    "#bppRec387.pbj,#bppRec388.pbj,#bppRec405.pbj,#bppRec408.pbj,#bppRec415.pbj{background:#3a4a6a;border:1px solid #5a6a9a;color:#d0d8f0}";
+  document.head.appendChild(st);
   function place(){
     var t=document.getElementById("lyrTitle"); if(!t) return;
     var sh=document.getElementById("bppShare");
@@ -13,9 +17,7 @@ window.BPP_BUILD="4.17"; window.BPP_SHOW="4.17";
       var lg=(typeof lang!=="undefined"&&TIPS[lang])?lang:"en"; var o=b.getAttribute("aria-pressed")==="true";
       var cur=o?"Rec: Pbj":"Rec: Mtj";
       if(b.textContent!==cur) b.textContent=cur;
-      b.style.cssText="margin-left:.4em;font-size:.7rem;padding:1px 5px;min-height:22px;vertical-align:middle;border-radius:5px;"+
-        (o?"background:#3a4a6a;border:1px solid #5a6a9a;color:#d0d8f0":"background:#6a3a5a;border:1px solid #9a5a7a;color:#f0d0e0");
-      b.classList.remove("on");
+      b.classList.toggle("pbj",o); b.classList.remove("on");
       var tip=TIPS[lg][o?1:0];
       b.title=tip; b.setAttribute("aria-label",tip);
       if(sh&&sh.parentNode===t){ if(b.nextSibling!==sh) t.insertBefore(b,sh); }
