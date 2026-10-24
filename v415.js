@@ -32,18 +32,7 @@ window.BPP_BUILD="4.16"; window.BPP_SHOW="4.16";
   function onM(){ return recM()==="mtj"; }
   function cur(){ return (typeof i!=="undefined"&&i>=0&&typeof PRAYERS!=="undefined")?PRAYERS[i]:null; }
   function paint(){
-    var p=cur(), b=document.getElementById("bppRec415"), t=document.getElementById("lyrTitle");
-    if(!p||p.id!=="suprabhatam"){ if(b) b.style.display="none"; return; }
-    if(!t) return;
-    if(!b){ b=document.createElement("button"); b.type="button"; b.id="bppRec415"; b.style.cssText="margin-left:.5em;background:none;border:1px solid #6b5338;color:#e0b45a;border-radius:8px;padding:0 .4em;font-size:.75em;line-height:1.5;cursor:pointer;vertical-align:middle";
-      b.addEventListener("click",function(e){ e.stopPropagation(); sw(); }); }
-    var sh=document.getElementById("bppShare");
-    if(sh && sh.parentNode===t) t.insertBefore(b,sh); else t.appendChild(b);
-    b.style.display="";
-    var o=(p.id==="suprabhatam")?onS():onP(), lab=LABELS[lg()][o?1:0];
-    var tip=o?"Aufnahme Matajis":"Aufnahme Prabhujis";
-    if(b.textContent!==lab){ b.textContent=lab; b.title=tip; b.setAttribute("aria-label",tip); }
-    b.classList.toggle("on",o); b.setAttribute("aria-pressed",o?"true":"false");
+    var b=document.getElementById("bppRec415"); if(b) b.style.display="none";
   }
   function sw(){
     var p=cur(); if(!p) return;
