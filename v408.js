@@ -29,8 +29,10 @@
   function cur(){ return (typeof i!=="undefined"&&i>=0&&typeof PRAYERS!=="undefined")?PRAYERS[i]:null; }
   function cfg(p){ if(!p) return null; for(var k=0;k<CF.length;k++) if(CF[k].id===p.id&&CF[k].hk) return CF[k]; return null; }
   function replay(p,c){ var was=false; try{ was=(typeof isPlaying==="function")&&isPlaying(); }catch(e){}
-    var ln=line; var marks=on(c)?c.M:(p.marksFile||p.marksYt||[]);
-    var t=(marks&&marks[ln]!=null)?marks[ln]:0;
+    var g=currentGroupIndex(); if(g<0) g=0;
+    var marks=on(c)?c.M:(p.marksFile||p.marksYt||[]);
+    var t=(marks&&marks[g]!=null)?marks[g]:0;
+    var gs=stanzaGroups(p); var ln=(gs[g]&&gs[g].start!=null)?gs[g].start:line;
     try{ putSong(c.id,{line:ln,time:t}); }catch(e){} try{ play(PRAYERS.indexOf(p),true,was); }catch(e){} }
   function sw(){ var p=cur(), c=cfg(p); if(!c) return; var o=on(c);
     try{ localStorage.setItem(K(c),o?"alt":"prabhus"); if(!o&&c.spn) localStorage.setItem("bpp-spn-"+c.id,"alt"); }catch(e){}
