@@ -33,7 +33,7 @@ window.BPP_BUILD="3.87"; window.BPP_SHOW="3.87";
       try{ play(PRAYERS.indexOf(P), true, was); }catch(e){} }
     paint();
   }
-  function paint(){
+  function paint(){ return; /* [Grok.com] Button von v415 */ 
     var P=hook(), c=cur(), b=document.getElementById("bppRec387");
     if(!b){ var now=document.getElementById("now"); if(!now) return;
       b=document.createElement("button"); b.type="button"; b.id="bppRec387";

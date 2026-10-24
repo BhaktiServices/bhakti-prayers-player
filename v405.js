@@ -28,7 +28,7 @@
     try{ localStorage.setItem(key(id),on(id)?"alt":"prabhus"); }catch(e){}
     var was=false; try{ was=(typeof isPlaying==="function")&&isPlaying(); }catch(e){}
     try{ play(PRAYERS.indexOf(c),true,was); }catch(e){} paint(); }
-  function paint(){ var c=cur(), b=document.getElementById("bppRec405");
+  function paint(){ return; /* [Grok.com] Button von v415 */  var c=cur(), b=document.getElementById("bppRec405");
     if(!b){ var now=document.getElementById("now"); if(!now) return;
       b=document.createElement("button"); b.type="button"; b.id="bppRec405"; b.style.cssText="display:none;margin:4px 0 6px;font-size:.85rem;padding:4px 10px";
       b.addEventListener("click",function(e){ e.stopPropagation(); sw(); }); now.parentNode.insertBefore(b,now.nextSibling); }

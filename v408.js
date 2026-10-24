@@ -33,7 +33,7 @@
   function sw(){ var p=cur(), c=cfg(p); if(!c) return; var o=on(c);
     try{ localStorage.setItem(K(c),o?"alt":"prabhus"); if(!o&&c.spn) localStorage.setItem("bpp-spn-"+c.id,"alt"); }catch(e){}
     replay(p,c); paint(); }
-  function paint(){ var p=cur(), c=cfg(p), b=document.getElementById("bppRec408");
+  function paint(){ return; /* [Grok.com] Button von v415 */  var p=cur(), c=cfg(p), b=document.getElementById("bppRec408");
     if(!b){ var now=document.getElementById("now"); if(!now) return;
       b=document.createElement("button"); b.type="button"; b.id="bppRec408"; b.style.cssText="display:none;margin:4px 0 6px;font-size:.85rem;padding:4px 10px";
       b.addEventListener("click",function(e){ e.stopPropagation(); sw(); }); now.parentNode.insertBefore(b,now.nextSibling); }
