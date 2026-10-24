@@ -29,8 +29,8 @@ window.BPP_BUILD="3.87"; window.BPP_SHOW="3.87";
     try{ localStorage.setItem(KEY,on()?"frau":"prabhus"); }catch(e){}
     var c=cur();
     if(c===P){ var was=false; try{ was=(typeof isPlaying==="function")&&isPlaying(); }catch(e){}
-      try{ putSong(ID,{line:0,time:0}); }catch(e){}
-      try{ play(PRAYERS.indexOf(P), false, was); }catch(e){} }
+      var t=0; try{ var a=document.getElementById("a"); if(a&&isFinite(a.currentTime)) t=a.currentTime; }catch(e){} try{ putSong(ID,{line:line,time:t}); }catch(e){}
+      try{ play(PRAYERS.indexOf(P), true, was); }catch(e){} }
     paint();
   }
   function paint(){
