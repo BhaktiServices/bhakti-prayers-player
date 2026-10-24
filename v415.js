@@ -10,8 +10,9 @@ window.BPP_BUILD="4.17"; window.BPP_SHOW="4.17";
     var ids=["bppRec387","bppRec388","bppRec405","bppRec408","bppRec415"];
     ids.forEach(function(id){
       var b=document.getElementById(id); if(!b||b.style.display==="none") return;
-      b.style.cssText="margin-left:.5em;font-size:.78rem;padding:2px 7px;vertical-align:middle";
-      var lg=(typeof lang!=="undefined"&&TIPS[lang])?lang:"en"; var o=b.classList.contains("on"), tip=TIPS[lg][o?1:0];
+      b.style.cssText="margin-left:.5em;font-size:.78rem;padding:2px 7px;vertical-align:middle;background:#4a372b;border:1px solid #6b5340;color:var(--text)";
+      b.classList.remove("on");
+      var lg=(typeof lang!=="undefined"&&TIPS[lang])?lang:"en"; var o=b.getAttribute("aria-pressed")==="true", tip=TIPS[lg][o?1:0];
       b.title=tip; b.setAttribute("aria-label",tip);
       if(sh&&sh.parentNode===t){ if(b.nextSibling!==sh) t.insertBefore(b,sh); }
       else if(b.parentNode!==t) t.appendChild(b);
