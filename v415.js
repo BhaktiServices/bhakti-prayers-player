@@ -8,13 +8,28 @@ window.BPP_BUILD="4.17"; window.BPP_SHOW="4.17";
   st.textContent="#bppRec387,#bppRec388,#bppRec405,#bppRec408,#bppRec415{margin-left:.4em;font-size:.7rem;padding:1px 5px;min-height:22px;vertical-align:middle;border-radius:5px;background:#6a3a5a;border:1px solid #9a5a7a;color:#f0d0e0}"+
     "#bppRec387.pbj,#bppRec388.pbj,#bppRec405.pbj,#bppRec408.pbj,#bppRec415.pbj{background:#3a4a6a;border:1px solid #5a6a9a;color:#d0d8f0}";
   document.head.appendChild(st);
+  function ensureSupraBtn(){
+    var b=document.getElementById("bppRec415"); if(b) return;
+    var p=cur(); if(!p||p.id!=="suprabhatam") return;
+    var now=document.getElementById("now"); if(!now) return;
+    b=document.createElement("button"); b.type="button"; b.id="bppRec415";
+    b.addEventListener("click",function(e){ e.stopPropagation(); swSupra(); });
+    now.parentNode.insertBefore(b,now.nextSibling);
+  }
+  function swSupra(){
+    var o=onS(); try{ localStorage.setItem("bpp-prabhus-suprabhatam",o?"alt":"prabhus"); }catch(e){}
+    var was=false; try{ was=(typeof isPlaying==="function")&&isPlaying(); }catch(e){}
+    try{ putSong("suprabhatam",{line:0,time:0}); }catch(e){}
+    var p=cur(); if(p) try{ play(PRAYERS.indexOf(p),true,was); }catch(e){}
+  }
   function place(){
+    ensureSupraBtn();
     var t=document.getElementById("lyrTitle"); if(!t) return;
     var sh=document.getElementById("bppShare");
     var ids=["bppRec387","bppRec388","bppRec405","bppRec408","bppRec415"];
     ids.forEach(function(id){
       var b=document.getElementById(id); if(!b||b.style.display==="none") return;
-      var lg=(typeof lang!=="undefined"&&TIPS[lang])?lang:"en"; var o=b.getAttribute("aria-pressed")==="true";
+      var lg=(typeof lang!=="undefined"&&TIPS[lang])?lang:"en"; var o=(id==="bppRec415")?onS():b.getAttribute("aria-pressed")==="true"; if(id==="bppRec415") b.setAttribute("aria-pressed",o?"true":"false");
       var cur=o?"Rec: Pbj":"Rec: Mtj";
       if(b.textContent!==cur) b.textContent=cur;
       b.classList.toggle("pbj",o); b.classList.remove("on");
