@@ -40,8 +40,7 @@
     var s=document.getElementById("bppRec402");
     if(s&&!s.__v408){ s.__v408=1; s.addEventListener("click",function(){ try{ if(localStorage.getItem("bpp-prabhus-govinda")==="prabhus") localStorage.setItem("bpp-prabhus-govinda","alt"); }catch(e){} },true); } /* SPN gewaehlt -> Prabhus aus */
     b.style.display=c?"":"none"; if(!c) return;
-    var o=on(c), t=o?"Rec: Pbj":"Rec: Mtj";
-    if(b.textContent!==t) b.textContent=t;
+    var o=on(c);
     b.classList.remove("on"); b.setAttribute("aria-pressed",o?"true":"false"); }
   function src(){ var b=document.getElementById("bppSrcInfo"), c=cfg(cur()); if(!b||!b.innerHTML||!c) return; if(b.querySelector(".hq408")) return;
     var u="https://www.youtube.com/watch?v="+YT+"&t="+c.S+"s";
