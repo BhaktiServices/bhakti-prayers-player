@@ -27,7 +27,7 @@
   function sw(){ var c=cur(); if(!has(c)) return; var id=c.id;
     try{ localStorage.setItem(key(id),on(id)?"alt":"prabhus"); }catch(e){}
     var was=false; try{ was=(typeof isPlaying==="function")&&isPlaying(); }catch(e){}
-    var t=0; try{ var a=document.getElementById("a"); if(a&&isFinite(a.currentTime)) t=a.currentTime; }catch(e){} try{ putSong(id,{line:line,time:t}); }catch(e){} try{ play(PRAYERS.indexOf(c),true,was); }catch(e){} paint(); }
+    try{ putSong(id,{line:0,time:0}); }catch(e){} try{ play(PRAYERS.indexOf(c),false,was); }catch(e){} paint(); }
   function paint(){ var c=cur(), b=document.getElementById("bppRec405");
     if(!b){ var now=document.getElementById("now"); if(!now) return;
       b=document.createElement("button"); b.type="button"; b.id="bppRec405"; b.style.cssText="display:none;margin:4px 0 6px;font-size:.85rem;padding:4px 10px";
