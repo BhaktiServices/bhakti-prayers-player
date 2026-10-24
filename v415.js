@@ -1,11 +1,11 @@
-/* [Grok.com] V4.16: Button-Texte stehen jetzt direkt in v387/v388/v405/v408.
-   Krishna Suprabhatam unter Prabhujis: YouTube pV1eQwiyR5I ab 20:30 (1230 s), ohne MP3. */
+/* [Grok.com] V4.16: Krishna Suprabhatam Prabhujis aus YouTube cvc8K05QqVU (Sri Krishna Suprabhatam 1, 5:20).
+   MP3-Erzeugung blockiert durch YouTube; vorerst direkt YouTube. */
 window.BPP_BUILD="4.16"; window.BPP_SHOW="4.16";
 (function(){
   if(window.bppV415) return; window.bppV415=1;
   var LABELS={"de":["Rec: Pbj","Rec: Mtj"],"en":["Rec: Pbj","Rec: Mtj"],"fr":["Rec: Pbj","Rec: Mtj"],"es":["Rec: Pbj","Rec: Mtj"],"ru":["Rec: Pbj","Rec: Mtj"],"hi":["Rec: Pbj","Rec: Mtj"],"pt":["Rec: Pbj","Rec: Mtj"]};
   function lg(){ return (typeof lang!=="undefined"&&LABELS[lang])?lang:"en"; }
-  var YT="pV1eQwiyR5I", S=1230;
+  var YT="cvc8K05QqVU", S=0;
   function addSupra(){
     if(typeof PRAYERS==="undefined") return;
     var P=PRAYERS.find(function(p){ return p.id==="suprabhatam"; }); if(!P||P.__v415) return; P.__v415=1;
