@@ -4,7 +4,7 @@
 window.BPP_BUILD="3.21"; window.BPP_SHOW="3.21";
 (function(){
   var st=document.createElement("style");
-  st.textContent="header h1{display:flex!important;flex-wrap:wrap;align-items:center;justify-content:center;column-gap:10px;row-gap:4px}"+
+  st.textContent="" /* [Grok.com] alte Flex-Regel aus */ +
     "#bppHelpCol{flex:1 1 0;min-width:max-content;display:flex;justify-content:flex-end;order:-1}#bppBr{display:none}"+
     "header h1 .ver{order:0;flex:0 0 auto;white-space:nowrap}"+
     "header h1 .lang.l307{position:static!important;transform:none!important;top:auto!important;right:auto!important;order:1;flex:1 1 0;min-width:max-content;justify-content:flex-end;margin:0!important;gap:0}"+
