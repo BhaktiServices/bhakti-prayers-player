@@ -22,7 +22,7 @@
   function one(scope,tag,cnt){ /* erstes Mal je Geraet und Zeitraum: hit auf ID-Schluessel; Wert 1 -> Zaehler +1 */
     if(seen(scope)) return get(cnt);
     return hit(CK+"dev-"+tag+"-"+id).then(function(v){ if(v==null) return get(cnt); mark(scope); return v===1?hit(cnt):get(cnt); }); }
-  function paint(){ var s=document.getElementById("bpp-stats"); if(!s||!s.parentNode) return; var el=document.getElementById("bpp-dev406");
+  function paint(){ return; /* [Grok.com] Geräte-Zeile aus */ var s=document.getElementById("bpp-stats"); if(!s||!s.parentNode) return; var el=document.getElementById("bpp-dev406");
     if(!el){ el=document.createElement("div"); el.id="bpp-dev406"; el.style.cssText="font-size:.68rem;color:#cbb89a;opacity:.85;line-height:1.35;text-align:right;padding:0 12px 6px;margin:-6px 0 0"; }
     if(s.nextSibling!==el) s.parentNode.insertBefore(el,s.nextSibling);
     var W=L[lg()], loc={de:"de-DE",en:"en-GB",fr:"fr-FR",es:"es-ES",ru:"ru-RU",hi:"hi-IN",pt:"pt-PT"}[lg()];
