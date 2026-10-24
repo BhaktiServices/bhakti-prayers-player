@@ -1,13 +1,13 @@
 /* [Grok-Bot] V4.08: Zusatz-Aufnahmen "Prabhus" aus YouTube 0yvn6RxTiU8 (Zeiten = Vorgabe des Nutzers), bearbeitet wie V4.05 (Hochpass 80 Hz, -16 LUFS, mono 56 kbit/s):
-   - The Govinda Prayer (govinda): 29:50-46:20 (1790-2780 s) -> audio/govinda-prabhus.mp3. Marken: 29/29 gemessen (Demucs-Gesang + Whisper-Refrain "govindam"; Str. 24-28 ueber Pausenraster). Hinweis: 0-320 s der Datei ist Govinda Suprabhatam, Str. 1 beginnt bei 320.3 s.
+   - The Govinda Prayer (govinda): 35:08-46:20 (2108-2780 s, V4.10 neu geschnitten) -> audio/govinda-prabhus2.mp3. Marken: 29/29 gemessen (Demucs-Gesang + Whisper-Refrain "govindam"; Str. 24-28 ueber Pausenraster). V4.10: Govinda Suprabhatam am Anfang entfernt (Schnitt in der Pause vor Str. 1), Str. 1 beginnt bei 2.3 s; Marken um -318 s verschoben.
    - Narasimha Kavacam (kavacham): 46:30-1:05:18 (2790-3918 s) -> audio/narasimha-prabhus.mp3. Marken: 49/55 gemessen (Whisper-Anker + Pausenraster); Str. 50-55 (Kirtan-Schluss) ohne Marke.
    Standard bleibt die bisherige Aufnahme; Taste unter dem Titel, Wahl in localStorage "bpp-prabhus-<id>". Govinda: neben "SPN live" (v402.js), Prabhus schaltet SPN aus und umgekehrt.
-   YT-Version (Taste MP3/YT) 1790-2780 bzw. 2790-3918 s (Endpunkt per &end= am Einbettungslink). */
+   YT-Version (Taste MP3/YT) 2108-2780 bzw. 2790-3918 s (Endpunkt per &end= am Einbettungslink). */
 // build via v409.js
 (function(){
   if(window.bppV408) return; window.bppV408=1;
   var YT="0yvn6RxTiU8";
-  var CF=[{id:"govinda",F:"audio/govinda-prabhus.mp3",S:1790,M:[320.3,343.8,369.3,394.4,417.6,440.8,465.2,489.0,512.6,536.0,559.4,582.7,606.1,629.4,652.5,675.8,698.9,721.8,744.8,768.0,790.9,813.2,835.5,856.8,877.9,898.9,919.7,940.7,962.9],r:"29:50–46:20",spn:1},
+  var CF=[{id:"govinda",F:"audio/govinda-prabhus2.mp3",S:2108,M:[2.3,25.8,51.3,76.4,99.6,122.8,147.2,171.0,194.6,218.0,241.4,264.7,288.1,311.4,334.5,357.8,380.9,403.8,426.8,450.0,472.9,495.2,517.5,538.8,559.9,580.9,601.7,622.7,644.9],r:"35:08–46:20",spn:1},
           {id:"kavacham",F:"audio/narasimha-prabhus.mp3",S:2790,M:[15.5,41.3,66.6,91.1,115.6,139.6,163.6,187.4,211.2,235.1,259.3,282.4,306.3,328.1,349.6,369.4,388.8,407.9,426.7,444.9,463.1,481.1,499.1,516.3,533.8,550.7,567.5,583.7,599.6,615.4,630.8,646.3,661.6,683.3,710.5,736.6,761.8,794.3,810.0,825.8,841.5,857.2,872.8,888.5,903.4,917.9,933.4,948.4,963.7,null,null,null,null,null,null],r:"46:30–1:05:18",spn:0}];
   var B={"de":["Aufnahme: Prabhus","Aufnahme: bisherige"],"en":["Recording: Prabhus","Recording: previous"],"fr":["Enregistrement : Prabhus","Enregistrement : précédent"],"es":["Grabación: Prabhus","Grabación: anterior"],"ru":["Запись: Prabhus","Запись: прежняя"],"hi":["रिकॉर्डिंग: Prabhus","रिकॉर्डिंग: पिछली"],"pt":["Gravação: Prabhus","Gravação: anterior"]};
   var HQ={"de":"Aufnahme Prabhus","en":"Recording Prabhus","fr":"Enregistrement Prabhus","es":"Grabación Prabhus","ru":"Запись Prabhus","hi":"रिकॉर्डिंग Prabhus","pt":"Gravação Prabhus"};
@@ -54,9 +54,9 @@ function busy409(u){ try{ var a=document.getElementById("a"), s=a&&a.currentSrc?
     Object.defineProperty(HTMLIFrameElement.prototype,"src",{configurable:true,enumerable:d.enumerable,get:d.get,set:function(v){
       try{ var m=typeof v==="string"&&v.indexOf("/embed/"+YT)>=0&&v.indexOf("end=")<0&&v.match(/[?&]start=(\d+)/);
         if(m){ var s=+m[1];
-          var e=(s>=1790&&s<2780)?2780:(s>=2790&&s<3918)?3918:0; if(e) v+="&end="+e; } }catch(x){}
+          var e=(s>=2108&&s<2780)?2780:(s>=2790&&s<3918)?3918:0; if(e) v+="&end="+e; } }catch(x){}
       return d.set.call(this,v); }}); })(); /* YT-Endpunkt */
   hook(); setInterval(function(){ hook(); paint(); src(); },300);
   window.addEventListener("load",function(){ hook(); paint(); setTimeout(pre,10000); });
 })();
-/* <audio src="audio/govinda-prabhus.mp3"> <audio src="audio/narasimha-prabhus.mp3"> */
+/* <audio src="audio/govinda-prabhus2.mp3"> <audio src="audio/narasimha-prabhus.mp3"> */
