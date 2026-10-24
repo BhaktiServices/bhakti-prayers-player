@@ -33,8 +33,7 @@
       b=document.createElement("button"); b.type="button"; b.id="bppRec405"; b.style.cssText="display:none;margin:4px 0 6px;font-size:.85rem;padding:4px 10px";
       b.addEventListener("click",function(e){ e.stopPropagation(); sw(); }); now.parentNode.insertBefore(b,now.nextSibling); }
     var show=has(c); b.style.display=show?"":"none"; if(!show) return;
-    var o=on(c.id), t=o?"Rec: Pbj":"Rec: Mtj";
-    if(b.textContent!==t) b.textContent=t;
+    var o=on(c.id);
     b.classList.remove("on"); b.setAttribute("aria-pressed",o?"true":"false"); }
   function src(){ var b=document.getElementById("bppSrcInfo"), c=cur(); if(!b||!b.innerHTML||!has(c)) return; if(b.querySelector(".hq405")) return;
     var u="https://www.youtube.com/watch?v="+YT+"&t="+S+"s";
