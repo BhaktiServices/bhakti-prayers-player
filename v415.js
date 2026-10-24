@@ -21,11 +21,10 @@ window.BPP_BUILD="4.16"; window.BPP_SHOW="4.16";
     if(typeof PRAYERS==="undefined") return;
     var P=PRAYERS.find(function(p){ return p.id==="ramanuja"; }); if(!P||P.__v415m) return; P.__v415m=1;
     var base={audio:P.audio, youtube:P.youtube, youtubeStart:P.youtubeStart||0, preferFile:P.preferFile, audioAlt:P.audioAlt};
-    Object.defineProperty(P,"audio",{configurable:true,enumerable:true,get:function(){ return onP()?MANG_F:base.audio; },set:function(v){ base.audio=v; }});
-    Object.defineProperty(P,"audioAlt",{configurable:true,enumerable:true,get:function(){ return onP()?["https://cdn.jsdelivr.net/gh/BhaktiServices/bhakti-prayers-player@main/"+MANG_F]:base.audioAlt; },set:function(v){ base.audioAlt=v; }});
-    Object.defineProperty(P,"youtube",{configurable:true,enumerable:true,get:function(){ return onM()?MANG_YT:base.youtube; },set:function(v){ base.youtube=v; }});
-    Object.defineProperty(P,"youtubeStart",{configurable:true,enumerable:true,get:function(){ return onM()?MANG_S:base.youtubeStart; },set:function(v){ base.youtubeStart=v; }});
-    Object.defineProperty(P,"preferFile",{configurable:true,enumerable:true,get:function(){ return onP()?true:(onM()?false:base.preferFile); },set:function(v){ base.preferFile=v; }});
+    Object.defineProperty(P,"audio",{configurable:true,enumerable:true,get:function(){ return MANG_F; },set:function(v){ base.audio=v; }});
+    Object.defineProperty(P,"audioAlt",{configurable:true,enumerable:true,get:function(){ return ["https://cdn.jsdelivr.net/gh/BhaktiServices/bhakti-prayers-player@main/"+MANG_F]; },set:function(v){ base.audioAlt=v; }});
+    Object.defineProperty(P,"youtube",{configurable:true,enumerable:true,get:function(){ return ""; },set:function(v){ base.youtube=v; }});
+    Object.defineProperty(P,"preferFile",{configurable:true,enumerable:true,get:function(){ return true; },set:function(v){ base.preferFile=v; }});
   }
   function onS(){ try{ return localStorage.getItem("bpp-prabhus-suprabhatam")==="prabhus"; }catch(e){ return false; } }
   function recM(){ try{ return localStorage.getItem("bpp-rec-ramanuja")||"alt"; }catch(e){ return "alt"; } }
@@ -34,7 +33,7 @@ window.BPP_BUILD="4.16"; window.BPP_SHOW="4.16";
   function cur(){ return (typeof i!=="undefined"&&i>=0&&typeof PRAYERS!=="undefined")?PRAYERS[i]:null; }
   function paint(){
     var p=cur(), b=document.getElementById("bppRec415"), t=document.getElementById("lyrTitle");
-    if(!p||(p.id!=="suprabhatam"&&p.id!=="ramanuja")){ if(b) b.style.display="none"; return; }
+    if(!p||p.id!=="suprabhatam"){ if(b) b.style.display="none"; return; }
     if(!t) return;
     if(!b){ b=document.createElement("button"); b.type="button"; b.id="bppRec415"; b.style.cssText="margin-left:.5em;background:none;border:1px solid #6b5338;color:#e0b45a;border-radius:8px;padding:0 .4em;font-size:.75em;line-height:1.5;cursor:pointer;vertical-align:middle";
       b.addEventListener("click",function(e){ e.stopPropagation(); sw(); }); }
