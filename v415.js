@@ -10,7 +10,7 @@ window.BPP_BUILD="4.17"; window.BPP_SHOW="4.17";
     var ids=["bppRec387","bppRec388","bppRec405","bppRec408","bppRec415"];
     ids.forEach(function(id){
       var b=document.getElementById(id); if(!b||b.style.display==="none") return;
-      b.style.cssText="margin-left:.5em;background:none;border:1px solid #6b5338;color:#e0b45a;border-radius:8px;padding:0 .4em;font-size:.75em;line-height:1.5;cursor:pointer;vertical-align:middle";
+      b.style.cssText="margin-left:.5em;font-size:.78rem;padding:2px 7px;vertical-align:middle";
       var lg=(typeof lang!=="undefined"&&TIPS[lang])?lang:"en"; var o=b.classList.contains("on"), tip=TIPS[lg][o?1:0];
       b.title=tip; b.setAttribute("aria-label",tip);
       if(sh&&sh.parentNode===t){ if(b.nextSibling!==sh) t.insertBefore(b,sh); }
