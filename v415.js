@@ -26,7 +26,7 @@ window.BPP_BUILD="4.17"; window.BPP_SHOW="4.17";
   }
   setInterval(place,200);
   /* Supra + Ramanuja audio switch */
-  var SUPRA_F="audio/suprabhatam-prabhus.mp3", SUPRA_YT="cvc8K05QqVU";
+  var SUPRA_F="audio/suprabhatam-ra.mp3", SUPRA_YT="cvc8K05QqVU";
   var MANG_F="audio/ramanuja-prabhus.mp3";
   function addSupra(){
     if(typeof PRAYERS==="undefined") return;
