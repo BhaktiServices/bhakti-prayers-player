@@ -42,7 +42,7 @@
     b.style.display=c?"":"none"; if(!c) return;
     var o=on(c), t=B[lg()][o?1:0];
     if(b.textContent!==t){ b.textContent=t; b.title=t; b.setAttribute("aria-label",t); }
-    b.classList.toggle("on",o); b.setAttribute("aria-pressed",o?"true":"false"); }
+    b.classList.remove("on"); b.setAttribute("aria-pressed",o?"true":"false"); }
   function src(){ var b=document.getElementById("bppSrcInfo"), c=cfg(cur()); if(!b||!b.innerHTML||!c) return; if(b.querySelector(".hq408")) return;
     var u="https://www.youtube.com/watch?v="+YT+"&t="+c.S+"s";
     b.insertAdjacentHTML("beforeend",'<br><span class="hq408"><b>'+HQ[lg()]+':</b> YouTube <a href="'+u+'" target="_blank" rel="noopener">'+u+'</a>, '+c.r+' (MP3 und YT-Version)</span>'); }

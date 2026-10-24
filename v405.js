@@ -35,7 +35,7 @@
     var show=has(c); b.style.display=show?"":"none"; if(!show) return;
     var o=on(c.id), t=B[lg()][o?1:0];
     if(b.textContent!==t){ b.textContent=t; b.title=t; b.setAttribute("aria-label",t); }
-    b.classList.toggle("on",o); b.setAttribute("aria-pressed",o?"true":"false"); }
+    b.classList.remove("on"); b.setAttribute("aria-pressed",o?"true":"false"); }
   function src(){ var b=document.getElementById("bppSrcInfo"), c=cur(); if(!b||!b.innerHTML||!has(c)) return; if(b.querySelector(".hq405")) return;
     var u="https://www.youtube.com/watch?v="+YT+"&t="+S+"s";
     b.insertAdjacentHTML("beforeend",'<br><span class="hq405"><b>'+HQ[lg()]+':</b> YouTube <a href="'+u+'" target="_blank" rel="noopener">'+u+'</a>, 24:17–28:36 (MP3 und YT-Version)</span>'); }
