@@ -41,8 +41,8 @@ window.BPP_BUILD="3.87"; window.BPP_SHOW="3.87";
       b.addEventListener("click",function(e){ e.stopPropagation(); sw(); });
       now.parentNode.insertBefore(b,now.nextSibling); }
     var show=!!P&&c===P; b.style.display=show?"":"none"; if(!show) return;
-    var o=on(), t=B[lg()][o?1:0];
-    if(b.textContent!==t){ b.textContent=t; b.title=t; b.setAttribute("aria-label",t); }
+    var o=on(), t=o?"Rec: Pbj":"Rec: Mtj";
+    if(b.textContent!==t) b.textContent=t;
     b.classList.remove("on"); b.setAttribute("aria-pressed",o?"true":"false");
   }
   function pre(){ /* Prabhus-MP3 in den Audio-Cache (offline), auch solange die Frauenstimme gewaehlt ist */
