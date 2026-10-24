@@ -28,7 +28,11 @@ window.BPP_BUILD="4.17"; window.BPP_SHOW="4.17";
     var sh=document.getElementById("bppShare");
     var ids=["bppRec387","bppRec388","bppRec405","bppRec408","bppRec415"];
     ids.forEach(function(id){
-      var b=document.getElementById(id); if(!b||b.style.display==="none") return;
+      var b=document.getElementById(id); if(!b) return;
+      var p=cur(); if(!p) return;
+      var show=(id==="bppRec387"&&p.id==="guru-stotram")||(id==="bppRec405"&&p.id==="ashtotram")||(id==="bppRec408"&&(p.id==="govinda"||p.id==="kavacham"))||(id==="bppRec415"&&p.id==="suprabhatam");
+      if(!show){ b.style.display="none"; return; }
+      b.style.display="";
       var lg=(typeof lang!=="undefined"&&TIPS[lang])?lang:"en"; var o=(id==="bppRec415")?onS():b.getAttribute("aria-pressed")==="true"; if(id==="bppRec415") b.setAttribute("aria-pressed",o?"true":"false");
       var cur=o?"Rec: Pbj":"Rec: Mtj";
       if(b.textContent!==cur) b.textContent=cur;
