@@ -39,8 +39,8 @@ window.BPP_BUILD="1.77";
   }
   document.addEventListener("DOMContentLoaded", function(){
     setTimeout(function(){ var v=document.querySelector("h1 .ver"); if(v) v.textContent="V"+window.BPP_BUILD; document.title="Bhakti Prayers Player V"+window.BPP_BUILD; }, 500);
-    setTimeout(check, 3000); setInterval(check, 15*60*1000);
-    document.addEventListener("visibilitychange", function(){ if(!document.hidden) check(); });
+    /* [Grok.com] Versionshinweis aus */
+    /* [Grok.com] */
   });
 })();
 
