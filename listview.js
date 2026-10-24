@@ -92,7 +92,7 @@
     GROUPS.forEach(function(G){ if(!grp && !G.all && G.ids.indexOf(P.id)>=0) grp=tr(G.n); });
     tt.innerHTML="";
     tt.appendChild(document.createTextNode(P.titel));
-    if(grp){ var sm=document.createElement("small"); sm.textContent=grp; tt.appendChild(sm); }
+    /* [Grok.com] Gruppenname hinter Titel entfernt */
   }
   var TIPS={
     btnPlay:["Abspielen / Pause (Leertaste)","Play / pause (Space)","Lecture / pause (barre d'espace)","Reproducir / pausa (barra espaciadora)","Воспроизвести / пауза (пробел)","चलाएँ / रोकें (स्पेस)","Tocar / pausa (barra de espaço)"],
