@@ -50,7 +50,7 @@ window.BPP_BUILD="4.17"; window.BPP_SHOW="4.17";
     b.title=TIPS[lg()][o?0:1];
     b.style.display="";
     if(sh&&sh.parentNode===t) t.insertBefore(b,sh); else if(b.parentNode!==t) t.appendChild(b);
-    document.querySelectorAll(".bppRec").forEach(function(x){ if(x!==b) x.style.display="none"; });
+    /* andere Buttons nicht verstecken */
   }
   addSupra(); addMang(); setInterval(function(){ addSupra(); addMang(); place(); },300);
   window.addEventListener("load",function(){ addSupra(); addMang(); place(); });
