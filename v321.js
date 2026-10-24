@@ -13,7 +13,7 @@ window.BPP_BUILD="3.21"; window.BPP_SHOW="3.21";
     "@media(max-width:760px){#bppHelpCol{order:-3;flex:1 0 auto;justify-content:flex-start}header h1 .lang.l307{order:-2;flex:0 0 auto}#bppBr{display:block;order:-1;flex:0 0 100%;height:0}"+
     "#bppHelpCol #bppHelpTip{font-size:.66rem!important;padding:1px 7px!important}#bppHelpCol #bppHelpTip:before{transform:rotate(90deg);right:auto!important;left:14px!important;top:auto!important;bottom:-7px;margin:0!important}}";
   document.head.appendChild(st);
-  var n=0,iv=setInterval(function(){
+  return; /* [Grok.com] alte Kopfzeile aus */ var n=0,iv=setInterval(function(){
     var h=document.querySelector("header h1"), b=document.getElementById("bppHelpTip"); if(!h||!b){ if(++n>100) clearInterval(iv); return; }
     var c=document.getElementById("bppHelpCol"); if(!c){ c=document.createElement("span"); c.id="bppHelpCol"; h.appendChild(c); var br=document.createElement("span"); br.id="bppBr"; h.appendChild(br); }
     if(b.parentNode!==c) c.appendChild(b);
