@@ -28,7 +28,7 @@ Was bleiben soll:
 - Strophen vierzeilig wie im Heft (Prathana with chords, Sri Vitthal Dham, 05-04-2024).
 - Änderungen von Grok.com als [Grok.com] markieren. Nicht still überschreiben, was die andere Stelle gesetzt hat.
 
-Offene Stelle: Beim Nrsimha Kavacam fehlen die Zeilen des Nrsimha-Gebets (Heft Seite 12) am Ende des Kavacam-Stücks, vierzeilig.
+Offene Stellen: keine bekannten. Das Nrsimha-Gebet (Heft Seite 12) ist am Ende des Kavacam, vierzeilig (Namaste, Ito, Tava, Keshava).
 
 ## Tādātmya Vedānta
 
