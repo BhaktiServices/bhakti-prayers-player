@@ -7,13 +7,14 @@ window.BPP_BUILD="4.16"; window.BPP_SHOW="4.16";
   function place(){
     var t=document.getElementById("lyrTitle"); if(!t) return;
     var sh=document.getElementById("bppShare");
-    ["bppRec387","bppRec388","bppRec405","bppRec408"].forEach(function(id){
-      var b=document.getElementById(id); if(!b) return;
-      if(b.style.display==="none") return;
+    var ids=["bppRec387","bppRec388","bppRec405","bppRec408","bppRec415"];
+    ids.forEach(function(id){
+      var b=document.getElementById(id); if(!b||b.style.display==="none") return;
       b.style.cssText="margin-left:.5em;background:none;border:1px solid #6b5338;color:#e0b45a;border-radius:8px;padding:0 .4em;font-size:.75em;line-height:1.5;cursor:pointer;vertical-align:middle";
       var o=b.classList.contains("on"), tip=o?TIPS[1]:TIPS[0];
-      if(b.title!==tip){ b.title=tip; b.setAttribute("aria-label",tip); }
-      if(sh && sh.parentNode===t) t.insertBefore(b,sh); else if(b.parentNode!==t) t.appendChild(b);
+      b.title=tip; b.setAttribute("aria-label",tip);
+      if(sh&&sh.parentNode===t){ if(b.nextSibling!==sh) t.insertBefore(b,sh); }
+      else if(b.parentNode!==t) t.appendChild(b);
     });
   }
   setInterval(place,200);
