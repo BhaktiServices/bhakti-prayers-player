@@ -5,7 +5,7 @@
 // build via v398
 (function(){
   if(window.bppV397) return; window.bppV397=1;
-  var coarse=window.matchMedia("(pointer:coarse)"), R="rot397", want=false;
+  var coarse=window.matchMedia("(pointer:coarse)"), R="rot397";
   function phone(){ return coarse.matches && Math.min(screen.width||9999, screen.height||9999)<=600; }
   /* Gedreht wird ein innerer Rahmen (#bppRot397), nicht #bppFs selbst: das Vollbild-Element erzwingt transform:none. */
   var st=document.createElement("style");
@@ -21,10 +21,28 @@
       if(!h.classList.contains(R)||moved){ h.classList.add(R); setTimeout(function(){ dispatchEvent(new Event("resize")); },30); } }
     else if(w||h.classList.contains(R)){ if(w){ while(w.firstChild) ov.insertBefore(w.firstChild,w); w.remove(); } h.classList.remove(R);
       setTimeout(function(){ dispatchEvent(new Event("resize")); },30); } }
-  /* [Grok-Bot] V4.01: CSS-Drehung nur als Erst-Ansicht; sobald sich die echte Lage aendert (Drehen, resize, orientationchange), endgueltig aus */
-  var o0=null; function lage(){ return portrait()?"p":"l"; }
-  function sync(){ if(!on()){ want=false; o0=null; set(false); return; } if(want&&o0&&lage()!==o0){ want=false; window.bppRot401Off=(window.bppRot401Off||0)+1; } set(want&&portrait()); }
-  document.addEventListener("click",function(e){ if(!(e.target&&e.target.closest&&e.target.closest("#btnFs"))||!phone()) return;
-    setTimeout(function(){ if(on()&&portrait()){ want=true; o0=lage(); sync(); } },900); },true);
-  addEventListener("resize",function(){ setTimeout(sync,80); }); addEventListener("orientationchange",function(){ setTimeout(sync,80); }); try{ screen.orientation.addEventListener("change",function(){ setTimeout(sync,80); }); }catch(e){} setInterval(sync,400);
+  /* [Grok-Bot] V4.11: Drehen in Gross (S21/DuckDuckGo). Ursache: die CSS-Drehung (Erst-Ansicht, V4.01) endete nur, wenn sich der Viewport aenderte.
+     Ist am Handy die Auto-Drehung aus bzw. dreht der Browser (WebView) im Vollbild nicht mit, aendert sich der Viewport nie -> Ansicht blieb
+     fest (quer gedreht oder hochkant). Neu: keine erzwungene Erst-Drehung. Massgeblich ist die echte Lage:
+     - Viewport quer (Browser dreht mit) -> Querformat, keine CSS-Drehung.
+     - Viewport hochkant: Lagesensor (devicemotion, Schwerkraft) entscheidet; Handy seitlich (>= 1 s stabil, damit ein mitdrehender Browser zuerst dran ist) -> CSS-Drehung 90 Grad passend
+       zur Seite (links/rechts), Handy aufrecht -> Hochformat. Ohne Sensordaten: Hochformat.
+     Neu bewertet bei resize, visualViewport-resize, matchMedia(orientation), orientationchange, screen.orientation change und alle 400 ms. */
+  var sens=null, cand=null, since=0, seenAt=0;
+  function onM(e){ var g=e.accelerationIncludingGravity; if(!g||g.x==null||g.y==null) return; var x=g.x, y=g.y, ax=Math.abs(x), ay=Math.abs(y);
+    var v=ax>6&&ax>ay*1.5?(x>0?"l":"r"):(ay>6&&ay>ax*1.5?"p":null); seenAt=Date.now(); if(!v) return;
+    if(v===sens){ cand=null; return; } if(cand!==v){ cand=v; since=Date.now(); return; } if(Date.now()-since>=1000){ cand=null; sens=v; sync(); } }
+  addEventListener("devicemotion",onM);
+  var st2=document.createElement("style"); st2.textContent="html.rotL411 #bppRot397{transform:rotate(-90deg) translateX(-100%)}"; document.head.appendChild(st2);
+  function sync(){ var h=document.documentElement;
+    if(!on()||!phone()||!portrait()){ set(false); h.classList.remove("rotL411"); return; }
+    var side=(Date.now()-seenAt<3000)&&(sens==="l"||sens==="r")?sens:null;
+    h.classList.toggle("rotL411",side==="r"); set(!!side); }
+  window.bppRot411=function(){ return {on:on(),phone:phone(),portrait:portrait(),sens:sens,rot:document.documentElement.classList.contains(R),left:document.documentElement.classList.contains("rotL411")}; };
+  function later(){ setTimeout(sync,80); setTimeout(sync,400); }
+  addEventListener("resize",later); addEventListener("orientationchange",later);
+  try{ screen.orientation.addEventListener("change",later); }catch(e){}
+  try{ visualViewport.addEventListener("resize",later); }catch(e){}
+  try{ matchMedia("(orientation: portrait)").addEventListener("change",later); }catch(e){}
+  document.addEventListener("fullscreenchange",later); setInterval(sync,400);
 })();
