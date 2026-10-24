@@ -3,7 +3,7 @@
    - Narasimha Kavacam (kavacham): 46:30-1:05:18 (2790-3918 s) -> audio/narasimha-prabhus.mp3. Marken: 49/55 gemessen (Whisper-Anker + Pausenraster); Str. 50-55 (Kirtan-Schluss) ohne Marke.
    Standard bleibt die bisherige Aufnahme; Taste unter dem Titel, Wahl in localStorage "bpp-prabhus-<id>". Govinda: neben "SPN live" (v402.js), Prabhus schaltet SPN aus und umgekehrt.
    YT-Version (Taste MP3/YT) 1790-2780 bzw. 2790-3918 s (Endpunkt per &end= am Einbettungslink). */
-window.BPP_BUILD="4.08"; window.BPP_SHOW="4.08";
+// build via v409.js
 (function(){
   if(window.bppV408) return; window.bppV408=1;
   var YT="0yvn6RxTiU8";
@@ -45,7 +45,9 @@ window.BPP_BUILD="4.08"; window.BPP_SHOW="4.08";
   function src(){ var b=document.getElementById("bppSrcInfo"), c=cfg(cur()); if(!b||!b.innerHTML||!c) return; if(b.querySelector(".hq408")) return;
     var u="https://www.youtube.com/watch?v="+YT+"&t="+c.S+"s";
     b.insertAdjacentHTML("beforeend",'<br><span class="hq408"><b>'+HQ[lg()]+':</b> YouTube <a href="'+u+'" target="_blank" rel="noopener">'+u+'</a>, '+c.r+' (MP3 und YT-Version)</span>'); }
-  function pre(){ try{ if(!navigator.onLine||!window.caches) return; caches.open("bpp-audio-v2").then(function(ca){ CF.forEach(function(c){ var u=new URL(c.F,location.href).href;
+function busy409(u){ try{ var a=document.getElementById("a"), s=a&&a.currentSrc?new URL(a.currentSrc,location.href).href.split("?")[0]:""; return s===u.split("?")[0]; }catch(e){ return false; } } /* [Grok-Bot] V4.09: nicht cachen, waehrend genau diese Datei im Player geladen ist (sonst MEDIA_ERR beim Zurueckspulen -> Neustart bei ~2 s) */
+    function pre(){ try{ if(!navigator.onLine||!window.caches) return; caches.open("bpp-audio-v2").then(function(ca){ CF.forEach(function(c){ var u=new URL(c.F,location.href).href;
+      if(busy409(u)){ setTimeout(pre,30000); return; }
       ca.match(u).then(function(r){ if(!r) return fetch(u,{cache:"no-store"}).then(function(x){ if(x.ok) return ca.put(u,x); }); }).catch(function(){}); }); }).catch(function(){}); }catch(e){} }
   window.bppPrabhus408=function(){ var p=cur(), c=cfg(p); return {id:p&&p.id, has:!!c, on:!!c&&on(c), audio:p&&p.audio}; };
   (function(){ var d=Object.getOwnPropertyDescriptor(HTMLIFrameElement.prototype,"src"); if(!d||!d.set) return;

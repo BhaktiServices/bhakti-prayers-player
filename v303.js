@@ -21,7 +21,8 @@ window.BPP_BUILD="3.03"; window.BPP_SHOW="3.03";
       if(hn) h.push("<b>"+t[2]+":</b> "+esc(hn));
     }
     var f=document.getElementById("foot"); if(f&&f.textContent.trim()) h.push(esc(f.textContent.trim()));
-    box.innerHTML=h.join("<br>");
+    var nh=h.join("<br>"); if(box.__h303===nh&&box.innerHTML) return; box.__h303=nh; /* [Grok-Bot] V4.09: nur neu schreiben, wenn sich der Inhalt aendert (sonst alle 2 s Neuaufbau -> Hoehe springt) */
+    box.innerHTML=nh;
   }
   var timer=null, lastY=0;
   function on(){return document.body.classList.contains("show-det");}

@@ -38,7 +38,9 @@
   function src(){ var b=document.getElementById("bppSrcInfo"), c=cur(); if(!b||!b.innerHTML||!has(c)) return; if(b.querySelector(".hq405")) return;
     var u="https://www.youtube.com/watch?v="+YT+"&t="+S+"s";
     b.insertAdjacentHTML("beforeend",'<br><span class="hq405"><b>'+HQ[lg()]+':</b> YouTube <a href="'+u+'" target="_blank" rel="noopener">'+u+'</a>, 24:17–28:36 (MP3 und YT-Version)</span>'); }
-  function pre(){ try{ if(!navigator.onLine||!window.caches) return; caches.open("bpp-audio-v2").then(function(c){ var u=new URL(F,location.href).href;
+function busy409(u){ try{ var a=document.getElementById("a"), s=a&&a.currentSrc?new URL(a.currentSrc,location.href).href.split("?")[0]:""; return s===u.split("?")[0]; }catch(e){ return false; } } /* [Grok-Bot] V4.09: nicht cachen, waehrend genau diese Datei im Player geladen ist (sonst MEDIA_ERR beim Zurueckspulen -> Neustart bei ~2 s) */
+    function pre(){ try{ if(!navigator.onLine||!window.caches) return; caches.open("bpp-audio-v2").then(function(c){ var u=new URL(F,location.href).href;
+      if(busy409(u)){ setTimeout(pre,30000); return; }
       c.match(u).then(function(r){ if(!r) return fetch(u,{cache:"no-store"}).then(function(x){ if(x.ok) return c.put(u,x); }); }).catch(function(){}); }).catch(function(){}); }catch(e){} }
   window.bppPrabhus405=function(){ var c=cur(); return {id:c&&c.id, has:has(c), on:!!(c&&on(c.id)), audio:c&&c.audio}; };
   hook(); setInterval(function(){ hook(); paint(); src(); },300);
