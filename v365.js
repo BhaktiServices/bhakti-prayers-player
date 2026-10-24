@@ -44,11 +44,12 @@
     var an=[]; for(k=0;k<n;k++){ if(pos[k]>=L) pos[k]=L-1; if(k&&pos[k]<=pos[k-1]) continue; an.push([pos[k],tk[k][1]]); }
     return an; }
   function seq(an){ return an.map(function(a){return sh(a[1]);}).join(" "); }
+  function tx(e){ if(!e.querySelector(".k361")) return e.textContent; var c=e.cloneNode(true); [].forEach.call(c.querySelectorAll(".k361"),function(k){ k.remove(); }); return c.textContent; } /* [Grok-Bot] V4.14: Text ohne Akkord-Spans (sonst landete der Akkord bei erneutem Aufbau im Liedtext: "Cśrī...", "Fmbhakta...") */
   function norm(s){ return String(s).replace(/\s+/g," ").trim(); }
   function std(){ var id=pid(), M=POS[id]||{}; var L=document.getElementById("lyrics"); if(!L) return;
     [].forEach.call(L.querySelectorAll(".rowline[data-n]"),function(r){ var zi=r.getAttribute("data-n"), lns=r.querySelectorAll(".sa > .ln");
       [].forEach.call(lns,function(ln,li){ if(ln.__k361===steps+"|"+ln.textContent) return;
-        var x2=ln.querySelector(".x2"), t=(x2?ln.textContent.slice(0,ln.textContent.length-x2.textContent.length):ln.textContent);
+        var x2=ln.querySelector(".x2"), lt=tx(ln), t=(x2?lt.slice(0,lt.length-x2.textContent.length):lt);
         var pv=ln.previousElementSibling, src=pv&&pv.classList.contains("lch")?pv:null;
         if(!src&&lns.length===1){ src=r.querySelector(":scope > .lch"); }
         var an=M[zi+"/"+li], raw=false;
@@ -62,7 +63,7 @@
   function fs(){ var id=pid(), M=TXT[id]||{}; var B=document.getElementById("bppFsBox"); if(!B) return; var ch=0;
     var st=(typeof line!=="undefined")?line:-1, O=FSO[id]||{};
     [].forEach.call(B.querySelectorAll(".vl:not(.fch)"),function(v,vk){ if(v.__k361===steps+"|"+v.textContent) return;
-      var t=norm(v.textContent), pv=v.previousElementSibling, src=pv&&pv.classList.contains("fch")?pv:null;
+      var t=norm(tx(v)), pv=v.previousElementSibling, src=pv&&pv.classList.contains("fch")?pv:null;
       var an=M[t], raw=false, ov=O[st+"/"+vk];
       if(ov){ an=ov; } else if(an&&src&&norm(src.textContent)!==seq(an)) an=null;
       if(!an&&src&&TXT2[id]&&TXT2[id][t]) TXT2[id][t].forEach(function(a){ if(!an&&norm(src.textContent)===seq(a)) an=a; });
