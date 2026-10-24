@@ -21,7 +21,7 @@
   var TXT2={kavacham:{"jaya jagadīśa hare":[[[16,"F"],[17,"C"]]]}};
   var css=document.createElement("style");
   css.textContent=".c361{line-height:2.2!important}.s361{position:relative}.k361{position:absolute;left:0;top:-.95em;font-size:.6em;font-weight:700;line-height:1;white-space:nowrap;pointer-events:none}"+
-    ".h361{display:none!important}#bppFsBox .vl.c361{line-height:2.1!important}";
+    ".h361{display:none!important}#bppFsBox .vl.c361{line-height:2.1!important}#bppFs .k361{font-size:max(13px,.6em)}" /* [Grok-Bot] V4.14: Akkord-Mindestgroesse in Gross wie .fch */;
   document.head.appendChild(css);
   function on(){ return typeof chMode!=="undefined"&&chMode==="zeile"; }
   function pid(){ return (typeof i!=="undefined"&&i>=0&&PRAYERS[i])?PRAYERS[i].id:null; }
