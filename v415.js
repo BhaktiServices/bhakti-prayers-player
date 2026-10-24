@@ -1,6 +1,6 @@
-/* [Grok.com] V4.15: Button-Texte stehen jetzt direkt in v387/v388/v405/v408.
+/* [Grok.com] V4.16: Button-Texte stehen jetzt direkt in v387/v388/v405/v408.
    Krishna Suprabhatam unter Prabhujis: YouTube pV1eQwiyR5I ab 20:30 (1230 s), ohne MP3. */
-window.BPP_BUILD="4.15"; window.BPP_SHOW="4.15";
+window.BPP_BUILD="4.16"; window.BPP_SHOW="4.16";
 (function(){
   if(window.bppV415) return; window.bppV415=1;
   var LABELS={"de":["Rec: Pbj","Rec: Mtj"],"en":["Rec: Pbj","Rec: Mtj"],"fr":["Rec: Pbj","Rec: Mtj"],"es":["Rec: Pbj","Rec: Mtj"],"ru":["Rec: Pbj","Rec: Mtj"],"hi":["Rec: Pbj","Rec: Mtj"],"pt":["Rec: Pbj","Rec: Mtj"]};
