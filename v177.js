@@ -28,8 +28,8 @@ window.BPP_BUILD="1.77";
   function check(){
     try{
       fetch("version.json?t="+Date.now(), {cache:"no-store"}).then(function(r){ return r.ok?r.json():null; }).then(function(j){
-        if(!j || !j.v || j.v===window.BPP_BUILD) return;
-        var a=String(j.v).split(".").map(Number), b=String(window.BPP_BUILD).split(".").map(Number);
+        if(!j || !j.v || j.v===window.BPP_VERSION) return;
+        var a=String(j.v).split(".").map(Number), b=String(window.BPP_VERSION).split(".").map(Number);
         var newer=(a[0]>b[0]) || (a[0]===b[0] && (a[1]||0)>(b[1]||0)); if(!newer || document.getElementById("bppNew")) return;
         var d=document.createElement("div"); d.id="bppNew"; d.textContent="Neue Version V"+j.v+" verf\u00fcgbar";
         var btn=document.createElement("button"); btn.type="button"; btn.textContent="Neu laden"; btn.onclick=function(){ location.reload(); };
