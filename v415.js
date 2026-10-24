@@ -1,6 +1,6 @@
 /* [Grok.com] V4.16: Rec-Button hinter Titel, vor Teilen. Hover: Aufnahme Prabhujis / Matajis.
    Krishna Supra Prabhujis: audio/suprabhatam-prabhus.mp3. Ramanuja: audio/ramanuja-prabhus.mp3 (3:35). */
-window.BPP_BUILD="4.16"; window.BPP_SHOW="4.16";
+window.BPP_BUILD="4.17"; window.BPP_SHOW="4.17";
 (function(){
   if(window.bppV415) return; window.bppV415=1;
   var TIPS={"de":["Aufnahme Prabhujis","Aufnahme Matajis"],"en":["Recording Prabhujis","Recording Matajis"],"fr":["Enregistrement Prabhujis","Enregistrement Matajis"],"es":["Grabación Prabhujis","Grabación Matajis"],"ru":["Запись Прабхуджис","Запись Матаджис"],"hi":["प्रभुजीस रिकॉर्डिंग","माताजीस रिकॉर्डिंग"],"pt":["Gravação Prabhujis","Gravação Matajis"]};
