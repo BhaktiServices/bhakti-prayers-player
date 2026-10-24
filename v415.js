@@ -1,12 +1,25 @@
-/* [Grok.com] V4.16: Krishna Suprabhatam Prabhujis aus Dropbox (56 kbit/s).
-   Ramanuja Mangalam: Rec: Pbj = audio/ramanuja-prabhus.mp3 (56 kbit/s), Rec: Mtj = YouTube 2ZKvr7GZej8 ab 2:25:10. */
+/* [Grok.com] V4.16: Rec-Button hinter Titel, vor Teilen. Hover: Aufnahme Prabhujis / Matajis.
+   Krishna Supra Prabhujis: audio/suprabhatam-prabhus.mp3. Ramanuja: audio/ramanuja-prabhus.mp3 (3:35). */
 window.BPP_BUILD="4.16"; window.BPP_SHOW="4.16";
 (function(){
   if(window.bppV415) return; window.bppV415=1;
-  var LABELS={"de":["Rec: Pbj","Rec: Mtj"],"en":["Rec: Pbj","Rec: Mtj"],"fr":["Rec: Pbj","Rec: Mtj"],"es":["Rec: Pbj","Rec: Mtj"],"ru":["Rec: Pbj","Rec: Mtj"],"hi":["Rec: Pbj","Rec: Mtj"],"pt":["Rec: Pbj","Rec: Mtj"]};
-  function lg(){ return (typeof lang!=="undefined"&&LABELS[lang])?lang:"en"; }
+  var TIPS={0:"Aufnahme Prabhujis",1:"Aufnahme Matajis"};
+  function place(){
+    var t=document.getElementById("lyrTitle"); if(!t) return;
+    var sh=document.getElementById("bppShare");
+    ["bppRec387","bppRec388","bppRec405","bppRec408"].forEach(function(id){
+      var b=document.getElementById(id); if(!b) return;
+      if(b.style.display==="none") return;
+      b.style.cssText="margin-left:.5em;background:none;border:1px solid #6b5338;color:#e0b45a;border-radius:8px;padding:0 .4em;font-size:.75em;line-height:1.5;cursor:pointer;vertical-align:middle";
+      var o=b.classList.contains("on"), tip=o?TIPS[1]:TIPS[0];
+      if(b.title!==tip){ b.title=tip; b.setAttribute("aria-label",tip); }
+      if(sh && sh.parentNode===t) t.insertBefore(b,sh); else if(b.parentNode!==t) t.appendChild(b);
+    });
+  }
+  setInterval(place,200);
+  /* Supra + Ramanuja audio switch */
   var SUPRA_F="audio/suprabhatam-prabhus.mp3", SUPRA_YT="cvc8K05QqVU";
-  var MANG_YT="2ZKvr7GZej8", MANG_S=8710, MANG_F="audio/ramanuja-prabhus.mp3";
+  var MANG_F="audio/ramanuja-prabhus.mp3";
   function addSupra(){
     if(typeof PRAYERS==="undefined") return;
     var P=PRAYERS.find(function(p){ return p.id==="suprabhatam"; }); if(!P||P.__v415) return; P.__v415=1;
@@ -20,32 +33,14 @@ window.BPP_BUILD="4.16"; window.BPP_SHOW="4.16";
   function addMang(){
     if(typeof PRAYERS==="undefined") return;
     var P=PRAYERS.find(function(p){ return p.id==="ramanuja"; }); if(!P||P.__v415m) return; P.__v415m=1;
-    var base={audio:P.audio, youtube:P.youtube, youtubeStart:P.youtubeStart||0, preferFile:P.preferFile, audioAlt:P.audioAlt};
+    var base={audio:P.audio, youtube:P.youtube, preferFile:P.preferFile, audioAlt:P.audioAlt};
     Object.defineProperty(P,"audio",{configurable:true,enumerable:true,get:function(){ return MANG_F; },set:function(v){ base.audio=v; }});
     Object.defineProperty(P,"audioAlt",{configurable:true,enumerable:true,get:function(){ return ["https://cdn.jsdelivr.net/gh/BhaktiServices/bhakti-prayers-player@main/"+MANG_F]; },set:function(v){ base.audioAlt=v; }});
-    Object.defineProperty(P,"youtube",{configurable:true,enumerable:true,get:function(){ return ""; },set:function(v){ base.youtube=v; }});
     Object.defineProperty(P,"preferFile",{configurable:true,enumerable:true,get:function(){ return true; },set:function(v){ base.preferFile=v; }});
   }
   function onS(){ try{ return localStorage.getItem("bpp-prabhus-suprabhatam")==="prabhus"; }catch(e){ return false; } }
-  function recM(){ try{ return localStorage.getItem("bpp-rec-ramanuja")||"alt"; }catch(e){ return "alt"; } }
-  function onP(){ return recM()==="prabhus"; }
-  function onM(){ return recM()==="mtj"; }
-  function cur(){ return (typeof i!=="undefined"&&i>=0&&typeof PRAYERS!=="undefined")?PRAYERS[i]:null; }
-  function paint(){
-    var b=document.getElementById("bppRec415"); if(b) b.style.display="none";
-  }
-  function sw(){
-    var p=cur(); if(!p) return;
-    var key=(p.id==="suprabhatam")?"bpp-prabhus-suprabhatam":"bpp-rec-ramanuja";
-    var next={"alt":"prabhus","prabhus":"mtj","mtj":"alt"};
-    var val=(p.id==="suprabhatam")?(onS()?"alt":"prabhus"):next[recM()];
-    try{ localStorage.setItem(key,val); }catch(e){}
-    var was=false; try{ was=(typeof isPlaying==="function")&&isPlaying(); }catch(e){}
-    try{ putSong(p.id,{line:0,time:0}); }catch(e){} try{ play(PRAYERS.indexOf(p),false,was); }catch(e){}
-    paint();
-  }
-  addSupra(); addMang(); setInterval(function(){ addSupra(); addMang(); paint(); },300);
-  window.addEventListener("load",function(){ addSupra(); addMang(); paint(); });
+  addSupra(); addMang(); setInterval(function(){ addSupra(); addMang(); },300);
+  window.addEventListener("load",function(){ addSupra(); addMang(); });
 })();
 /* <audio src="audio/suprabhatam-prabhus.mp3"> */
 /* <audio src="audio/ramanuja-prabhus.mp3"> */
