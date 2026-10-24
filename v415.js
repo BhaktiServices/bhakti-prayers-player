@@ -1,6 +1,5 @@
 /* [Grok.com] V4.15: Alle Aufnahme-Buttons auf "Rec: Pbj" / "Rec: Mtj".
-   Betrifft bppRec387 (Guru Stotram), bppRec388, bppRec405, bppRec408.
-   Krishna Suprabhatam unter Prabhujis: YouTube pV1eQwiyR5I ab 20:30. */
+   Krishna Suprabhatam unter Prabhujis: YouTube pV1eQwiyR5I ab 20:30 (1230 s), ohne MP3. */
 window.BPP_BUILD="4.15"; window.BPP_SHOW="4.15";
 (function(){
   if(window.bppV415) return; window.bppV415=1;
@@ -15,15 +14,15 @@ window.BPP_BUILD="4.15"; window.BPP_SHOW="4.15";
     });
   }
   setInterval(patch,150);
-  /* Krishna Supra unter Prabhujis */
   var YT="pV1eQwiyR5I", S=1230;
   function addSupra(){
     if(typeof PRAYERS==="undefined") return;
     var P=PRAYERS.find(function(p){ return p.id==="suprabhatam"; }); if(!P||P.__v415) return; P.__v415=1;
     var base={audio:P.audio, youtube:P.youtube, youtubeStart:P.youtubeStart||0, preferFile:P.preferFile};
-    Object.defineProperty(P,"audio",{configurable:true,enumerable:true,get:function(){ return on()?"audio/suprabhatam-prabhus.mp3":base.audio; },set:function(v){ base.audio=v; }});
+    Object.defineProperty(P,"audio",{configurable:true,enumerable:true,get:function(){ return on()?"":base.audio; },set:function(v){ base.audio=v; }});
     Object.defineProperty(P,"youtube",{configurable:true,enumerable:true,get:function(){ return on()?YT:base.youtube; },set:function(v){ base.youtube=v; }});
     Object.defineProperty(P,"youtubeStart",{configurable:true,enumerable:true,get:function(){ return on()?S:base.youtubeStart; },set:function(v){ base.youtubeStart=v; }});
+    Object.defineProperty(P,"preferFile",{configurable:true,enumerable:true,get:function(){ return on()?false:base.preferFile; },set:function(v){ base.preferFile=v; }});
   }
   function on(){ try{ return localStorage.getItem("bpp-prabhus-suprabhatam")==="prabhus"; }catch(e){ return false; } }
   function cur(){ return (typeof i!=="undefined"&&i>=0&&typeof PRAYERS!=="undefined")?PRAYERS[i]:null; }
