@@ -17,7 +17,7 @@
   function set(x){ var h=document.documentElement, ov=document.getElementById("bppFs"); if(!ov) return;
     var w=document.getElementById("bppRot397");
     if(x){ if(!w){ w=document.createElement("div"); w.id="bppRot397"; ov.appendChild(w); }
-      var moved=false; [].slice.call(ov.childNodes).forEach(function(n){ if(n!==w){ w.appendChild(n); moved=true; } });
+      var moved=false; [].slice.call(ov.childNodes).forEach(function(n){ if(n!==w&&!/(^| )bg40[04]( |$)/.test(n.className||"")){ w.appendChild(n); moved=true; } /* [Grok-Bot] V4.12: .bg400/.bg404 (v400/v404) bleiben in #bppFs - sonst Ping-Pong v404<->v397 mit resize alle ~0,5 s = Springen */ });
       if(!h.classList.contains(R)||moved){ h.classList.add(R); setTimeout(function(){ dispatchEvent(new Event("resize")); },30); } }
     else if(w||h.classList.contains(R)){ if(w){ while(w.firstChild) ov.insertBefore(w.firstChild,w); w.remove(); } h.classList.remove(R);
       setTimeout(function(){ dispatchEvent(new Event("resize")); },30); } }
