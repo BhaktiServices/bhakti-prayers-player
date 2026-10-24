@@ -1,19 +1,21 @@
-/* [Grok.com] V4.16: Krishna Suprabhatam Prabhujis aus YouTube cvc8K05QqVU (Sri Krishna Suprabhatam 1, 5:20).
-   MP3-Erzeugung blockiert durch YouTube; vorerst direkt YouTube. */
+/* [Grok.com] V4.16: Krishna Suprabhatam Prabhujis aus Dropbox SriKrishnaSuprabhatam01.mp3,
+   komprimiert auf 56 kbit/s mono (Hochpass 80 Hz, -16 LUFS) als audio/suprabhatam-prabhus.mp3.
+   YouTube cvc8K05QqVU bleibt Ersatz. */
 window.BPP_BUILD="4.16"; window.BPP_SHOW="4.16";
 (function(){
   if(window.bppV415) return; window.bppV415=1;
   var LABELS={"de":["Rec: Pbj","Rec: Mtj"],"en":["Rec: Pbj","Rec: Mtj"],"fr":["Rec: Pbj","Rec: Mtj"],"es":["Rec: Pbj","Rec: Mtj"],"ru":["Rec: Pbj","Rec: Mtj"],"hi":["Rec: Pbj","Rec: Mtj"],"pt":["Rec: Pbj","Rec: Mtj"]};
   function lg(){ return (typeof lang!=="undefined"&&LABELS[lang])?lang:"en"; }
-  var YT="cvc8K05QqVU", S=0;
+  var YT="cvc8K05QqVU", F="audio/suprabhatam-prabhus.mp3";
   function addSupra(){
     if(typeof PRAYERS==="undefined") return;
     var P=PRAYERS.find(function(p){ return p.id==="suprabhatam"; }); if(!P||P.__v415) return; P.__v415=1;
     var base={audio:P.audio, youtube:P.youtube, youtubeStart:P.youtubeStart||0, preferFile:P.preferFile};
-    Object.defineProperty(P,"audio",{configurable:true,enumerable:true,get:function(){ return on()?"":base.audio; },set:function(v){ base.audio=v; }});
+    Object.defineProperty(P,"audio",{configurable:true,enumerable:true,get:function(){ return on()?F:base.audio; },set:function(v){ base.audio=v; }});
+    Object.defineProperty(P,"audioAlt",{configurable:true,enumerable:true,get:function(){ return on()?["https://cdn.jsdelivr.net/gh/BhaktiServices/bhakti-prayers-player@main/"+F]:base.audioAlt; },set:function(v){ base.audioAlt=v; }});
     Object.defineProperty(P,"youtube",{configurable:true,enumerable:true,get:function(){ return on()?YT:base.youtube; },set:function(v){ base.youtube=v; }});
-    Object.defineProperty(P,"youtubeStart",{configurable:true,enumerable:true,get:function(){ return on()?S:base.youtubeStart; },set:function(v){ base.youtubeStart=v; }});
-    Object.defineProperty(P,"preferFile",{configurable:true,enumerable:true,get:function(){ return on()?false:base.preferFile; },set:function(v){ base.preferFile=v; }});
+    Object.defineProperty(P,"youtubeStart",{configurable:true,enumerable:true,get:function(){ return on()?0:base.youtubeStart; },set:function(v){ base.youtubeStart=v; }});
+    Object.defineProperty(P,"preferFile",{configurable:true,enumerable:true,get:function(){ return on()?true:base.preferFile; },set:function(v){ base.preferFile=v; }});
   }
   function on(){ try{ return localStorage.getItem("bpp-prabhus-suprabhatam")==="prabhus"; }catch(e){ return false; } }
   function cur(){ return (typeof i!=="undefined"&&i>=0&&typeof PRAYERS!=="undefined")?PRAYERS[i]:null; }
@@ -38,3 +40,4 @@ window.BPP_BUILD="4.16"; window.BPP_SHOW="4.16";
   addSupra(); setInterval(function(){ addSupra(); paintSupra(); },300);
   window.addEventListener("load",function(){ addSupra(); paintSupra(); });
 })();
+/* <audio src="audio/suprabhatam-prabhus.mp3"> */
