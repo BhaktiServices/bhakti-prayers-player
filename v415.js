@@ -3,7 +3,7 @@
 window.BPP_BUILD="4.16"; window.BPP_SHOW="4.16";
 (function(){
   if(window.bppV415) return; window.bppV415=1;
-  var TIPS={0:"Aufnahme Prabhujis",1:"Aufnahme Matajis"};
+  var TIPS={"de":["Aufnahme Prabhujis","Aufnahme Matajis"],"en":["Recording Prabhujis","Recording Matajis"],"fr":["Enregistrement Prabhujis","Enregistrement Matajis"],"es":["Grabación Prabhujis","Grabación Matajis"],"ru":["Запись Прабхуджис","Запись Матаджис"],"hi":["प्रभुजीस रिकॉर्डिंग","माताजीस रिकॉर्डिंग"],"pt":["Gravação Prabhujis","Gravação Matajis"]};
   function place(){
     var t=document.getElementById("lyrTitle"); if(!t) return;
     var sh=document.getElementById("bppShare");
@@ -11,7 +11,7 @@ window.BPP_BUILD="4.16"; window.BPP_SHOW="4.16";
     ids.forEach(function(id){
       var b=document.getElementById(id); if(!b||b.style.display==="none") return;
       b.style.cssText="margin-left:.5em;background:none;border:1px solid #6b5338;color:#e0b45a;border-radius:8px;padding:0 .4em;font-size:.75em;line-height:1.5;cursor:pointer;vertical-align:middle";
-      var o=b.classList.contains("on"), tip=o?TIPS[1]:TIPS[0];
+      var lg=(typeof lang!=="undefined"&&TIPS[lang])?lang:"en"; var o=b.classList.contains("on"), tip=TIPS[lg][o?1:0];
       b.title=tip; b.setAttribute("aria-label",tip);
       if(sh&&sh.parentNode===t){ if(b.nextSibling!==sh) t.insertBefore(b,sh); }
       else if(b.parentNode!==t) t.appendChild(b);
