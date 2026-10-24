@@ -9,7 +9,8 @@
   var YT="0yvn6RxTiU8";
   var CF=[{id:"govinda",F:"audio/govinda-prabhus2.mp3",S:2108,M:[2.3,25.8,51.3,76.4,99.6,122.8,147.2,171.0,194.6,218.0,241.4,264.7,288.1,311.4,334.5,357.8,380.9,403.8,426.8,450.0,472.9,495.2,517.5,538.8,559.9,580.9,601.7,622.7,644.9],r:"35:08–46:20",spn:1},
           {id:"kavacham",F:"audio/narasimha-prabhus.mp3",S:2790,M:[15.5,41.3,66.6,91.1,115.6,139.6,163.6,187.4,211.2,235.1,259.3,282.4,306.3,328.1,349.6,369.4,388.8,407.9,426.7,444.9,463.1,481.1,499.1,516.3,533.8,550.7,567.5,583.7,599.6,615.4,630.8,646.3,661.6,683.3,710.5,736.6,761.8,794.3,810.0,825.8,841.5,857.2,872.8,888.5,903.4,917.9,933.4,948.4,963.7,null,null,null,null,null,null],r:"46:30–1:05:18",spn:0}];
-  var B={"de":["Aufnahme: Prabhus","Aufnahme: bisherige"],"en":["Recording: Prabhus","Recording: previous"],"fr":["Enregistrement : Prabhus","Enregistrement : précédent"],"es":["Grabación: Prabhus","Grabación: anterior"],"ru":["Запись: Prabhus","Запись: прежняя"],"hi":["रिकॉर्डिंग: Prabhus","रिकॉर्डिंग: पिछली"],"pt":["Gravação: Prabhus","Gravação: anterior"]};
+  /* [Grok-Bot] V4.13: "bisherige" -> "Matajis" (Name, unuebersetzt) */
+  var B={"de":["Aufnahme: Prabhus","Aufnahme: Matajis"],"en":["Recording: Prabhus","Recording: Matajis"],"fr":["Enregistrement : Prabhus","Enregistrement : Matajis"],"es":["Grabación: Prabhus","Grabación: Matajis"],"ru":["Запись: Prabhus","Запись: Matajis"],"hi":["रिकॉर्डिंग: Prabhus","रिकॉर्डिंग: Matajis"],"pt":["Gravação: Prabhus","Gravação: Matajis"]};
   var HQ={"de":"Aufnahme Prabhus","en":"Recording Prabhus","fr":"Enregistrement Prabhus","es":"Grabación Prabhus","ru":"Запись Prabhus","hi":"रिकॉर्डिंग Prabhus","pt":"Gravação Prabhus"};
   function lg(){ return (typeof lang!=="undefined"&&B[lang])?lang:"en"; }
   function K(c){ return "bpp-prabhus-"+c.id; }
