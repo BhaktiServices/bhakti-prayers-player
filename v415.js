@@ -30,14 +30,17 @@ window.BPP_BUILD="4.16"; window.BPP_SHOW="4.16";
   function onM(){ try{ return localStorage.getItem("bpp-mtj-ramanuja")==="mtj"; }catch(e){ return false; } }
   function cur(){ return (typeof i!=="undefined"&&i>=0&&typeof PRAYERS!=="undefined")?PRAYERS[i]:null; }
   function paint(){
-    var p=cur(), b=document.getElementById("bppRec415");
+    var p=cur(), b=document.getElementById("bppRec415"), t=document.getElementById("lyrTitle");
     if(!p||(p.id!=="suprabhatam"&&p.id!=="ramanuja")){ if(b) b.style.display="none"; return; }
-    if(!b){ var now=document.getElementById("now"); if(!now) return;
-      b=document.createElement("button"); b.type="button"; b.id="bppRec415"; b.style.cssText="margin:4px 0 6px;font-size:.85rem;padding:4px 10px";
-      b.addEventListener("click",function(e){ e.stopPropagation(); sw(); }); now.parentNode.insertBefore(b,now.nextSibling); }
+    if(!t) return;
+    if(!b){ b=document.createElement("button"); b.type="button"; b.id="bppRec415"; b.style.cssText="margin-left:.5em;background:none;border:1px solid #6b5338;color:#e0b45a;border-radius:8px;padding:0 .4em;font-size:.75em;line-height:1.5;cursor:pointer;vertical-align:middle";
+      b.addEventListener("click",function(e){ e.stopPropagation(); sw(); }); }
+    var sh=document.getElementById("bppShare");
+    if(sh && sh.parentNode===t) t.insertBefore(b,sh); else t.appendChild(b);
     b.style.display="";
-    var o=(p.id==="suprabhatam")?onS():onM(), t=LABELS[lg()][o?1:0];
-    if(b.textContent!==t){ b.textContent=t; b.title=t; b.setAttribute("aria-label",t); }
+    var o=(p.id==="suprabhatam")?onS():onM(), lab=LABELS[lg()][o?1:0];
+    var tip=o?"Aufnahme Matajis":"Aufnahme Prabhujis";
+    if(b.textContent!==lab){ b.textContent=lab; b.title=tip; b.setAttribute("aria-label",tip); }
     b.classList.toggle("on",o); b.setAttribute("aria-pressed",o?"true":"false");
   }
   function sw(){
