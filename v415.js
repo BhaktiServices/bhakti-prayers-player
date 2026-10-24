@@ -11,8 +11,10 @@ window.BPP_BUILD="4.17"; window.BPP_SHOW="4.17";
     ids.forEach(function(id){
       var b=document.getElementById(id); if(!b||b.style.display==="none") return;
       var lg=(typeof lang!=="undefined"&&TIPS[lang])?lang:"en"; var o=b.getAttribute("aria-pressed")==="true";
+      var cur=o?"Rec: Mtj":"Rec: Pbj";
+      if(b.textContent!==cur) b.textContent=cur;
       b.style.cssText="margin-left:.4em;font-size:.7rem;padding:1px 5px;min-height:22px;vertical-align:middle;border-radius:5px;"+
-        (o?"background:#3a5a3a;border:1px solid #5a8a5a;color:#c8e6c8":"background:#4a372b;border:1px solid #6b5340;color:var(--text)");
+        (o?"background:#6a3a5a;border:1px solid #9a5a7a;color:#f0d0e0":"background:#3a4a6a;border:1px solid #5a6a9a;color:#d0d8f0");
       b.classList.remove("on");
       var tip=TIPS[lg][o?1:0];
       b.title=tip; b.setAttribute("aria-label",tip);
