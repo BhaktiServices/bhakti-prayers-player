@@ -1,5 +1,5 @@
 /* [Grok.com] V4.17: Rec-Button hinter Titel. Krishna Supra Rec: Pbj = audio/suprabhatam-ra.mp3. */
-window.BPP_BUILD="4.17"; window.BPP_SHOW="4.17";
+window.BPP_BUILD="4.18"; window.BPP_SHOW="4.18";
 (function(){
   if(window.bppV415) return; window.bppV415=1;
   var TIPS={"de":["Aufnahme Prabhujis","Aufnahme Matajis"],"en":["Recording Prabhujis","Recording Matajis"],"fr":["Enregistrement Prabhujis","Enregistrement Matajis"],"es":["Grabación Prabhujis","Grabación Matajis"],"ru":["Запись Прабхуджис","Запись Матаджис"],"hi":["प्रभुजीस रिकॉर्डिंग","माताजीस रिकॉर्डिंग"],"pt":["Gravação Prabhujis","Gravação Matajis"]};
