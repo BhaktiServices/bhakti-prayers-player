@@ -58,7 +58,7 @@ window.BPP_BUILD="3.79"; window.BPP_SHOW="3.79";
       b.style.cssText="background:transparent;border:1px solid #6b5340;border-radius:6px;padding:1px 6px;font-size:.8rem;min-height:auto;color:#e0b45a;cursor:pointer;line-height:1.3";
       box.insertBefore(b, box.firstChild); }
     var nx=MODES[(MODES.indexOf(mode)+1)%4], T=N[lg()], t="Stil "+SYM[nx];
-    var ti=T.st+": "+T.now+" "+T[mode]+(mode==="auto"?" ("+T[eff()]+")":"")+" · "+T.cl+": "+T[nx];
+    var ti=(mode==="auto"?"A = automatisch, wählt nach Ortszeit den passenden Stil. ":"")+T.st+": "+T.now+" "+T[mode]+(mode==="auto"?" ("+T[eff()]+")":"")+" · "+T.cl+": "+T[nx];
     if(b.textContent!==t) b.textContent=t; if(b.title!==ti){ b.title=ti; b.setAttribute("aria-label",ti); } }
   function fetchWx(){ if(!navigator.onLine) return; if(W&&Date.now()-W.at<30*6e4&&W.day===new Date().toDateString()) return;
     var pos=(W&&W.lat!=null)?Promise.resolve([W.lat,W.lon]):fetch("https://get.geojs.io/v1/ip/geo.json").then(function(r){ return r.json(); }).then(function(g){ return [+g.latitude,+g.longitude]; });
