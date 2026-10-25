@@ -4,6 +4,7 @@
 (function(){
   if(window.bppV421) return; window.bppV421=1;
   var H=[
+["4.23","25.10.","Übersetzungen für Śrī Sūktam (EN: shlokam.org) und Bhū Sūktam (EN: shreekundli.com), weitere Sprachen von Grok ergänzt."],
 ["4.22","25.10.","Historie reicht bis zur ersten Version V1.0; klappt beim Wegscrollen oder nach 30 s ohne Aktion wieder zu."],
 ["4.21","25.10.","Versions-Historie unter der Orte-Liste (aufklappbar)."],
 ["4.20","25.10.","Teilen-Link nimmt alle Einstellungen mit: Position, Tempo, Lautstärke, Aufnahme, Spalten, Akkorde. Sprache nach Browser.","SPN-Taste heißt „Rec: SPN“ und steht neben dem Titel."],
