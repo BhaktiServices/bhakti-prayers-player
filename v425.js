@@ -34,36 +34,22 @@
     var t=open?W(1):W(0); if(btn.textContent!==t) btn.textContent=t; btn.classList.toggle("gold",open); }
   setInterval(place,1000); setTimeout(place,900);
 
-  function connect(){ if(cl||!window.mqtt||!navigator.onLine) return;
-    try{ cl=window.mqtt.connect("wss://broker.emqx.io:8084/mqtt",{clientId:"bppm-"+sid.slice(0,16),clean:true,reconnectPeriod:8000,connectTimeout:12000});
-      cl.on("connect",function(){ pub(); if(open) cl.subscribe([V1+"#",V2+"#",P+"#"],{qos:0}); });
-      cl.on("message",function(tp,buf){ var k=tp.indexOf(V2)===0?"2":tp.indexOf(V1)===0?"1":tp.indexOf(P)===0?"p":""; if(!k) return;
-        var id=tp.split("/").pop(); try{ var p=JSON.parse(String(buf)); if(p&&p.t) seen[k+"|"+id]={c:String(p.c||"").slice(0,64),o:String(p.o||"").slice(0,8),d:String(p.d||"").slice(0,32),t:+p.t||0,la:+p.la,lo:+p.lo}; }catch(e){}
-        clearTimeout(connect.t); connect.t=setTimeout(draw,500); });
-    }catch(e){ cl=null; } }
-  function pub(){ if(!cl||!cl.connected||!me) return; var b={c:me.c,o:me.o,d:dev(),t:Date.now(),la:me.la,lo:me.lo};
-    try{ cl.publish(V2+sid,JSON.stringify(b),{qos:0,retain:true}); }catch(e){} seen["2|"+sid]=b; }
-  function start(){ fetch("https://get.geojs.io/v1/ip/geo.json").then(function(r){ return r.json(); }).then(function(g){
-      var la=Math.round(parseFloat(g.latitude)*100)/100, lo=Math.round(parseFloat(g.longitude)*100)/100;
-      me={c:String(g.city||"").trim().slice(0,64),o:String(g.country_code||g.country||"").trim().slice(0,8),la:isFinite(la)?la:null,lo:isFinite(lo)?lo:null};
-      if(me.c||me.o) pub(); }).catch(function(){});
-    var w=setInterval(function(){ if(window.mqtt){ clearInterval(w); connect(); } },1000); }
-  setInterval(pub,5*60*1000);
-  if(document.readyState==="complete") setTimeout(start,2500); else addEventListener("load",function(){ setTimeout(start,2500); });
+  /* [Grok-Bot] V4.27: keine eigene MQTT-Verbindung mehr (seit V4.25 war es eine dritte je Tab) – Daten aus v366 (window.bppSeen366, v1 inkl. Geraet + ab V4.27 Koordinaten). */
+  function src(){ return window.bppSeen366||seen; }
 
   /* Nominatim (nur alte Eintraege ohne Koordinaten) */
   var cache={}; try{ cache=JSON.parse(localStorage.getItem("bpp-geo-cache")||"{}"); }catch(e){}
   var queue=[], busy=false, budget=0;
-  function geo(c,o){ var k=(c+"|"+o).toLowerCase(); if(cache[k]!==undefined) return cache[k]; if(queue.indexOf(k)<0&&budget>0){ queue.push(k); budget--; run(); } return null; }
+  function geo(c,o){ var k=(c+"|"+o).toLowerCase(); if(window.BPP_GEO&&BPP_GEO[k]) return BPP_GEO[k]; if(cache[k]!==undefined) return cache[k]; if(queue.indexOf(k)<0){ queue.push(k); run(); } /* [Grok-Bot] V4.27: statische Tabelle, kein 8er-Limit (1/s, gecacht) */ return null; }
   function run(){ if(busy||!queue.length) return; busy=true; var k=queue.shift(), a=k.split("|");
     fetch("https://nominatim.openstreetmap.org/search?format=json&limit=1&city="+encodeURIComponent(a[0])+(a[1]?"&countrycodes="+encodeURIComponent(a[1]):"")+"&accept-language="+lg())
       .then(function(r){ return r.json(); }).then(function(j){ cache[k]=j&&j[0]?[+(+j[0].lat).toFixed(2),+(+j[0].lon).toFixed(2)]:0; }).catch(function(){})
       .then(function(){ try{ localStorage.setItem("bpp-geo-cache",JSON.stringify(cache)); }catch(e){} draw(); setTimeout(function(){ busy=false; run(); },1100); }); }
 
   function places(){ var now=Date.now(), by={};
-    Object.keys(seen).forEach(function(k){ var p=seen[k]; if(!p||now-p.t>H48||(!p.c&&!p.o)) return;
+    var S=src(); Object.keys(S).forEach(function(k){ var p=S[k]; if(!p||now-p.t>H48||(!p.c&&!p.o)) return;
       var name=p.c?(p.c+(p.o?" ("+p.o+")":"")):p.o, g=by[name]||(by[name]={n:name,c:p.c,o:p.o,dev:{},ll:null});
-      g.dev[p.d||k.split("|")[1]]=1; if(isFinite(p.la)&&isFinite(p.lo)&&p.la!==null&&!g.ll) g.ll=[p.la,p.lo]; });
+      g.dev[p.d||k.split("|")[1]]=1; /* je Geraet */ if(isFinite(p.la)&&isFinite(p.lo)&&p.la!==null&&!g.ll) g.ll=[p.la,p.lo]; });
     return Object.keys(by).map(function(k){ return by[k]; }); }
   function draw(){ if(!open||!map) return; layer.clearLayers(); var pts=[], miss=0, all=places();
     all.forEach(function(g){ var ll=g.ll||(g.c?geo(g.c,g.o):null); if(!ll){ miss++; return; } var n=Object.keys(g.dev).length;
@@ -78,11 +64,11 @@
   function toggle(){ open=!open; place();
     if(!open){ var m=document.getElementById("bpp425box"); if(m) m.style.display="none"; return; }
     var box=document.getElementById("bpp425box"); if(!box){ box=document.createElement("div"); box.id="bpp425box"; box.innerHTML='<div id="bpp425map"></div><div id="bpp425i"></div>'; wrap.appendChild(box); }
-    box.style.display=""; info=document.getElementById("bpp425i"); info.textContent=W(5); budget=8;
-    if(cl&&cl.connected) cl.subscribe([V1+"#",V2+"#",P+"#"],{qos:0}); else connect();
+    box.style.display=""; info=document.getElementById("bpp425i"); info.textContent=W(5);
     loadLeaflet(function(){ if(!map){ map=L_.map("bpp425map",{worldCopyJump:true}).setView([30,10],2);
         L_.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png",{maxZoom:18,attribution:'&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> contributors'}).addTo(map);
         layer=L_.layerGroup().addTo(map); } else map.invalidateSize(); draw(); setTimeout(draw,4000); });
   }
+  setInterval(function(){ if(open) draw(); },5000); /* [Grok-Bot] V4.27 */
   window.bppKarte48=function(){ return {seen:seen, places:places()}; };
 })();

@@ -4,6 +4,7 @@
 (function(){
   if(window.bppV421) return; window.bppV421=1;
   var H=[
+["4.27","25.10.","Geteilter Link startet an der richtigen Stelle (z. B. 0:53) samt passender Liedzeile, für Prabhujis und Mataji; beim allerersten Öffnen startet der BPP mit Guru Stotram (Prabhujis, 10,2 s, 2 Spalten, Akkorde in der Zeile, Übersetzung, MP3); „Orte letzte 24 h“ zählt jetzt je Gerät; die Karte zeigt alle Städte der Orte-Liste (48 h) ohne eigene zweite Server-Verbindung."],
 ["4.26","25.10.","„Versions-Historie anzeigen“ und „Karte anzeigen“ stehen ruhig nebeneinander in einer Zeile (sprangen auf und ab); ist der Orte-Server nicht erreichbar, steht das jetzt dort statt „noch keine Daten“."],
 ["4.25","25.10.","Knopf „Karte anzeigen“ unter den Orten: Karte (OpenStreetMap) der Startorte der letzten 48 h, je Ort Anzahl Geräte; neue Starts speichern dazu ungefähre Koordinaten."],
 ["4.24","25.10.","Seite springt beim Scrollen (Fußzeile) nicht mehr zum Vers zurück, bei Mitlesen aus nie; Gāyatrī und Gaṇeśa Mantra wieder sichtbar; Nārāyaṇa Sūktam übersetzt (EN: shlokam.org)."],
