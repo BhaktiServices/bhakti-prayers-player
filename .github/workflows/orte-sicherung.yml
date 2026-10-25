@@ -1,0 +1,30 @@
+# [Grok-Bot] Orte-Sicherung: alle 6 h retained Orte (visits/v1) von 3 Brokern sichern -> stats/orte/YYYY-MM.json
+name: Orte-Sicherung
+on:
+  schedule:
+    - cron: "17 */6 * * *"
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: orte-sicherung
+  cancel-in-progress: false
+jobs:
+  save:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: npm install --no-save --no-package-lock mqtt@5
+      - run: node tools/orte-sicherung.js
+      - name: Commit bei Aenderung
+        run: |
+          git config user.name "Grok-Bot"
+          git config user.email "grok-bot@users.noreply.github.com"
+          git add stats/orte
+          if git diff --cached --quiet; then echo "keine Aenderung"; exit 0; fi
+          git commit -m "[Grok-Bot] Orte-Sicherung $(date -u +%Y-%m-%dT%H:%MZ)"
+          for i in 1 2 3; do git pull --rebase origin main && git push origin main && exit 0; sleep 5; done
+          exit 1
