@@ -13,7 +13,7 @@
     if(!o||!g) return; if(o.parentElement!==g||g.firstChild!==o){ g.insertBefore(o,g.firstChild); } o.classList.add("in366"); }
   setInterval(placeOff,500); placeOff();
 
-  var V="bpp/clbuerger/visits/v1/", P="bpp/clbuerger/presence/v1/", DAY=864e5, seen=window.bppSeen366={}, /* [Grok-Bot] V4.27: fuer die Karte (v425) freigegeben */ me={c:"",o:""}, cl=null, sid="";
+  var V="bpp/clbuerger/visits/v1/", P="bpp/clbuerger/presence/v1/", DAY=864e5, seen={}, me={c:"",o:""}, cl=null, sid="";
   try{ sid=sessionStorage.getItem("bpp-presence-id")||""; }catch(e){}
   if(!sid) sid="s"+Math.random().toString(16).slice(2)+Date.now().toString(16);
   function esc(s){ return String(s).replace(/[&<>"]/g,function(c){ return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]; }); }
@@ -25,16 +25,16 @@
     var rows=Object.keys(by).sort(function(a,b){ return by[b]-by[a]||a.localeCompare(b); });
     el.innerHTML="Orte letzte 24 h ("+rows.length+"): "+(rows.length?rows.map(function(r){ return esc(r)+(by[r]>3?" \u00d7"+by[r]:"") /* [Grok-Bot] V4.07: Anzahl erst ab 4 */; }).join(" \u00b7 "):"noch keine Daten"); /* [Grok-Bot] V3.74: Zeile immer sichtbar */
   }
-  function pub(){ if(!cl||!cl.connected||(!me.c&&!me.o)) return; var b=JSON.stringify({c:me.c.slice(0,64),o:me.o.slice(0,8),d:(function(){ try{ return (localStorage.getItem("bpp-device-id")||"").slice(0,32); }catch(e){ return ""; } })(),t:Date.now(),la:me.la,lo:me.lo}); /* [Grok-Bot] V4.27: Koordinaten in v1 */
+  function pub(){ if(!cl||!cl.connected||(!me.c&&!me.o)) return; var b=JSON.stringify({c:me.c.slice(0,64),o:me.o.slice(0,8),d:(function(){ try{ return (localStorage.getItem("bpp-device-id")||"").slice(0,32); }catch(e){ return ""; } })(),t:Date.now()});
     try{ cl.publish(V+sid,b,{qos:0,retain:true}); }catch(e){} seen["v|"+sid]=JSON.parse(b); paint(); }
   function go(){ if(cl||!window.mqtt||!navigator.onLine) return;
     try{ cl=window.mqtt.connect("wss://broker.emqx.io:8084/mqtt",{clientId:"bppv-"+sid.slice(0,16),clean:true,reconnectPeriod:8000,connectTimeout:12000});
       cl.on("connect",function(){ cl.subscribe([V+"#",P+"#"],{qos:0}); pub(); });
       cl.on("message",function(tp,buf){ var pre=tp.indexOf(V)===0?"v":(tp.indexOf(P)===0?"p":""); if(!pre) return; var id=tp.slice((pre==="v"?V:P).length);
-        if(!id||id.indexOf("/")>=0) return; try{ var p=JSON.parse(String(buf)); if(p&&p.t) seen[pre+"|"+id]={c:String(p.c||"").slice(0,64),o:String(p.o||"").slice(0,8),t:+p.t||0,d:String(p.d||"").slice(0,32),la:(p.la==null?null:+p.la),lo:(p.lo==null?null:+p.lo)}; /* [Grok-Bot] V4.27: Geraete-ID d behalten -> Zaehlung je Geraet */ }catch(e){}
+        if(!id||id.indexOf("/")>=0) return; try{ var p=JSON.parse(String(buf)); if(p&&p.t) seen[pre+"|"+id]={c:String(p.c||"").slice(0,64),o:String(p.o||"").slice(0,8),t:+p.t||0}; }catch(e){}
         clearTimeout(go.t); go.t=setTimeout(paint,300); });
     }catch(e){ cl=null; } }
-  function start(){ fetch("https://get.geojs.io/v1/ip/geo.json").then(function(r){ return r.json(); }).then(function(g){ me.c=String(g&&g.city||"").trim(); me.o=String(g&&(g.country_code||g.country)||"").trim(); var la=Math.round(parseFloat(g&&g.latitude)*100)/100, lo=Math.round(parseFloat(g&&g.longitude)*100)/100; me.la=isFinite(la)?la:null; me.lo=isFinite(lo)?lo:null; pub(); }).catch(function(){});
+  function start(){ fetch("https://get.geojs.io/v1/ip/geo.json").then(function(r){ return r.json(); }).then(function(g){ me.c=String(g&&g.city||"").trim(); me.o=String(g&&(g.country_code||g.country)||"").trim(); pub(); }).catch(function(){});
     /* [Grok-Bot] V3.74: MQTT-Bibliothek selbst laden. Bis V3.69 lud v204.js sie beim Aufbau der Presence-Verbindung; seit V3.70 fehlte sie -> keine Verbindung, Zeile leer. */
     if(!window.mqtt && !document.querySelector('script[src^="lib/mqtt.min.js"]')){ var sc=document.createElement("script"); sc.src="lib/mqtt.min.js"; sc.async=true; sc.onerror=function(){}; document.head.appendChild(sc); }
     paint(); var w=setInterval(function(){ if(window.mqtt){ clearInterval(w); go(); } },1000); }

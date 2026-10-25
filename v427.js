@@ -1,5 +1,5 @@
 /* [Grok-Bot] V4.27: Link-Zeit ?t= nach dem Laden der gewaehlten Aufnahme (loadedmetadata) setzen; Lyrics-Sync. Auch Erststart t=10.2. */
-(function(){ window.BPP_BUILD="4.27"; window.BPP_SHOW="4.27";
+(function(){ window.BPP_BUILD="4.28"; window.BPP_SHOW="4.28"; /* [Grok-Bot] V4.28 */
 
   (function(){ var q=new URLSearchParams(location.search), pid=q.get("p"), t=parseFloat(q.get("t")); if(!pid||!(t>0)) return;
     var t0=Date.now(), ok=0, user=0;
