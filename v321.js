@@ -7,7 +7,7 @@ window.BPP_BUILD="3.21"; window.BPP_SHOW="3.21";
   st.textContent="" /* [Grok.com] alte Flex-Regel aus */ +
     "#bppHelpCol{flex:1 1 0;min-width:max-content;display:flex;justify-content:flex-end;order:-1}#bppBr{display:none}"+
     "header h1 .ver{order:0;flex:0 0 auto;white-space:nowrap}"+
-    "header h1 .lang.l307{position:static!important;transform:none!important;top:auto!important;right:auto!important;order:1;flex:1 1 0;min-width:max-content;justify-content:flex-end;margin:0!important;gap:0}"+
+    "/* [Grok.com] alte Position aus */"+
     "#bppHelpCol #bppHelpTip{position:relative!important;display:inline-block!important;width:auto!important;margin:0 8px 0 0!important;right:auto!important;top:auto!important}"+
     "#bppHelpCol #bppHelpTip:before{display:block!important;content:''!important;position:absolute;left:auto!important;right:-6px!important;top:50%!important;margin:-4px 0 0 0!important;border:4px solid transparent!important;border-left:6px solid #b8955088!important;border-right:0!important}"+
     "@media(max-width:760px){#bppHelpCol{order:-3;flex:1 0 auto;justify-content:flex-start}header h1 .lang.l307{order:-2;flex:0 0 auto}#bppBr{display:block;order:-1;flex:0 0 100%;height:0}"+
