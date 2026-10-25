@@ -4,6 +4,7 @@
 (function(){
   if(window.bppV421) return; window.bppV421=1;
   var H=[
+["4.26","25.10.","„Versions-Historie anzeigen“ und „Karte anzeigen“ stehen ruhig nebeneinander in einer Zeile (sprangen auf und ab); ist der Orte-Server nicht erreichbar, steht das jetzt dort statt „noch keine Daten“."],
 ["4.25","25.10.","Knopf „Karte anzeigen“ unter den Orten: Karte (OpenStreetMap) der Startorte der letzten 48 h, je Ort Anzahl Geräte; neue Starts speichern dazu ungefähre Koordinaten."],
 ["4.24","25.10.","Seite springt beim Scrollen (Fußzeile) nicht mehr zum Vers zurück, bei Mitlesen aus nie; Gāyatrī und Gaṇeśa Mantra wieder sichtbar; Nārāyaṇa Sūktam übersetzt (EN: shlokam.org)."],
 ["4.23","25.10.","Übersetzungen für Śrī Sūktam (EN: shlokam.org) und Bhū Sūktam (EN: shreekundli.com), weitere Sprachen von Grok ergänzt."],
@@ -63,6 +64,7 @@
   var open=false;
   function lg(){ return (typeof lang!=="undefined"&&LB[lang])?lang:"en"; }
   function esc(s){ return String(s).replace(/[&<>]/g,function(c){ return {"&":"&amp;","<":"&lt;",">":"&gt;"}[c]; }); }
+  function bppRow(o){ var r=document.getElementById("bppFoot426"); if(!r){ r=document.createElement("div"); r.id="bppFoot426"; r.style.cssText="display:flex;flex-wrap:wrap;align-items:flex-start;justify-content:space-between;gap:6px 10px;padding:0 0 8px"; } if(r.previousSibling!==o) o.parentNode.insertBefore(r,o.nextSibling); return r; } /* [Grok-Bot] V4.26: gemeinsame feste Zeile fuer Historie (links) + Karte (rechts), kein gegenseitiges Umhaengen */
   function paint(){
     var o=document.getElementById("bpp-orte24"); if(!o||!o.parentNode) return;
     var d=document.getElementById("bppHist421");
@@ -77,7 +79,7 @@
       ["scroll","touchstart","touchmove","wheel","pointerdown"].forEach(function(ev){ l.addEventListener(ev,arm,{passive:true}); });
       if(window.IntersectionObserver){ new IntersectionObserver(function(es){ es.forEach(function(x){ if(!x.isIntersecting&&open){ open=false; clearTimeout(tm); paint(); } }); }).observe(d); }
       window.bppHistClose=function(){ open=false; clearTimeout(tm); paint(); }; }
-    if(d.previousSibling!==o) o.parentNode.insertBefore(d,o.nextSibling);
+    var rw=bppRow(o); if(d.parentNode!==rw) rw.insertBefore(d,rw.firstChild); /* [Grok-Bot] V4.26 */ d.style.order="1"; d.style.flex=open?"1 1 100%":"0 1 auto";
     var b=d.firstChild, t=LB[lg()][open?1:0];
     if(b.textContent!==t){ b.textContent=t; b.title=t; }
     b.classList.toggle("on",open); b.setAttribute("aria-expanded",open?"true":"false");

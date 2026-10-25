@@ -23,13 +23,14 @@
   function W(i){ return T[lg()][i]; }
   function esc(s){ return String(s).replace(/[&<>"]/g,function(c){ return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]; }); }
   var st=document.createElement("style");
-  st.textContent="#bpp425w{padding:0 12px 10px;text-align:right}#bpp425map{height:340px;margin-top:8px;border:1px solid var(--gold);border-radius:8px;text-align:left}"+
+  st.textContent="#bpp425w{padding:2px 12px 8px;text-align:right;font-size:.72rem;line-height:1.4}#bpp425b{background:transparent;border:1px solid currentColor;color:#cbb89a;border-radius:6px;padding:1px 8px;min-height:0;font:inherit;cursor:pointer;opacity:.9}#bpp425b.gold{background:#e0b45a!important;border-color:#e0b45a!important;color:#222!important;opacity:1}#bpp425map{height:340px;margin-top:8px;border:1px solid var(--gold);border-radius:8px;text-align:left}"+
     "#bpp425map .leaflet-popup-content{color:#1a1208;font:14px 'Source Sans 3',sans-serif}#bpp425map .leaflet-control-attribution{color:#333;font-size:11px}#bpp425map .leaflet-control-attribution a{color:#0645ad}"+
     "#bpp425i{font-size:.7rem;color:#cbb89a;margin-top:4px}@media(max-width:600px){#bpp425map{height:280px}}";
   document.head.appendChild(st);
+  function bppRow(o){ var r=document.getElementById("bppFoot426"); if(!r){ r=document.createElement("div"); r.id="bppFoot426"; r.style.cssText="display:flex;flex-wrap:wrap;align-items:flex-start;justify-content:space-between;gap:6px 10px;padding:0 0 8px"; } if(r.previousSibling!==o) o.parentNode.insertBefore(r,o.nextSibling); return r; } /* [Grok-Bot] V4.26: gemeinsame feste Zeile fuer Historie (links) + Karte (rechts), kein gegenseitiges Umhaengen */
   function place(){ var o=document.getElementById("bpp-orte24"); if(!o) return;
     if(!wrap){ wrap=document.createElement("div"); wrap.id="bpp425w"; btn=document.createElement("button"); btn.id="bpp425b"; btn.onclick=toggle; wrap.appendChild(btn); }
-    if(wrap.previousSibling!==o) o.parentNode.insertBefore(wrap,o.nextSibling);
+    var rw=bppRow(o); if(wrap.parentNode!==rw){ rw.appendChild(wrap); } wrap.style.order="2"; wrap.style.flex=open?"1 1 100%":"0 0 auto"; /* [Grok-Bot] V4.26 */
     var t=open?W(1):W(0); if(btn.textContent!==t) btn.textContent=t; btn.classList.toggle("gold",open); }
   setInterval(place,1000); setTimeout(place,900);
 
