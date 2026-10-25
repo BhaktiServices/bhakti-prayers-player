@@ -28,23 +28,25 @@ window.BPP_BUILD="4.18"; window.BPP_SHOW="4.18";
     Object.defineProperty(P,"preferFile",{configurable:true,enumerable:true,get:function(){ return true; },set:function(v){ base.preferFile=v; }});
   }
   function onS(){ try{ return localStorage.getItem("bpp-prabhus-suprabhatam")==="prabhus"; }catch(e){ return false; } }
+  function recKey(id){ return id==="guru-stotram"?"bpp-gs-rec":"bpp-prabhus-"+id; } /* [Grok-Bot] V4.19 */
+  function recOn(id){ try{ return localStorage.getItem(recKey(id))==="prabhus"; }catch(e){ return false; } }
   function cur(){ return (typeof i!=="undefined"&&i>=0&&typeof PRAYERS!=="undefined")?PRAYERS[i]:null; }
   function lg(){ return (typeof lang!=="undefined"&&TIPS[lang])?lang:"en"; }
   function place(){
     var t=document.getElementById("lyrTitle"); if(!t) return;
     var p=cur(); if(!p) return;
     var sh=document.getElementById("bppShare");
-    var map={"guru-stotram":"bppRec387","ashtotram":"bppRec405","govinda":"bppRec408","kavacham":"bppRec408","suprabhatam":"bppRec415"};
+    var map={"guru-stotram":"bppRec387","ashtotram":"bppRec405","govinda":"bppRec408","kavacham":"bppRec408","suprabhatam":"bppRec415","ashtotram-abend":"bppRec405"};
     var id=map[p.id]; if(!id) return;
     var b=document.getElementById(id);
     if(!b){ b=document.createElement("button"); b.type="button"; b.id=id; b.className="bppRec";
       b.addEventListener("click",function(e){ e.stopPropagation(); 
-        if(id==="bppRec415"){ var o=onS(); try{ localStorage.setItem("bpp-prabhus-suprabhatam",o?"alt":"prabhus"); }catch(e){} }
-        else if(typeof window["sw"+id.slice(6)]==="function") window["sw"+id.slice(6)]();
+        /* [Grok-Bot] V4.19: Umschalten direkt ueber localStorage (window.sw387/405/408 gab es nie -> Taste war wirkungslos, Mtj nicht mehr erreichbar) */
+        var o=recOn(p.id); try{ localStorage.setItem(recKey(p.id),o?(p.id==="guru-stotram"?"frau":"alt"):"prabhus"); if(!o&&p.id==="govinda") localStorage.setItem("bpp-spn-govinda","alt"); }catch(e){}
         var was=false; try{ was=(typeof isPlaying==="function")&&isPlaying(); }catch(e){}
         try{ putSong(p.id,{line:0,time:0}); }catch(e){} try{ play(PRAYERS.indexOf(p),true,was); }catch(e){}
       }); }
-    var o=(id==="bppRec415")?onS():b.getAttribute("aria-pressed")==="true";
+    var o=recOn(p.id); b.setAttribute("aria-pressed",o?"true":"false");
     b.textContent=o?"Rec: Pbj":"Rec: Mtj";
     b.classList.toggle("pbj",o);
     b.title=TIPS[lg()][o?0:1];
