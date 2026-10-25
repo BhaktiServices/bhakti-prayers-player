@@ -35,9 +35,12 @@
       b=document.createElement("button"); b.type="button"; b.id="bppRec402"; b.style.cssText="display:none;margin:4px 0 6px;font-size:.85rem;padding:4px 10px";
       b.addEventListener("click",function(e){ e.stopPropagation(); sw(); }); now.parentNode.insertBefore(b,now.nextSibling); }
     var show=!!c&&!!PR[c.id]; b.style.display=show?"":"none"; if(!show) return;
-    var o=on(c.id), t=B[lg()][o?1:0];
-    if(b.textContent!==t){ b.textContent=t; b.title=t; b.setAttribute("aria-label",t); }
-    b.classList.toggle("on",o); b.setAttribute("aria-pressed",o?"true":"false"); }
+    var o=on(c.id), t="Rec: SPN", tt=B[lg()][o?1:0]; /* [Grok-Bot] V4.20: Kurzname "Rec: SPN" (alle Sprachen), gold = SPN aktiv, Tooltip = naechste Aktion; neben dem Titel wie Rec: Pbj/Mtj */
+    if(b.textContent!==t) b.textContent=t; if(b.title!==tt){ b.title=tt; b.setAttribute("aria-label",tt); }
+    if(!b.classList.contains("bppRec")){ b.className="bppRec"; b.style.cssText=""; }
+    b.classList.toggle("spnOn",o); b.setAttribute("aria-pressed",o?"true":"false");
+    var tl=document.getElementById("lyrTitle"), sh=document.getElementById("bppShare");
+    if(tl){ if(sh&&sh.parentNode===tl){ if(b.nextSibling!==sh) tl.insertBefore(b,sh); } else if(b.parentNode!==tl) tl.appendChild(b); } }
   function src(){ var b=document.getElementById("bppSrcInfo"), c=cur(); if(!b||!b.innerHTML||!c||!PR[c.id]) return; if(b.querySelector(".hq402")) return;
     var d=D[c.id], u="https://www.youtube.com/watch?v="+d.yt+"&t="+d.s+"s";
     b.insertAdjacentHTML("beforeend",'<br><span class="hq402"><b>'+HQ[lg()]+':</b> The Ashram – Shree Peetha Nilaya, „'+NAME[d.yt]+'“ <a href="'+u+'" target="_blank" rel="noopener">'+u+'</a></span>'); }
