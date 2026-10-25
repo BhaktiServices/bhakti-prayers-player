@@ -57,7 +57,7 @@ window.BPP_BUILD="3.79"; window.BPP_SHOW="3.79";
     if(!b){ b=document.createElement("button"); b.type="button"; b.id="bppTheme"; b.onclick=function(e){ e.stopPropagation(); mode=MODES[(MODES.indexOf(mode)+1)%4]; set("bpp-theme",mode); apply(); };
       b.style.cssText="background:#4a372b;border:1px solid #6b5340;border-radius:6px;padding:2px 6px;font-size:.85rem;min-height:auto;line-height:1.4";
       box.insertBefore(b, box.firstChild); }
-    var nx=MODES[(MODES.indexOf(mode)+1)%4], T=N[lg()], t=SYM[nx];
+    var nx=MODES[(MODES.indexOf(mode)+1)%4], T=N[lg()], t="Stil "+SYM[nx];
     var ti=T.st+": "+T.now+" "+T[mode]+(mode==="auto"?" ("+T[eff()]+")":"")+" · "+T.cl+": "+T[nx];
     if(b.textContent!==t) b.textContent=t; if(b.title!==ti){ b.title=ti; b.setAttribute("aria-label",ti); } }
   function fetchWx(){ if(!navigator.onLine) return; if(W&&Date.now()-W.at<30*6e4&&W.day===new Date().toDateString()) return;
