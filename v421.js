@@ -4,6 +4,7 @@
 (function(){
   if(window.bppV421) return; window.bppV421=1;
   var H=[
+["4.25","25.10.","Knopf „Karte anzeigen“ unter den Orten: Karte (OpenStreetMap) der Startorte der letzten 48 h, je Ort Anzahl Geräte; neue Starts speichern dazu ungefähre Koordinaten."],
 ["4.24","25.10.","Seite springt beim Scrollen (Fußzeile) nicht mehr zum Vers zurück, bei Mitlesen aus nie; Gāyatrī und Gaṇeśa Mantra wieder sichtbar; Nārāyaṇa Sūktam übersetzt (EN: shlokam.org)."],
 ["4.23","25.10.","Übersetzungen für Śrī Sūktam (EN: shlokam.org) und Bhū Sūktam (EN: shreekundli.com), weitere Sprachen von Grok ergänzt."],
 ["4.22","25.10.","Historie reicht bis zur ersten Version V1.0; klappt beim Wegscrollen oder nach 30 s ohne Aktion wieder zu."],
