@@ -55,7 +55,7 @@ window.BPP_BUILD="3.79"; window.BPP_SHOW="3.79";
     btn(); }
   function btn(){ var box=document.querySelector("header .lang"); if(!box) return; var b=document.getElementById("bppTheme");
     if(!b){ b=document.createElement("button"); b.type="button"; b.id="bppTheme"; b.onclick=function(e){ e.stopPropagation(); mode=MODES[(MODES.indexOf(mode)+1)%4]; set("bpp-theme",mode); apply(); };
-      b.style.cssText="background:#6a3a5a;border:1px solid #9a5a7a;border-radius:4px;padding:0 4px;font-size:.65rem;min-height:18px;color:#f0d0e0;cursor:pointer;line-height:1.2";
+      b.style.cssText="background:transparent;border:1px solid #6b5340;border-radius:6px;padding:1px 6px;font-size:.8rem;min-height:auto;color:#e0b45a;cursor:pointer;line-height:1.3";
       box.insertBefore(b, box.firstChild); }
     var nx=MODES[(MODES.indexOf(mode)+1)%4], T=N[lg()], t="Stil "+SYM[nx];
     var ti=T.st+": "+T.now+" "+T[mode]+(mode==="auto"?" ("+T[eff()]+")":"")+" · "+T.cl+": "+T[nx];
