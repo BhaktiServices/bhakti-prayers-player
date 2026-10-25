@@ -25,15 +25,18 @@
     var rows=Object.keys(by).sort(function(a,b){ return by[b]-by[a]||a.localeCompare(b); });
     el.innerHTML="Orte letzte 24 h ("+rows.length+"): "+(rows.length?rows.map(function(r){ return esc(r)+(by[r]>3?" \u00d7"+by[r]:"") /* [Grok-Bot] V4.07: Anzahl erst ab 4 */; }).join(" \u00b7 "):"noch keine Daten"); /* [Grok-Bot] V3.74: Zeile immer sichtbar */
   }
-  function pub(){ if(!cl||!cl.connected||(!me.c&&!me.o)) return; var b=JSON.stringify({c:me.c.slice(0,64),o:me.o.slice(0,8),d:(function(){ try{ return (localStorage.getItem("bpp-device-id")||"").slice(0,32); }catch(e){ return ""; } })(),t:Date.now()});
-    try{ cl.publish(V+sid,b,{qos:0,retain:true}); }catch(e){} seen["v|"+sid]=JSON.parse(b); paint(); }
-  function go(){ if(cl||!window.mqtt||!navigator.onLine) return;
-    try{ cl=window.mqtt.connect("wss://broker.emqx.io:8084/mqtt",{clientId:"bppv-"+sid.slice(0,16),clean:true,reconnectPeriod:8000,connectTimeout:12000});
-      cl.on("connect",function(){ cl.subscribe([V+"#",P+"#"],{qos:0}); pub(); });
-      cl.on("message",function(tp,buf){ var pre=tp.indexOf(V)===0?"v":(tp.indexOf(P)===0?"p":""); if(!pre) return; var id=tp.slice((pre==="v"?V:P).length);
-        if(!id||id.indexOf("/")>=0) return; try{ var p=JSON.parse(String(buf)); if(p&&p.t) seen[pre+"|"+id]={c:String(p.c||"").slice(0,64),o:String(p.o||"").slice(0,8),t:+p.t||0}; }catch(e){}
+  function pub(){ if(!CL.length||(!me.c&&!me.o)) return; /* [Grok-Bot] V4.29: an alle verbundenen Broker */ var b=JSON.stringify({c:me.c.slice(0,64),o:me.o.slice(0,8),d:(function(){ try{ return (localStorage.getItem("bpp-device-id")||"").slice(0,32); }catch(e){ return ""; } })(),t:Date.now()});
+    CL.forEach(function(x){ if(x.connected) try{ x.publish(V+sid,b,{qos:0,retain:true}); }catch(e){} }); seen["v|"+sid]=JSON.parse(b); paint(); }
+  /* [Grok-Bot] V4.29: mehrere oeffentliche Broker (emqx war von Nutzerseite nicht mehr erreichbar). Jeder Broker: senden + empfangen, Daten zusammengefuehrt. */
+  var BR=["wss://broker.emqx.io:8084/mqtt","wss://broker.hivemq.com:8884/mqtt","wss://test.mosquitto.org:8081/mqtt"], CL=[];
+  function go(){ if(cl||!window.mqtt||!navigator.onLine) return; cl=1;
+    BR.forEach(function(u,n){ try{ var x=window.mqtt.connect(u,{clientId:"bppv"+n+"-"+sid.slice(0,16),clean:true,reconnectPeriod:8000,connectTimeout:12000}); CL.push(x);
+      x.on("connect",function(){ x.subscribe([V+"#",P+"#"],{qos:0}); pub(); });
+      x.on("error",function(){});
+      x.on("message",function(tp,buf){ var pre=tp.indexOf(V)===0?"v":(tp.indexOf(P)===0?"p":""); if(!pre) return; var id=tp.slice((pre==="v"?V:P).length);
+        if(!id||id.indexOf("/")>=0) return; try{ var p=JSON.parse(String(buf)); if(p&&p.t){ var k=pre+"|"+id, o=seen[k]; if(!o||o.t<=+p.t) seen[k]={c:String(p.c||"").slice(0,64),o:String(p.o||"").slice(0,8),t:+p.t||0}; } }catch(e){}
         clearTimeout(go.t); go.t=setTimeout(paint,300); });
-    }catch(e){ cl=null; } }
+    }catch(e){} }); window.bppBroker366=CL; }
   function start(){ fetch("https://get.geojs.io/v1/ip/geo.json").then(function(r){ return r.json(); }).then(function(g){ me.c=String(g&&g.city||"").trim(); me.o=String(g&&(g.country_code||g.country)||"").trim(); pub(); }).catch(function(){});
     /* [Grok-Bot] V3.74: MQTT-Bibliothek selbst laden. Bis V3.69 lud v204.js sie beim Aufbau der Presence-Verbindung; seit V3.70 fehlte sie -> keine Verbindung, Zeile leer. */
     if(!window.mqtt && !document.querySelector('script[src^="lib/mqtt.min.js"]')){ var sc=document.createElement("script"); sc.src="lib/mqtt.min.js"; sc.async=true; sc.onerror=function(){}; document.head.appendChild(sc); }
