@@ -1,9 +1,10 @@
 /* [Grok-Bot] V4.21: Aufklappbare "Versions-Historie" unter "Orte letzte 24 h" (#bpp-orte24). Inhalte nur aus den Commit-Messages (git log),
    auch Grok.com-Commits; Texte deutsch. Neueste oben. Knopf zeigt die naechste Aktion, gold = aufgeklappt. */
-window.BPP_BUILD="4.21"; window.BPP_SHOW="4.21";
+
 (function(){
   if(window.bppV421) return; window.bppV421=1;
   var H=[
+["4.22","25.10.","Historie reicht bis zur ersten Version V1.0; klappt beim Wegscrollen oder nach 30 s ohne Aktion wieder zu."],
 ["4.21","25.10.","Versions-Historie unter der Orte-Liste (aufklappbar)."],
 ["4.20","25.10.","Teilen-Link nimmt alle Einstellungen mit: Position, Tempo, Lautstärke, Aufnahme, Spalten, Akkorde. Sprache nach Browser.","SPN-Taste heißt „Rec: SPN“ und steht neben dem Titel."],
 ["4.19","25.10.","Rec-Taste schaltet wieder zwischen Mtj und Pbj (Aṣṭottaram, Govinda, Kavacam, Guru Stotram, Suprabhatam)."],
@@ -33,7 +34,20 @@ window.BPP_BUILD="4.21"; window.BPP_SHOW="4.21";
 ["3.79–3.86","22.10.","Drei Stile (Morgen, Abend, Nacht), Lesbarkeit, Groß mit Übersetzungs-Taste, Atma Bhog, neue Überschrift."],
 ["3.71–3.78","21.–22.10.","Handy quer = Groß, Orte letzte 24 h wieder sichtbar, Zeichen ✎ für Texte in Überarbeitung."],
 ["3.61–3.70","20.–21.10.","Akkorde in Zeile nach Heft, Sūktams mit Aufnahme, Offline-Status, Orte der letzten 24 h."],
-["3.50–3.60","19.–20.10.","Portugiesisch, Tastenkürzel, Purusa Suktam und Vishnu Sahasranama mit Aufnahme, Tasten zeigen die nächste Aktion."]
+["3.50–3.60","19.–20.10.","Portugiesisch, Tastenkürzel, Purusa Suktam und Vishnu Sahasranama mit Aufnahme, Tasten zeigen die nächste Aktion."],
+["3.41–3.49","17.–19.10.","Offline repariert (Service Worker), Hilfe aktualisiert, Atma-Bhog-Knopf, 1/2/3 Spalten, Blättern spult zur Strophe."],
+["3.28–3.40","14.–16.10.","Umzug nach BhaktiServices, zentrale Versionsanzeige, Durga Calisa, Panduranga Arati, Vedic Chants, atmabhog-Optik, Ton aller MP3 bearbeitet."],
+["3.10–3.27","13.–14.10.","Fortschritt beim Download, Taste P, Direktlinks + Teilen-Knopf, Hilfe-Blase, Menüs nach SVD-Heften, Final Prayers vollständig."],
+["3.01–3.09","12.10.","Standardansicht neu geordnet, Hilfe-Overlay, manuelles Strophen-Blättern, Giridhari Arati in 15 Strophen."],
+["2.45–2.55","12.10.","Jukebox-Start, MP3 als Standard, Überschrift BHAKTI PRAYERS PLAYER, drei Menüs Morgens/Abends/Weitere."],
+["2.21–2.44","10.–11.10.","Jukebox-Zoom, kein Autostart, Play/Pause gold, Tonhöhe in Halbtönen, Arati Saprem, Wischen wechselt die Strophe."],
+["2.00–2.20","7.–8.10.","Als App installierbar (PWA), Offline-Modus, Statistik (Aufrufe, Hörzeit, Orte), Android-Benachrichtigung."],
+["1.81–1.99","5.–6.10.","Großbild-/Vollbild-Modus zum Mitlesen, Vorschau der nächsten Strophe, Hanuman Chalisa von Pandita Bhavani."],
+["1.64–1.80","3.–4.10.","Kavaca-Text nach SNKS, Übersetzungen in 6 Sprachen, Audio ins Repo, Tempo-Auswahl, Vishnu Arati vollständig."],
+["1.46–1.63","1.–2.10.","Neue Gebete (Ramanuja Mangalam, Bhajare, Hanuman Chalisa), Sprachen FR/ES/RU/HI, Tagesablauf, Morgen-/Abendgebet nach Heft."],
+["1.31–1.45","30.9.–1.10.","Vierzeilige Strophen wie im Prathana-Heft, Strophe markiert, Govinda vollständig, Zeitmarken je Strophe."],
+["1.1–1.30","29.–30.9.","Akkorde aus dem Musikerheft, Nrisimha Kavaca, Govinda Prayer, DE/EN, Auto-Scroll, Transposer, Lyrics in Spalten."],
+["1.0","29.9.","Erste Version: Startseite, Gebetskatalog, Mukunda Mala mit YouTube und Text."]
   ];
   var LB={de:["Versions-Historie anzeigen","Versions-Historie ausblenden"],en:["Show version history","Hide version history"],fr:["Afficher l’historique des versions","Masquer l’historique des versions"],es:["Mostrar historial de versiones","Ocultar historial de versiones"],ru:["Показать историю версий","Скрыть историю версий"],hi:["संस्करण इतिहास दिखाएँ","संस्करण इतिहास छिपाएँ"],pt:["Mostrar histórico de versões","Ocultar histórico de versões"]};
   var st=document.createElement("style");
@@ -54,7 +68,12 @@ window.BPP_BUILD="4.21"; window.BPP_SHOW="4.21";
       b.addEventListener("click",function(e){ e.stopPropagation(); open=!open; paint(); });
       var l=document.createElement("ol"); l.lang="de";
       l.innerHTML=H.map(function(h){ return "<li><b>V"+esc(h[0])+"</b> <small>"+esc(h[1])+"</small> "+h.slice(2).map(esc).join("<br>")+"</li>"; }).join("");
-      d.appendChild(b); d.appendChild(l); }
+      d.appendChild(b); d.appendChild(l);
+      var tm=null; function arm(){ clearTimeout(tm); if(open) tm=setTimeout(function(){ open=false; paint(); },30000); }
+      b.addEventListener("click",arm);
+      ["scroll","touchstart","touchmove","wheel","pointerdown"].forEach(function(ev){ l.addEventListener(ev,arm,{passive:true}); });
+      if(window.IntersectionObserver){ new IntersectionObserver(function(es){ es.forEach(function(x){ if(!x.isIntersecting&&open){ open=false; clearTimeout(tm); paint(); } }); }).observe(d); }
+      window.bppHistClose=function(){ open=false; clearTimeout(tm); paint(); }; }
     if(d.previousSibling!==o) o.parentNode.insertBefore(d,o.nextSibling);
     var b=d.firstChild, t=LB[lg()][open?1:0];
     if(b.textContent!==t){ b.textContent=t; b.title=t; }
