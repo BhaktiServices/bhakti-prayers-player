@@ -16,7 +16,7 @@ window.BPP_BUILD="3.16"; window.BPP_SHOW="3.16";
   function pos(){
     var lang=document.querySelector(".lang.l307"), theme=document.getElementById("bppTheme");
     if(lang){ lang.style.cssText="position:fixed!important;top:8px!important;right:8px!important;z-index:100"; }
-    if(theme){ theme.style.cssText="position:fixed!important;top:8px!important;right:48px!important;z-index:100;background:transparent;border:1px solid #6b5340;border-radius:6px;padding:1px 6px;font-size:.8rem;color:#e0b45a;cursor:pointer"; }
+    if(theme){ theme.style.setProperty("position","fixed","important"); theme.style.setProperty("top","8px","important"); theme.style.setProperty("right","48px","important"); theme.style.setProperty("z-index","100","important"); theme.style.setProperty("background","transparent","important"); theme.style.setProperty("border","1px solid #e0b45a","important"); theme.style.setProperty("border-radius","6px","important"); theme.style.setProperty("padding","1px 6px","important"); theme.style.setProperty("font-size",".8rem","important"); theme.style.setProperty("color","#e0b45a","important"); }
   }
   setInterval(pos,200);
   setInterval(function(){
