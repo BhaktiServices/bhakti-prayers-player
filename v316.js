@@ -8,8 +8,8 @@ window.BPP_BUILD="3.16"; window.BPP_SHOW="3.16";
     "#bppHelpTip{position:absolute;left:8px;top:14px;width:22px;height:22px;border:1px solid #6b5340;border-radius:50%;background:#4a372b;color:#c9a560;font:600 .75rem/22px system-ui,sans-serif;text-align:center;cursor:pointer;z-index:10}"+
     "#bppHelpTip:hover{color:#e0b45a;border-color:#e0b45a}"+
     ".lang.l307,#bppTheme{position:absolute!important;top:14px!important;z-index:10}"+
-    ".lang.l307{right:4px!important;top:4px!important}"+
-    "#bppTheme{right:60px!important;top:4px!important}";
+    ".lang.l307{right:8px!important}"+
+    "#bppTheme{right:52px!important}";
   document.head.appendChild(st);
   function L(){ return (typeof lang!=="undefined"&&T[lang])?lang:"en"; }
   setInterval(function(){
