@@ -3,7 +3,8 @@ window.BPP_BUILD="3.16"; window.BPP_SHOW="3.16";
 (function(){
   var T={de:"Hilfe",en:"Help",fr:"Aide",es:"Ayuda",ru:"Помощь",hi:"सहायता",pt:"Ajuda"};
   var st=document.createElement("style");
-  st.textContent="header{position:relative}"+
+  st.textContent="#bppTheme{background:transparent!important;border:1px solid #6b5340!important;color:#e0b45a!important;border-radius:6px!important;padding:1px 6px!important;font-size:.8rem!important}"+
+    "header{position:relative}"+
     "header h1{text-align:center!important;margin:0;display:block!important}"+
     "#bppHelpTip{position:absolute;left:8px;top:14px;width:22px;height:22px;border:1px solid #6b5340;border-radius:50%;background:#4a372b;color:#c9a560;font:600 .75rem/22px system-ui,sans-serif;text-align:center;cursor:pointer;z-index:10}"+
     "#bppHelpTip:hover{color:#e0b45a;border-color:#e0b45a}"+
