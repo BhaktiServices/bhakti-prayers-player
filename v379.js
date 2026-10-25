@@ -55,6 +55,7 @@ window.BPP_BUILD="3.79"; window.BPP_SHOW="3.79";
     btn(); }
   function btn(){ var box=document.querySelector("header .lang"); if(!box) return; var b=document.getElementById("bppTheme");
     if(!b){ b=document.createElement("button"); b.type="button"; b.id="bppTheme"; b.onclick=function(e){ e.stopPropagation(); mode=MODES[(MODES.indexOf(mode)+1)%4]; set("bpp-theme",mode); apply(); };
+      b.style.cssText="background:#4a372b;border:1px solid #6b5340;border-radius:6px;padding:2px 6px;font-size:.85rem;min-height:auto;line-height:1.4";
       box.insertBefore(b, box.firstChild); }
     var nx=MODES[(MODES.indexOf(mode)+1)%4], T=N[lg()], t=SYM[nx];
     var ti=T.st+": "+T.now+" "+T[mode]+(mode==="auto"?" ("+T[eff()]+")":"")+" · "+T.cl+": "+T[nx];
