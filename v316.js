@@ -15,7 +15,7 @@ window.BPP_BUILD="3.16"; window.BPP_SHOW="3.16";
   function pos(){
     var lang=document.querySelector(".lang.l307"), theme=document.getElementById("bppTheme");
     if(lang){ lang.style.cssText="position:fixed!important;top:8px!important;right:8px!important;z-index:100"; }
-    if(theme){ theme.style.cssText="position:fixed!important;top:8px!important;right:48px!important;z-index:100"; }
+    if(theme){ theme.style.cssText="position:fixed!important;top:8px!important;right:48px!important;z-index:100;background:transparent;border:1px solid #6b5340;border-radius:6px;padding:1px 6px;font-size:.8rem;color:#e0b45a;cursor:pointer"; }
   }
   setInterval(pos,200);
   setInterval(function(){
