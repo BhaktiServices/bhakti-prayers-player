@@ -1,7 +1,7 @@
 /* [Grok.com] Help-Icon links, Hover erklärt, Titel zentriert. */
 window.BPP_BUILD="3.16"; window.BPP_SHOW="3.16";
 (function(){
-  var T={de:"Hilfe",en:"Help",fr:"Aide",es:"Ayuda",ru:"Помощь",hi:"सहायता",pt:"Ajuda"};
+  var T={de:"Hilfe",en:"Help",fr:"Aide",es:"Ayuda",ru:"Помощь",hi:"सहायता",pt:"Ajuda",cz:"Nápověda"};
   var st=document.createElement("style");
   st.textContent="#bppTheme{background:transparent!important;border:1px solid #6b5340!important;color:#e0b45a!important;border-radius:6px!important;padding:1px 6px!important;font-size:.8rem!important}"+
     "header{position:relative}"+

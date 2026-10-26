@@ -3,10 +3,10 @@
    (bei Autoplay-Sperre grosser Play-Hinweis). Jukebox-Intro wird bei Direktlink uebersprungen (Inline-Skript im head). Teilen-Knopf beim Gebetstitel. */
 window.BPP_BUILD="3.15"; window.BPP_SHOW="3.15";
 (function(){
-  var LS=["de","en","fr","es","ru","hi","pt"];
+  var LS=["de","en","fr","es","ru","hi","pt","cz"];
   function L(){ return (typeof lang!=="undefined"&&LS.indexOf(lang)>=0)?lang:"en"; }
   var TX={de:["Link kopiert","Gebet teilen","Zum Abspielen tippen"],en:["Link copied","Share prayer","Tap to play"],fr:["Lien copié","Partager la prière","Touchez pour écouter"],
-    es:["Enlace copiado","Compartir oración","Toca para reproducir"],ru:["Ссылка скопирована","Поделиться молитвой","Нажмите, чтобы слушать"],hi:["लिंक कॉपी हो गया","प्रार्थना साझा करें","चलाने के लिए टैप करें"],pt:["Link copiado","Compartilhar oração","Toque para tocar"]};
+    es:["Enlace copiado","Compartir oración","Toca para reproducir"],ru:["Ссылка скопирована","Поделиться молитвой","Нажмите, чтобы слушать"],hi:["लिंक कॉपी हो गया","प्रार्थना साझा करें","चलाने के लिए टैप करें"],pt:["Link copiado","Compartilhar oração","Toque para tocar"],cz:["Odkaz zkopírován","Sdílet modlitbu","Klepněte pro přehrání"]};
   var st=document.createElement("style");
   st.textContent="#bppShare{margin-left:.5em;background:none;border:1px solid #6b5338;color:#e0b45a;border-radius:8px;padding:0 .4em;font-size:.85em;line-height:1.5;cursor:pointer;vertical-align:middle}"+
     "#bppToast{position:fixed;left:50%;bottom:40px;transform:translateX(-50%);z-index:80;background:#2a1f16;color:#e0b45a;border:1px solid #e0b45a;border-radius:10px;padding:8px 14px;font:15px system-ui,sans-serif}"+
@@ -32,8 +32,8 @@ window.BPP_BUILD="3.15"; window.BPP_SHOW="3.15";
   function go(){
     if(typeof PRAYERS==="undefined"||typeof play!=="function") return setTimeout(go,200);
     var idx=PRAYERS.findIndex(function(p){ return p.id===pid; }); if(idx<0) return;
-    var l=(q.get("lang")||"").toLowerCase();
-    if(LS.indexOf(l)<0){ l="en"; (navigator.languages||[navigator.language||""]).some(function(x){ x=String(x).slice(0,2).toLowerCase(); if(LS.indexOf(x)>=0){ l=x; return true; } }); }
+    var l=(q.get("lang")||"").toLowerCase(); if(l==="cs") l="cz";
+    if(LS.indexOf(l)<0){ l="en"; (navigator.languages||[navigator.language||""]).some(function(x){ x=String(x).slice(0,2).toLowerCase(); if(x==="cs") x="cz"; if(LS.indexOf(x)>=0){ l=x; return true; } }); }
     try{ if(lang!==l) setLang(l); }catch(e){}
     play(idx,false,false);
     var c=(q.get("chords")||"akk").toLowerCase(); c={off:"aus",stanza:"akk",line:"zeile","0":"aus","1":"akk"}[c]||c; if(["aus","akk","zeile"].indexOf(c)<0) c="akk";

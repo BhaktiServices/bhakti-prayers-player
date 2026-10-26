@@ -9,9 +9,9 @@
 <meta property="og:image" content="start.jpg">
 <link rel="manifest" href="manifest.json?v=341"><!-- [Grok-Bot] V2.53: PWA wieder installierbar -->
 <meta name="theme-color" content="#041236"><link rel="apple-touch-icon" href="apple-touch-icon.png"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="BPPlayer"><!-- [Grok-Bot] V3.41 -->
-<title>Bhakti Prayers Player V4.31</title>
+<title>Bhakti Prayers Player V4.32</title>
 <script>/* [Grok-Bot] V3.30: zentrale Version - aeltere Skripte (V1.66 usw.) koennen Kopf und Titel nicht mehr kurz ueberschreiben */
-window.BPP_VERSION="4.31";
+window.BPP_VERSION="4.32";
 /* [Grok-Bot] V4.27 Erststart: ohne Link-Parameter und ohne gespeicherte Einstellungen wie der Standard-Link starten (Auswertung durch v420/v315; nur Position, kein erzwungenes Abspielen) */
 (function(){ try{ var L=localStorage, has=false; for(var j=0;j<L.length;j++){ if(/^bpp/i.test(L.key(j))){ has=true; break; } }
   if(!has && !location.search && !L.getItem("bpp-first-run-done")) history.replaceState(null,"",location.pathname+"?p=guru-stotram&t=10.2&rec=pbj&cols=2&chords=zeile&tr=1&src=mp3"+location.hash);
@@ -156,7 +156,7 @@ body.show-ch .rowline .rch{display:block}
 </head>
 <body tabindex="0">
 <header>
-  <h1>Bhakti Prayers Player <span class="ver">V4.31</span><!-- [Grok.com] --></h1>
+  <h1>Bhakti Prayers Player <span class="ver">V4.32</span><!-- [Grok.com] --></h1>
 <script>/* [Grok-Bot] V3.30: Versionswaechter - setzt jede Aenderung an h1 .ver sofort (vor dem Zeichnen) auf BPP_VERSION zurueck */
 (function(){ var h1=document.querySelector("header h1"); if(!h1) return;
   var V="V"+window.BPP_VERSION, RX=/V\d+\.\d+[a-z]?/g;
@@ -242,7 +242,7 @@ body.show-ch .rowline .rch{display:block}
 <script src="prayers-v333.js?v=377"></script><!-- [Grok-Bot] V3.33 Durga Calisa, Panduranga Arati, Vedic Chants -->
 <script src="v222.js?v=222"></script><!-- [Grok.com] YouTube Bhakti Marga Music, nur wo noch keins steht -->
 <script src="v221.js?v=222"></script><!-- [Grok.com] Heft-Reihenfolge, Ashtottaram --><!-- [Grok.com] Om aus der Abend-MP3, nicht in den Lyrics -->
-<script src="listview.js?v=40"></script>
+<script src="listview.js?v=41"></script>
 <script src="tr-en.js?v=1"></script>
 <script src="tr-fr.js?v=1"></script>
 <script src="tr-es.js?v=1"></script>
@@ -250,7 +250,7 @@ body.show-ch .rowline .rch{display:block}
 <script src="vaishnava.js?v=9"></script><!-- [Grok.com] Vaishnava Mantra -->
 <script src="tr-hi.js?v=5"></script>
 <!-- [Grok.com] follow.js?v=56: Guru Stotram Abend, Om keine Strophe -->
-<script src="follow.js?v=371"></script><!-- [Grok.com] Saprem im Verzeichnis -->
+<script src="follow.js?v=372"></script><!-- [Grok.com] Saprem im Verzeichnis -->
 <script src="soundtouch.js?v=2"></script><!-- [Grok.com] SoundTouch Pitch -->
 <script src="capo.js?v=11"></script><!-- [Grok.com] Kapo −5/+5 fuer MP3 -->
 <!-- [Grok.com] Guru Stotram Abend: Om ist keine Strophe -->
@@ -476,7 +476,7 @@ function paintLyrics(){
       return "<div class='rowline"+(isR?" refrain":"")+"' data-n='"+n+"'>"+one+rch+"<span class='sa'>"+saLines.map(function(t,k,arr){ var c=lch&&lch[k]?shiftChordLine(lch[k], steps):""; return (c?"<span class='lch'>"+c+"</span>":"")+"<span class='ln'>"+t+((isR||z.x2)&&k===arr.length-1?"<span class='x2'> 2x</span>":"")+"</span>"; }).join("")+"</span></div>";
     }).join("");
     var tr=g.idx.map(function(n){ return lineText(P.zeilen[n]); }).filter(Boolean).join(" ");
-    var NT={de:"Noch keine Übersetzung vorhanden",en:"No translation available yet",fr:"Pas encore de traduction",es:"Todavía no hay traducción",ru:"Перевода пока нет",hi:"अभी अनुवाद उपलब्ध नहीं है",pt:"Ainda não há tradução"}; /* [Grok-Bot] V3.69: sichtbarer Hinweis statt leerer Uebersetzung */
+    var NT={de:"Noch keine Übersetzung vorhanden",en:"No translation available yet",fr:"Pas encore de traduction",es:"Todavía no hay traducción",ru:"Перевода пока нет",hi:"अभी अनुवाद उपलब्ध नहीं है",pt:"Ainda não há tradução",cz:"Zatím bez překladu"}; /* [Grok-Bot] V3.69: sichtbarer Hinweis statt leerer Uebersetzung */
     var trH=tr?"<div class='de'>"+tr+"</div>":"<div class='de notr' style='font-style:italic;opacity:.6'>"+(NT[lang]||NT.en)+"</div>";
     return "<div class='stanza"+(on?" on":"")+"' data-start='"+g.start+"'>"+head+rows+trH+"</div>";
   }).join("");
@@ -701,14 +701,14 @@ layoutLyrics();
 <script src="v255.js?v=1"></script><!-- [Grok-Bot] V2.55 Titel nur einmal -->
 <script src="v301.js?v=1"></script><!-- [Grok-Bot] V3.01 Layout neu geordnet -->
 <script src="v302.js?v=1"></script><!-- [Grok-Bot] V3.02 Heft-Hinweis an Quellen-Schalter -->
-<script src="v302h.js?v=380"></script><!-- [Grok-Bot] V3.02 Hilfe per Tipp auf Ueberschrift -->
+<script src="v302h.js?v=381"></script><!-- [Grok-Bot] V3.02 Hilfe per Tipp auf Ueberschrift -->
 <script src="v302m.js?v=1"></script><!-- [Grok-Bot] V3.02 Menue+/- wie vorher -->
 <script src="v303.js?v=409"></script><!-- [Grok-Bot] V3.03 Quellen am Ende der Lyrics -->
 <script src="v304.js?v=2"></script><!-- [Grok-Bot] V3.04 Akkorde je Zeile gold -->
 <script src="v305.js?v=3"></script><!-- [Grok-Bot] V3.05 Quellen/Download unten, Aussprache in Hilfe -->
 <script src="v306.js?v=1"></script><!-- [Grok-Bot] V3.06 Hanuman Zeitmarken neu -->
 <script src="v307.js?v=5"></script><!-- [Grok-Bot] V3.07 Strophen manuell blaettern -->
-<script src="v307l.js?v=3"></script><!-- [Grok-Bot] V3.07/3.08 Sprache oben (Kuerzel), Alle neben Menues -->
+<script src="v307l.js?v=4"></script><!-- [Grok-Bot] V3.07/3.08 Sprache oben (Kuerzel), Alle neben Menues -->
 <script src="v308.js?v=1"></script><!-- [Grok-Bot] V3.08 Giridhari Strophen + Zeiten -->
 <script src="v309.js?v=1"></script><!-- [Grok-Bot] V3.09 Hilfe Abspann -->
 <script src="v310.js?v=2"></script><!-- [Grok-Bot] V3.10 Bhajare + Chakar Rakho, Start ohne Aufblitzen -->
@@ -716,8 +716,8 @@ layoutLyrics();
 <script src="v312.js?v=1"></script><!-- [Grok-Bot] V3.12 Vishwananda Calisa Strophen, Akkorde, Zeiten -->
 <script src="v313.js?v=1"></script><!-- [Grok-Bot] V3.13 Taste P = Play/Pause -->
 <script src="v314.js?v=2"></script><!-- [Grok-Bot] V3.14 Telegram-Quelle -->
-<script src="v315.js?v=2"></script><!-- [Grok-Bot] V3.15 Direktlinks + Teilen -->
-<script src="v316.js?v=13"></script><!-- [Grok-Bot] V3.16 Hilfe-Sprechblase -->
+<script src="v315.js?v=3"></script><!-- [Grok-Bot] V3.15 Direktlinks + Teilen -->
+<script src="v316.js?v=14"></script><!-- [Grok-Bot] V3.16 Hilfe-Sprechblase -->
 <script src="v317.js?v=1"></script><!-- [Grok-Bot] V3.17 Menues nach SVD-Heften -->
 <script src="v318.js?v=2"></script><!-- [Grok-Bot] V3.18 Hilfe neben Sprachwahl -->
 <script src="v319.js?v=2"></script><!-- [Grok-Bot] V3.19 Kontakt in der Hilfe -->
@@ -730,7 +730,7 @@ layoutLyrics();
 <script src="v326.js?v=1"></script><!-- [Grok-Bot] V3.26 Astottaram Abend-Fassung + Akkorde -->
 <script src="v327.js?v=1"></script><!-- [Grok-Bot] V3.27 Guru Stotram Morgen-Akkorde -->
 <!-- [Grok-Bot] V3.28 Umzug nach BhaktiServices: CDN-Links angepasst -->
-<script src="lang-multi.js?v=23"></script>
+<script src="lang-multi.js?v=24"></script>
 <script src="v329.js?v=5"></script><!-- [Grok-Bot] V3.29 manuelles Blaettern sofort -->
 <script src="v331.js?v=3"></script><!-- [Grok-Bot] V3.31 Kavaca direkt grosse Schrift -->
 <script src="v333.js?v=1"></script><!-- [Grok-Bot] V3.33 neue Prayers, Aufnahmen, Strophenzeiten -->
@@ -754,9 +754,9 @@ layoutLyrics();
 <script src="v353.js?v=2"></script><!-- [Grok-Bot] V3.53 Prayers ohne Aufnahme: Zeichen + Hinweis -->
 <script src="v354.js?v=1"></script><!-- [Grok-Bot] V3.54 Portugues + Kavaca Str. 1-10 (v230-Schaetzwerte abgeschaltet) -->
 <script src="v355.js?v=2"></script><!-- [Grok-Bot] V3.55 Purusa Suktam + Visnu Sahasranama mit Aufnahme, Hilfe beim ersten Start -->
-<script src="v356.js?v=3"></script><!-- [Grok-Bot] V3.56 Purusa Suktam + VSN: Heft-Uebersetzungen DE + 6 Sprachen -->
+<script src="v356.js?v=4"></script><!-- [Grok-Bot] V3.56 Purusa Suktam + VSN: Heft-Uebersetzungen DE + 6 Sprachen -->
 <script src="v357.js?v=2"></script><!-- [Grok-Bot] V3.57 Hilfe: Abschnitt Tastenkuerzel (7 Sprachen) -->
-<script src="v358.js?v=430"></script><!-- [Grok-Bot] V3.58 Knoepfe zeigen Aktion; aktiv Gold, 2-stufig Silber/Gold -->
+<script src="v358.js?v=431"></script><!-- [Grok-Bot] V3.58 Knoepfe zeigen Aktion; aktiv Gold, 2-stufig Silber/Gold -->
 <script src="v359.js?v=2"></script><!-- [Grok-Bot] V3.59 Leertaste, Grossbild-X, Spalten-Hinweis, Jukebox nur 1x/Sitzung -->
 <script src="v360.js?v=1"></script><!-- [Grok-Bot] V3.60 Pfeiltasten markieren Strophe, Enter springt -->
 <!-- [Grok-Bot] V3.63: v361.js ersetzt durch v363.js -->
@@ -765,7 +765,7 @@ layoutLyrics();
 <script src="v366.js?v=410"></script><!-- [Grok-Bot] V3.66 Offline-Status links unten, Orte 24 h -->
 <script src="v367.js?v=3"></script><!-- [Grok-Bot] V3.67 Sri/Bhu/Nila/Narayana Suktam mit Aufnahme -->
 <script src="v368.js?v=1"></script><!-- [Grok-Bot] V3.68 Narayana Schlusszeile -->
-<script src="v369.js?v=3"></script><!-- [Grok-Bot] V3.69 Hinweis ohne Uebersetzung -->
+<script src="v369.js?v=4"></script><!-- [Grok-Bot] V3.69 Hinweis ohne Uebersetzung -->
 <script src="v370.js?v=1"></script><!-- [Grok-Bot] V3.70 aktiv-in entfernt -->
 <!-- [Grok-Bot] V3.72: v371.js (Auto-Gross beim Drehen) entfernt -->
 <!-- [Grok-Bot] V3.73: v372.js ersetzt durch v373.js -->
@@ -819,5 +819,6 @@ layoutLyrics();
 <script src="v427.js?v=3"></script><!-- [Grok-Bot] V4.27 Link-Zeit -->
 <script src="v430.js?v=1"></script><!-- [Grok-Bot] V4.30 kein Hintergrundbild, kein Flackern -->
 <script src="v431.js?v=1"></script><!-- [Grok-Bot] V4.31 Akkorde springen nicht, Kavacam Pbj ab 8 s -->
+<script src="v432.js?v=1"></script><!-- [Grok-Bot] V4.32 Tschechisch (CZ) -->
 </body>
 </html>

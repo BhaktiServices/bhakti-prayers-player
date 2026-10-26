@@ -26,20 +26,20 @@
   var list=document.getElementById("list"); if(!list) return;
   var bar=document.createElement("div"); bar.className="listbar";
   var b=document.createElement("button"); b.type="button"; b.id="btnDet";
-  var LL=["de","en","fr","es","ru","hi","pt"];
+  var LL=["de","en","fr","es","ru","hi","pt","cz"];
   function li(){ var k=(typeof lang==="undefined")?0:LL.indexOf(lang); return k<0?1:k; }
   function tr(a){ return a[li()]||a[1]; }
-  var DET=[["Herkunft, Quellen","Origin, sources","Origine, sources","Origen, fuentes","Происхождение, источники","उत्पत्ति, स्रोत","Origem, fontes"],["Herkunft, Quellen aus","Hide origin, sources","Masquer origine, sources","Ocultar origen, fuentes","Скрыть источники","स्रोत छिपाएँ","Ocultar origem, fontes"]]; /* [Grok-Bot] V2.46: war "Details" */
+  var DET=[["Herkunft, Quellen","Origin, sources","Origine, sources","Origen, fuentes","Происхождение, источники","उत्पत्ति, स्रोत","Origem, fontes","Původ, zdroje"],["Herkunft, Quellen aus","Hide origin, sources","Masquer origine, sources","Ocultar origen, fuentes","Скрыть источники","स्रोत छिपाएँ","Ocultar origem, fontes","Skrýt původ, zdroje"]]; /* [Grok-Bot] V2.46: war "Details" */
   function lab(){ b.textContent=tr(on?DET[1]:DET[0]); b.classList.toggle("on", on); }
   b.onclick=function(){ on=!on; document.body.classList.toggle("show-det", on); try{ localStorage.setItem("bpp-det", on?"1":"0"); }catch(e){} lab(); };
   bar.appendChild(b); list.parentNode.insertBefore(bar, list); lab();
   /* [Grok-Bot] V1.60: Ablauf je Wochentag wie in der Wochenuebersicht des Prathana-Hefts (Version 10). Heute ist vorgewaehlt, andere Tage per Taste. Was noch nicht im Player ist, steht grau in der Liste. */
-  var NM=["Morgengebet","Morning prayers","Prière du matin","Oración de la mañana","Утренняя молитва","प्रातः प्रार्थना","Orações da manhã"], NE=["Abendgebet","Evening prayers","Prière du soir","Oración de la tarde","Вечерняя молитва","सायं प्रार्थना","Orações da noite"];
+  var NM=["Morgengebet","Morning prayers","Prière du matin","Oración de la mañana","Утренняя молитва","प्रातः प्रार्थना","Orações da manhã","Ranní modlitby"], NE=["Abendgebet","Evening prayers","Prière du soir","Oración de la tarde","Вечерняя молитва","सायं प्रार्थना","Orações da noite","Večerní modlitby"];
   var DAYS=[["Montag","Monday","Lundi","Lunes","\u041f\u043e\u043d\u0435\u0434\u0435\u043b\u044c\u043d\u0438\u043a","\u0938\u094b\u092e\u0935\u093e\u0930","Segunda-feira"],["Dienstag","Tuesday","Mardi","Martes","\u0412\u0442\u043e\u0440\u043d\u0438\u043a","\u092e\u0902\u0917\u0932\u0935\u093e\u0930","Terça-feira"],["Mittwoch","Wednesday","Mercredi","Mi\u00e9rcoles","\u0421\u0440\u0435\u0434\u0430","\u092c\u0941\u0927\u0935\u093e\u0930","Quarta-feira"],["Donnerstag","Thursday","Jeudi","Jueves","\u0427\u0435\u0442\u0432\u0435\u0440\u0433","\u0917\u0941\u0930\u0941\u0935\u093e\u0930","Quinta-feira"],["Freitag","Friday","Vendredi","Viernes","\u041f\u044f\u0442\u043d\u0438\u0446\u0430","\u0936\u0941\u0915\u094d\u0930\u0935\u093e\u0930","Sexta-feira"],["Samstag","Saturday","Samedi","S\u00e1bado","\u0421\u0443\u0431\u0431\u043e\u0442\u0430","\u0936\u0928\u093f\u0935\u093e\u0930","Sábado"],["Sonntag","Sunday","Dimanche","Domingo","\u0412\u043e\u0441\u043a\u0440\u0435\u0441\u0435\u043d\u044c\u0435","\u0930\u0935\u093f\u0935\u093e\u0930","Domingo"]];
   var MISS={ "guru-bhajan":"Guru Bhajan", "vedic-fr":"Vedic chanting: \u015ar\u012b S\u016bktam, Bh\u016b S\u016bktam, N\u012bl\u0101 S\u016bktam", "vedic-sa":"Vedic chanting: Puru\u1e63a S\u016bktam, Vi\u1e63\u1e47u Sahasran\u0101ma, N\u0101r\u0101ya\u1e47a S\u016bktam", "durga":"\u015ar\u012b Durg\u0101 C\u0101l\u012bs\u0101", "vchalisa":"Paramahamsa Vishwananda Chalisa", "gita":"Bhagavad G\u012bt\u0101", "ghalin":"Ghalin Lot\u0101nga\u1e47", "panduranga":"P\u0101\u1e47\u1e0dura\u1e45ga A\u1e63\u1e6dakam", "sv-arati":"Paramahamsa \u015ar\u012b Sv\u0101m\u012b Vishwananda \u0100rat\u012b", "lakshmi-ashtakam":"Mah\u0101 Lak\u1e63m\u012b A\u1e63\u1e6dakam", "sayana":"\u015ayana \u0100rat\u012b" }; /* [Grok.com] fehlende Titel aus dem Inhaltsverzeichnis, ohne vedische Gesaenge */
   var NOTYET=["noch nicht im Player","not in the player yet","pas encore dans le lecteur","a\u00fan no est\u00e1 en el reproductor","\u043f\u043e\u043a\u0430 \u043d\u0435\u0442 \u0432 \u043f\u043b\u0435\u0435\u0440\u0435","\u0905\u092d\u0940 \u092a\u094d\u0932\u0947\u092f\u0930 \u092e\u0947\u0902 \u0928\u0939\u0940\u0902","ainda não está no player"];
-  var VEDIC=["Vedische Gesänge","Vedic Chants","Chants védiques","Cantos védicos","Ведические песнопения","वैदिक मंत्र","Cantos Védicos"], VEDIC_IDS=["mukunda","sri-suktam","bhu-suktam","nila-suktam","purusa-suktam","vishnu-sahasranama","narayana-suktam"]; window.BPP_VEDIC=[VEDIC,VEDIC_IDS]; /* [Grok-Bot] V3.33 */
-  var ALL=["Alle","All","Tous","Todos","\u0412\u0441\u0435","\u0938\u092d\u0940","Todas"];
+  var VEDIC=["Vedische Gesänge","Vedic Chants","Chants védiques","Cantos védicos","Ведические песнопения","वैदिक मंत्र","Cantos Védicos","Védské zpěvy"], VEDIC_IDS=["mukunda","sri-suktam","bhu-suktam","nila-suktam","purusa-suktam","vishnu-sahasranama","narayana-suktam"]; window.BPP_VEDIC=[VEDIC,VEDIC_IDS]; /* [Grok-Bot] V3.33 */
+  var ALL=["Alle","All","Tous","Todos","\u0412\u0441\u0435","\u0938\u092d\u0940","Todas","Vše"];
   function plan(d){
     if(d<0){ var seen={}, ids=[], skip=[]; PRAYERS.forEach(function(p){ var k=String(p.titel||"").trim().toLowerCase(); if(seen[k]) skip.push(p.id); else { seen[k]=1; ids.push(p.id); } }); return [ { n:ALL, ids:ids, skip:skip, all:true } ]; }
     var m=["guru-stotram","~guru-bhajan","ashtotram","vaishnava-mantra","guruji-gayatri","gayatri","ganesha-mantra","suprabhatam","govinda"];
@@ -51,7 +51,7 @@
     if(d===6) e=["~ghalin","saprem","closing-arati","panduranga-arati","~gita"]; /* [Grok-Bot] V3.33 Panduranga Arati im Player */
     else { e=["guru-stotram-abend","ashtotram-abend","ganesha-mantra","gayatri","kavacham","narasimha-abend","hanuman","~sv-arati","closing-evening","saprem","closing-arati"]; }
     var more=["vchalisa","durga-chalisa","panduranga-arati","~lakshmi-ashtakam","hanuman-bhavani","giridhari-arati","guru-arati","lakshmi-arati","~sayana"]; /* [Grok.com] Weitere und andere Aratis, Heft S. 33 und 43 */
-    return [ { n:NM, ids:m }, { n:NE, ids:e, late:d===6 }, { n:["Weitere","More","Autres","Otros","Другие","अन्य","Mais"], ids:more }, { n:VEDIC, ids:VEDIC_IDS } ]; /* [Grok-Bot] V3.33 Gruppe Vedic Chants */
+    return [ { n:NM, ids:m }, { n:NE, ids:e, late:d===6 }, { n:["Weitere","More","Autres","Otros","Другие","अन्य","Mais","Další"], ids:more }, { n:VEDIC, ids:VEDIC_IDS } ]; /* [Grok-Bot] V3.33 Gruppe Vedic Chants */
   }
   var day=(new Date().getDay()+6)%7, GROUPS=plan(day);
   var dbar=document.createElement("div"); dbar.className="daybar";
@@ -80,7 +80,7 @@
     GROUPS.forEach(function(G){ (G.skip||[]).forEach(function(id){ var k=PRAYERS.findIndex(function(p){ return p.id===id; }); if(k>=0) used[k]=true; }); });
     var rest=[]; PRAYERS.forEach(function(p, idx){ if(!used[idx]) rest.push(idx); });
     rest=rest.filter(function(idx){ var id=PRAYERS[idx] && PRAYERS[idx].id; return id!=="ashtotram" && id!=="ashtotram-abend" && id!=="hanuman-bhavani"; }); /* [Grok.com] nicht noch einmal unter Weitere */
-    if(rest.length){ head(tr(["Weitere","More","Autres","Otros","Другие","अन्य","Mais"])); rest.forEach(put); }
+    if(rest.length){ head(tr(["Weitere","More","Autres","Otros","Другие","अन्य","Mais","Další"])); rest.forEach(put); }
     list.innerHTML=""; list.appendChild(frag);
     dayLab(); title(); if(window.__ldPaint) window.__ldPaint();
   }
@@ -130,7 +130,7 @@
 document.addEventListener("DOMContentLoaded", function(){ setTimeout(function(){ var v=document.querySelector("h1 .ver"); if(v) v.textContent="V1.63"; document.title="Bhakti Prayers Player V1.63"; }, 0); });
 /* [Grok-Bot] V1.61: Sprachauswahl als kleines Dropdown statt sechs Tasten. Die alten Tasten bleiben unsichtbar im Seitenaufbau, damit vorhandene Funktionen weiterlaufen. */
 document.addEventListener("DOMContentLoaded", function(){
-  var L=[["de","DE","Deutsch"],["en","EN","English"],["fr","FR","Fran\u00e7ais"],["es","ES","Espa\u00f1ol"],["ru","RU","\u0420\u0443\u0441\u0441\u043a\u0438\u0439"],["hi","HI","\u0939\u093f\u0928\u094d\u0926\u0940"],["pt","PT","Portugu\u00eas"]];
+  var L=[["de","DE","Deutsch"],["en","EN","English"],["fr","FR","Fran\u00e7ais"],["es","ES","Espa\u00f1ol"],["ru","RU","\u0420\u0443\u0441\u0441\u043a\u0438\u0439"],["hi","HI","\u0939\u093f\u0928\u094d\u0926\u0940"],["pt","PT","Portugu\u00eas"],["cz","CZ","\u010ce\u0161tina"]];
   var first=document.getElementById("btnLangDe"); if(!first || typeof setLang!=="function") return;
   var st=document.createElement("style"); st.textContent="#langSel{font-size:.75rem;padding:1px 2px;height:24px;border-radius:6px;background:transparent;color:inherit;border:1px solid var(--muted,#888);cursor:pointer}#langSel option{color:#000}.lang-hidden{display:none!important}";
   document.head.appendChild(st);
@@ -156,8 +156,8 @@ document.addEventListener("DOMContentLoaded", function(){
     ".item .ldp{font-size:10px;opacity:.7;margin-left:4px;vertical-align:middle}"+
     ".item.noaud::after{content:'\\1F507';font-size:11px;opacity:.55;margin-left:6px}";
   document.head.appendChild(css);
-  var NOA=["Noch keine Aufnahme","No recording yet","Pas encore d'enregistrement","Aún sin grabación","Записи пока нет","अभी रिकॉर्डिंग नहीं","Ainda sem gravação"];
-  var LANGS=["de","en","fr","es","ru","hi","pt"];
+  var NOA=["Noch keine Aufnahme","No recording yet","Pas encore d'enregistrement","Aún sin grabación","Записи пока нет","अभी रिकॉर्डिंग नहीं","Ainda sem gravação","Zatím bez nahrávky"];
+  var LANGS=["de","en","fr","es","ru","hi","pt","cz"];
   var st={on:false,pct:0,ind:true};
   function aud(){ return window.a || document.getElementById("a"); }
   function calc(){

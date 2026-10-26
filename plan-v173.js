@@ -7,10 +7,10 @@
   var M=["guru-stotram","ashtotram","vaishnava-mantra","guruji-gayatri","ganesha-mantra","gayatri","suprabhatam","govinda","narasimha","ramanuja","vishnu-arati","closing-morning"];
   var E=["guru-stotram-abend","ashtotram-abend" /* [Grok-Bot] V3.26: Abend-Fassung statt Morgen-Fassung */,"ganesha-mantra","gayatri","kavacham","hanuman","bhajare","closing-evening","saprem" /* [Grok.com] jetzt im Player */,"closing-arati"];
   var MISS={ saprem:"\u0100rat\u012b Saprem" };
-  var LL=["de","en","fr","es","ru","hi","pt"];
+  var LL=["de","en","fr","es","ru","hi","pt","cz"];
   var NOTYET=["noch nicht im Player","not in the player yet","pas encore dans le lecteur","a\u00fan no est\u00e1 en el reproductor","\u043f\u043e\u043a\u0430 \u043d\u0435\u0442 \u0432 \u043f\u043b\u0435\u0435\u0440\u0435","\u0905\u092d\u0940 \u092a\u094d\u0932\u0947\u092f\u0930 \u092e\u0947\u0902 \u0928\u0939\u0940\u0902","ainda não está no player"];
   var HID=["noch ohne eigenen Ton","no own recording yet","pas encore d'enregistrement propre","a\u00fan sin grabaci\u00f3n propia","\u043f\u043e\u043a\u0430 \u0431\u0435\u0437 \u0441\u0432\u043e\u0435\u0439 \u0437\u0430\u043f\u0438\u0441\u0438","\u0905\u092d\u0940 \u0905\u092a\u0928\u0940 \u0930\u093f\u0915\u0949\u0930\u094d\u0921\u093f\u0902\u0917 \u0928\u0939\u0940\u0902","ainda sem gravação própria"];
-  function tr(a){ var k=-1; try{ k=LL.indexOf(lang); }catch(e){} return a[k<0?1:k]; }
+  function tr(a){ var k=-1; try{ k=LL.indexOf(lang); }catch(e){} return a[k<0?1:k]||a[1]; }
   function day(){ var b=document.querySelector(".daybar button.on"); return b ? +b.getAttribute("data-d") : (new Date().getDay()+6)%7; }
   function hidden(id){ return (window.bppHidden||[]).indexOf(id)>=0; }
   function grey(txt, tip){ var d=document.createElement("div"); d.className="item miss"; d.textContent=txt; d.title=tip; return d; }

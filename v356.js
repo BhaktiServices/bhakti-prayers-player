@@ -14,7 +14,7 @@
 })();
 /* [Grok-Bot] V3.56: Prayer ohne Uebersetzung -> Tipp auf "Übersetzung" (oder T) zeigt kurzen Hinweis (7 Sprachen), Button bleibt aus; beim Wechsel zu so einem Prayer wird Uebersetzung als aus angezeigt (gespeicherte Einstellung bleibt). */
 (function(){
-  var MSG={de:"Für dieses Prayer gibt es noch keine Übersetzung.",en:"There is no translation for this prayer yet.",fr:"Il n’y a pas encore de traduction pour cette prière.",es:"Todavía no hay traducción para esta oración.",ru:"Для этой молитвы пока нет перевода.",hi:"इस प्रार्थना का अभी कोई अनुवाद नहीं है।",pt:"Ainda não há tradução para esta oração."};
+  var MSG={de:"Für dieses Prayer gibt es noch keine Übersetzung.",en:"There is no translation for this prayer yet.",fr:"Il n’y a pas encore de traduction pour cette prière.",es:"Todavía no hay traducción para esta oración.",ru:"Для этой молитвы пока нет перевода.",hi:"इस प्रार्थना का अभी कोई अनुवाद नहीं है।",pt:"Ainda não há tradução para esta oração.",cz:"Pro tuto modlitbu zatím není překlad."};
   function lg(){ var l=(typeof lang!=="undefined"&&lang)||"en"; return MSG[l]?l:"en"; }
   function lt(z){ try{ return (window.lineText||function(x){return x.ue||x.en||"";})(z)||""; }catch(e){ return ""; } }
   function hasTr(){ var P=(typeof i!=="undefined"&&i>=0&&typeof PRAYERS!=="undefined")?PRAYERS[i]:null; if(!P) return true;

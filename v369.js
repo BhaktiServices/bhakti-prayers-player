@@ -2,7 +2,7 @@
 window.BPP_BUILD="3.69"; window.BPP_SHOW="3.69";
 /* Prayers ganz ohne Uebersetzung (Uebersetzung wird dort seit V3.56 automatisch ausgeblendet): eine sichtbare Hinweiszeile direkt ueber dem Textfeld. */
 (function(){
-  var NT={de:"Noch keine Übersetzung vorhanden",en:"No translation available yet",fr:"Pas encore de traduction",es:"Todavía no hay traducción",ru:"Перевода пока нет",hi:"अभी अनुवाद उपलब्ध नहीं है",pt:"Ainda não há tradução"};
+  var NT={de:"Noch keine Übersetzung vorhanden",en:"No translation available yet",fr:"Pas encore de traduction",es:"Todavía no hay traducción",ru:"Перевода пока нет",hi:"अभी अनुवाद उपलब्ध नहीं है",pt:"Ainda não há tradução",cz:"Zatím bez překladu"};
   function tick(){
     var box=document.getElementById("lyrics"); if(!box||typeof window.bppHasTr!=="function") return;
     var P=(typeof i!=="undefined"&&i>=0&&typeof PRAYERS!=="undefined")?PRAYERS[i]:null;

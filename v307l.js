@@ -1,6 +1,6 @@
 /* [Grok-Bot] V3.07: Sprachwahl (nur Kuerzel, V3.08 ohne Flaggen) oben rechts neben der Versionsanzeige; "Alle" direkt rechts neben den drei Menues */
 (function(){
-  var F={de:"DE",en:"EN",fr:"FR",es:"ES",ru:"RU",hi:"HI",pt:"PT"};
+  var F={de:"DE",en:"EN",fr:"FR",es:"ES",ru:"RU",hi:"HI",pt:"PT",cz:"CZ"};
   var st=document.createElement("style");
   st.textContent="h1 .lang.l307{display:inline-flex;vertical-align:middle;margin:0 0 0 10px;cursor:default;font-size:1rem;letter-spacing:0;text-transform:none}"+
   "h1 .lang.l307 select{font-size:.9rem;padding:2px 4px}"+

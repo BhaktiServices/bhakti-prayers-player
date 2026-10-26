@@ -59,7 +59,7 @@
 /* [Grok-Bot] V1.72: Guru-Stotram-Uebersetzung (Prathana SVD) und Listen-Reihenfolge nach SVD-Inhalt, synchron nachgeladen vor dem Seitenskript. */
 if(document.readyState==="loading"){ document.write('<script src="tr-v172.js?v=178"><\/script>'); }
 /* [Grok-Bot] V1.73: Morgen-/Abendliste nach dem SVD-Inhaltsverzeichnis (Override der Anordnung aus listview.js). */
-if(document.readyState==="loading"){ document.write('<script src="plan-v173.js?v=334"><\/script>'); }
+if(document.readyState==="loading"){ document.write('<script src="plan-v173.js?v=335"><\/script>'); }
 /* [Grok-Bot] V1.74: Suprabhatam- und Govinda-Uebersetzungen nach Prathana SVD, Wochentag-Knoepfe ausgeblendet. */
 if(document.readyState==="loading"){ document.write('<script src="tr-v174.js?v=178"><\/script>'); }
 /* [Grok-Bot] V1.75: Tempo-Auswahl fuer die MP3-Wiedergabe (je Prayer gemerkt, Tonhoehe bleibt). */
@@ -76,9 +76,9 @@ if(document.readyState==="loading"){ document.write('<script src="v179.js?v=180"
 /* [Grok-Bot] V1.80: Giridhari Arati mit den Mira-Strophen der Aufnahme, Uebersetzung und Abfolge (v180.js). */
 if(document.readyState==="loading"){ document.write('<script src="v180.js?v=181"><\/script>'); }
 /* [Grok-Bot] V1.81-V1.83: Ganzseiten-Modus zum Mitlesen (v183.js ersetzt v181/v182: Ende-Bildschirm, voriges/naechstes Prayer, Wiederholen). */
-if(document.readyState==="loading"){ document.write('<script src="v183.js?v=352"><\/script>'); }
+if(document.readyState==="loading"){ document.write('<script src="v183.js?v=353"><\/script>'); }
 /* [Grok-Bot] V1.84: Govinda-MP3 (CD, gleiche Melodie wie YouTube) und voriges/naechstes Prayer im Vollbild immer sichtbar (v184.js). */
-if(document.readyState==="loading"){ document.write('<script src="v184.js?v=185"><\/script>'); }
+if(document.readyState==="loading"){ document.write('<script src="v184.js?v=186"><\/script>'); }
 /* [Grok-Bot] V1.85-V1.87: Mitlesen (Ashtotram Name fuer Name, geschaetzte Marken je Quelle, alte Strophen-Tipps entschaerft), Vollbild-Menue nur nach Tippen,
    V1.87: Strophenwechsel am Ende des Gesangs (Pausentabelle), gemessene Marken Ashtotram, Vaishnava Mantra, Kavaca (v187.js ersetzt v186.js). */
 if(document.readyState==="loading"){ document.write('<script src="v187.js?v=188"><\/script>'); }
