@@ -64,14 +64,15 @@ window.BPP_BUILD="4.34"; window.BPP_SHOW="4.34";
     var end=loop.e - (ytOn?0.15:0.05);
     if(t>=end || t<loop.s-1.5){ seek(loop.s); }
   }catch(e){} },80);
-  function mkBtn(){ if(btn&&document.body.contains(btn)) return; var r=document.getElementById("btnRep"); if(!r) return;
+  function mkBtn(){ /* [Grok-Bot] V4.35: eigene Taste entfaellt, Modus 1 der Wiederholen-Taste (v435.js) */ var o=document.getElementById("btnRepS"); if(o) o.remove(); return; if(btn&&document.body.contains(btn)) return; var r=document.getElementById("btnRep"); if(!r) return;
     btn=document.createElement("button"); btn.type="button"; btn.id="btnRepS"; btn.className=r.className.replace(/\b(on|gold|act358|s358)\b/g,"");
     btn.textContent="↻ Str."; btn.style.fontSize=".78rem"; btn.addEventListener("click",function(e){ e.preventDefault(); toggle(); });
     r.parentNode.insertBefore(btn, r.nextSibling); paint(); }
   var st=document.createElement("style"); st.textContent="#btnRepS.gold{background:#d4a017!important;color:#000!important;border-color:#b8860b!important}#btnRepS:disabled{opacity:.45}"; document.head.appendChild(st);
   document.addEventListener("keydown",function(e){ if(e.ctrlKey||e.altKey||e.metaKey||!e.shiftKey) return; var tg=e.target&&e.target.tagName; if(/INPUT|TEXTAREA|SELECT/.test(tg)||(e.target&&e.target.isContentEditable)) return;
-    if(e.key==="R"||e.code==="KeyR"&&e.shiftKey){ e.preventDefault(); e.stopImmediatePropagation(); toggle(); } },true);
-  function help(){ var d=document.getElementById("bppHelp"); if(!d) return; var p=d.querySelector("p.rs434"); var t=tx(3);
+    if(e.key==="R"||e.code==="KeyR"&&e.shiftKey){ e.preventDefault(); e.stopImmediatePropagation(); if(window.bppRepCycle) window.bppRepCycle(-1); } },true); /* [Grok-Bot] V4.35: Umschalt+R = Wiederholen-Modus rueckwaerts */
+  window.bppStanzaRange=function(){ return range(window.bppStanzaAtMedia()); };
+  function help(){ var d=document.getElementById("bppHelp"); if(!d) return; var p=d.querySelector("p.rs434"); if(p) p.remove(); return; var t=tx(3);
     if(!p){ p=document.createElement("p"); p.className="rs434"; d.appendChild(p); } if(p.textContent!==t) p.textContent=t; }
   setInterval(function(){ try{ mkBtn(); paint(); help(); }catch(e){} },400);
 })();

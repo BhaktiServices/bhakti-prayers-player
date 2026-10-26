@@ -21,7 +21,7 @@ window.BPP_BUILD="4.20"; window.BPP_SHOW="4.20";
     var t=Math.round(nowT()*10)/10; if(t>0) q.set("t",String(t));
     var r=rateOf(P.id); if(r!==1) q.set("rate",String(r));
     var v=a()?Math.round(a().volume*100):100; if(v!==100) q.set("vol",String(v));
-    var rc=recOf(P.id); if(rc) q.set("rec",rc);
+    var rc=recOf(P.id); if(rc) q.set("rec",rc); var rpm=ls("bpp-rep435"); if(rpm&&rpm!=="off") q.set("rep",rpm); /* [Grok-Bot] V4.35 */
     q.set("cols",String(parseInt(ls("bpp-cols")||"1",10)||1));
     if(typeof chMode!=="undefined") q.set("chords",chMode);
     if(typeof showDe!=="undefined") q.set("tr",showDe?"1":"0");
@@ -44,6 +44,7 @@ window.BPP_BUILD="4.20"; window.BPP_SHOW="4.20";
   if(rec==="pbj"||rec==="mtj"||rec==="spn"){
     if(RECS[pid]) ls(recKey(pid), rec==="pbj"?"prabhus":(pid==="guru-stotram"?"frau":"alt"));
     ls("bpp-spn-"+pid, rec==="spn"?"spn":"alt"); }
+  var rpq=(q.get("rep")||"").toLowerCase(); if(/^(str|one|list|all|off)$/.test(rpq)) ls("bpp-rep435",rpq); /* [Grok-Bot] V4.35 */
   var c=parseInt(q.get("cols"),10); if(c>=1&&c<=3) ls("bpp-cols",String(c));
   var r=parseFloat(q.get("rate")); if(r>=0.5&&r<=2){ try{ var m=JSON.parse(ls("bpp-rate")||"{}")||{}; if(r===1) delete m[pid]; else m[pid]=r; ls("bpp-rate",JSON.stringify(m)); }catch(e){} }
   var sr=(q.get("src")||"").toLowerCase();
