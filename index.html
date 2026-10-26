@@ -9,12 +9,12 @@
 <meta property="og:image" content="start.jpg">
 <link rel="manifest" href="manifest.json?v=341"><!-- [Grok-Bot] V2.53: PWA wieder installierbar -->
 <meta name="theme-color" content="#041236"><link rel="apple-touch-icon" href="apple-touch-icon.png"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="BPPlayer"><!-- [Grok-Bot] V3.41 -->
-<title>Bhakti Prayers Player V4.35</title>
+<title>Bhakti Prayers Player V4.36</title>
 <script>/* [Grok-Bot] V3.30: zentrale Version - aeltere Skripte (V1.66 usw.) koennen Kopf und Titel nicht mehr kurz ueberschreiben */
-window.BPP_VERSION="4.35";
+window.BPP_VERSION="4.36";
 /* [Grok-Bot] V4.27 Erststart: ohne Link-Parameter und ohne gespeicherte Einstellungen wie der Standard-Link starten (Auswertung durch v420/v315; nur Position, kein erzwungenes Abspielen) */
 (function(){ try{ var L=localStorage, has=false; for(var j=0;j<L.length;j++){ if(/^bpp/i.test(L.key(j))){ has=true; break; } }
-  if(!has && !location.search && !L.getItem("bpp-first-run-done")) history.replaceState(null,"",location.pathname+"?p=guru-stotram&t=10.2&rec=pbj&cols=2&chords=zeile&tr=1&src=mp3"+location.hash);
+  if(!has && !location.search && !L.getItem("bpp-first-run-done")) history.replaceState(null,"",location.pathname+"?p=guru-stotram&t=0&rec=pbj&cols=2&chords=zeile&tr=1&src=mp3"+location.hash);
   L.setItem("bpp-first-run-done","1"); }catch(e){} })();
 try{ window.bppBootMem=localStorage.getItem("bpp-mem"); }catch(e){} /* [Grok-Bot] V3.62: Stand vor dem Start merken (Position wiederherstellen) */
 (function(){
@@ -156,7 +156,7 @@ body.show-ch .rowline .rch{display:block}
 </head>
 <body tabindex="0">
 <header>
-  <h1>Bhakti Prayers Player <span class="ver">V4.35</span><!-- [Grok.com] --></h1>
+  <h1>Bhakti Prayers Player <span class="ver">V4.36</span><!-- [Grok.com] --></h1>
 <script>/* [Grok-Bot] V3.30: Versionswaechter - setzt jede Aenderung an h1 .ver sofort (vor dem Zeichnen) auf BPP_VERSION zurueck */
 (function(){ var h1=document.querySelector("header h1"); if(!h1) return;
   var V="V"+window.BPP_VERSION, RX=/V\d+\.\d+[a-z]?/g;
@@ -812,7 +812,7 @@ layoutLyrics();
 <script src="v415.js?v=31"></script><!-- [Grok.com] V4.18 Rec: Pbj/Mtj + Supra unter Prabhujis --><!-- [Grok-Bot] V4.11 Gross dreht mit (Lagesensor) -->
 <script src="v419.js?v=1"></script><!-- [Grok-Bot] V4.19 Rec-Taste schaltet wieder -->
 <script src="v420.js?v=2"></script><!-- [Grok-Bot] V4.20 Teilen-Link mit allen Einstellungen, Rec: SPN -->
-<script src="v421.js?v=13"></script><!-- [Grok-Bot] V4.21 Versions-Historie -->
+<script src="v421.js?v=14"></script><!-- [Grok-Bot] V4.21 Versions-Historie -->
 <script src="v422.js?v=1"></script><!-- [Grok-Bot] V4.22 Historie bis V1.0, Auto-Zuklappen -->
 <script src="v423.js?v=1"></script><!-- [Grok-Bot] V4.23 Uebersetzungen Sri/Bhu Suktam -->
 <script src="v424.js?v=1"></script><!-- [Grok-Bot] V4.24 kein Zurueckspringen beim Scrollen, Gayatri/Ganesa sichtbar, Narayana Suktam EN -->
@@ -822,6 +822,7 @@ layoutLyrics();
 <script src="v432.js?v=1"></script><!-- [Grok-Bot] V4.32 Tschechisch (CZ) -->
 <script src="v433.js?v=6"></script><!-- [Grok-Bot] V4.33 Hanuman-Uebersetzungen strophengenau -->
 <script src="v434.js?v=6"></script><!-- [Grok-Bot] V4.34 Tagesleiste, Strophe aus Medienzeit, Strophe wiederholen, ruhiges Scrollen -->
-<script src="v435.js?v=2"></script><!-- [Grok-Bot] V4.35 Guru Stotram Pbj ab 0:25 -->
+<script src="v435.js?v=3"></script><!-- [Grok-Bot] V4.35 Guru Stotram Pbj ab 0:25 -->
+<script src="v436.js?v=1"></script><!-- [Grok-Bot] V4.36 Hilfe einspaltig -->
 </body>
 </html>

@@ -3,6 +3,8 @@
    Einmaliges Zuruecksetzen gespeicherter Nutzer-Marken fuer Guru Stotram: Mtj und Pbj teilen sich den Schluessel "guru-stotram|file/yt";
    geloescht wird nur, wenn die gespeicherten Marken naeher an den alten Pbj-Marken als an den Mtj-Marken liegen (Mtj bleibt erhalten). */
 window.BPP_BUILD="4.35"; window.BPP_SHOW="4.35";
+/* [Grok-Bot] V4.36: Hilfe-Absaetze in den Textblock .in setzen (vor "Jai Gurudev"), nicht direkt in den Flex-Container #bppHelp – sonst wurde die Hilfe dreispaltig */
+function put436(d,p){ var i=d.querySelector(".in")||d, j=i.querySelector("p.jg"); if(j) i.insertBefore(p,j); else i.appendChild(p); }
 (function(){
   var F="bpp-reset435-gs"; try{ if(localStorage.getItem(F)) return; }catch(e){ return; }
   var PF=[0,57.4,69.7,82.0,94.3,106.6,118.9,131.2,143.5,155.8,168.1,180.4,192.7,205.0], MF=[0,18.7,33.5,48.2,62.7,77.7,92.4,107.2,121.9,136.6,151.4,166.1,181.0,195.7];
@@ -63,7 +65,7 @@ window.BPP_BUILD="4.35"; window.BPP_SHOW="4.35";
     var h=html(); if(b.innerHTML!==h) b.innerHTML=h; var t=ttl(); if(b.getAttribute("title")!==t) Element.prototype.setAttribute.call(b,"title",t); if(b.getAttribute("aria-label")!==t) Element.prototype.setAttribute.call(b,"aria-label",t);
     var on=mode!=="off"; if(b.classList.contains("act358")!==on) b.classList.toggle("act358",on); if(b.classList.contains("s358")) b.classList.remove("s358"); }
   function paint(){ fix(document.getElementById("btnRep")); fix(document.getElementById("bppFsRep")); help(); }
-  function help(){ var d=document.getElementById("bppHelp"); if(!d) return; var p=d.querySelector("p.rep435"); if(!p){ p=document.createElement("p"); p.className="rep435"; d.appendChild(p); } var h=HELP[lg()]||HELP.en; if(p.innerHTML!==h) p.innerHTML=h; }
+  function help(){ var d=document.getElementById("bppHelp"); if(!d) return; var p=d.querySelector("p.rep435"); if(!p){ p=document.createElement("p"); p.className="rep435"; put436(d,p); } var h=HELP[lg()]||HELP.en; if(p.innerHTML!==h) p.innerHTML=h; }
   var st=document.createElement("style"); st.textContent="#btnRep .r435,#bppFsRep .r435{font-size:.78rem;white-space:nowrap;font-family:inherit;filter:grayscale(1)}#bppFsBar #bppFsRep .r435{font-size:1rem}#btnRep.act358,#bppFsRep.act358{background:linear-gradient(180deg,#e2be5a,#b8902a)!important;color:#1b1406!important}"; document.head.appendChild(st);
   document.addEventListener("click",function(e){ var b=e.target&&e.target.closest&&e.target.closest("#btnRep,#bppFsRep"); if(!b) return; e.preventDefault(); e.stopImmediatePropagation(); cycle(1); },true);
   var lastI=null;
@@ -85,6 +87,6 @@ window.BPP_BUILD="4.35"; window.BPP_SHOW="4.35";
       b.addEventListener("click",function(e){ e.preventDefault(); e.stopPropagation(); on=!on; try{ localStorage.setItem(K,on?"1":"0"); }catch(x){} paint(); }); det.parentNode.insertBefore(b,det.nextSibling); }
     var x=t(), lab=on?x[1]:x[0], tt=(on?x[3]:x[2])+" (von Grok ergänzt)"; if(b.textContent!==lab) b.textContent=lab; if(b.title!==tt) b.title=tt; if(b.getAttribute("aria-pressed")!==(on?"true":"false")) b.setAttribute("aria-pressed",on?"true":"false");
     if(b.classList.contains("gold")!==on) b.classList.toggle("gold",on);
-    var d=document.getElementById("bppHelp"); if(d){ var p=d.querySelector("p.wd435"); if(!p){ p=document.createElement("p"); p.className="wd435"; d.appendChild(p); } var h=HP[(typeof lang!=="undefined"&&HP[lang])?lang:"en"]; if(p.innerHTML!==h) p.innerHTML=h; } }
+    var d=document.getElementById("bppHelp"); if(d){ var p=d.querySelector("p.wd435"); if(!p){ p=document.createElement("p"); p.className="wd435"; put436(d,p); } var h=HP[(typeof lang!=="undefined"&&HP[lang])?lang:"en"]; if(p.innerHTML!==h) p.innerHTML=h; } }
   if(document.body) paint(); document.addEventListener("DOMContentLoaded",paint); setInterval(function(){ try{ paint(); }catch(e){} },400);
 })();

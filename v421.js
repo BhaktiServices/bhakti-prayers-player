@@ -4,6 +4,7 @@
 (function(){
   if(window.bppV421) return; window.bppV421=1;
   var H=[
+["4.36","26.10.","Hilfe („So funktioniert der Bhakti Prayers Player“) wieder fest einspaltig, unabhängig von 1/2/3 Spalten; Erststart-Link beginnt jetzt bei t=0 (von Grok ergänzt)"],
 ["4.35","26.10.","Guru Stotram Rec: Pbj beginnt jetzt bei der bisherigen Sekunde 25 (neue Datei, Marken −25 s, YouTube-Start 145 s); Wiederholen-Knopf mit 5 Modi (Strophe, Prayer, Liste, Alle, Aus) – Knopf zeigt den aktuellen Modus, Hover den nächsten, ⇧R rückwärts, Modus im Teilen-Link; eigener ↻ Str.-Knopf entfällt; neuer Knopf „Wochentage“ (nur mit Menü+) blendet die Tagesleiste ein/aus (von Grok ergänzt)"],
 ["4.34","26.10.","Tagesleiste klein und flach, nur bei Menü+ sichtbar; Hinweis bei |< und >| blinkt nicht mehr; Strophe nach Sprüngen/Tempo allein aus Medienzeit und Marken; neue Taste „↻ Str.“ (⇧R) wiederholt eine Strophe endlos; kein Pendeln beim Scrollen mit Akkorden in der Zeile; Kavacam Pbj Marken Str. 51–55 (1015/1030/1047/1075/1108 s); Orte jetzt letzte 48 h mit Zahl der Länder"],
 ["4.33","26.10.","Kavacam Mtj: Str. 51 ab 14:51; Kavacam Pbj: Str. 50–51 neu gesetzt; Hanumān Cālīsā: Übersetzungen wieder an der richtigen Strophe; Tagesleiste Mo–So wieder sichtbar; Hinweis bei |< und >| mit Namen des Ziel-Prayers; Taste K / Umschalt+K wechselt die Geschwindigkeit"],
