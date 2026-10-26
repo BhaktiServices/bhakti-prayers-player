@@ -42,7 +42,9 @@
     E2.push("final-prayers");
     /* [Grok-Bot] V3.26: ashtotram-abend steht jetzt im Abendmenue (V3.25-Ausschluss entfaellt) */
     head(hM); M2.forEach(put); head(hE); E2.forEach(put);
-    ["lakshmi-arati","final-prayers","mukunda","vchalisa"].concat(d===4?["vishnu-arati"]:[]).forEach(function(id){ var k=PRAYERS.findIndex(function(p){ return p.id===id; }); if(k>=0) used[k]=true; });
+    /* [Grok-Bot] V4.39 Nutzer-Regel: was am gewaehlten Wochentag (Morgen/Abend) steht, nicht unter "Weitere"; alles andere unter "Weitere".
+       Feste Ausschluesse (Laksmi Arati, Vishwananda Calisa, freitags Visnu Arati) entfallen; Vedische Gesaenge behalten ihr eigenes Menue. */
+    [].forEach(function(id){ var k=PRAYERS.findIndex(function(p){ return p.id===id; }); if(k>=0) used[k]=true; });
     var VG=window.BPP_VEDIC||[["Vedic Chants"],[]]; VG[1].forEach(function(id){ var k=PRAYERS.findIndex(function(p){ return p.id===id; }); if(k>=0) used[k]=true; });
     var rest=[]; PRAYERS.forEach(function(p, idx){ if(!used[idx] && btn[idx] && !hidden(p.id)) rest.push(p.id); });
     if(rest.length){ head(hR || "More"); rest.forEach(put); }
