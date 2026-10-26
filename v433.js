@@ -1,4 +1,4 @@
-/* [Grok-Bot] V4.33: Kavacam Pbj Str. 50 ab 970.8 s, Str. 51 ab 1011.7 s (per Whisper-Erkennung "jaya jagadisa hare" bzw. "jaya nrsinga dev"); Str. 52-55 nicht sicher bestimmbar -> null. */
+/* [Grok-Bot] V4.33: Kavacam Pbj Str. 50 ab 970.8 s, Str. 51 ab 1011.7 s (per Whisper-Erkennung "jaya jagadisa hare" bzw. "jaya nrsinga dev"); V4.34: Str. 51-55 = 1015/1030/1047/1075/1108 (Vorgabe Nutzer, in v408.js). */
 /* [Grok-Bot] V4.33: Hanuman Calisa - Uebersetzungen EN/DE/FR/ES/RU/HI/PT wieder an der richtigen Strophe.
    Ursache: v179.js ordnete die Heft-Uebersetzung nach Strophennummer zu ("1".."20"); die Zeilen sind aber spaeter durchnummeriert (1..27, mit Doha a/b und Refrain davor),
    so stand Vers 1 (jaya hanuman) bei Zeile 1 (sri guru carana) usw. - 3 Zeilen zu frueh; Doha a/b und Refrain zeigten fremde Texte.
@@ -18,10 +18,25 @@ window.BPP_BUILD="4.33"; window.BPP_SHOW="4.33";
   var TT=Object.getOwnPropertyDescriptor(HTMLElement.prototype,"title");
   function ab(s){ s=String(s||"").replace(/\s+/g," ").trim(); if(!s) return s; var w=s.split(" "), o=w[0].length>14? w[0].slice(0,13)+"." : w[0];
     for(var k=1;k<w.length;k++){ var p=w[k].replace(/[^\wÀ-ɏḀ-ỿ]/g,""); if(!p) continue; var t=p.length<=3? p : p.slice(0,2)+"."; if((o+" "+t).length>20) break; o+=" "+t; } return o; }
+  /* V4.34: genau EIN kanonischer Text; v183/v205/v352 schreiben weiter, aber das Attribut aendert sich nur bei Prayer- oder Sprachwechsel (kein Tooltip-Blinken). */
+  var L={de:["Voriges Prayer","Nächstes Prayer"],en:["Previous prayer","Next prayer"],fr:["Prière précédente","Prière suivante"],es:["Oración anterior","Oración siguiente"],ru:["Предыдущая молитва","Следующая молитва"],hi:["पिछली प्रार्थना","अगली प्रार्थना"],pt:["Oração anterior","Próxima oração"],cz:["Předchozí modlitba","Další modlitba"]};
+  var SA=Element.prototype.setAttribute;
+  function nt(b, v){ var d=/Prev/.test(b.id)?0:1, l=(typeof lang!=="undefined"&&L[lang])?lang:"en", k=String(v||"").indexOf(": ");
+    if(k>=0){ var nm=String(v).slice(k+2); if(!(b.__nm433 && (nm===ab(b.__nm433)||nm===ab(ab(b.__nm433))||ab(nm)===ab(b.__nm433)))) b.__nm433=nm; } else if(b.disabled) b.__nm433="";
+    var base=L[l][d]+(/^btnP/.test(b.id)?" ("+(d?"⇧N":"⇧V")+")":"");
+    return base+(b.__nm433? ": "+ab(b.__nm433) : ""); }
+  function put(b,t){ if(TT.get.call(b)!==t) TT.set.call(b,t); if(b.getAttribute("aria-label")!==t) SA.call(b,"aria-label",t); }
   function run(){ ["btnPPrev","btnPNext","bppFsPPrev","bppFsPNext"].forEach(function(id){ var b=document.getElementById(id); if(!b) return;
-    var t=TT.get.call(b)||"", base=t.split(": ")[0], d=/Prev/.test(id)?-1:1, nv=window.bppPrayerNav, x=null; try{ x=nv&&nv.neighbor? nv.neighbor(d,true) : null; }catch(e){}
-    if(!base) return; var nt=x&&PRAYERS[x.idx]? base+": "+ab(PRAYERS[x.idx].titel) : base; if(t===nt) return; TT.set.call(b,nt); b.setAttribute("aria-label",nt); }); }
-  setInterval(run,450); setTimeout(run,300);
+    var ds=Object.getOwnPropertyDescriptor(b,"title");
+    if(!ds||!ds.set||!ds.set.__433){ var fs=function(v){ put(b,nt(b,v)); }; fs.__433=1;
+      Object.defineProperty(b,"title",{configurable:true,get:function(){ return TT.get.call(b); },set:fs});
+      }
+    if(!b.setAttribute.__433){ var fa=function(n,v){ if(n==="title"||n==="aria-label"){ put(b,nt(b,v)); return; } return SA.call(b,n,v); }; fa.__433=1; b.setAttribute=fa; }
+    put(b,nt(b,TT.get.call(b))); }); }
+  var IDS={btnPPrev:1,btnPNext:1,bppFsPPrev:1,bppFsPNext:1};
+  Element.prototype.setAttribute=function(n,v){ if((n==="title"||n==="aria-label")&&this.id&&IDS[this.id]){ put(this,nt(this,v)); return; } return SA.call(this,n,v); };
+  try{ var AL=Object.getOwnPropertyDescriptor(Element.prototype,"ariaLabel"); if(AL&&AL.set) Object.defineProperty(Element.prototype,"ariaLabel",{configurable:true,get:AL.get,set:function(v){ if(this.id&&IDS[this.id]){ put(this,nt(this,v)); return; } AL.set.call(this,v); }}); }catch(e){}
+  setInterval(run,450); setTimeout(run,300); setTimeout(run,50);
 })();
 /* [Grok-Bot] V4.33: Tagesleiste (Mo-So + Alle) wieder sichtbar. Ursache: tr-v174.js blendete per CSS alle Wochentag-Tasten aus (nur "Alle" blieb),
    ausserdem quetschte v307l.js die Leiste in die nicht umbrechende Menue-Zeile #bppL1. Jetzt eigene volle Zeile unter den drei Menues,

@@ -9,9 +9,9 @@
 <meta property="og:image" content="start.jpg">
 <link rel="manifest" href="manifest.json?v=341"><!-- [Grok-Bot] V2.53: PWA wieder installierbar -->
 <meta name="theme-color" content="#041236"><link rel="apple-touch-icon" href="apple-touch-icon.png"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="BPPlayer"><!-- [Grok-Bot] V3.41 -->
-<title>Bhakti Prayers Player V4.33</title>
+<title>Bhakti Prayers Player V4.34</title>
 <script>/* [Grok-Bot] V3.30: zentrale Version - aeltere Skripte (V1.66 usw.) koennen Kopf und Titel nicht mehr kurz ueberschreiben */
-window.BPP_VERSION="4.33";
+window.BPP_VERSION="4.34";
 /* [Grok-Bot] V4.27 Erststart: ohne Link-Parameter und ohne gespeicherte Einstellungen wie der Standard-Link starten (Auswertung durch v420/v315; nur Position, kein erzwungenes Abspielen) */
 (function(){ try{ var L=localStorage, has=false; for(var j=0;j<L.length;j++){ if(/^bpp/i.test(L.key(j))){ has=true; break; } }
   if(!has && !location.search && !L.getItem("bpp-first-run-done")) history.replaceState(null,"",location.pathname+"?p=guru-stotram&t=10.2&rec=pbj&cols=2&chords=zeile&tr=1&src=mp3"+location.hash);
@@ -156,7 +156,7 @@ body.show-ch .rowline .rch{display:block}
 </head>
 <body tabindex="0">
 <header>
-  <h1>Bhakti Prayers Player <span class="ver">V4.33</span><!-- [Grok.com] --></h1>
+  <h1>Bhakti Prayers Player <span class="ver">V4.34</span><!-- [Grok.com] --></h1>
 <script>/* [Grok-Bot] V3.30: Versionswaechter - setzt jede Aenderung an h1 .ver sofort (vor dem Zeichnen) auf BPP_VERSION zurueck */
 (function(){ var h1=document.querySelector("header h1"); if(!h1) return;
   var V="V"+window.BPP_VERSION, RX=/V\d+\.\d+[a-z]?/g;
@@ -762,7 +762,7 @@ layoutLyrics();
 <!-- [Grok-Bot] V3.63: v361.js ersetzt durch v363.js -->
 <script src="v362.js?v=1"></script><!-- [Grok-Bot] V3.62 Position nach Neustart, VSN-Korrekturen -->
 <script src="v365.js?v=3"></script><!-- [Grok-Bot] V3.65 Narasimha 4 hare-e nach Heft (ersetzt v364.js) -->
-<script src="v366.js?v=410"></script><!-- [Grok-Bot] V3.66 Offline-Status links unten, Orte 24 h -->
+<script src="v366.js?v=434"></script><!-- [Grok-Bot] V3.66 Offline-Status links unten, Orte 24 h -->
 <script src="v367.js?v=3"></script><!-- [Grok-Bot] V3.67 Sri/Bhu/Nila/Narayana Suktam mit Aufnahme -->
 <script src="v368.js?v=1"></script><!-- [Grok-Bot] V3.68 Narayana Schlusszeile -->
 <script src="v369.js?v=4"></script><!-- [Grok-Bot] V3.69 Hinweis ohne Uebersetzung -->
@@ -787,7 +787,7 @@ layoutLyrics();
 <!-- [Grok-Bot] V3.89: v388.js (Umschalttaste Final Prayers) entfernt, ersetzt durch v389.js -->
 <script src="v389.js?v=398"></script><!-- [Grok-Bot] V3.89 Vishnu Arati mit Final Prayers -->
 <script src="v390.js?v=1"></script><!-- [Grok-Bot] V3.90 vishnu-arati aus Menue -->
-<script src="v391.js?v=1"></script><!-- [Grok-Bot] V3.91 Statistik i18n, MP3 gekuerzt -->
+<script src="v391.js?v=2"></script><!-- [Grok-Bot] V3.91 Statistik i18n, MP3 gekuerzt -->
 <script src="v392.js?v=1"></script><!-- [Grok-Bot] V3.92 Bhutabhrteshvaranatha -->
 <script src="v393.js?v=1"></script><!-- [Grok-Bot] V3.93 Atma-Bhog-Tooltip -->
 <script src="v394.js?v=3"></script><!-- [Grok-Bot] V3.94 Str. 18 umsortiert -->
@@ -802,7 +802,7 @@ layoutLyrics();
 <script src="v405.js?v=12"></script><!-- [Grok-Bot] V4.05 Ashtottaram Prabhus -->
 <script src="v406.js?v=2"></script><!-- [Grok-Bot] V4.06 Statistik Geraete -->
 <script src="v407.js?v=1"></script><!-- [Grok-Bot] V4.07 Orte Stadt (Land) je Geraet -->
-<script src="v408.js?v=18"></script><!-- [Grok-Bot] V4.08 Govinda + Narasimha Kavacam Prabhus -->
+<script src="v408.js?v=19"></script><!-- [Grok-Bot] V4.08 Govinda + Narasimha Kavacam Prabhus -->
 <script src="v409.js?v=1"></script><!-- [Grok-Bot] V4.09 Quelle-Info springt nicht mehr, Prabhus-Spulen repariert -->
 <script src="v410.js?v=1"></script><!-- [Grok-Bot] V4.10 Govinda Prabhus ohne Suprabhatam -->
 <script src="v411.js?v=1"></script>
@@ -812,7 +812,7 @@ layoutLyrics();
 <script src="v415.js?v=31"></script><!-- [Grok.com] V4.18 Rec: Pbj/Mtj + Supra unter Prabhujis --><!-- [Grok-Bot] V4.11 Gross dreht mit (Lagesensor) -->
 <script src="v419.js?v=1"></script><!-- [Grok-Bot] V4.19 Rec-Taste schaltet wieder -->
 <script src="v420.js?v=1"></script><!-- [Grok-Bot] V4.20 Teilen-Link mit allen Einstellungen, Rec: SPN -->
-<script src="v421.js?v=11"></script><!-- [Grok-Bot] V4.21 Versions-Historie -->
+<script src="v421.js?v=12"></script><!-- [Grok-Bot] V4.21 Versions-Historie -->
 <script src="v422.js?v=1"></script><!-- [Grok-Bot] V4.22 Historie bis V1.0, Auto-Zuklappen -->
 <script src="v423.js?v=1"></script><!-- [Grok-Bot] V4.23 Uebersetzungen Sri/Bhu Suktam -->
 <script src="v424.js?v=1"></script><!-- [Grok-Bot] V4.24 kein Zurueckspringen beim Scrollen, Gayatri/Ganesa sichtbar, Narayana Suktam EN -->
@@ -820,6 +820,7 @@ layoutLyrics();
 <script src="v430.js?v=1"></script><!-- [Grok-Bot] V4.30 kein Hintergrundbild, kein Flackern -->
 <script src="v431.js?v=1"></script><!-- [Grok-Bot] V4.31 Akkorde springen nicht, Kavacam Pbj ab 8 s -->
 <script src="v432.js?v=1"></script><!-- [Grok-Bot] V4.32 Tschechisch (CZ) -->
-<script src="v433.js?v=2"></script><!-- [Grok-Bot] V4.33 Hanuman-Uebersetzungen strophengenau -->
+<script src="v433.js?v=6"></script><!-- [Grok-Bot] V4.33 Hanuman-Uebersetzungen strophengenau -->
+<script src="v434.js?v=5"></script><!-- [Grok-Bot] V4.34 Tagesleiste, Strophe aus Medienzeit, Strophe wiederholen, ruhiges Scrollen -->
 </body>
 </html>
