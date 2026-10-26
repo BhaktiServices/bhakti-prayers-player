@@ -8,6 +8,7 @@
    (2) Scroll-Seek geaendert (v347/v348/v183): Wischen/Mausrad/Trackpad/Pfeil hoch-runter = nur Ansicht, Mitlesen pausiert, 2 s nach dem letzten
    Schritt zurueck zur laufenden Strophe; Spulen nur per Tipp/Klick auf eine Strophe (V3.49) bzw. im Grossbild mit den Knoepfen < > und
    Pfeil links/rechts (explizit, nach 800 ms); keine gestrichelte Vormarkierung mehr; Hinweis "nicht in der Aufnahme" nur bei Tipp/Klick. */
+/* [Grok-Bot] V4.33: Str. 51 (Rec: Mtj) beginnt bei 14:51 = 891.0 s (Nutzervorgabe, bisher 902.8); Str. 52-55 unveraendert. Gespeicherte eigene Marken "kavacham|file" einmalig geloescht. */
 window.BPP_BUILD="4.14"; window.BPP_SHOW="4.14";
 (function(){
   if(window.bppV351) return; window.bppV351=1;
@@ -26,7 +27,7 @@ window.BPP_BUILD="4.14"; window.BPP_SHOW="4.14";
     es:"Gurudeva, Gurudeva – ¡Sri Vishwananda Gurudeva!",
     ru:"Гурудева, Гурудева – Шри Вишвананда Гурудева!",
     hi:"गुरुदेव, गुरुदेव – श्री विश्वानन्द गुरुदेव!",pt:"Gurudeva, Gurudeva – Sri Vishwananda Gurudeva!"};
-  var END=[[846.2,49],[861.7,49],[877.2,49],[902.8,50],[908.0,51],[919.0,52],[937.3,53],[954.0,54]];
+  var END=[[846.2,49],[861.7,49],[877.2,49],[891.0,50],[908.0,51],[919.0,52],[937.3,53],[954.0,54]];
   function marks(s){ var m=[]; s.forEach(function(e){ if(m[e[1]]==null) m[e[1]]=e[0]; }); return m; }
   function cp(o){ var c={}; for(var k in o) c[k]=(o[k] && o[k].slice)?o[k].slice():o[k]; return c; }
   function apply(){
@@ -50,4 +51,6 @@ window.BPP_BUILD="4.14"; window.BPP_SHOW="4.14";
     var s=JSON.parse(localStorage.getItem("bpp-marks")||"{}");
     if(s["kavacham|file"]){ delete s["kavacham|file"]; localStorage.setItem("bpp-marks",JSON.stringify(s)); }
     localStorage.setItem("bpp-v351-kv","1"); } }catch(e){}
+  try{ if(!localStorage.getItem("bpp-v433-kv")){ var s3=JSON.parse(localStorage.getItem("bpp-marks")||"{}");
+    if(s3["kavacham|file"]){ delete s3["kavacham|file"]; localStorage.setItem("bpp-marks",JSON.stringify(s3)); } localStorage.setItem("bpp-v433-kv","1"); } }catch(e){} /* [Grok-Bot] V4.33 */
 })();
