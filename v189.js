@@ -188,11 +188,12 @@ window.BPP_BUILD="1.89";
   }
   function sync(){
     var bp=document.getElementById("btnPlay"); if(bp && bp.classList.contains("gold")){ bp.classList.remove("gold"); try{ syncPlayBtn(); }catch(e){} }
-    var d=document.getElementById("btnDe"); if(d && typeof showDe!=="undefined") d.classList.toggle("on", !!showDe);
-    var c=document.getElementById("btnCh"); if(c && typeof showCh!=="undefined") c.classList.toggle("on", !!showCh);
-    var au=document.getElementById("btnAuto"); if(au && typeof autoScroll!=="undefined") au.classList.toggle("on", !!autoScroll);
+    var d=document.getElementById("btnDe"); if(d && typeof showDe!=="undefined") (d.classList.contains("m358")||d.classList.toggle("on", !!showDe));
+    var c=document.getElementById("btnCh"); if(c && typeof showCh!=="undefined") (c.classList.contains("m358")||c.classList.toggle("on", !!showCh));
+    var au=document.getElementById("btnAuto"); if(au && typeof autoScroll!=="undefined") (au.classList.contains("m358")||au.classList.toggle("on", !!autoScroll));
     srcBtn();
   }
+  /* [Grok-Bot] V4.30: "on" nicht mehr an Knoepfe haengen, die v358 (.m358) fuehrt - v358 entfernte es sofort wieder -> Flackern (Ue + Akk in Zeile) */
   function boot(){ sync(); setInterval(sync, 400); document.addEventListener("click", function(){ setTimeout(sync, 30); }, true); }
   if(document.readyState==="loading") document.addEventListener("DOMContentLoaded", boot); else boot();
 })();

@@ -38,12 +38,12 @@
   var busy=false;
   function apply(){ if(busy) return; busy=true; try{ var S=state();
     Object.keys(S).forEach(function(id){ var b=$(id); if(!b) return; var s=S[id];
-      b.classList.add("m358"); if(b.textContent!==s[0]) b.textContent=s[0];
+      if(!b.classList.contains("m358")) b.classList.add("m358"); if(b.textContent!==s[0]) b.textContent=s[0];
       var lv=s[1]===true?2:(s[1]===false?0:s[1]); if(b.classList.contains("act358")!==(lv===2)) b.classList.toggle("act358",lv===2); if(b.classList.contains("s358")!==(lv===1)) b.classList.toggle("s358",lv===1);
       if(b.classList.contains("on")) b.classList.remove("on"); if(b.classList.contains("gold")) b.classList.remove("gold");
       if(id!=="btnMenu"){ var ti=(s[2]||s[0])+(id==="btnPlay"?"":" ("+KEY[id]+")"); if(id==="btnPlay"&&b.title.indexOf(ti+" (")===0){} else if(b.title!==ti) b.title=ti; } if(b.getAttribute("aria-label")!==s[0]) b.setAttribute("aria-label",s[0]);
-      b.setAttribute("aria-pressed",lv?"true":"false"); });
-    var r=$("btnRep"); if(r){ var rp=+(localStorage.getItem("bpp-rep")||0); rp=rp===1||rp===2?rp:0; r.classList.add("m358"); r.classList.remove("on","gold");
+      var ap=lv?"true":"false"; if(b.getAttribute("aria-pressed")!==ap) b.setAttribute("aria-pressed",ap); }); /* [Grok-Bot] V4.30: nur bei Aenderung setzen - sonst Endlosschleife mit dem MutationObserver (60x/s) */
+    var r=$("btnRep"); if(r){ var rp=+(localStorage.getItem("bpp-rep")||0); rp=rp===1||rp===2?rp:0; if(!r.classList.contains("m358")) r.classList.add("m358"); if(r.classList.contains("on")||r.classList.contains("gold")) r.classList.remove("on","gold"); /* V4.30: classList.add/remove erzeugt auch ohne Aenderung Mutationen */
       if(r.classList.contains("s358")!==(rp===1)) r.classList.toggle("s358",rp===1); if(r.classList.contains("act358")!==(rp===2)) r.classList.toggle("act358",rp===2); }
     help(); } catch(e){} busy=false; }
   window.bppV358=apply;

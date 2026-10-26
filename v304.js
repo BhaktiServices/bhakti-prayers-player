@@ -3,7 +3,7 @@ window.BPP_BUILD="3.04"; window.BPP_SHOW="3.04";
 (function(){
   function fix(){
     var m=(typeof chMode!=="undefined")?chMode:null; if(m===null) return;
-    ["btnCh","bppFsCh"].forEach(function(id){ var b=document.getElementById(id); if(!b) return;
+    ["btnCh","bppFsCh"].forEach(function(id){ var b=document.getElementById(id); if(!b||b.classList.contains("m358")) return; /* [Grok-Bot] V4.30: v358 steuert diese Taste (act358) - sonst Pingpong "on" an/ab = Flackern bei Akk in Zeile */
       if(m==="zeile"&&!b.classList.contains("on")) b.classList.add("on");
       else if(m==="aus"&&b.classList.contains("on")) b.classList.remove("on"); });
   }

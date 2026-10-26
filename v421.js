@@ -4,6 +4,7 @@
 (function(){
   if(window.bppV421) return; window.bppV421=1;
   var H=[
+["4.30","26.10.","Hintergrundbild hinter dem Player entfernt; Anzeige flackert nicht mehr bei Übersetzung an + Akkorde in der Zeile."],
 ["4.29","25.10.","„Orte letzte 24 h“ nutzt jetzt drei öffentliche Server (EMQX, HiveMQ, Mosquitto) gleichzeitig: fällt einer aus, kommen die Orte über die anderen."],
 ["4.28","25.10.","Karte entfernt, Orte-Liste auf V4.24-Stand."],
 ["4.27","25.10.","Geteilter Link startet an der richtigen Stelle (z. B. 0:53) samt passender Liedzeile, für Prabhujis und Mataji; beim allerersten Öffnen startet der BPP mit Guru Stotram (Prabhujis, 10,2 s, 2 Spalten, Akkorde in der Zeile, Übersetzung, MP3); „Orte letzte 24 h“ zählt jetzt je Gerät; die Karte zeigt alle Städte der Orte-Liste (48 h) ohne eigene zweite Server-Verbindung."],

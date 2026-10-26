@@ -86,7 +86,7 @@ if(document.readyState==="loading"){ document.write('<script src="v187.js?v=188"
 if(document.readyState==="loading"){ document.write('<script src="v188.js?v=188"><\/script>'); }
 /* [Grok-Bot] V1.89: Grossbild-Vorschau der ersten Zeile der naechsten Strophe bzw. des naechsten Teils waehrend der letzten Zeile, Ashtotram im Grossbild als Laufband,
    Tastenfarben einheitlich (gold = an/aktiv) und einfarbige Symbole (v189.js; v183.js?v=189 mit Symbolen und Teilwechsel-Haken). */
-if(document.readyState==="loading"){ document.write('<script src="v189.js?v=192"><\/script>'); }
+if(document.readyState==="loading"){ document.write('<script src="v189.js?v=430"><\/script>'); }
 /* [Grok-Bot] V1.90: Grossbild teilt lange Strophen nur, wenn die Schrift dadurch wirklich groesser wird (v190.js; v183.js?v=190 mit Haken bppFsSplitOk). */
 if(document.readyState==="loading"){ document.write('<script src="v190.js?v=190"><\/script>'); }
 /* [Grok-Bot] V1.91: Grossbild-Vorschau in voller Groesse (65 %), Strophe gleitet waehrend der letzten Zeile hoch, nahtloser Wechsel (v191.js; v189.js?v=191). */
