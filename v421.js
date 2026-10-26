@@ -4,6 +4,7 @@
 (function(){
   if(window.bppV421) return; window.bppV421=1;
   var H=[
+["4.38","26.10.","Vishwananda Cālīsā: Akkorde über den Silben nach Akkordblatt vom Nutzer (Dohā, Refrain, Chowpāī), Refrain „Gurudev Gurudev Srī Vishwananda Gurudev“ nach der Dohā ergänzt, Vers 2 „vāsī / śrī pīṭha nilaya nivāsī“; Alternativ-Akkorde als Hinweis (Quelle: Nutzer, Telegram #evening_prayers)"],
 ["4.37","26.10.","Desktop: Mausrad über dem Liedtext scrollt zuerst die Seite bis zu Fußzeile und Statistik, erst danach blättert es Strophen; die Seite springt beim Scrollen nicht mehr zur Strophe zurück (von Grok ergänzt)"],
 ["4.36","26.10.","Hilfe („So funktioniert der Bhakti Prayers Player“) wieder fest einspaltig, unabhängig von 1/2/3 Spalten; Erststart-Link beginnt jetzt bei t=0 (von Grok ergänzt)"],
 ["4.35","26.10.","Guru Stotram Rec: Pbj beginnt jetzt bei der bisherigen Sekunde 25 (neue Datei, Marken −25 s, YouTube-Start 145 s); Wiederholen-Knopf mit 5 Modi (Strophe, Prayer, Liste, Alle, Aus) – Knopf zeigt den aktuellen Modus, Hover den nächsten, ⇧R rückwärts, Modus im Teilen-Link; eigener ↻ Str.-Knopf entfällt; neuer Knopf „Wochentage“ (nur mit Menü+) blendet die Tagesleiste ein/aus (von Grok ergänzt)"],
