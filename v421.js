@@ -4,6 +4,7 @@
 (function(){
   if(window.bppV421) return; window.bppV421=1;
   var H=[
+["4.40","26.10.","Pāṇḍuraṅga Āratī: Strophen in der gesungenen Reihenfolge der Aufnahme (Refrain 2×, je Strophe Zeilen 1–2 und 3–4 mit Wiederholung, Schluss-Refrain) und alle Zeitmarken neu gemessen; Taste „Wochentage“ steht jetzt direkt links neben der Spalten-Taste (nur bei Menü+) (von Grok ergänzt)"],
 ["4.39","26.10.","Menü „Weitere“: zeigt alles, was am gewählten Wochentag nicht im Morgen-/Abendplan steht (z. B. Vishwananda Cālīsā außer donnerstags, Lakṣmī Āratī außer freitags); was im Tagesplan steht, nicht"],
 ["4.38","26.10.","Vishwananda Cālīsā: Akkorde über den Silben nach Akkordblatt vom Nutzer (Dohā, Refrain, Chowpāī), Refrain „Gurudev Gurudev Srī Vishwananda Gurudev“ nach der Dohā ergänzt, Vers 2 „vāsī / śrī pīṭha nilaya nivāsī“; Alternativ-Akkorde als Hinweis (Quelle: Nutzer, Telegram #evening_prayers)"],
 ["4.37","26.10.","Desktop: Mausrad über dem Liedtext scrollt zuerst die Seite bis zu Fußzeile und Statistik, erst danach blättert es Strophen; die Seite springt beim Scrollen nicht mehr zur Strophe zurück (von Grok ergänzt)"],
