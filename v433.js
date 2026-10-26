@@ -36,3 +36,19 @@ window.BPP_BUILD="4.33"; window.BPP_SHOW="4.33";
    '@media(max-width:430px){.daybar button{padding:3px 5px;font-size:.74rem}}';
   document.head.appendChild(st);
 })();
+/* [Grok-Bot] V4.33: Tastenkuerzel Geschwindigkeit. S ist schon belegt (Spalten, v352.js) -> freie Taste K: naechste Speed-Stufe (am Ende wieder die erste),
+   Umschalt+K eine Stufe zurueck. Nicht in Eingabefeldern. Speed-Auswahl aktualisiert sich (change-Ereignis); Hover-Text und Hilfe ergaenzt. */
+(function(){
+  function typing(t){ t=t||document.activeElement; var n=t&&t.tagName; return n==="INPUT"||n==="TEXTAREA"||n==="SELECT"||(t&&t.isContentEditable); }
+  document.addEventListener("keydown",function(e){
+    if(e.ctrlKey||e.altKey||e.metaKey||typing(e.target)) return; if(e.key!=="k"&&e.key!=="K") return;
+    var s=document.getElementById("selRate"); if(!s||!s.options.length) return; e.preventDefault(); e.stopPropagation();
+    var n=s.options.length, k=(s.selectedIndex+(e.shiftKey?-1:1)+n)%n; s.selectedIndex=k; s.dispatchEvent(new Event("change",{bubbles:true})); s.dispatchEvent(new Event("input",{bubbles:true}));
+  },true);
+  var HT={de:"Tempo: Taste K = schneller/nächste Stufe, Umschalt+K = zurück (von Grok ergänzt)",en:"Speed: key K = next step, Shift+K = back (added by Grok)",fr:"Vitesse : touche K = palier suivant, Maj+K = retour (ajouté par Grok)",es:"Velocidad: tecla K = siguiente nivel, Mayús+K = atrás (añadido por Grok)",ru:"Скорость: клавиша K — следующая ступень, Shift+K — назад (добавлено Grok)",hi:"गति: K = अगला स्तर, Shift+K = पीछे (Grok द्वारा जोड़ा गया)",pt:"Velocidade: tecla K = próximo nível, Shift+K = voltar (adicionado pelo Grok)",cz:"Rychlost: klávesa K = další stupeň, Shift+K = zpět (doplnil Grok)"};
+  function lg(){ var l=(typeof lang!=="undefined"&&lang)||"en"; return HT[l]?l:"en"; }
+  setInterval(function(){
+    var s=document.getElementById("selRate"); if(s&&!/\(K \/ ⇧K\)$/.test(s.title)) s.title=String(s.title||"").replace(/\s*\(K \/ ⇧K\)$/,"")+" (K / ⇧K)";
+    var h=document.querySelector("#bppHelp .in"); if(h&&!h.querySelector(".k433")){ var p=document.createElement("p"); p.className="k433"; p.innerHTML="<b>K / ⇧K</b> "+HT[lg()]; var ps=h.querySelectorAll("p"); (ps.length?ps[ps.length-1]:h.lastChild).after(p); }
+  },400);
+})();

@@ -4,7 +4,7 @@
 (function(){
   if(window.bppV421) return; window.bppV421=1;
   var H=[
-["4.33","26.10.","Kavacam Mtj: Str. 51 ab 14:51; Kavacam Pbj: Str. 50–51 neu gesetzt; Hanumān Cālīsā: Übersetzungen wieder an der richtigen Strophe; Tagesleiste Mo–So wieder sichtbar; Hinweis bei |< und >| mit Namen des Ziel-Prayers"],
+["4.33","26.10.","Kavacam Mtj: Str. 51 ab 14:51; Kavacam Pbj: Str. 50–51 neu gesetzt; Hanumān Cālīsā: Übersetzungen wieder an der richtigen Strophe; Tagesleiste Mo–So wieder sichtbar; Hinweis bei |< und >| mit Namen des Ziel-Prayers; Taste K / Umschalt+K wechselt die Geschwindigkeit"],
 ["4.31","26.10.","Akkorde in der Zeile springen nicht mehr beim Strophenwechsel; Nṛsiṁha Kavacam Rec: Pbj beginnt erst ab Sekunde 8 der Aufnahme."],
 ["4.30","26.10.","Hintergrundbild hinter dem Player entfernt; Anzeige flackert nicht mehr bei Übersetzung an + Akkorde in der Zeile."],
 ["4.29","25.10.","„Orte letzte 24 h“ nutzt jetzt drei öffentliche Server (EMQX, HiveMQ, Mosquitto) gleichzeitig: fällt einer aus, kommen die Orte über die anderen."],
