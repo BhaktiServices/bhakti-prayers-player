@@ -3,12 +3,13 @@
    - Narasimha Kavacam (kavacham): 46:30-1:05:18 (2790-3918 s) -> audio/narasimha-prabhus.mp3. Marken: 49/55 gemessen (Whisper-Anker + Pausenraster); Str. 50-55 (Kirtan-Schluss) ohne Marke.
    Standard bleibt die bisherige Aufnahme; Taste unter dem Titel, Wahl in localStorage "bpp-prabhus-<id>". Govinda: neben "SPN live" (v402.js), Prabhus schaltet SPN aus und umgekehrt.
    YT-Version (Taste MP3/YT) 2108-2780 bzw. 2790-3918 s (Endpunkt per &end= am Einbettungslink). */
+/* [Grok-Bot] V4.31: Kavacam Rec: Pbj startet erst ab Sekunde 8 der bisherigen Datei: neue Datei narasimha-prabhus2.mp3 (erste 8 s abgeschnitten), Marken -8 s, YT-Start 2798 s. Zurueck auf 0 = alte Sekunde 8. Rec: Mtj unveraendert. */
 // build via v409.js
 (function(){
   if(window.bppV408) return; window.bppV408=1;
   var YT="0yvn6RxTiU8";
   var CF=[{id:"govinda",F:"audio/govinda-prabhus2.mp3",S:2108,M:[2.3,25.8,51.3,76.4,99.6,122.8,147.2,171.0,194.6,218.0,241.4,264.7,288.1,311.4,334.5,357.8,380.9,403.8,426.8,450.0,472.9,495.2,517.5,538.8,559.9,580.9,601.7,622.7,644.9],r:"35:08–46:20",spn:1},
-          {id:"kavacham",F:"audio/narasimha-prabhus.mp3",S:2790,M:[15.5,41.3,66.6,91.1,115.6,139.6,163.6,187.4,211.2,235.1,259.3,282.4,306.3,328.1,349.6,369.4,388.8,407.9,426.7,444.9,463.1,481.1,499.1,516.3,533.8,550.7,567.5,583.7,599.6,615.4,630.8,646.3,661.6,683.3,710.5,736.6,761.8,794.3,810.0,825.8,841.5,857.2,872.8,888.5,903.4,917.9,933.4,948.4,963.7,null,null,null,null,null,null],r:"46:30–1:05:18",spn:0}];
+          {id:"kavacham",F:"audio/narasimha-prabhus2.mp3",S:2798,M:[7.5,33.3,58.6,83.1,107.6,131.6,155.6,179.4,203.2,227.1,251.3,274.4,298.3,320.1,341.6,361.4,380.8,399.9,418.7,436.9,455.1,473.1,491.1,508.3,525.8,542.7,559.5,575.7,591.6,607.4,622.8,638.3,653.6,675.3,702.5,728.6,753.8,786.3,802.0,817.8,833.5,849.2,864.8,880.5,895.4,909.9,925.4,940.4,955.7,null,null,null,null,null,null],r:"46:30–1:05:18",spn:0}];
   /* [Grok-Bot] V4.13: "bisherige" -> "Matajis" (Name, unuebersetzt) */
   var B={"de":["Rec: Pbj","Rec: Mtj"],"en":["Rec: Pbj","Rec: Mtj"],"fr":["Rec: Pbj","Rec: Mtj"],"es":["Rec: Pbj","Rec: Mtj"],"ru":["Rec: Pbj","Rec: Mtj"],"hi":["Rec: Pbj","Rec: Mtj"],"pt":["Rec: Pbj","Rec: Mtj"]};
   var HQ={"de":"Aufnahme Prabhus","en":"Recording Prabhus","fr":"Enregistrement Prabhus","es":"Grabación Prabhus","ru":"Запись Prabhus","hi":"रिकॉर्डिंग Prabhus","pt":"Gravação Prabhus"};
@@ -59,4 +60,4 @@ function busy409(u){ try{ var a=document.getElementById("a"), s=a&&a.currentSrc?
   hook(); setInterval(function(){ hook(); paint(); src(); },300);
   window.addEventListener("load",function(){ hook(); paint(); setTimeout(pre,10000); });
 })();
-/* <audio src="audio/govinda-prabhus2.mp3"> <audio src="audio/narasimha-prabhus.mp3"> */
+/* <audio src="audio/govinda-prabhus2.mp3"> <audio src="audio/narasimha-prabhus2.mp3"> */

@@ -7,9 +7,10 @@
       var t=d.TR[i]; K.forEach(function(k,j){ var v=t?t[j]:""; if((z[k]||"")!==v) z[k]=v; }); }); p.v356=1; }); }
   window.bppV356=apply; apply(); setInterval(apply,1500);
   var css=document.createElement("style"); css.textContent=".bpp356h{font-style:italic;opacity:.65;font-weight:normal!important}"; document.head.appendChild(css);
+  /* [Grok-Bot] V4.31: nur ganze Ueberschrift-Elemente - sonst wurde im Kavacam (Akk in Zeile) das Wort "dhyānam" einer Verszeile kursiv/duenn = Akkorde sprangen jede Sekunde */
   var HD=/^\((pūrva nārāyaṇāya|uttara nārāyaṇāya|nyāsam|stotram|phala śrutiḥ - uttara bhāgaḥ)\)$|^dhyānam$/;
   setInterval(function(){ var w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT,null),n;
-    while((n=w.nextNode())){ var t=n.nodeValue.trim(); if(HD.test(t)&&n.parentNode&&n.parentNode.classList&&!n.parentNode.classList.contains("bpp356h")) n.parentNode.classList.add("bpp356h"); } },1000);
+    while((n=w.nextNode())){ var t=n.nodeValue.trim(); if(HD.test(t)&&n.parentNode&&n.parentNode.classList&&n.parentNode.textContent.trim()===t&&!n.parentNode.classList.contains("bpp356h")) n.parentNode.classList.add("bpp356h"); } },1000);
 })();
 /* [Grok-Bot] V3.56: Prayer ohne Uebersetzung -> Tipp auf "Übersetzung" (oder T) zeigt kurzen Hinweis (7 Sprachen), Button bleibt aus; beim Wechsel zu so einem Prayer wird Uebersetzung als aus angezeigt (gespeicherte Einstellung bleibt). */
 (function(){

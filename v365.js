@@ -75,5 +75,10 @@
     if(ch){ try{ var S=document.getElementById("bppFsStage"), bh=B.scrollHeight, sh2=S?S.clientHeight:0; if(S&&bh>sh2&&sh2>0){ var f=parseFloat(getComputedStyle(B).fontSize); B.style.fontSize=(f*sh2/bh*0.96)+"px"; } }catch(e){} } }
   function tick(){ if(!on()) return; try{ std(); }catch(e){} try{ fs(); }catch(e){} }
   setInterval(tick,250);
+  /* [Grok-Bot] V4.31: paintLyrics baut #lyrics bei jedem Strophenwechsel neu (alte .lch-Akkordzeile) - bisher erst bis zu 250 ms spaeter ersetzt = Springen.
+     Jetzt sofort per MutationObserver (laeuft vor dem naechsten Bild). Gleiches fuer die Grossansicht. */
+  (function(){ var seen={}, busy=false, mo=new MutationObserver(function(){ if(busy) return; busy=true; try{ tick(); }finally{ busy=false; } });
+    function att(){ ["lyrics","bppFsBox"].forEach(function(id){ var e=document.getElementById(id); if(e&&seen[id]!==e){ seen[id]=e; mo.observe(e,{childList:true,subtree:true}); } }); }
+    att(); setInterval(att,500); })();
   window.bppV361=window.bppV363=function(){ return {lines:Object.keys(POS[pid()]||{}).length}; };
 })();
