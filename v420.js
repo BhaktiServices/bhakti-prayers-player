@@ -6,7 +6,7 @@ window.BPP_BUILD="4.20"; window.BPP_SHOW="4.20";
 (function(){
   if(window.bppV420) return; window.bppV420=1;
   var st=document.createElement("style"); st.textContent=".bppRec.spnOn{background:#e0b45a!important;border-color:#e0b45a!important;color:#222!important}"; document.head.appendChild(st);
-  var RECS={"guru-stotram":1,"ashtotram":1,"ashtotram-abend":1,"govinda":1,"kavacham":1,"suprabhatam":1};
+  var RECS={"guru-stotram":1,"ashtotram":1,"ashtotram-abend":1,"govinda":1,"kavacham":1,"suprabhatam":1,"hanuman":1}; /* [Grok-Bot] V4.53 */
   function recKey(id){ return id==="guru-stotram"?"bpp-gs-rec":"bpp-prabhus-"+id; }
   function ls(k,v){ try{ if(v===undefined) return localStorage.getItem(k); localStorage.setItem(k,v); }catch(e){ return null; } }
   function a(){ return document.getElementById("a"); }

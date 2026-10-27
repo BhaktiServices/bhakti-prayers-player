@@ -50,7 +50,7 @@
     var e;
     if(d===6) e=["~ghalin","saprem","closing-arati","panduranga-arati","~gita"]; /* [Grok-Bot] V3.33 Panduranga Arati im Player */
     else { e=["guru-stotram-abend","ashtotram-abend","ganesha-mantra","gayatri","kavacham","narasimha-abend","hanuman","~sv-arati","closing-evening","saprem","closing-arati"]; }
-    var more=["vchalisa","durga-chalisa","panduranga-arati","~lakshmi-ashtakam","hanuman-bhavani","giridhari-arati","guru-arati","lakshmi-arati","~sayana"]; /* [Grok.com] Weitere und andere Aratis, Heft S. 33 und 43 */
+    var more=["vchalisa","durga-chalisa","panduranga-arati","~lakshmi-ashtakam","giridhari-arati","guru-arati","lakshmi-arati","~sayana"]; /* [Grok-Bot] V4.53: hanuman-bhavani → Rec: Mtj in hanuman */
     return [ { n:NM, ids:m }, { n:NE, ids:e, late:d===6 }, { n:["Weitere","More","Autres","Otros","Другие","अन्य","Mais","Další"], ids:more }, { n:VEDIC, ids:VEDIC_IDS } ]; /* [Grok-Bot] V3.33 Gruppe Vedic Chants */
   }
   var day=(new Date().getDay()+6)%7, GROUPS=plan(day);
