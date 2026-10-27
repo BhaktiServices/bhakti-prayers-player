@@ -4,6 +4,7 @@
 (function(){
   if(window.bppV421) return; window.bppV421=1;
   var H=[
+["4.41","27.10.","Aṣṭottaram, Aufnahme „Rec: Pbj“: Anzeige lief ab Name 102 nicht mehr mit – fehlende/verschobene Zeitmarken (13, 100–108) aus der Aufnahme neu gemessen. Vishwananda Gāyatrī und Gāyatrī Mantra: „(3×)“ hinter der letzten Zeile. Krishna Suprabhātam: eigene Zeitmarken je Aufnahme (Pbj/Mtj, MP3 und YouTube), Strophenwechsel genau beim ersten gesungenen Ton statt zu früh. Govinda Prayer „Rec: Mtj“: alle Strophenmarken neu gemessen (ab Strophe 15 lief die Anzeige nicht mehr mit). Durchlauf/>|/|<: wechselt der YouTube-Player selbst zum nächsten Video (z. B. Govinda → Nṛsiṃha), folgen Titel, Text und Marken jetzt mit"],
 ["4.40","26.10.","Pāṇḍuraṅga Āratī: Strophen in der gesungenen Reihenfolge der Aufnahme (Refrain 2×, je Strophe Zeilen 1–2 und 3–4 mit Wiederholung, Schluss-Refrain) und alle Zeitmarken neu gemessen; Taste „Wochentage“ steht jetzt direkt links neben der Spalten-Taste (nur bei Menü+) (von Grok ergänzt)"],
 ["4.39","26.10.","Menü „Weitere“: zeigt alles, was am gewählten Wochentag nicht im Morgen-/Abendplan steht (z. B. Vishwananda Cālīsā außer donnerstags, Lakṣmī Āratī außer freitags); was im Tagesplan steht, nicht"],
 ["4.38","26.10.","Vishwananda Cālīsā: Akkorde über den Silben nach Akkordblatt vom Nutzer (Dohā, Refrain, Chowpāī), Refrain „Gurudev Gurudev Srī Vishwananda Gurudev“ nach der Dohā ergänzt, Vers 2 „vāsī / śrī pīṭha nilaya nivāsī“; Alternativ-Akkorde als Hinweis (Quelle: Nutzer, Telegram #evening_prayers)"],
