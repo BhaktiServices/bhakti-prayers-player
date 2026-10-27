@@ -9,9 +9,9 @@
 <meta property="og:image" content="start.jpg">
 <link rel="manifest" href="manifest.json?v=341"><!-- [Grok-Bot] V2.53: PWA wieder installierbar -->
 <meta name="theme-color" content="#041236"><link rel="apple-touch-icon" href="apple-touch-icon.png"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="BPPlayer"><!-- [Grok-Bot] V3.41 -->
-<title>Bhakti Prayers Player V4.49</title>
+<title>Bhakti Prayers Player V4.50</title>
 <script>/* [Grok-Bot] V3.30: zentrale Version - aeltere Skripte (V1.66 usw.) koennen Kopf und Titel nicht mehr kurz ueberschreiben */
-window.BPP_VERSION="4.49";
+window.BPP_VERSION="4.50";
 /* [Grok-Bot] V4.27 Erststart: ohne Link-Parameter und ohne gespeicherte Einstellungen wie der Standard-Link starten (Auswertung durch v420/v315; nur Position, kein erzwungenes Abspielen) */
 (function(){ try{ var L=localStorage, has=false; for(var j=0;j<L.length;j++){ if(/^bpp/i.test(L.key(j))){ has=true; break; } }
   if(!has && !location.search && !L.getItem("bpp-first-run-done")) history.replaceState(null,"",location.pathname+"?p=guru-stotram&t=0&rec=pbj&cols=2&chords=zeile&tr=1&src=mp3"+location.hash);
@@ -156,7 +156,7 @@ body.show-ch .rowline .rch{display:block}
 </head>
 <body tabindex="0">
 <header>
-  <h1>Bhakti Prayers Player <span class="ver">V4.49</span><!-- [Grok.com] --></h1>
+  <h1>Bhakti Prayers Player <span class="ver">V4.50</span><!-- [Grok.com] --></h1>
 <script>/* [Grok-Bot] V3.30: Versionswaechter - setzt jede Aenderung an h1 .ver sofort (vor dem Zeichnen) auf BPP_VERSION zurueck */
 (function(){ var h1=document.querySelector("header h1"); if(!h1) return;
   var V="V"+window.BPP_VERSION, RX=/V\d+\.\d+[a-z]?/g;
@@ -821,7 +821,7 @@ layoutLyrics();
 <script src="v431.js?v=1"></script><!-- [Grok-Bot] V4.31 Akkorde springen nicht, Kavacam Pbj ab 8 s -->
 <script src="v432.js?v=1"></script><!-- [Grok-Bot] V4.32 Tschechisch (CZ) -->
 <script src="v433.js?v=6"></script><!-- [Grok-Bot] V4.33 Hanuman-Uebersetzungen strophengenau -->
-<script src="v434.js?v=6"></script><!-- [Grok-Bot] V4.34 Tagesleiste, Strophe aus Medienzeit, Strophe wiederholen, ruhiges Scrollen -->
+<script src="v434.js?v=8"></script><!-- [Grok-Bot] V4.34 Tagesleiste, Strophe aus Medienzeit, Strophe wiederholen, ruhiges Scrollen -->
 <script src="v435.js?v=3"></script><!-- [Grok-Bot] V4.35 Guru Stotram Pbj ab 0:25 -->
 <script src="v436.js?v=1"></script><!-- [Grok-Bot] V4.36 Hilfe einspaltig -->
 <script src="v437.js?v=1"></script><!-- [Grok-Bot] V4.37 Mausrad: Seite zuerst, Fusszeile/Statistik erreichbar -->
@@ -837,5 +837,6 @@ layoutLyrics();
 <script src="v447.js?v=1"></script><!-- [Grok-Bot] V4.47 Anregungen & Wuensche: Knopf in der Fusszeile, Formular, Senden per E-Mail (mailto) -->
 <script src="v448.js?v=1"></script><!-- [Grok-Bot] V4.48 Anregungen & Wuensche auch per Telegram (t.me/Bhakti1008bot), Weiterleitung per Action -->
 <script src="v449.js?v=1"></script><!-- [Grok-Bot] V4.49 Hilfe priorisiert: Lernen oben, Sonderfunktionen unten, Tastenkuerzel ganz unten -->
+<script src="v450.js?v=1"></script><!-- [Grok-Bot] V4.50 Aktiver Vers: eine Quelle aus Abspielposition; Mitsingen-aus ohne Auto-Markierung; Bhavani-seq -->
 </body>
 </html>

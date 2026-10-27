@@ -18,11 +18,26 @@ window.BPP_BUILD="4.34"; window.BPP_SHOW="4.34";
   function mt(){ try{ if(ytOn) return typeof ytTime==="number"?ytTime:null; var a=A(); return a&&a.src?a.currentTime:null; }catch(e){ return null; } }
   function dur(){ try{ if(ytOn) return typeof ytDur==="number"&&ytDur>1?ytDur:null; var a=A(); return a&&isFinite(a.duration)?a.duration:null; }catch(e){ return null; } }
   function kAt(t){ var m=marks(),k=-1,n=0; for(var j=0;j<m.length;j++){ if(m[j]!=null){ n++; if(m[j]<=t+0.05) k=j; } } return n>=2?k:null; }
-  window.bppStanzaAtMedia=function(){ var t=mt(); return t==null?null:kAt(t); };
+  /* [Grok-Bot] V4.50: seq vor Marken – dieselbe Quelle wie stanzaFromProgress (kein Pendeln gegen Mitlesen) */
+  function kAtAuth(t){
+    try{
+      if(typeof i==="undefined"||i<0||typeof PRAYERS==="undefined") return kAt(t);
+      var P=PRAYERS[i], s=(typeof window.bppSeqOf==="function")?window.bppSeqOf(P):((typeof ytOn!=="undefined"&&ytOn)?P.seqYt:P.seqFile);
+      if(s&&s.length){ var k=s[0][1]; for(var j=0;j<s.length;j++){ if(s[j][0]<=t+0.05) k=s[j][1]; else break; } return k<0?0:k; }
+    }catch(e){}
+    return kAt(t);
+  }
+  window.bppStanzaAtMedia=function(){ var t=mt(); return t==null?null:kAtAuth(t); };
   var hold=0;
-  function fix(){ try{ if(typeof i==="undefined"||i<0||Date.now()<hold) return; var t=mt(); if(t==null) return; var k=kAt(t); if(k==null||k<0) return;
-      var p=songProgress(); if(!p||!p.gs||!p.gs[k]) return; var st=p.gs[k].start;
-      var cg=currentGroupIndex(), m=marks(); if(cg===k+1 && m[k+1]!=null && m[k+1]-t<1.6) return; /* gewollter Vorlauf der Mitlese-Anzeige: nicht zurueckziehen (kein Pendeln) */
+  function fix(){ try{
+      if(typeof i==="undefined"||i<0||Date.now()<hold) return;
+      if(!(typeof autoScroll!=="undefined"&&autoScroll)) return; /* [Grok-Bot] V4.50: nur bei Mitsingen an */
+      /* [Grok-Bot] V4.50: dieselbe Instanz wie autoLineFromTime (stanzaFromProgress inkl. seq/Vorlauf) – kein zweiter Schreiber */
+      var p=songProgress(); if(!p||!p.gs||!p.gs.length) return;
+      var k=(typeof stanzaFromProgress==="function")?stanzaFromProgress(p):kAtAuth(mt());
+      if(k==null||k<0) return; if(k>p.gs.length-1) k=p.gs.length-1;
+      if(!p.gs[k]) return; var st=p.gs[k].start;
+      var cg=currentGroupIndex();
       if(cg!==k){ line=st; manualShift=0; holdLineUntil=Date.now()+800; if(typeof persistNow==="function") persistNow(); paintLyrics(); } }catch(e){} }
   window.bppFixStanza=fix;
   function later(){ fix(); setTimeout(fix,150); setTimeout(fix,500); setTimeout(fix,1000); setTimeout(fix,1600); }
