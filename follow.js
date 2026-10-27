@@ -65,7 +65,7 @@ if(document.readyState==="loading"){ document.write('<script src="tr-v174.js?v=1
 /* [Grok-Bot] V1.75: Tempo-Auswahl fuer die MP3-Wiedergabe (je Prayer gemerkt, Tonhoehe bleibt). */
 if(document.readyState==="loading"){ document.write('<script src="rate-v175.js?v=177"><\/script>'); }
 /* [Grok-Bot] V1.76: Zeitmarken als Abfolge [Zeit, Strophe] (Narasimha mit Ruecksprung 4->3), Taste "Mitlesen", Tasten -/+ nur wo sie wirken. */
-if(document.readyState==="loading"){ document.write('<script src="seq-v176.js?v=178"><\/script>'); }
+if(document.readyState==="loading"){ document.write('<script src="seq-v176.js?v=179"><\/script>'); }
 /* [Grok-Bot] V1.77: Schutz gegen Seitenfehler bei langsamer Verbindung: Zeitgeber in autoscroll.js und follow.js warten, bis autoScroll, ytOn, i und line definiert sind.
    Dazu v177.js: Tasten -/+ ueberall aus, Bhajare-Text und -Abfolge, Versionspruefung (version.json). Zusatzdateien mit ?v=177, damit kein alter Stand aus dem Cache kommt. */
 if(document.readyState==="loading"){ document.write('<script src="v177.js?v=178"><\/script>'); }

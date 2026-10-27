@@ -4,6 +4,7 @@
 (function(){
   if(window.bppV421) return; window.bppV421=1;
   var H=[
+["4.46","27.10.","„Als App installieren“ steht wieder unter den Liedtexten neben „Prayers runterladen“; „Akkorde an“ nur noch bei Menü+ (Einstellung bleibt wirksam); Wiederholen-Knopf immer sichtbar (auch Großansicht); „Mitlesen“ heißt jetzt „Mitsingen“; Hilfe: Tempo-Taste K und „Quellen zeigen“ (Fußzeile) stehen jetzt über den Tastenkürzeln."],
 ["4.45","27.10.","Statistik: Knopf unter der Orte-Liste mit drei Zuständen – unsortiert (wie geliefert) → A–Z → nach Häufigkeit. Beschriftung zeigt die nächste Sortierung, gold = sortiert, Einstellung wird gemerkt; Standard nach Häufigkeit."],
 ["4.44","27.10.","The Govinda Prayer: Sargam (Sa Re Ga) je Zeile – aus der Aufnahme „Rec: Mtj“ gemessen (Sa = D, ? = unsicher, Punkt davor = tiefe Oktave). Knopf „Sa Re Ga“ nur bei Menü+, Standard aus, gold = an. Bei Pbj/YouTube Hinweis „Sargam nur für Mtj gemessen“."],
 ["4.43","27.10.","Final Prayers, 1. Strophe: Akkorde „C G“ jetzt in allen Ansichten (Standard zeigte durch eine veraltete Zeilenzuordnung „C F G“); Überschrift „Statistik“ über Aufrufe/Hörzeit/Orte; Knopf „A–Z“ an der Orte-Liste (alphabetisch ein/aus, wird gemerkt); „Quellen zeigen“ jetzt in der Fußzeile."],
@@ -24,7 +25,7 @@
 ["4.27","25.10.","Geteilter Link startet an der richtigen Stelle (z. B. 0:53) samt passender Liedzeile, für Prabhujis und Mataji; beim allerersten Öffnen startet der BPP mit Guru Stotram (Prabhujis, 10,2 s, 2 Spalten, Akkorde in der Zeile, Übersetzung, MP3); „Orte letzte 24 h“ zählt jetzt je Gerät; die Karte zeigt alle Städte der Orte-Liste (48 h) ohne eigene zweite Server-Verbindung."],
 ["4.26","25.10.","„Versions-Historie anzeigen“ und „Karte anzeigen“ stehen ruhig nebeneinander in einer Zeile (sprangen auf und ab); ist der Orte-Server nicht erreichbar, steht das jetzt dort statt „noch keine Daten“."],
 ["4.25","25.10.","Knopf „Karte anzeigen“ unter den Orten: Karte (OpenStreetMap) der Startorte der letzten 48 h, je Ort Anzahl Geräte; neue Starts speichern dazu ungefähre Koordinaten."],
-["4.24","25.10.","Seite springt beim Scrollen (Fußzeile) nicht mehr zum Vers zurück, bei Mitlesen aus nie; Gāyatrī und Gaṇeśa Mantra wieder sichtbar; Nārāyaṇa Sūktam übersetzt (EN: shlokam.org)."],
+["4.24","25.10.","Seite springt beim Scrollen (Fußzeile) nicht mehr zum Vers zurück, bei Mitsingen aus nie; Gāyatrī und Gaṇeśa Mantra wieder sichtbar; Nārāyaṇa Sūktam übersetzt (EN: shlokam.org)."],
 ["4.23","25.10.","Übersetzungen für Śrī Sūktam (EN: shlokam.org) und Bhū Sūktam (EN: shreekundli.com), weitere Sprachen von Grok ergänzt."],
 ["4.22","25.10.","Historie reicht bis zur ersten Version V1.0; klappt beim Wegscrollen oder nach 30 s ohne Aktion wieder zu."],
 ["4.21","25.10.","Versions-Historie unter der Orte-Liste (aufklappbar)."],
@@ -64,7 +65,7 @@
 ["2.45–2.55","12.10.","Jukebox-Start, MP3 als Standard, Überschrift BHAKTI PRAYERS PLAYER, drei Menüs Morgens/Abends/Weitere."],
 ["2.21–2.44","10.–11.10.","Jukebox-Zoom, kein Autostart, Play/Pause gold, Tonhöhe in Halbtönen, Arati Saprem, Wischen wechselt die Strophe."],
 ["2.00–2.20","7.–8.10.","Als App installierbar (PWA), Offline-Modus, Statistik (Aufrufe, Hörzeit, Orte), Android-Benachrichtigung."],
-["1.81–1.99","5.–6.10.","Großbild-/Vollbild-Modus zum Mitlesen, Vorschau der nächsten Strophe, Hanuman Chalisa von Pandita Bhavani."],
+["1.81–1.99","5.–6.10.","Großbild-/Vollbild-Modus zum Mitsingen, Vorschau der nächsten Strophe, Hanuman Chalisa von Pandita Bhavani."],
 ["1.64–1.80","3.–4.10.","Kavaca-Text nach SNKS, Übersetzungen in 6 Sprachen, Audio ins Repo, Tempo-Auswahl, Vishnu Arati vollständig."],
 ["1.46–1.63","1.–2.10.","Neue Gebete (Ramanuja Mangalam, Bhajare, Hanuman Chalisa), Sprachen FR/ES/RU/HI, Tagesablauf, Morgen-/Abendgebet nach Heft."],
 ["1.31–1.45","30.9.–1.10.","Vierzeilige Strophen wie im Prathana-Heft, Strophe markiert, Govinda vollständig, Zeitmarken je Strophe."],

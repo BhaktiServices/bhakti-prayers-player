@@ -7,7 +7,7 @@ window.BPP_BUILD="3.78"; window.BPP_SHOW="3.78";
   var WIP=["sri-suktam","bhu-suktam","nila-suktam","purusa-suktam","narayana-suktam","vishnu-sahasranama"];
   var SYM="\u270e"; /* ✎ */
   var TIP={de:"in Überarbeitung",en:"work in progress",fr:"en cours de révision",es:"en revisión",ru:"в доработке",hi:"संशोधन जारी है",pt:"em revisão"};
-  var HLP={de:"<b>✎ hinter dem Namen</b> = dieses Prayer ist neu und noch in Überarbeitung (Text, Übersetzung oder Mitlesen können sich noch ändern). <i>(von Grok ergänzt)</i>",
+  var HLP={de:"<b>✎ hinter dem Namen</b> = dieses Prayer ist neu und noch in Überarbeitung (Text, Übersetzung oder Mitsingen können sich noch ändern). <i>(von Grok ergänzt)</i>",
     en:"<b>✎ after the name</b> = this prayer is new and still being revised (text, translation or follow-along may still change). <i>(added by Grok)</i>",
     fr:"<b>✎ après le nom</b> = cette prière est nouvelle et encore en cours de révision (texte, traduction ou suivi peuvent encore changer). <i>(ajouté par Grok)</i>",
     es:"<b>✎ tras el nombre</b> = esta oración es nueva y aún está en revisión (texto, traducción o seguimiento pueden cambiar). <i>(añadido por Grok)</i>",

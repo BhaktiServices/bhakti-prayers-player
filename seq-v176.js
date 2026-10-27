@@ -28,12 +28,12 @@
       return k<0?0:k;
     };
   }
-  var LAB={de:["Mitlesen","Mitlesen: Die Strophe folgt der Aufnahme (ein / aus)"],
+  var LAB={de:["Mitsingen","Mitsingen: Die Strophe folgt der Aufnahme (ein / aus)"],
     en:["Follow","Follow along: the stanza follows the recording (on / off)"],
     fr:["Suivre","Suivre : la strophe suit l'enregistrement (oui / non)"],
     es:["Seguir","Seguir: la estrofa sigue la grabación (sí / no)"],
     ru:["Следить","Следить: строфа следует за записью (вкл / выкл)"],
-    hi:["साथ पढ़ें","साथ पढ़ें: पद रिकॉर्डिंग के साथ चलता है (चालू / बंद)"],pt:["Acompanhar","Acompanhar: a estrofe segue a gravação (lig. / desl.)"]};
+    hi:["साथ गाएँ","साथ गाएँ: पद रिकॉर्डिंग के साथ चलता है (चालू / बंद)"],pt:["Acompanhar","Acompanhar: a estrofe segue a gravação (lig. / desl.)"]};
   function lab(){
     var b=document.getElementById("btnAuto"); if(!b) return;
     var L=LAB[(typeof lang!=="undefined" && LAB[lang])?lang:"en"], on=!!(typeof autoScroll!=="undefined" && autoScroll);
