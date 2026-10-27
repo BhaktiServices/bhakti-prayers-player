@@ -5,7 +5,7 @@
        (audio/hanuman-prabhus.mp3). Mtj: Strophe 0 Mangala Mūrti, Refrain „rāmaji se rāma rāma kahiyo“
        (Wortlaut aus follow.js/V2.00; Übersetzungen von Grok ergänzt). seq neu gemappt.
        ?p=hanuman-bhavani → hanuman&rec=mtj; Eintrag nicht mehr unter Weitere.
-   (3) Taste „Tagesleiste ein/aus“ (statt Wochentage); Tooltip zweizeilig. */
+   (3) Taste „Tagesleiste“: Labels lagen hier kurz parallel zu v435 → Flackern; ab V4.54 nur noch v435. */
 window.BPP_BUILD="4.53"; window.BPP_SHOW="4.53";
 
 /* --- Durga Chalisa Sync --- */
@@ -24,30 +24,7 @@ window.BPP_BUILD="4.53"; window.BPP_SHOW="4.53";
   document.addEventListener("DOMContentLoaded", apply);
 })();
 
-/* --- Tagesleiste Labels --- */
-(function(){
-  if(window.bppV453w) return; window.bppV453w=1;
-  var TX={
-    de:["Tagesleiste ein","Tagesleiste aus","Wochentage mit den\nverschiedenen Prayern zeigen","Tagesleiste ausblenden"],
-    en:["Day bar on","Day bar off","Show weekdays with the\ndifferent prayers","Hide the day bar"],
-    fr:["Barre du jour : afficher","Barre du jour : masquer","Afficher les jours avec les\ndifférentes prières","Masquer la barre du jour"],
-    es:["Barra del día: mostrar","Barra del día: ocultar","Mostrar los días con las\ndiferentes oraciones","Ocultar la barra del día"],
-    ru:["Лента дня: показать","Лента дня: скрыть","Показать дни недели с\nразными молитвами","Скрыть ленту дня"],
-    hi:["दिन पट्टी दिखाएँ","दिन पट्टी छिपाएँ","सप्ताह के दिन विभिन्न\nप्रार्थनाओं के साथ दिखाएँ","दिन पट्टी छिपाएँ"],
-    pt:["Barra do dia: mostrar","Barra do dia: ocultar","Mostrar os dias com as\ndiferentes orações","Ocultar a barra do dia"],
-    cz:["Lišta dne zapnout","Lišta dne vypnout","Zobrazit dny týdne s\nrůznými modlitbami","Skrýt lištu dne"]
-  };
-  function lg(){ return (typeof lang!=="undefined"&&TX[lang])?lang:"en"; }
-  function paint(){
-    var b=document.getElementById("btnWd435"); if(!b) return;
-    var on=false; try{ on=localStorage.getItem("bpp-wd435")==="1"; }catch(e){}
-    var x=TX[lg()], lab=on?x[1]:x[0], tt=on?x[3]:x[2];
-    if(b.textContent!==lab) b.textContent=lab;
-    if(b.title!==tt) b.title=tt;
-  }
-  setInterval(paint, 400);
-  document.addEventListener("DOMContentLoaded", paint);
-})();
+/* Tagesleiste-Labels: einzige Quelle ab V4.54 in v435.js (dieser Block entfernt, kein Doppel-Paint). */
 
 /* --- Hanuman Mtj/Pbj --- */
 (function(){

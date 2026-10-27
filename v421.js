@@ -4,6 +4,7 @@
 (function(){
   if(window.bppV421) return; window.bppV421=1;
   var H=[
+["4.54","27.10.","Taste „Tagesleiste ein/aus“: Flackern behoben – einzige Beschriftungsquelle in v435 (alle Sprachen); v453-Override entfernt."],
 ["4.53","27.10.","Śrī Durgā Cālīsā: Sync ab Refrain 17 s; Hanumān Cālīsā: Bhavani als Rec: Mtj neben Pbj in derselben Prayer (Redirect hanuman-bhavani), Strophe 0 Mangala Mūrti + Refrain Rāmaji; Taste „Tagesleiste ein/aus“ mit zweizeiligem Tooltip."],
 ["4.52","27.10.","Strophen-Navigation (Scrollen/Tipp/Enter) wiederhergestellt: v434 fix() respektiert wieder holdLineUntil und bppSeekPending (Regression V4.50); Flacker-Fix Hanuman Bhavani unverändert."],
 ["4.51","27.10.","Hanuman Cālīsā Mataji Bhavani: Übersetzungen EN/DE/FR/ES/RU/HI/PT strophengenau nach Prathana (wie V4.33); FR/ES/RU/HI waren leer weil v433 nur id=hanuman anfasste."],
