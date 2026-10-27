@@ -4,6 +4,7 @@
 (function(){
   if(window.bppV421) return; window.bppV421=1;
   var H=[
+["4.47","27.10.","Neuer Knopf „Anregungen & Wünsche“ in der Fußzeile: kurzes Formular (Nachricht, Name optional, schließen mit X oder Esc), „Per E-Mail senden“ öffnet das E-Mail-Programm mit vorbereiteter Nachricht an mail@universal-harmonics.com inkl. Version, Gebet, Sprache und Gerät; nichts wird gespeichert. Hilfe ergänzt."],
 ["4.46","27.10.","„Als App installieren“ steht wieder unter den Liedtexten neben „Prayers runterladen“; „Akkorde an“ nur noch bei Menü+ (Einstellung bleibt wirksam); Wiederholen-Knopf immer sichtbar (auch Großansicht); „Mitlesen“ heißt jetzt „Mitsingen“; Hilfe: Tempo-Taste K und „Quellen zeigen“ (Fußzeile) stehen jetzt über den Tastenkürzeln."],
 ["4.45","27.10.","Statistik: Knopf unter der Orte-Liste mit drei Zuständen – unsortiert (wie geliefert) → A–Z → nach Häufigkeit. Beschriftung zeigt die nächste Sortierung, gold = sortiert, Einstellung wird gemerkt; Standard nach Häufigkeit."],
 ["4.44","27.10.","The Govinda Prayer: Sargam (Sa Re Ga) je Zeile – aus der Aufnahme „Rec: Mtj“ gemessen (Sa = D, ? = unsicher, Punkt davor = tiefe Oktave). Knopf „Sa Re Ga“ nur bei Menü+, Standard aus, gold = an. Bei Pbj/YouTube Hinweis „Sargam nur für Mtj gemessen“."],
