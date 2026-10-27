@@ -23,8 +23,10 @@
     Object.keys(seen).forEach(function(k){ var p=seen[k]; if(!p||now-p.t>DAY||(!p.c&&!p.o)) return; var id=p.d?String(p.d).slice(0,12):k.split("|")[1]; /* [Grok-Bot] V4.07: je Geraet (bpp-device-id) statt je Sitzung */
       var l=p.c?(p.c+(p.o?" ("+p.o+")":"")):p.o; /* [Grok-Bot] V4.07: Stadt (Land) */ var key=l+"|"+id; if(sess[key]) return; sess[key]=1; by[l]=(by[l]||0)+1; });
     var cs={}; Object.keys(by).forEach(function(l){ var m=/\(([^)]+)\)$/.exec(l); cs[m?m[1]:l]=1; }); var nc=Object.keys(cs).length; /* [Grok-Bot] V4.34: Zahl der Laender */
-    var abc=false; try{ abc=localStorage.getItem("bpp-abc443")==="1"; }catch(e){} /* [Grok-Bot] V4.43: Orte alphabetisch (Knopf in v443.js) */
-    var rows=Object.keys(by).sort(abc?function(a,b){ return a.localeCompare(b,undefined,{sensitivity:"base"}); }:function(a,b){ return by[b]-by[a]||a.localeCompare(b); });
+    var md="count"; try{ md=window.bppOrtSort445?bppOrtSort445():(localStorage.getItem("bpp-abc443")==="1"?"abc":"count"); }catch(e){} /* [Grok-Bot] V4.45: Orte unsortiert / A-Z / nach Haeufigkeit (Knopf in v443.js) */
+    var rows=Object.keys(by); /* unsortiert = Reihenfolge des ersten Auftretens (wie geliefert) */
+    if(md==="abc") rows.sort(function(a,b){ return a.localeCompare(b,undefined,{sensitivity:"base"}); });
+    else if(md!=="none") rows.sort(function(a,b){ return by[b]-by[a]||a.localeCompare(b); });
     el.innerHTML="Orte letzte 48 h ("+rows.length+"): "+(rows.length?rows.map(function(r){ return esc(r)+(by[r]>3?" \u00d7"+by[r]:"") /* [Grok-Bot] V4.07: Anzahl erst ab 4 */; }).join(" \u00b7 "):"noch keine Daten")+(nc?"<br>"+nc+" Länder":""); /* [Grok-Bot] V3.74: Zeile immer sichtbar */
   }
   window.bppPaint366=paint; /* [Grok-Bot] V4.43 */

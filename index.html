@@ -9,9 +9,9 @@
 <meta property="og:image" content="start.jpg">
 <link rel="manifest" href="manifest.json?v=341"><!-- [Grok-Bot] V2.53: PWA wieder installierbar -->
 <meta name="theme-color" content="#041236"><link rel="apple-touch-icon" href="apple-touch-icon.png"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="BPPlayer"><!-- [Grok-Bot] V3.41 -->
-<title>Bhakti Prayers Player V4.44</title>
+<title>Bhakti Prayers Player V4.45</title>
 <script>/* [Grok-Bot] V3.30: zentrale Version - aeltere Skripte (V1.66 usw.) koennen Kopf und Titel nicht mehr kurz ueberschreiben */
-window.BPP_VERSION="4.44";
+window.BPP_VERSION="4.45";
 /* [Grok-Bot] V4.27 Erststart: ohne Link-Parameter und ohne gespeicherte Einstellungen wie der Standard-Link starten (Auswertung durch v420/v315; nur Position, kein erzwungenes Abspielen) */
 (function(){ try{ var L=localStorage, has=false; for(var j=0;j<L.length;j++){ if(/^bpp/i.test(L.key(j))){ has=true; break; } }
   if(!has && !location.search && !L.getItem("bpp-first-run-done")) history.replaceState(null,"",location.pathname+"?p=guru-stotram&t=0&rec=pbj&cols=2&chords=zeile&tr=1&src=mp3"+location.hash);
@@ -156,7 +156,7 @@ body.show-ch .rowline .rch{display:block}
 </head>
 <body tabindex="0">
 <header>
-  <h1>Bhakti Prayers Player <span class="ver">V4.44</span><!-- [Grok.com] --></h1>
+  <h1>Bhakti Prayers Player <span class="ver">V4.45</span><!-- [Grok.com] --></h1>
 <script>/* [Grok-Bot] V3.30: Versionswaechter - setzt jede Aenderung an h1 .ver sofort (vor dem Zeichnen) auf BPP_VERSION zurueck */
 (function(){ var h1=document.querySelector("header h1"); if(!h1) return;
   var V="V"+window.BPP_VERSION, RX=/V\d+\.\d+[a-z]?/g;
@@ -762,7 +762,7 @@ layoutLyrics();
 <!-- [Grok-Bot] V3.63: v361.js ersetzt durch v363.js -->
 <script src="v362.js?v=1"></script><!-- [Grok-Bot] V3.62 Position nach Neustart, VSN-Korrekturen -->
 <script src="v365.js?v=6"></script><!-- [Grok-Bot] V3.65 Narasimha 4 hare-e nach Heft (ersetzt v364.js) -->
-<script src="v366.js?v=435"></script><!-- [Grok-Bot] V3.66 Offline-Status links unten, Orte 24 h -->
+<script src="v366.js?v=445"></script><!-- [Grok-Bot] V3.66 Offline-Status links unten, Orte 24 h -->
 <script src="v367.js?v=3"></script><!-- [Grok-Bot] V3.67 Sri/Bhu/Nila/Narayana Suktam mit Aufnahme -->
 <script src="v368.js?v=1"></script><!-- [Grok-Bot] V3.68 Narayana Schlusszeile -->
 <script src="v369.js?v=4"></script><!-- [Grok-Bot] V3.69 Hinweis ohne Uebersetzung -->
@@ -812,7 +812,7 @@ layoutLyrics();
 <script src="v415.js?v=31"></script><!-- [Grok.com] V4.18 Rec: Pbj/Mtj + Supra unter Prabhujis --><!-- [Grok-Bot] V4.11 Gross dreht mit (Lagesensor) -->
 <script src="v419.js?v=1"></script><!-- [Grok-Bot] V4.19 Rec-Taste schaltet wieder -->
 <script src="v420.js?v=2"></script><!-- [Grok-Bot] V4.20 Teilen-Link mit allen Einstellungen, Rec: SPN -->
-<script src="v421.js?v=22"></script><!-- [Grok-Bot] V4.21 Versions-Historie -->
+<script src="v421.js?v=23"></script><!-- [Grok-Bot] V4.21 Versions-Historie -->
 <script src="v422.js?v=1"></script><!-- [Grok-Bot] V4.22 Historie bis V1.0, Auto-Zuklappen -->
 <script src="v423.js?v=1"></script><!-- [Grok-Bot] V4.23 Uebersetzungen Sri/Bhu Suktam -->
 <script src="v424.js?v=1"></script><!-- [Grok-Bot] V4.24 kein Zurueckspringen beim Scrollen, Gayatri/Ganesa sichtbar, Narayana Suktam EN -->
@@ -830,7 +830,8 @@ layoutLyrics();
 <script src="v440.js?v=1"></script><!-- [Grok-Bot] V4.40 Panduranga Strophen+Timing, Wochentage-Taste neben Spalten -->
 <script src="v441.js?v=2"></script><!-- [Grok-Bot] V4.41 Ashtottaram Pbj-Marken ab 100, Gayatri (3×), Suprabhatam je Rec ohne Vorlauf, Govinda Mtj-Marken, Durchlauf: Audio/Lyrics immer derselbe Prayer -->
 <script src="v442.js?v=1"></script><!-- [Grok-Bot] V4.42 Grossbild: Akkorde in Zeile richtig (Hanuman u.a.), wie Standardansicht -->
-<script src="v443.js?v=1"></script><!-- [Grok-Bot] V4.43 Final Prayers Str. 1 C G, Ueberschrift Statistik, Orte A-Z, Quellen in der Fusszeile -->
+<script src="v443.js?v=2"></script><!-- [Grok-Bot] V4.43 Final Prayers Str. 1 C G, Ueberschrift Statistik, Orte A-Z, Quellen in der Fusszeile -->
 <script src="v444.js?v=1"></script><!-- [Grok-Bot] V4.44 Sargam (Sa Re Ga) fuer The Govinda Prayer, Rec: Mtj, gemessen; Knopf nur bei Menue+ -->
+<script src="v445.js?v=1"></script><!-- [Grok-Bot] V4.45 Orte-Liste: unsortiert / A-Z / nach Haeufigkeit -->
 </body>
 </html>

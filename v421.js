@@ -4,6 +4,7 @@
 (function(){
   if(window.bppV421) return; window.bppV421=1;
   var H=[
+["4.45","27.10.","Statistik: Knopf unter der Orte-Liste mit drei Zuständen – unsortiert (wie geliefert) → A–Z → nach Häufigkeit. Beschriftung zeigt die nächste Sortierung, gold = sortiert, Einstellung wird gemerkt; Standard nach Häufigkeit."],
 ["4.44","27.10.","The Govinda Prayer: Sargam (Sa Re Ga) je Zeile – aus der Aufnahme „Rec: Mtj“ gemessen (Sa = D, ? = unsicher, Punkt davor = tiefe Oktave). Knopf „Sa Re Ga“ nur bei Menü+, Standard aus, gold = an. Bei Pbj/YouTube Hinweis „Sargam nur für Mtj gemessen“."],
 ["4.43","27.10.","Final Prayers, 1. Strophe: Akkorde „C G“ jetzt in allen Ansichten (Standard zeigte durch eine veraltete Zeilenzuordnung „C F G“); Überschrift „Statistik“ über Aufrufe/Hörzeit/Orte; Knopf „A–Z“ an der Orte-Liste (alphabetisch ein/aus, wird gemerkt); „Quellen zeigen“ jetzt in der Fußzeile."],
 ["4.42","27.10.","Großbild: „Akkorde in Zeile“ richtig (gemeldet bei Hanumān Cālīsā) – je Zeile die eigenen Akkorde statt der ganzen Strophenfolge über Zeile 1; Strophen ohne Zeilenakkorde (z. B. Mukunda Mālā) wie in der Standardansicht auf die Zeilen verteilt."],
