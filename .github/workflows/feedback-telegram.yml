@@ -1,0 +1,54 @@
+# [Grok-Bot] V4.48: Anregungen & Wuensche per Telegram. Nutzer schreiben ueber t.me/Bhakti1008bot?text=... (Entwurf aus dem Formular) dem Bot.
+# Telegram haelt unbestaetigte Nachrichten 24 h vor; dieser Lauf holt sie (getUpdates) und leitet sie an den Betreiber-Chat weiter.
+# Token und Chat-ID nur als Actions-Secrets. Nichts wird ins Repo geschrieben, im Log stehen nur Zaehler (keine Namen/Texte).
+name: Feedback-Telegram
+on:
+  schedule:
+    - cron: "*/5 * * * *"
+  workflow_dispatch:
+permissions: {}
+concurrency:
+  group: feedback-telegram
+  cancel-in-progress: false
+jobs:
+  forward:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - name: Nachrichten weiterleiten
+        env:
+          TG_TOKEN: ${{ secrets.BPP_FEEDBACK_TELEGRAM_TOKEN }}
+          TG_CHAT: ${{ secrets.BPP_FEEDBACK_TELEGRAM_CHAT }}
+        run: |
+          python3 - <<'PY'
+          import json, os, sys, urllib.request, urllib.parse
+          T=os.environ.get("TG_TOKEN","").strip(); C=os.environ.get("TG_CHAT","").strip()
+          if not T or not C:
+              print("nicht konfiguriert (Token oder Chat-ID fehlt) - nichts abgeholt"); sys.exit(0)
+          def api(m, **p):
+              d=urllib.parse.urlencode(p).encode()
+              with urllib.request.urlopen("https://api.telegram.org/bot%s/%s"%(T,m), d, timeout=20) as r:
+                  return json.load(r)
+          ups=api("getUpdates", timeout=0, allowed_updates=json.dumps(["message"])).get("result",[])
+          last=None; fw=0; sk=0
+          for u in ups:
+              m=u.get("message") or {}
+              ch=m.get("chat",{}); f=m.get("from",{})
+              if str(ch.get("id"))==C or ch.get("type")!="private":
+                  sk+=1; last=u["update_id"]; continue
+              txt=(m.get("text") or m.get("caption") or "").strip()
+              if txt in ("","/start") or txt.startswith("/start "):
+                  try: api("sendMessage", chat_id=ch["id"], text="Bitte die Nachricht einfach hier senden. / Please just send your message here. 🙏")
+                  except Exception: pass
+                  sk+=1; last=u["update_id"]; continue
+              who=" ".join(x for x in [f.get("first_name",""), f.get("last_name","")] if x).strip() or "?"
+              if f.get("username"): who+=" (@%s)"%f["username"]
+              body="📩 BPP Anregung\nVon Telegram: %s [id %s]\n\n%s"%(who, f.get("id"), txt)
+              api("sendMessage", chat_id=C, text=body[:4096], disable_web_page_preview="true")
+              fw+=1; last=u["update_id"]
+              try: api("sendMessage", chat_id=ch["id"], text="Danke! Deine Nachricht ist angekommen. / Thank you, your message has arrived. 🙏")
+              except Exception: pass
+          if last is not None:
+              api("getUpdates", offset=last+1, limit=1, timeout=0)
+          print("weitergeleitet: %d, uebersprungen: %d"%(fw, sk))
+          PY
