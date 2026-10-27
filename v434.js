@@ -32,6 +32,8 @@ window.BPP_BUILD="4.34"; window.BPP_SHOW="4.34";
   function fix(){ try{
       if(typeof i==="undefined"||i<0||Date.now()<hold) return;
       if(!(typeof autoScroll!=="undefined"&&autoScroll)) return; /* [Grok-Bot] V4.50: nur bei Mitsingen an */
+      if(typeof holdLineUntil==="number"&&Date.now()<holdLineUntil) return; /* [Grok-Bot] V4.52: manuelle Strophenwahl (Scroll/Tipp) hat Vorrang – wie autoLineFromTime */
+      if(window.bppSeekPending) return; /* [Grok-Bot] V4.52: waehrend Spulen nicht zurueckziehen */
       /* [Grok-Bot] V4.50: dieselbe Instanz wie autoLineFromTime (stanzaFromProgress inkl. seq/Vorlauf) – kein zweiter Schreiber */
       var p=songProgress(); if(!p||!p.gs||!p.gs.length) return;
       var k=(typeof stanzaFromProgress==="function")?stanzaFromProgress(p):kAtAuth(mt());

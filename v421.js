@@ -4,6 +4,7 @@
 (function(){
   if(window.bppV421) return; window.bppV421=1;
   var H=[
+["4.52","27.10.","Strophen-Navigation (Scrollen/Tipp/Enter) wiederhergestellt: v434 fix() respektiert wieder holdLineUntil und bppSeekPending (Regression V4.50); Flacker-Fix Hanuman Bhavani unverändert."],
 ["4.51","27.10.","Hanuman Cālīsā Mataji Bhavani: Übersetzungen EN/DE/FR/ES/RU/HI/PT strophengenau nach Prathana (wie V4.33); FR/ES/RU/HI waren leer weil v433 nur id=hanuman anfasste."],
 ["4.50","27.10.","Aktiver Vers: genau eine Quelle aus der Abspielposition der gewählten Aufnahme (seq vor Marken); Mitsingen aus ohne automatische Markierung; Hanuman Mataji Bhavani: vollständige gemessene Abfolge, kein Flackern Str. 1/2."],
 ["4.49","27.10.","Hilfe neu geordnet: oben alles zum Lernen der Prayers (Auswahl, Wiedergabe, Mitsingen, Strophen, Wiederholen, Tempo, Akkorde und Übersetzung, Groß, Spalten, Aussprache), darunter die Sonderfunktionen (Menü+, Wochentage, Stil, Offline und App, Teilen, Quellen, Anregungen & Wünsche), Tastenkürzel ganz unten; mit Zwischenüberschriften."],
