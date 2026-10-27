@@ -48,13 +48,17 @@
   function seq(an){ return an.map(function(a){return sh(a[1]);}).join(" "); }
   function tx(e){ if(!e.querySelector(".k361")) return e.textContent; var c=e.cloneNode(true); [].forEach.call(c.querySelectorAll(".k361"),function(k){ k.remove(); }); return c.textContent; } /* [Grok-Bot] V4.14: Text ohne Akkord-Spans (sonst landete der Akkord bei erneutem Aufbau im Liedtext: "Cśrī...", "Fmbhakta...") */
   function norm(s){ return String(s).replace(/\s+/g," ").trim(); }
+  /* [Grok-Bot] V4.43: final-prayers - POS-Schluessel (Zeile/Teilzeile) stammen von vor V3.90 (Vishnu Arati davor eingefuegt) und trafen falsche Zeilen
+     (z. B. "om jaya jagadisa hare" C F G statt C G). Standardansicht nimmt hier wie die Grossansicht die Heft-Positionen per Zeilentext (TXT). */
+  var BYTXT={"final-prayers":1};
   function std(){ var id=pid(), M=POS[id]||{}; var L=document.getElementById("lyrics"); if(!L) return;
     [].forEach.call(L.querySelectorAll(".rowline[data-n]"),function(r){ var zi=r.getAttribute("data-n"), lns=r.querySelectorAll(".sa > .ln");
       [].forEach.call(lns,function(ln,li){ if(ln.__k361===steps+"|"+ln.textContent) return;
         var x2=ln.querySelector(".x2"), lt=tx(ln), t=(x2?lt.slice(0,lt.length-x2.textContent.length):lt);
         var pv=ln.previousElementSibling, src=pv&&pv.classList.contains("lch")?pv:null;
         if(!src&&lns.length===1){ src=r.querySelector(":scope > .lch"); }
-        var an=M[zi+"/"+li], raw=false;
+        var an=BYTXT[id]?null:M[zi+"/"+li], raw=false;
+        if(BYTXT[id]&&TXT[id]){ var tq=TXT[id][norm(t)]; if(tq&&(!src||norm(src.textContent)===seq(tq))) an=tq; } /* [Grok-Bot] V4.43 */
         if(!an){ if(!src) return; an=dist(t,src.textContent); raw=true; if(!an) return; }
         var col=src?getComputedStyle(src).color:"";
         if(src) src.classList.add("h361");
