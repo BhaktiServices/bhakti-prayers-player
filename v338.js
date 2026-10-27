@@ -13,13 +13,13 @@ window.BPP_BUILD="3.38"; window.BPP_SHOW="3.38";
       var pref=nx?[k+1,k]:[k,k+1];
       var best=null, bd=1e9;
       P.zeilen.forEach(function(z,n){
-        if(!z.lineCh) return; var L=String(z.sa||"").split("\n"); if(z.lineCh.length!==L.length) return;
+        var lc=(function(z){ try{ return window.bppLC442?bppLC442(z):z.lineCh; }catch(e){ return z.lineCh; } })(z); /* [Grok-Bot] V4.42 */ if(!lc) return; var L=String(z.sa||"").split("\n"); if(lc.length!==L.length) return;
         L=L.map(norm);
         for(var o=0;o+texts.length<=L.length;o++){
           var ok=true; for(var q=0;q<texts.length;q++){ if(L[o+q]!==texts[q]){ ok=false; break; } }
           if(!ok) continue;
           var p=pref.indexOf(n), d=p>=0?p:(k>=0?2+Math.abs(n-k):2+n);
-          if(d<bd){ bd=d; best=z.lineCh.slice(o,o+texts.length); }
+          if(d<bd){ bd=d; best=lc.slice(o,o+texts.length); }
         }
       });
       return best;
