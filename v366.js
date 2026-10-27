@@ -17,15 +17,19 @@
   try{ sid=sessionStorage.getItem("bpp-presence-id")||""; }catch(e){}
   if(!sid) sid="s"+Math.random().toString(16).slice(2)+Date.now().toString(16);
   function esc(s){ return String(s).replace(/[&<>"]/g,function(c){ return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]; }); }
+  /* [Grok-Bot] V4.55: eine Format-Quelle fuer Orte – Land immer in () */
+  function bppFmtOrt(c,o){ c=String(c||"").trim(); o=String(o||"").trim(); if(c&&o) return c+" ("+o+")"; if(c) return c; if(o) return "("+o+")"; return ""; }
+  function bppOrtSortKey(l){ var m=/^(.+) \(([^)]+)\)$/.exec(l); if(m) return m[1]; var m2=/^\(([^)]+)\)$/.exec(l); if(m2) return m2[1]; return String(l||""); }
+  window.bppFmtOrt=bppFmtOrt; window.bppOrtSortKey=bppOrtSortKey;
   function paint(){ var s=document.getElementById("bpp-stats"); if(!s) return; var el=document.getElementById("bpp-orte24");
     if(!el){ el=document.createElement("div"); el.id="bpp-orte24"; s.parentNode.insertBefore(el,s.nextSibling); }
     var now=Date.now(), by={}, sess={};
     Object.keys(seen).forEach(function(k){ var p=seen[k]; if(!p||now-p.t>DAY||(!p.c&&!p.o)) return; var id=p.d?String(p.d).slice(0,12):k.split("|")[1]; /* [Grok-Bot] V4.07: je Geraet (bpp-device-id) statt je Sitzung */
-      var l=p.c?(p.c+(p.o?" ("+p.o+")":"")):p.o; /* [Grok-Bot] V4.07: Stadt (Land) */ var key=l+"|"+id; if(sess[key]) return; sess[key]=1; by[l]=(by[l]||0)+1; });
+      var l=bppFmtOrt(p.c,p.o); /* [Grok-Bot] V4.55: Stadt (Land) / (Land) */ var key=l+"|"+id; if(sess[key]) return; sess[key]=1; by[l]=(by[l]||0)+1; });
     var cs={}; Object.keys(by).forEach(function(l){ var m=/\(([^)]+)\)$/.exec(l); cs[m?m[1]:l]=1; }); var nc=Object.keys(cs).length; /* [Grok-Bot] V4.34: Zahl der Laender */
     var md="count"; try{ md=window.bppOrtSort445?bppOrtSort445():(localStorage.getItem("bpp-abc443")==="1"?"abc":"count"); }catch(e){} /* [Grok-Bot] V4.45: Orte unsortiert / A-Z / nach Haeufigkeit (Knopf in v443.js) */
     var rows=Object.keys(by); /* unsortiert = Reihenfolge des ersten Auftretens (wie geliefert) */
-    if(md==="abc") rows.sort(function(a,b){ return a.localeCompare(b,undefined,{sensitivity:"base"}); });
+    if(md==="abc") rows.sort(function(a,b){ return bppOrtSortKey(a).localeCompare(bppOrtSortKey(b),undefined,{sensitivity:"base"}); }); /* [Grok-Bot] V4.55: A-Z nach Stadtname */
     else if(md!=="none") rows.sort(function(a,b){ return by[b]-by[a]||a.localeCompare(b); });
     el.innerHTML="Orte letzte 48 h ("+rows.length+"): "+(rows.length?rows.map(function(r){ return esc(r)+(by[r]>3?" \u00d7"+by[r]:"") /* [Grok-Bot] V4.07: Anzahl erst ab 4 */; }).join(" \u00b7 "):"noch keine Daten")+(nc?"<br>"+nc+" Länder":""); /* [Grok-Bot] V3.74: Zeile immer sichtbar */
   }
