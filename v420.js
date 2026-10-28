@@ -63,5 +63,5 @@ window.BPP_BUILD="4.20"; window.BPP_SHOW="4.20";
       return orig.apply(this,arguments); };
   }
   hookPlay();
-  if(vol>=0&&vol<=100){ var n=0, iv=setInterval(function(){ var x=a(); if(x) x.volume=vol/100; if(++n>40) clearInterval(iv); },250); }
+  if(vol>=5&&vol<=100){ var n=0, iv=setInterval(function(){ var x=a(); if(x){ try{x.muted=false;}catch(e){} x.volume=vol/100; } if(++n>40) clearInterval(iv); },250); } /* [Grok-Bot] V4.58: vol<5% ignorieren */
 })();
