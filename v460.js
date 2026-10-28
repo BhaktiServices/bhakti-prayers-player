@@ -21,7 +21,7 @@ window.BPP_BUILD="4.60"; window.BPP_SHOW="4.60";
   document.head.appendChild(st);
 
   var HLP={
-    de:"<b>Stil</b> (Knopf unter der Sprachwahl oben rechts): Auto, Morgen, Abend oder Nacht. <i>(von Grok ergänzt)</i>",
+    de:"<b>Stil</b> (unter Sprachwahl): Auto, Morgen, Abend oder Nacht. <i>(von Grok ergänzt)</i>",
     en:"<b>Style</b> (button under the language selector, top right): Auto, Morning, Evening or Night. <i>(added by Grok)</i>",
     fr:"<b>Style</b> (bouton sous le sélecteur de langue, en haut à droite) : Auto, Matin, Soir ou Nuit. <i>(ajouté par Grok)</i>",
     es:"<b>Estilo</b> (botón bajo el selector de idioma, arriba a la derecha): Auto, Mañana, Tarde o Noche. <i>(añadido por Grok)</i>",

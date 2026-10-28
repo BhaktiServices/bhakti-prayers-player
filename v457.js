@@ -17,16 +17,7 @@ window.BPP_BUILD="4.62"; window.BPP_SHOW="4.62";
     pt:["Mostrar estatísticas","Ocultar estatísticas"],
     cz:["Zobrazit statistiky","Skrýt statistiky"]
   };
-  var HP={
-    de:"<b>Statistik:</b> kleiner Knopf unter der Fußzeile zeigt Aufrufe, Hörzeit und Orte; beim Wegscrollen wieder zu.",
-    en:"<b>Statistics:</b> small button under the footer shows visits, listening time and places; collapses again when you scroll away.",
-    fr:"<b>Statistiques :</b> petit bouton sous le pied de page affiche visites, écoute et lieux ; se referme en faisant défiler ailleurs.",
-    es:"<b>Estadísticas:</b> un botón pequeño bajo el pie muestra visitas, tiempo de escucha y lugares; se cierra al desplazarse a otro sitio.",
-    ru:"<b>Статистика:</b> маленькая кнопка под колонтитулом показывает посещения, время прослушивания и места; при прокрутке снова скрывается.",
-    hi:"<b>आँकड़े:</b> पाद लेख के नीचे छोटा बटन विज़िट, सुनने का समय और स्थान दिखाता है; कहीं और स्क्रॉल करने पर फिर बंद।",
-    pt:"<b>Estatísticas:</b> botão pequeno sob o rodapé mostra visitas, tempo de audição e locais; fecha ao rolar para outro lugar.",
-    cz:"<b>Statistiky:</b> malé tlačítko pod zápatím ukáže návštěvy, dobu poslechu a místa; při odscrollování se zase sbalí."
-  };
+  var HP={de:"<b>Statistik:</b> Knopf unter der Fußzeile = Aufrufe, Hörzeit, Orte; Wegscrollen schließt. <i>(von Grok ergänzt)</i>",en:"<b>Stats:</b> footer button = views, listen time, places; scroll away closes. <i>(added by Grok)</i>",fr:"<b>Statistiques :</b> bouton sous le pied = vues, écoute, lieux ; défiler ferme. <i>(ajouté par Grok)</i>",es:"<b>Estadísticas:</b> botón bajo el pie = visitas, escucha, lugares; al alejarse se cierra. <i>(añadido por Grok)</i>",ru:"<b>Статистика:</b> кнопка под подвалом = просмотры, время, места; уход закрывает. <i>(добавлено Grok)</i>",hi:"<b>आँकड़े:</b> फ़ुटर बटन = विज़िट, सुनना, स्थान; दूर स्क्रॉल = बंद। <i>(Grok द्वारा जोड़ा गया)</i>",pt:"<b>Estatísticas:</b> botão no rodapé = visitas, tempo, lugares; rolar para longe fecha. <i>(acrescentado pelo Grok)</i>",cz:"<b>Statistika:</b> tlačítko pod zápatím = návštěvy, poslech, místa; odscrollování zavře. <i>(doplněno Grokem)</i>"};
   function lg(){ var l=(typeof lang!=="undefined"&&lang)||"de"; return LB[l]?l:"en"; }
   var st=document.createElement("style");
   st.textContent=
