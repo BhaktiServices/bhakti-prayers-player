@@ -1,5 +1,5 @@
 /* [Grok-Bot] V4.49: Hilfe priorisiert. Oben alles zum Lernen der Prayers (Auswahl/Menues, Wiedergabe, Mitsingen, Strophen, Wiederholen, Tempo K,
-   Akkorde/Uebersetzung, Gross, Spalten, Aussprache), darunter die Sonderfunktionen (Menue+, Wochentage, Stil, Offline/Prayers runterladen,
+   Akkorde/Uebersetzung, Gross, Spalten, Aussprache, Offline-Tipp), darunter die Sonderfunktionen (Menue+, Wochentage, Stil,
    App installieren, Teilen, Quellen, Anregungen & Wuensche), Tastenkuerzel ganz unten. Nur umsortiert, Texte unveraendert; zwei Zwischenueberschriften.
    Umsetzung per CSS-Flex "order" (die DOM-Reihenfolge bleibt, damit die Positions-Intervalle aelterer Versionen nicht gegeneinander arbeiten). */
 window.BPP_BUILD="4.49"; window.BPP_SHOW="4.49";
@@ -20,7 +20,7 @@ window.BPP_BUILD="4.49"; window.BPP_SHOW="4.49";
     app:["Als App installieren","Install as app","Installer comme app","Instalar como app","Установить как приложение","ऐप के रूप में इंस्टॉल करें","Instalovat jako aplikaci"],
     czech:["Česky"]};
   var KO={choose:20,none:24,language:26,play:30,follow:32,manual:34,chords:40,czech:42,big:44,cols:48,pron:50,
-    menuplus:110,offline:116,app:118,share:120,close:130};
+    menuplus:110,offline:21 /* [Grok-Bot] V4.56: Prayers lernen oben */,app:118,share:120,close:130};
   var MAP={}; for(var k in LB) LB[k].forEach(function(s){ MAP[s]=k; });
   function norm(s){ return (s||"").replace(/[\s\u00a0]+/g," ").replace(/\s*:\s*$/,"").trim(); }
   function key(p){

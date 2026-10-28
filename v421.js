@@ -4,6 +4,7 @@
 (function(){
   if(window.bppV421) return; window.bppV421=1;
   var H=[
+["4.56","28.10.","Hanuman Rec:Pbj wieder Kanaka-MP3+YT+Marken wie V4.52 (nicht hanuman-prabhus); Hilfe Offline-Tipp oben; Lautstärke pro Stück merken."],
 ["4.55","27.10.","Orte in der Aufrufstatistik: Land immer in Klammern, z.B. Berlin (DE) bzw. (DE); A–Z nach Stadtname; eine Format-Quelle (bppFmtOrt)."],
 ["4.54","27.10.","Taste „Tagesleiste ein/aus“: Flackern behoben – einzige Beschriftungsquelle in v435 (alle Sprachen); v453-Override entfernt."],
 ["4.53","27.10.","Śrī Durgā Cālīsā: Sync ab Refrain 17 s; Hanumān Cālīsā: Bhavani als Rec: Mtj neben Pbj in derselben Prayer (Redirect hanuman-bhavani), Strophe 0 Mangala Mūrti + Refrain Rāmaji; Taste „Tagesleiste ein/aus“ mit zweizeiligem Tooltip."],
