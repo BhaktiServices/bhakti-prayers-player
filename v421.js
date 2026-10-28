@@ -4,6 +4,7 @@
 (function(){
   if(window.bppV421) return; window.bppV421=1;
   var H=[
+["4.61","28.10.","Menü+: Prayers runterladen / Als App installieren nur solange nötig; Fußzeile „Support“; Support oben neben Hilfe (?); Taste +/=/NumpadAdd Menü+ auch nach Play→Pause; G bleibt Großansicht (nicht Menü); critical=false."],
 ["4.60","28.10.","Stil-Knopf unter die Sprachwahl (rechtsbündig gestapelt), keine Überlappung mit der Überschrift auf Handy/Desktop; critical=false."],
 ["4.59","28.10.","Auto-Update: version.json prüfen (Start/Fokus/alle 5 Min); bei neuer Version neu laden (sofort oder nach Pause; critical sofort); SW Cache-Namen APP/AUD repariert."],
 ["4.58","28.10.","Fix: Lautstärke nicht mehr auf 0 – ungültige/bpp-vol-0-Werte werden gelöscht; auf dem Handy kein Merken (Systemlautstärke); Desktop merkt nur Werte ab 5 %."],

@@ -1,7 +1,8 @@
-/* [Grok-Bot] V3.52: Tastenkuerzel fuer alle Knoepfe (im Hover-Text), Menue+ immer ganz rechts hinter Spalten,
-   Spalten immer sichtbar, Abschnitt "Tastenkuerzel" in der Hilfe (6 Sprachen).
-   Flacker-Ursache (Hanuman, Mitlesen springt links/rechts) behoben in v224.js (alte Marken alle 1,5 s). */
-window.BPP_BUILD="4.14"; window.BPP_SHOW="4.14";
+/* [Grok-Bot] V3.52/V4.61: Tastenkuerzel fuer alle Knoepfe; Menue+ rechts; Hilfe-Abschnitt.
+   V4.61: Taste +/=/NumpadAdd/Equal mappt auf Menue+; Fokus blur vor Kuerzel (Play/Pause).
+   Taste G bleibt Grossansicht (btnFs) – nicht fuer Menue umbelegt.
+   Flacker-Ursache (Hanuman) behoben in v224.js. */
+window.BPP_BUILD="4.61"; window.BPP_SHOW="4.61";
 (function(){
   function $(i){ return document.getElementById(i); }
   function lg(){ var l=(typeof lang!=="undefined"&&lang)||"en"; return SPC[l]?l:"en"; }
@@ -19,7 +20,9 @@ window.BPP_BUILD="4.14"; window.BPP_SHOW="4.14";
   function vis(b){ return b && b.offsetParent!==null; }
   document.addEventListener("keydown",function(e){
     if(e.ctrlKey||e.altKey||e.metaKey||typing(e.target)) return;
-    var k=e.key||"", id=null;
+    var k=e.key||"", code=e.code||"", id=null;
+    /* [Grok-Bot] V4.61: + auch als "=" (US-Taste ohne Shift), NumpadAdd, Equal; Fokus von Play/Audio loesen */
+    if(k==="+"||k==="="||code==="NumpadAdd"||(code==="Equal"&&!e.altKey&&!e.metaKey&&!e.ctrlKey)) k="+";
     if(k==="h"||k==="H"&&!e.shiftKey||k==="?"){ e.preventDefault(); e.stopPropagation(); try{ window.bppHelp&&window.bppHelp(); }catch(x){} return; }
     if(k==="y"||k==="Y"&&!e.shiftKey){ var y=$("btnSrcYt"), f=$("btnSrcMp3"); var t=(y&&!y.classList.contains("gold"))?y:f; if(t){ e.preventDefault(); e.stopPropagation(); t.click(); } return; }
     if(e.shiftKey&&(k==="N"||k==="V")) id=K[k];
@@ -28,7 +31,9 @@ window.BPP_BUILD="4.14"; window.BPP_SHOW="4.14";
     var b=$(id); if(!b) return;
     if((id==="btnBack10"||id==="btnFwd10")&&b.disabled) return;
     if(e.repeat&&!/Back|Fwd|Xp|Capo/.test(id)) { e.preventDefault(); return; }
-    e.preventDefault(); e.stopPropagation(); b.click();
+    e.preventDefault(); e.stopPropagation();
+    try{ var ae=document.activeElement; if(ae&&(ae.tagName==="BUTTON"||ae.tagName==="AUDIO"||ae.tagName==="IFRAME")) ae.blur(); }catch(x){}
+    b.click();
   },true);
   function titles(){
     var l=lg();
