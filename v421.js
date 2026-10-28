@@ -4,6 +4,7 @@
 (function(){
   if(window.bppV421) return; window.bppV421=1;
   var H=[
+["4.57","28.10.","Statistik (Aufrufe/Orte) standardmäßig verborgen; kleiner Knopf „Statistik zeigen“ darunter, gold wenn offen; beim Wegscrollen wieder zu; Sortierung U unverändert."],
 ["4.56","28.10.","Hanuman Rec:Pbj wieder Kanaka-MP3+YT+Marken wie V4.52 (nicht hanuman-prabhus); Hilfe Offline-Tipp oben; Lautstärke pro Stück merken."],
 ["4.55","27.10.","Orte in der Aufrufstatistik: Land immer in Klammern, z.B. Berlin (DE) bzw. (DE); A–Z nach Stadtname; eine Format-Quelle (bppFmtOrt)."],
 ["4.54","27.10.","Taste „Tagesleiste ein/aus“: Flackern behoben – einzige Beschriftungsquelle in v435 (alle Sprachen); v453-Override entfernt."],
