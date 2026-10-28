@@ -9,7 +9,7 @@
   st.textContent="#bppOff.in366{position:static!important;display:inline-block;margin:0 8px 0 0;vertical-align:middle;opacity:.9;right:auto;bottom:auto}"+
     "#bpp-orte24{font-size:.68rem;color:#cbb89a;opacity:.85;line-height:1.35;text-align:right;padding:0 12px 8px;margin:0;max-height:5.6em;overflow-y:auto}";
   document.head.appendChild(st);
-  function placeOff(){ var o=document.getElementById("bppOff"), b=document.getElementById("btnOffAll"), g=b&&b.parentElement;
+  function placeOff(){ if(window.bppFootOrder463){ var o=document.getElementById("bppOff"); if(o) o.classList.add("in366"); return; } /* [Grok-Bot] V4.63 */ var o=document.getElementById("bppOff"), b=document.getElementById("btnOffAll"), g=b&&b.parentElement;
     if(!o||!g) return; if(o.parentElement!==g||g.firstChild!==o){ g.insertBefore(o,g.firstChild); } o.classList.add("in366"); }
   setInterval(placeOff,500); placeOff();
 

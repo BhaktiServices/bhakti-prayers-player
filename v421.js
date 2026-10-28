@@ -4,6 +4,7 @@
 (function(){
   if(window.bppV421) return; window.bppV421=1;
   var H=[
+["4.63","28.10.","Fusszeile: eine Positionsquelle (Offline/Download/Install → Historie/Quellen/Support → Statistik); kein Button-Springen; critical=false."],
 ["4.62","28.10.","Menü+-Zeile: Download/Install rechts von Menü±; eine Positionsquelle (kein Blinken); Statistik-Knopf wieder unter Fußzeile; critical=false."],
 ["4.61","28.10.","Menü+: Prayers runterladen / Als App installieren nur solange nötig; Fußzeile „Support“; Support oben neben Hilfe (?); Taste +/=/NumpadAdd Menü+ auch nach Play→Pause; G bleibt Großansicht (nicht Menü); critical=false."],
 ["4.60","28.10.","Stil-Knopf unter die Sprachwahl (rechtsbündig gestapelt), keine Überlappung mit der Überschrift auf Handy/Desktop; critical=false."],
@@ -99,7 +100,7 @@
   var open=false;
   function lg(){ return (typeof lang!=="undefined"&&LB[lang])?lang:"en"; }
   function esc(s){ return String(s).replace(/[&<>]/g,function(c){ return {"&":"&amp;","<":"&lt;",">":"&gt;"}[c]; }); }
-  function bppRow(o){ var r=document.getElementById("bppFoot426"); if(!r){ r=document.createElement("div"); r.id="bppFoot426"; r.style.cssText="display:flex;flex-wrap:wrap;align-items:flex-start;justify-content:space-between;gap:6px 10px;padding:0 0 8px"; } if(r.previousSibling!==o) o.parentNode.insertBefore(r,o.nextSibling); return r; } /* [Grok-Bot] V4.26: gemeinsame feste Zeile fuer Historie (links) + Karte (rechts), kein gegenseitiges Umhaengen */
+  function bppRow(o){ var r=document.getElementById("bppFoot426"); if(!r){ r=document.createElement("div"); r.id="bppFoot426"; r.style.cssText="display:flex;flex-wrap:wrap;align-items:flex-start;justify-content:space-between;gap:6px 10px;padding:0 0 8px"; } if(window.bppFootOrder463){ if(!r.parentNode){ var w=document.getElementById("bppSrcEnd")||(o&&o.parentNode)||document.body; w.appendChild(r); } return r; } /* [Grok-Bot] V4.63 */ if(r.previousSibling!==o) o.parentNode.insertBefore(r,o.nextSibling); return r; } /* [Grok-Bot] V4.26: gemeinsame feste Zeile fuer Historie (links) + Karte (rechts), kein gegenseitiges Umhaengen */
   function paint(){
     var o=document.getElementById("bpp-orte24"); if(!o||!o.parentNode) return;
     var d=document.getElementById("bppHist421");

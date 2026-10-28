@@ -47,7 +47,8 @@ window.BPP_BUILD="4.14"; window.BPP_SHOW="4.14";
     if(document.getElementById("btnInstall")){ sync(); return; }
     var o=document.getElementById("btnOffAll"); if(!o||!o.parentNode) return;
     var b=document.createElement("button"); b.id="btnInstall"; b.type="button"; b.addEventListener("click",click);
-    o.parentNode.insertBefore(b, o.nextSibling); sync();
+    if(window.bppFootOrder463){ o.parentNode.appendChild(b); } else { o.parentNode.insertBefore(b, o.nextSibling); } /* [Grok-Bot] V4.63 */
+    sync();
   }
   build(); setInterval(build,1000);
 })();

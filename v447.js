@@ -89,7 +89,8 @@ window.BPP_BUILD="4.47"; window.BPP_SHOW="4.47";
       var det=document.getElementById("btnDet"); if(det) b.className=det.className.replace(/\b(on|gold|act358|s358)\b/g,"").trim();
       b.addEventListener("click",function(e){ e.stopPropagation(); open(); }); }
     var d=document.getElementById("btnDet");
-    if(b.parentNode!==r){ if(d&&d.parentNode===r) r.insertBefore(b,d.nextSibling); else r.appendChild(b); }
+    if(!window.bppFootOrder463){ if(b.parentNode!==r){ if(d&&d.parentNode===r) r.insertBefore(b,d.nextSibling); else r.appendChild(b); } } /* [Grok-Bot] V4.63 */
+    else if(b.parentNode!==r){ r.appendChild(b); } /* einmalig anlegen, Platz setzt v463 */
     if(b.textContent!==t("btn")) b.textContent=t("btn");
     if(ov&&lastL!==lg()) build(true);
   }

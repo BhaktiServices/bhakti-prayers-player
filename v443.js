@@ -41,13 +41,15 @@ window.BPP_BUILD="4.43"; window.BPP_SHOW="4.43";
     var b=document.getElementById("bppAbc443");
     if(!b){ b=document.createElement("button"); b.type="button"; b.id="bppAbc443";
       b.addEventListener("click",function(e){ e.stopPropagation(); var nx=MD[(MD.indexOf(mode())+1)%3]; try{ localStorage.setItem(K5,nx); localStorage.setItem(K,nx==="abc"?"1":"0"); }catch(x){} paint(); try{ window.bppPaint366&&bppPaint366(); }catch(x){} }); }
-    if(b.parentNode!==r) r.appendChild(b);
+    if(!window.bppFootOrder463){ if(b.parentNode!==r) r.appendChild(b); } /* [Grok-Bot] V4.63: Abc/Det-Platz in v463 */
     var m=mode(), nx=(MD.indexOf(m)+1)%3, t=AB[l]||AB.en, on=m!=="none"; /* [Grok-Bot] V4.45 */
     if(b.textContent!==t[0][nx]) b.textContent=t[0][nx];
     var tt=t[1][nx]+" (U)"; /* V4.45: Taste U (v445.js); einheitlicher Tastenhinweis, sonst haelt v359 einen Titel mit "(A–Z)" fest */ if(b.title!==tt) b.title=tt; b.classList.toggle("on",on); b.setAttribute("aria-pressed",on?"true":"false"); b.setAttribute("data-mode445",m);
     var d=document.getElementById("btnDet"), inf=document.getElementById("bppSrcInfo");
-    if(d&&d.parentNode!==r){ var h=document.getElementById("bppHist421"); if(h&&h.parentNode===r) r.insertBefore(d,h.nextSibling); else r.appendChild(d); }
-    if(inf&&inf.parentNode!==r) r.appendChild(inf);
+    if(!window.bppFootOrder463){
+      if(d&&d.parentNode!==r){ var h=document.getElementById("bppHist421"); if(h&&h.parentNode===r) r.insertBefore(d,h.nextSibling); else r.appendChild(d); }
+      if(inf&&inf.parentNode!==r) r.appendChild(inf);
+    }
   }
   setInterval(paint,500); window.addEventListener("load",paint);
 })();

@@ -15,6 +15,7 @@ window.BPP_BUILD="4.46"; window.BPP_SHOW="4.46";
     "html body:not(.menu-full) #bppFs #bppFsBar .row>#bppFsRep#bppFsRep#bppFsRep#bppFsRep#bppFsRep#bppFsRep#bppFsRep#bppFsRep#bppFsRep#bppFsRep{display:inline-flex!important;align-items:center;justify-content:center}";
   document.head.appendChild(st);
   function place(){
+    if(window.bppFootOrder463) return; /* [Grok-Bot] V4.63: Fusszeilen-Reihenfolge in v463 */
     var b=document.getElementById("btnInstall"), o=document.getElementById("btnOffAll"), w=document.getElementById("bppSrcEnd");
     if(!b||!o||!w||!w.contains(o)) return;
     if(o.nextElementSibling!==b) o.parentNode.insertBefore(b,o.nextSibling);

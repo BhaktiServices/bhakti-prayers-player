@@ -76,27 +76,28 @@ window.BPP_BUILD="4.62"; window.BPP_SHOW="4.62";
         },{passive:true});
       }
     }
-    /* V4.62: Fusszeile NICHT in die Statistik-Box ziehen (Support/Historie blieben sonst
-       unter/ueber dem Knopf und der Knopf wirkte „verschwunden“). Box bleibt unter dem Foot. */
-    if(foot){
-      /* zuerst Foot aus der Box holen, sonst insertBefore-Zyklus */
-      if(foot.parentNode===box){
-        var par=box.parentNode;
-        if(par) par.insertBefore(foot, box);
+    /* V4.62/V4.63: strukturelle Platzierung – bei bppFootOrder463 macht das v463.js allein */
+    if(!window.bppFootOrder463){
+      if(foot){
+        if(foot.parentNode===box){
+          var par=box.parentNode;
+          if(par) par.insertBefore(foot, box);
+        }
+        if(foot.parentNode && (box.parentNode!==foot.parentNode || foot.nextSibling!==box)){
+          if(foot.nextSibling) foot.parentNode.insertBefore(box, foot.nextSibling);
+          else foot.parentNode.appendChild(box);
+        }
       }
-      if(foot.parentNode && (box.parentNode!==foot.parentNode || foot.nextSibling!==box)){
-        if(foot.nextSibling) foot.parentNode.insertBefore(box, foot.nextSibling);
-        else foot.parentNode.appendChild(box);
-      }
+      var b=document.getElementById("bppStats457");
+      if(b.parentNode!==box) box.insertBefore(b,box.firstChild);
+      if(s.parentNode!==box) box.appendChild(s);
+      var o=document.getElementById("bpp-orte24");
+      if(o&&o.parentNode!==box) box.appendChild(o);
+      var abc=document.getElementById("bppAbc443");
+      if(abc&&o&&abc.parentNode!==box) box.appendChild(abc);
     }
     var b=document.getElementById("bppStats457");
-    if(b.parentNode!==box) box.insertBefore(b,box.firstChild);
-    if(s.parentNode!==box) box.appendChild(s);
-    var o=document.getElementById("bpp-orte24");
-    if(o&&o.parentNode!==box) box.appendChild(o);
-    /* A-Z gehoert zur Statistik, nicht in die Fusszeile */
-    var abc=document.getElementById("bppAbc443");
-    if(abc&&o&&abc.parentNode!==box) box.appendChild(abc);
+    if(!b) return;
     if(open){ var rr=box.getBoundingClientRect(), vh=window.innerHeight||0;
       if(rr.bottom<=0||rr.top>=vh) open=false; }
     document.body.classList.toggle("bpp-st-on",open);
