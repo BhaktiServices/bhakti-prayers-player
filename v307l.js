@@ -11,6 +11,8 @@
   function build(){
     var s=document.getElementById("langSel"), box=s&&s.closest(".lang"), ver=document.querySelector("header h1 .ver");
     if(!box||!ver) return false;
+    /* [Grok-Bot] V4.60: Top-rechts-Stack steuert v460.js – Sprache nicht zurueck in h1 ziehen */
+    if(document.getElementById("bppTopRight460")){ box.classList.add("l307"); flags(); return true; }
     if(box.parentNode!==ver.parentNode||box.previousElementSibling!==ver) ver.parentNode.insertBefore(box, ver.nextSibling);
     box.classList.add("l307");
     ["click","pointerdown","touchstart","mousedown"].forEach(function(ev){ box.addEventListener(ev,function(e){ e.stopPropagation(); },{passive:true}); });

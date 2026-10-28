@@ -16,13 +16,13 @@ window.BPP_BUILD="3.79"; window.BPP_SHOW="3.79";
     ru:{auto:"Авто",morgen:"Утро (светлый)",abend:"Вечер (тёплый)",nacht:"Ночь (тёмный)",st:"Стиль",now:"сейчас",cl:"нажатие"},
     hi:{auto:"स्वतः",morgen:"सुबह (हल्का)",abend:"शाम (गर्म)",nacht:"रात (गहरा)",st:"शैली",now:"अभी",cl:"क्लिक"},
     pt:{auto:"Auto",morgen:"Manhã (claro)",abend:"Noite cedo (quente)",nacht:"Noite (escuro)",st:"Estilo",now:"agora",cl:"clique"}};
-  /* [Grok-Bot] V3.94: Saetze zu Klick/Auto/Open-Meteo entfernt */ var HLP={de:"<b>Stil</b> (Knopf oben rechts vor der Sprache): Auto, Morgen, Abend oder Nacht. <i>(von Grok ergänzt)</i>",
-    en:"<b>Style</b> (button at the top right, before the language): Auto, Morning, Evening or Night. <i>(added by Grok)</i>",
-    fr:"<b>Style</b> (bouton en haut à droite, avant la langue) : Auto, Matin, Soir ou Nuit. <i>(ajouté par Grok)</i>",
-    es:"<b>Estilo</b> (botón arriba a la derecha, antes del idioma): Auto, Mañana, Tarde o Noche. <i>(añadido por Grok)</i>",
-    ru:"<b>Стиль</b> (кнопка вверху справа, перед языком): Авто, Утро, Вечер или Ночь. <i>(добавлено Grok)</i>",
-    hi:"<b>शैली</b> (ऊपर दाईं ओर, भाषा से पहले बटन): स्वतः, सुबह, शाम या रात। <i>(Grok द्वारा जोड़ा गया)</i>",
-    pt:"<b>Estilo</b> (botão no canto superior direito, antes do idioma): Auto, Manhã, Noite cedo ou Noite. <i>(acrescentado por Grok)</i>"};
+  /* [Grok-Bot] V3.94: Saetze zu Klick/Auto/Open-Meteo entfernt */ var HLP={de:"<b>Stil</b> (Knopf unter der Sprachwahl oben rechts): Auto, Morgen, Abend oder Nacht. <i>(von Grok ergänzt)</i>",
+    en:"<b>Style</b> (button under the language selector, top right): Auto, Morning, Evening or Night. <i>(added by Grok)</i>",
+    fr:"<b>Style</b> (bouton sous le sélecteur de langue, en haut à droite) : Auto, Matin, Soir ou Nuit. <i>(ajouté par Grok)</i>",
+    es:"<b>Estilo</b> (botón bajo el selector de idioma, arriba a la derecha): Auto, Mañana, Tarde o Noche. <i>(añadido por Grok)</i>",
+    ru:"<b>Стиль</b> (кнопка под выбором языка, вверху справа): Авто, Утро, Вечер или Ночь. <i>(добавлено Grok)</i>",
+    hi:"<b>शैली</b> (भाषा चयन के नीचे, ऊपर दाईं ओर बटन): स्वतः, सुबह, शाम या रात। <i>(Grok द्वारा जोड़ा गया)</i>",
+    pt:"<b>Estilo</b> (botão sob o seletor de idioma, canto superior direito): Auto, Manhã, Noite cedo ou Noite. <i>(acrescentado por Grok)</i>"};
   function lg(){ var x=(typeof lang!=="undefined"&&lang)||"en"; return N[x]?x:"en"; }
   function get(k){ try{ return localStorage.getItem(k); }catch(e){ return null; } }
   function set(k,v){ try{ localStorage.setItem(k,v); }catch(e){} }
@@ -53,10 +53,10 @@ window.BPP_BUILD="3.79"; window.BPP_SHOW="3.79";
     h.classList.toggle("th-dim", mode==="auto" && dim());
     var m=document.querySelector('meta[name="theme-color"]'); if(m){ var c=th==="morgen"?"#F6F0E2":(th==="abend"?"#1E130B":"#041236"); if(m.content!==c) m.content=c; }
     btn(); }
-  function btn(){ var box=document.querySelector("header .lang"); if(!box) return; var b=document.getElementById("bppTheme");
+  function btn(){ var box=document.querySelector("#bppTopRight460 .lang")||document.querySelector("header .lang")||document.querySelector(".lang.l307"); if(!box) return; var b=document.getElementById("bppTheme");
     if(!b){ b=document.createElement("button"); b.type="button"; b.id="bppTheme"; b.onclick=function(e){ e.stopPropagation(); mode=MODES[(MODES.indexOf(mode)+1)%4]; set("bpp-theme",mode); apply(); };
       b.style.cssText="background:transparent;border:1px solid #6b5340;border-radius:6px;padding:1px 6px;font-size:.8rem;min-height:auto;color:#e0b45a;cursor:pointer;line-height:1.3";
-      box.insertBefore(b, box.firstChild); }
+      box.appendChild(b); /* [Grok-Bot] V4.60: Lage steuert v460 (unter Sprache) */ }
     var nx=MODES[(MODES.indexOf(mode)+1)%4], T=N[lg()], t="Stil "+SYM[nx];
     var ti=(mode==="auto"?"A = automatisch, wählt nach Ortszeit den passenden Stil. ":"")+T.st+": "+T.now+" "+T[mode]+(mode==="auto"?" ("+T[eff()]+")":"")+" · "+T.cl+": "+T[nx];
     if(b.textContent!==t) b.textContent=t; if(b.title!==ti){ b.title=ti; b.setAttribute("aria-label",ti); } }
