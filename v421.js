@@ -4,6 +4,7 @@
 (function(){
   if(window.bppV421) return; window.bppV421=1;
   var H=[
+["4.59","28.10.","Auto-Update: version.json prüfen (Start/Fokus/alle 5 Min); bei neuer Version neu laden (sofort oder nach Pause; critical sofort); SW Cache-Namen APP/AUD repariert."],
 ["4.58","28.10.","Fix: Lautstärke nicht mehr auf 0 – ungültige/bpp-vol-0-Werte werden gelöscht; auf dem Handy kein Merken (Systemlautstärke); Desktop merkt nur Werte ab 5 %."],
 ["4.57","28.10.","Statistik (Aufrufe/Orte) standardmäßig verborgen; kleiner Knopf „Statistik zeigen“ darunter, gold wenn offen; beim Wegscrollen wieder zu; Sortierung U unverändert."],
 ["4.56","28.10.","Hanuman Rec:Pbj wieder Kanaka-MP3+YT+Marken wie V4.52 (nicht hanuman-prabhus); Hilfe Offline-Tipp oben; Lautstärke pro Stück merken."],

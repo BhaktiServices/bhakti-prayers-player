@@ -1,9 +1,10 @@
 /* [Grok-Bot] V2.03: Service Worker fuer BPPlayer, offline-faehig.
-   App-Dateien (HTML/JS/CSS/JSON/Symbole): immer zuerst Netz (neue Version kommt sofort), Kopie im Cache "bpp-app-<Version>";
+   App-Dateien (HTML/JS/CSS/JSON/Symbole): network-first (neue Version kommt sofort), Kopie im Cache "bpp-app-<Version>"; Offline: Cache. V4.59: APP/AUD, Client-Notify.
    ohne Netz aus dem Cache. Alte App-Caches werden beim Aktivieren geloescht.
    MP3 aus audio/: liegen im Cache "bpp-audio-v1" (laedt v203.js im Hintergrund). Abspielen aus dem Cache mit Range-Antworten (206),
    damit Spulen geht. Nicht im Cache: direkt aus dem Netz. YouTube und fremde Server laufen am Service Worker vorbei. */
-var VER="4580"; // [Grok-Bot] V4.58
+var VER="4590"; // [Grok-Bot] V4.59
+var APP="bpp-app-"+VER; var AUD="bpp-audio-v1"; /* [Grok-Bot] V4.59: Cache-Namen wieder gesetzt (fehlten) */
 var CORE=["./","index.html","follow.js","v218.js","manifest.json","icon-192.svg","icon-512.svg","icon-192.png","icon-512.png","icon-maskable-192.png","icon-maskable-512.png","apple-touch-icon.png","fonts/fonts-local.css","lib/mqtt.min.js","v204.js?v=205","version.json","start.jpg"]; /* [Grok.com] */
 self.addEventListener("install", function(e){
   /* [Grok-Bot] V3.41: zusaetzlich ALLE lokalen Dateien vorab speichern: aus index.html (src/href mit ?v=), rekursiv aus nachgeladenen
@@ -36,7 +37,12 @@ self.addEventListener("activate", function(e){
     return caches.open(AUD).then(function(c){ return c.keys().then(function(keys){
       return Promise.all(keys.filter(function(q){ return /guru-stotram-abend\.mp3/.test(q.url); }).map(function(q){ return c.delete(q); }));
     }); }); /* [Grok-Bot] V2.20: eine Klammer zu viel entfernt (Skriptfehler, Service Worker liess sich nicht installieren) */
-  }).then(function(){ return self.clients.claim(); }));
+  }).then(function(){ return self.clients.claim(); }).then(function(){
+    /* [Grok-Bot] V4.59: offene Fenster informieren (neuer Client-Code laedt dann neu) */
+    return self.clients.matchAll({type:"window", includeUncontrolled:true}).then(function(cs){
+      cs.forEach(function(c){ try{ c.postMessage({bppSwUpdate:VER}); }catch(x){} });
+    });
+  }));
 });
 function isAudio(u){ return /\/audio\/[^\/]+\.(mp3|m4a|ogg|wav)$/i.test(u.pathname); }
 function audioKey(u){ return u.origin+u.pathname; }
@@ -89,4 +95,8 @@ self.addEventListener("fetch", function(e){
     }).then(function(m){ return m || Response.error(); });
   }));
 });
-self.addEventListener("message", function(e){ if(e.data==="bpp-ver" && e.source) e.source.postMessage({bppSw:VER}); });
+self.addEventListener("message", function(e){
+  var d=e.data;
+  if(d==="bpp-ver" && e.source) e.source.postMessage({bppSw:VER});
+  if(d && d.type==="bpp-skip-waiting") self.skipWaiting(); /* [Grok-Bot] V4.59 */
+});
