@@ -52,6 +52,7 @@ window.BPP_BUILD="4.61"; window.BPP_SHOW="4.61";
   }
   function order(){
     var r=$("bppL5"), c=$("btnCols"), m=$("btnMenu"); if(!r) return;
+    if(window.bppL5Order462) return; /* [Grok-Bot] V4.62: eine Quelle in v462 */
     if(c){ if(c.style.display==="none") c.style.display=""; if(c.parentNode!==r||m&&c.nextElementSibling!==m) r.insertBefore(c, m&&m.parentNode===r?m:null); }
     if(m&&r.lastElementChild!==m) r.appendChild(m);
   }

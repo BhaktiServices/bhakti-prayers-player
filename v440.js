@@ -2,7 +2,7 @@
    (2) Panduranga Arati: Strophen nach der gesungenen Reihenfolge der Aufnahme (Wiederholungen als eigene Strophen), Zeitmarken neu gemessen (siehe unten). */
 window.BPP_BUILD="4.40"; window.BPP_SHOW="4.40";
 (function(){
-  function mv(){ var w=document.getElementById("btnWd435"), c=document.getElementById("btnCols"); if(!w||!c||!c.parentNode) return;
+  function mv(){ if(window.bppL5Order462) return; /* [Grok-Bot] V4.62: Reihenfolge in v462 */ var w=document.getElementById("btnWd435"), c=document.getElementById("btnCols"); if(!w||!c||!c.parentNode) return;
     if(w.nextElementSibling!==c) c.parentNode.insertBefore(w,c); }
   if(document.body) mv(); document.addEventListener("DOMContentLoaded",mv); setInterval(function(){ try{ mv(); }catch(e){} },300);
 })();

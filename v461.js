@@ -6,7 +6,7 @@
    (3) Taste "+"/NumpadAdd/"=" oeffnet Menue+ auch nach Play->Pause (Fokus von Play-Knopf/Audio/YT-iframe
    holen; v352 mappt zusaetzlich "=" / NumpadAdd). Taste G bleibt Grossansicht (btnFs) – nicht umbelegt.
    Kein Doppel-Overwrite der Positionsquellen v460/v341. */
-window.BPP_BUILD="4.61"; window.BPP_SHOW="4.61";
+window.BPP_BUILD="4.62"; window.BPP_SHOW="4.62";
 (function(){
   if(window.bppV461) return; window.bppV461=1;
 
@@ -46,7 +46,7 @@ window.BPP_BUILD="4.61"; window.BPP_SHOW="4.61";
   st.textContent=
     /* Menue+ Duplikate: Optik wie unten, nur bei menu-full und wenn sichtbar */
     "body:not(.menu-full) #btnOffMenu461,body:not(.menu-full) #btnInstMenu461{display:none!important}"+
-    "#btnOffMenu461,#btnInstMenu461{display:none;align-items:center;gap:6px;margin:0;font:inherit;font-size:.9rem;padding:6px 12px;min-height:32px;cursor:pointer;order:18}"+
+    "#btnOffMenu461,#btnInstMenu461{display:none;align-items:center;gap:6px;margin:0;font:inherit;font-size:.9rem;padding:6px 12px;min-height:32px;cursor:pointer}"+
     "body.menu-full #btnOffMenu461.show461,body.menu-full #btnInstMenu461.show461{display:inline-flex!important}"+
     "#btnOffMenu461.busy{background:#e0b45a!important;color:#1a1208!important;font-weight:700}"+
     /* Support oben neben Hilfe: eigene Spalte links (v321 erzeugt bppHelpCol nicht mehr) */
@@ -89,21 +89,20 @@ window.BPP_BUILD="4.61"; window.BPP_SHOW="4.61";
     if(!dl){
       dl=document.createElement("button"); dl.type="button"; dl.id="btnOffMenu461";
       dl.addEventListener("click",clickDl,true);
-      row.insertBefore(dl, menu);
+      /* rechts von Menue+; endgueltige Reihenfolge: v462 */
+      if(menu.nextSibling) row.insertBefore(dl, menu.nextSibling); else row.appendChild(dl);
     } else if(dl.parentNode!==row){
-      row.insertBefore(dl, menu);
+      row.appendChild(dl);
     }
     var inst=document.getElementById("btnInstMenu461");
     if(!inst){
       inst=document.createElement("button"); inst.type="button"; inst.id="btnInstMenu461";
       inst.addEventListener("click",clickInst,true);
-      row.insertBefore(inst, menu);
+      row.appendChild(inst);
     } else if(inst.parentNode!==row){
-      row.insertBefore(inst, menu);
+      row.appendChild(inst);
     }
-    /* Reihenfolge: … dl, inst, menu */
-    if(dl.nextSibling!==inst) row.insertBefore(dl, inst);
-    if(inst.nextSibling!==menu) row.insertBefore(inst, menu);
+    /* Kein eigenes Umhaengen der Zeile – v462 ist die einzige Positionsquelle */
 
     var lab=L();
     if(!dl.classList.contains("busy") && dl.textContent!==lab.dl){ dl.textContent=lab.dl; }

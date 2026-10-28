@@ -1,9 +1,9 @@
-/* [Grok-Bot] V4.57: Gesamte Statistik (Aufrufe, Hoerzeit, Orte/TOP10-Liste) standardmaessig verborgen.
+/* [Grok-Bot] V4.57/V4.62: Gesamte Statistik (Aufrufe, Hoerzeit, Orte/TOP10-Liste) standardmaessig verborgen.
    Kleiner Knopf #bppStats457 unter der Fusszeile (#foot), vor #bpp-stats: Beschriftung = naechste Aktion
    ("Statistik zeigen" / "Statistik verbergen", 8 Sprachen), gold wenn offen; Zustand nur im Speicher
    (kein localStorage, Start immer zu). Beim Wegscrollen (Box #bppStatsBox457 verlaesst Viewport) wieder zu
    via IntersectionObserver. Sortier-Knopf #bppAbc443 und Taste U bleiben; Hilfe-Tipp nur hier (eine Quelle). */
-window.BPP_BUILD="4.57"; window.BPP_SHOW="4.57";
+window.BPP_BUILD="4.62"; window.BPP_SHOW="4.62";
 (function(){
   if(window.bppV457) return; window.bppV457=1;
   var open=false;
@@ -43,9 +43,17 @@ window.BPP_BUILD="4.57"; window.BPP_SHOW="4.57";
   function paint(){
     var s=document.getElementById("bpp-stats"); if(!s||!s.parentNode) return;
     var box=document.getElementById("bppStatsBox457");
+    var foot=document.getElementById("bppFoot426");
+    var host=(foot&&foot.parentNode)||s.parentNode;
     if(!box){
       box=document.createElement("div"); box.id="bppStatsBox457";
-      s.parentNode.insertBefore(box,s);
+      /* unter der Fusszeile: direkt nach #bppFoot426, sonst vor #bpp-stats */
+      if(foot&&foot.parentNode){
+        if(foot.nextSibling) foot.parentNode.insertBefore(box, foot.nextSibling);
+        else foot.parentNode.appendChild(box);
+      } else {
+        s.parentNode.insertBefore(box,s);
+      }
       var b0=document.createElement("button"); b0.type="button"; b0.id="bppStats457";
       b0.addEventListener("click",function(e){
         e.stopPropagation(); open=!open;
@@ -56,7 +64,29 @@ window.BPP_BUILD="4.57"; window.BPP_SHOW="4.57";
       if(window.IntersectionObserver){
         new IntersectionObserver(function(es){
           es.forEach(function(x){ if(!x.isIntersecting) close(); });
-        }).observe(box);
+        },{threshold:0,rootMargin:"0px"}).observe(box);
+      }
+      if(!window.bppStats457Scroll){
+        window.bppStats457Scroll=1;
+        window.addEventListener("scroll",function(){
+          if(!open) return;
+          var bx=document.getElementById("bppStatsBox457"); if(!bx) return;
+          var rr=bx.getBoundingClientRect(), vh=window.innerHeight||0;
+          if(rr.bottom<=0||rr.top>=vh) close();
+        },{passive:true});
+      }
+    }
+    /* V4.62: Fusszeile NICHT in die Statistik-Box ziehen (Support/Historie blieben sonst
+       unter/ueber dem Knopf und der Knopf wirkte „verschwunden“). Box bleibt unter dem Foot. */
+    if(foot){
+      /* zuerst Foot aus der Box holen, sonst insertBefore-Zyklus */
+      if(foot.parentNode===box){
+        var par=box.parentNode;
+        if(par) par.insertBefore(foot, box);
+      }
+      if(foot.parentNode && (box.parentNode!==foot.parentNode || foot.nextSibling!==box)){
+        if(foot.nextSibling) foot.parentNode.insertBefore(box, foot.nextSibling);
+        else foot.parentNode.appendChild(box);
       }
     }
     var b=document.getElementById("bppStats457");
@@ -64,11 +94,11 @@ window.BPP_BUILD="4.57"; window.BPP_SHOW="4.57";
     if(s.parentNode!==box) box.appendChild(s);
     var o=document.getElementById("bpp-orte24");
     if(o&&o.parentNode!==box) box.appendChild(o);
-    var r=document.getElementById("bppFoot426");
-    if(r&&o&&r.parentNode===box&&r.previousSibling!==o) box.insertBefore(r,o.nextSibling);
-    else if(r&&o&&r.parentNode!==box&&o.parentNode===box) box.appendChild(r);
+    /* A-Z gehoert zur Statistik, nicht in die Fusszeile */
+    var abc=document.getElementById("bppAbc443");
+    if(abc&&o&&abc.parentNode!==box) box.appendChild(abc);
     if(open){ var rr=box.getBoundingClientRect(), vh=window.innerHeight||0;
-      if(rr.bottom<=0||rr.top>=vh) open=false; } /* Wegscrollen auch ohne IO-Kante */
+      if(rr.bottom<=0||rr.top>=vh) open=false; }
     document.body.classList.toggle("bpp-st-on",open);
     var t=(LB[lg()]||LB.en)[open?1:0];
     if(b.textContent!==t) b.textContent=t;
