@@ -74,6 +74,9 @@ window.BPP_SHOW = "4.68";
   }
 
   function audioEl() {
+    try {
+      if (typeof a !== "undefined" && a) return a;
+    } catch (e) {}
     return document.getElementById("a");
   }
 
@@ -216,29 +219,51 @@ window.BPP_SHOW = "4.68";
 
   function seekBy(delta) {
     if (ytMode()) return;
-    var a = audioEl();
-    if (!a || !a.src) return;
-    var t = Math.max(0, Math.min((a.duration || 1e9) - 0.05, (a.currentTime || 0) + delta));
+    /* Gleiche Spul-Logik wie Player-Knöpfe −30/+30 (bppSkip) */
     try {
-      a.currentTime = t;
+      if (typeof window.bppSkip === "function") {
+        window.bppSkip(delta);
+        pos();
+        state();
+        return;
+      }
     } catch (e) {}
+    var el = audioEl();
+    if (!el || !el.src) return;
+    var t = Math.max(0, Math.min((el.duration || 1e9) - 0.05, (el.currentTime || 0) + delta));
+    try {
+      el.currentTime = t;
+    } catch (e2) {}
     pos();
     state();
   }
 
   function seekTo(t) {
     if (ytMode()) return;
-    var a = audioEl();
-    if (!a || !a.src || typeof t !== "number" || !isFinite(t)) return;
-    t = Math.max(0, Math.min(a.duration || t, t));
+    var el = audioEl();
+    if (!el || !el.src || typeof t !== "number" || !isFinite(t)) return;
+    var dur = isFinite(el.duration) ? el.duration : t;
+    t = Math.max(0, Math.min(dur, t));
+    var cur = el.currentTime || 0;
+    /* relativ über bppSkip, falls Direkt-Seek blockiert ist */
     try {
-      if (a.fastSeek) a.fastSeek(t);
-      else a.currentTime = t;
-    } catch (e) {
+      if (typeof window.bppSkip === "function" && Math.abs(t - cur) > 0.2) {
+        window.bppSkip(t - cur);
+        pos();
+        return;
+      }
+    } catch (e) {}
+    try {
+      if (el.fastSeek) el.fastSeek(t);
+      else el.currentTime = t;
+    } catch (e2) {
       try {
-        a.currentTime = t;
-      } catch (e2) {}
+        el.currentTime = t;
+      } catch (e3) {}
     }
+    try {
+      if (typeof markPlayOrigin === "function") markPlayOrigin();
+    } catch (e4) {}
     pos();
   }
 
