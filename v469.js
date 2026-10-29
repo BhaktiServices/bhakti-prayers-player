@@ -2,8 +2,10 @@
    immer ganz nach oben zum Titel scrollen, damit der BPP komplett sichtbar ist.
    history.scrollRestoration='manual'; nach Laden und nach spaeterer Layout-Verschiebung
    (Fonts/Lyrics/Statistik, ~1,5 s) window.scrollTo(0,0). Auto-Scrolls zur aktiven Strophe
-   (pinStanza Seiten-Scroll) beim Start unterdruecken, bis der Nutzer Play drueckt oder
-   selbst scrollt – danach normales Verhalten. Eine Stelle. */
+   (pinStanza Seiten-Scroll, scrollIntoView) beim Start unterdruecken, bis der Nutzer Play
+   drueckt oder selbst scrollt – danach normales Verhalten. Eine Stelle.
+   Hinweis: ?p=-Direktlinks rufen play()/btnPlay.click() programmatisch auf (isTrusted=false)
+   und entsperren daher nicht; erst echte Nutzer-Geste. */
 window.BPP_BUILD = "4.69";
 window.BPP_SHOW = "4.69";
 
@@ -19,7 +21,7 @@ window.BPP_SHOW = "4.69";
   var forcing = false;
   var unlockReason = "";
   var started = Date.now();
-  var HOLD_MS = 2000; /* Layout-Nachlauf Fonts/Lyrics/Statistik */
+  var HOLD_MS = 3200;
 
   function top() {
     forcing = true;
@@ -47,10 +49,9 @@ window.BPP_SHOW = "4.69";
     return locked;
   }
 
-  /* Sofort + nach Load/Layout */
   top();
   function schedule() {
-    [0, 50, 100, 200, 400, 800, 1200, 1500, 2000, 2500].forEach(function (ms) {
+    [0, 50, 100, 200, 400, 700, 1000, 1500, 2000, 2500, 3000].forEach(function (ms) {
       setTimeout(function () {
         if (locked) top();
       }, ms);
@@ -76,7 +77,6 @@ window.BPP_SHOW = "4.69";
     schedule();
   });
 
-  /* Spaete Layout-Verschiebungen: Lyrics/Statistik/Relayout */
   var moTimer = null;
   try {
     var mo = new MutationObserver(function () {
@@ -92,8 +92,7 @@ window.BPP_SHOW = "4.69";
         mo.observe(document.documentElement, {
           childList: true,
           subtree: true,
-          attributes: true,
-          characterData: false
+          attributes: true
         });
       }
     }
@@ -103,22 +102,20 @@ window.BPP_SHOW = "4.69";
       try {
         mo.disconnect();
       } catch (e) {}
-    }, HOLD_MS + 800);
+    }, HOLD_MS + 500);
   } catch (e) {}
 
-  /* Seiten-Auto-Scroll zuruecksetzen, solange gelockt */
   window.addEventListener(
     "scroll",
     function () {
       if (!locked || forcing) return;
-      if (window.scrollY > 0 || (document.scrollingElement && document.scrollingElement.scrollTop > 0)) {
-        top();
-      }
+      var y = window.scrollY || (document.scrollingElement && document.scrollingElement.scrollTop) || 0;
+      if (y > 0) top();
     },
     { passive: true, capture: true }
   );
 
-  /* pinStanza: Seiten-Scroll beim Start unterdruecken (Lyrics-Fenster darf weiter gesetzt werden) */
+  /* pinStanza: Seiten-Scroll beim Start unterdruecken */
   function wrapPin() {
     var fn = window.pinStanza;
     if (typeof fn !== "function" || fn.__v469) return;
@@ -136,6 +133,9 @@ window.BPP_SHOW = "4.69";
         setTimeout(function () {
           if (locked) top();
         }, 30);
+        setTimeout(function () {
+          if (locked) top();
+        }, 200);
       }
       return r;
     };
@@ -148,62 +148,61 @@ window.BPP_SHOW = "4.69";
   wrapPin();
   setInterval(wrapPin, 500);
 
-  /* Nutzer scrollt selbst -> freigeben (nicht unsere Force-Scrolls) */
+  /* scrollIntoView (z. B. v223 nach Play) waehrend Lock neutralisieren */
+  try {
+    var siv = Element.prototype.scrollIntoView;
+    if (siv && !Element.prototype.scrollIntoView.__v469) {
+      var ws = function () {
+        if (locked) {
+          top();
+          return;
+        }
+        return siv.apply(this, arguments);
+      };
+      ws.__v469 = 1;
+      Element.prototype.scrollIntoView = ws;
+    }
+  } catch (e) {}
+
+  /* Nur echte Nutzer-Geste entsperrt (nicht programmatisches play/?p=/btn.click) */
   var NAV = { ArrowUp: 1, ArrowDown: 1, PageUp: 1, PageDown: 1, Home: 1, End: 1, " ": 1 };
-  function userIntent(e) {
+  function userScroll(e) {
     if (!locked) return;
     if (e.type === "keydown" && !NAV[e.key]) return;
-    /* Klicks auf Play nicht als Scroll werten – Play-Pfad unlocked separat */
-    if (e.type === "pointerdown" || e.type === "mousedown" || e.type === "touchstart") {
-      var t = e.target;
-      if (t && t.closest && t.closest("#btnPlay, #btnP, .play, [data-play], button.play")) return;
-    }
-    if (e.type === "wheel" || e.type === "touchmove" || e.type === "keydown") {
-      unlock(e.type);
-      return;
-    }
-    /* Scrollbalken / sonstige Zeiger auf Document: erst beim naechsten echten Scroll freigeben */
+    if (e.isTrusted === false) return;
+    unlock(e.type);
   }
   ["wheel", "touchmove", "keydown"].forEach(function (t) {
-    window.addEventListener(t, userIntent, { capture: true, passive: true });
+    window.addEventListener(t, userScroll, { capture: true, passive: true });
   });
-
-  /* Play -> freigeben (dann v223/normales Mitlesen ok) */
-  function onPlay() {
-    unlock("play");
-  }
-  function wrapPlay() {
-    if (typeof window.play === "function" && !window.play.__v469) {
-      var pl = window.play;
-      var w = function () {
-        onPlay();
-        return pl.apply(this, arguments);
-      };
-      w.__v469 = 1;
-      window.play = w;
-    }
-  }
-  wrapPlay();
-  setInterval(wrapPlay, 800);
-
-  function bindAudio() {
-    var a = document.getElementById("a");
-    if (!a || a.__v469) return;
-    a.__v469 = 1;
-    a.addEventListener("play", onPlay);
-    a.addEventListener("playing", onPlay);
-  }
-  bindAudio();
-  document.addEventListener("DOMContentLoaded", bindAudio);
-  window.addEventListener("load", bindAudio);
-  setInterval(bindAudio, 1000);
 
   document.addEventListener(
     "click",
     function (e) {
+      if (!locked || e.isTrusted === false) return;
       var t = e.target;
       if (!t || !t.closest) return;
-      if (t.closest("#btnPlay, #btnP, button#play, .bar .play, [aria-label='Play'], [title='Play']")) onPlay();
+      if (
+        t.closest(
+          "#btnPlay, #btnP, button#play, .bar .play, [aria-label='Play'], [title='Play'], #bppTapPlay"
+        )
+      ) {
+        unlock("play-click");
+      }
+    },
+    true
+  );
+
+  /* Tastatur Play (Leertaste oft Pause/Play) – nur wenn Fokus nicht in Input */
+  document.addEventListener(
+    "keydown",
+    function (e) {
+      if (!locked || e.isTrusted === false) return;
+      if (e.code === "Space" || e.key === "MediaPlayPause" || e.key === "MediaPlay") {
+        var tag = (e.target && e.target.tagName) || "";
+        if (/INPUT|TEXTAREA|SELECT/.test(tag)) return;
+        unlock("play-key");
+      }
     },
     true
   );
