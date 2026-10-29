@@ -9,9 +9,9 @@
 <meta property="og:image" content="start.jpg">
 <link rel="manifest" href="manifest.json?v=341"><!-- [Grok-Bot] V2.53: PWA wieder installierbar -->
 <meta name="theme-color" content="#041236"><link rel="apple-touch-icon" href="apple-touch-icon.png"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="BPPlayer"><!-- [Grok-Bot] V3.41 -->
-<title>Bhakti Prayers Player V4.64</title>
+<title>Bhakti Prayers Player V4.65</title>
 <script>/* [Grok-Bot] V3.30: zentrale Version - aeltere Skripte (V1.66 usw.) koennen Kopf und Titel nicht mehr kurz ueberschreiben */
-window.BPP_VERSION="4.64";
+window.BPP_VERSION="4.65";
 /* [Grok-Bot] V4.27 Erststart: ohne Link-Parameter und ohne gespeicherte Einstellungen wie der Standard-Link starten (Auswertung durch v420/v315; nur Position, kein erzwungenes Abspielen) */
 (function(){ try{ var L=localStorage, has=false; for(var j=0;j<L.length;j++){ if(/^bpp/i.test(L.key(j))){ has=true; break; } }
   if(!has && !location.search && !L.getItem("bpp-first-run-done")) history.replaceState(null,"",location.pathname+"?p=guru-stotram&t=0&rec=pbj&cols=2&chords=zeile&tr=1&src=mp3"+location.hash);
@@ -156,7 +156,7 @@ body.show-ch .rowline .rch{display:block}
 </head>
 <body tabindex="0">
 <header>
-  <h1>Bhakti Prayers Player <span class="ver">V4.64</span><!-- [Grok.com] --></h1>
+  <h1>Bhakti Prayers Player <span class="ver">V4.65</span><!-- [Grok.com] --></h1>
 <script>/* [Grok-Bot] V3.30: Versionswaechter - setzt jede Aenderung an h1 .ver sofort (vor dem Zeichnen) auf BPP_VERSION zurueck */
 (function(){ var h1=document.querySelector("header h1"); if(!h1) return;
   var V="V"+window.BPP_VERSION, RX=/V\d+\.\d+[a-z]?/g;
@@ -844,11 +844,11 @@ layoutLyrics();
 <script src="v454.js?v=1"></script><!-- [Grok-Bot] V4.54 Tagesleiste: eine Label-Quelle, kein Flackern -->
 <script src="v455.js?v=1"></script><!-- [Grok-Bot] V4.55 Orte: Land immer in Klammern (bppFmtOrt in v366) -->
 <script src="v456.js?v=458"></script><!-- [Grok-Bot] V4.56/V4.58: Offline-Tipp + Lautstaerke (Fix: kein 0, Mobil aus) -->
-<script src="v457.js?v=463"></script><!-- [Grok-Bot] V4.57: Statistik standard zu, Knopf zeigt/verbirgt, Auto-zu beim Wegscrollen -->
+<script src="v457.js?v=465"></script><!-- [Grok-Bot] V4.65: Statistik default ein, Fusszeilen-Knopf, Zustand merken, Worldwide-Ueberschrift -->
 <script src="v459.js?v=1"></script><!-- [Grok-Bot] V4.59: Auto-Update version.json + Reload -->
 <script src="v460.js?v=1"></script><!-- [Grok-Bot] V4.60: Stil unter Sprachwahl (rechtsbuendig gestapelt) -->
-<script src="v461.js?v=4"></script><!-- [Grok-Bot] V4.61: Menue+ DL/Install; Support oben; + nach Pause; G=Gross belassen -->
-<script src="v462.js?v=2"></script><!-- [Grok-Bot] V4.62: eine Positionsquelle Menue+-Zeile (Wd, Spalten, Menue, DL, Install); Statistik-Knopf wieder -->
-<script src="v463.js?v=2"></script><!-- [Grok-Bot] V4.64: eine Positionsquelle Fusszeile (Offline/DL/Install, Historie/Quellen/Support, Statistik) -->
+<script src="v461.js?v=465"></script><!-- [Grok-Bot] V4.65: Menue+ ohne DL/Install (nur Fusszeile); Support oben; + Fokus -->
+<script src="v462.js?v=465"></script><!-- [Grok-Bot] V4.65: Menue+-Zeile ohne DL/Install (Wd, Spalten, Menue) -->
+<script src="v463.js?v=465"></script><!-- [Grok-Bot] V4.65: eine Positionsquelle Fusszeile (Offline/DL/Install, Historie/Quellen/Support, Statistik) -->
 </body>
 </html>
