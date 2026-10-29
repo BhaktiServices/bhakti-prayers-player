@@ -157,7 +157,9 @@ window.BPP_SHOW = "4.68";
     var P = curPrayer();
     var t = titleOf(P);
     var art = artistOf(P);
-    if (!force && lastTitle === t && lastArtist === art && ms.metadata) return;
+    var cur = ms.metadata;
+    var ours = !!(cur && cur.album === "Bhakti Prayers Player" && cur.title === t && cur.artist === art);
+    if (!force && ours && lastTitle === t && lastArtist === art) return;
     try {
       ms.metadata = new MediaMetadata({
         title: t,
@@ -366,8 +368,10 @@ window.BPP_SHOW = "4.68";
   setInterval(function () {
     if (ytMode()) return;
     installHandlers();
-    if (isMp3Playing() || hasMp3Src()) refresh(false);
-  }, 2000);
+    /* Meta immer gegen v201/v205 behaupten */
+    meta(false);
+    if (isMp3Playing() || hasMp3Src()) { state(); pos(); }
+  }, 1000);
 
   /* Test-/Debug-API für Playwright */
   window.bppMS468 = {
