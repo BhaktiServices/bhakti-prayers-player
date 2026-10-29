@@ -4,6 +4,7 @@
 (function(){
   if(window.bppV421) return; window.bppV421=1;
   var H=[
+["4.70","29.10.","Offline immer auf MP3: bei navigator.onLine false (Start + offline-Event) oder YouTube-iframe/API-Timeout ~4 s automatisch MP3, YT-Feld aus, Position übernehmen; Nutzerwahl bpp-src (YT) nicht überschreiben – bei online wiederherstellen (nicht während Play, sonst bei Pause); Cache-Miss-Meldung „Offline nicht gespeichert – bitte Prayers runterladen“; eine Stelle v470.js; critical=false."],
 ["4.69","29.10.","Beim Start (Seitenaufruf/Reload/PWA) immer zum Titel scrollen (scrollRestoration=manual, scrollTo(0,0) nach Laden und ~1,5 s Layout); Auto-Scroll zur aktiven Strophe bis Play oder Nutzer-Scroll unterdrückt; eine Stelle v469.js; critical=false."],
 ["4.68","29.10.","Media Session: Steuerleiste in Android-Benachrichtigung und iPhone-Sperrbildschirm/Kontrollzentrum (metadata Titel/Aufnahme Pbj·Mtj/Album/Artwork, play·pause·prev·next Prayer, ±30 s, seekto, Position/State); nur MP3, YouTube unverändert; eine Stelle v468.js; critical=false."],
 ["4.67","29.10.","Hanumān Cālīsā Rec Mtj: Sync neu vermessen (Energie/Pausen + Whisper); zu früher Sprung 2→3 behoben (buddhi @59.8 s, Refrain Rāmajī erstmals @79.4 s); Startzeiten in sync/hanuman-mtj.json, Pbj unverändert; Service Worker cached Sync-Datei; critical=false."],
