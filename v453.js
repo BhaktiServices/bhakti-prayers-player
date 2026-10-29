@@ -93,13 +93,14 @@ window.BPP_BUILD="4.53"; window.BPP_SHOW="4.53";
       return ["https://cdn.jsdelivr.net/gh/BhaktiServices/bhakti-prayers-player@main/"+(mtj()?MTJ_F:PBJ_F)];
     },set:function(v){ baseBag.audioAlt=v; }});
     Object.defineProperty(P,"preferFile",{configurable:true,enumerable:true,get:function(){ return true; },set:function(v){ baseBag.preferFile=v; }});
-    Object.defineProperty(P,"seqFile",{configurable:true,enumerable:true,get:function(){ return mtj()?MTJ_SEQ.slice():PBJ_SEQ.map(function(e){return e.slice();}); },set:function(v){ if(!mtj()) baseBag.seqFile=v; }});
+    function mtjSeq(){ return (window.BPP_MTJ_SEQ&&window.BPP_MTJ_SEQ.length)?window.BPP_MTJ_SEQ:MTJ_SEQ; } /* V4.67: Sync-Datei */
+    Object.defineProperty(P,"seqFile",{configurable:true,enumerable:true,get:function(){ return mtj()?mtjSeq().slice().map(function(e){return e.slice();}):PBJ_SEQ.map(function(e){return e.slice();}); },set:function(v){ if(!mtj()) baseBag.seqFile=v; }});
     Object.defineProperty(P,"marksFile",{configurable:true,enumerable:true,get:function(){
-      if(mtj()){ this._bppEstMarks=0; this._bppEstSrc=""; return marksFromSeq(MTJ_SEQ); }
+      if(mtj()){ this._bppEstMarks=0; this._bppEstSrc=""; return marksFromSeq(mtjSeq()); }
       this._bppEstMarks=0; this._bppEstSrc=""; return PBJ_M.slice();
     },set:function(v){ if(!mtj()) baseBag.marksFile=v; }});
-    Object.defineProperty(P,"marksYt",{configurable:true,enumerable:true,get:function(){ return mtj()?(baseBag.marksYt||marksFromSeq(MTJ_SEQ)):PBJ_M.slice(); },set:function(v){ baseBag.marksYt=v; }});
-    Object.defineProperty(P,"seqYt",{configurable:true,enumerable:true,get:function(){ return mtj()?(baseBag.seqYt||MTJ_SEQ.slice()):PBJ_SEQ.map(function(e){return e.slice();}); },set:function(v){ baseBag.seqYt=v; }});
+    Object.defineProperty(P,"marksYt",{configurable:true,enumerable:true,get:function(){ return mtj()?(baseBag.marksYt||marksFromSeq(mtjSeq())):PBJ_M.slice(); },set:function(v){ baseBag.marksYt=v; }});
+    Object.defineProperty(P,"seqYt",{configurable:true,enumerable:true,get:function(){ return mtj()?(baseBag.seqYt||mtjSeq().slice().map(function(e){return e.slice();})):PBJ_SEQ.map(function(e){return e.slice();}); },set:function(v){ baseBag.seqYt=v; }});
     Object.defineProperty(P,"youtube",{configurable:true,enumerable:true,get:function(){ return mtj()?(baseBag.youtube||"rhSVddEZW88"):PBJ_YT; },set:function(v){ baseBag.youtube=v; }});
     Object.defineProperty(P,"zeilen",{configurable:true,enumerable:true,get:function(){ return mtj()?mtjZeilen:pbjZeilen; },set:function(){ /* Strip von außen ignorieren */ }});
     Object.defineProperty(P,"quelle",{configurable:true,enumerable:true,get:function(){
