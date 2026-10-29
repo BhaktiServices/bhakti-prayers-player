@@ -4,6 +4,7 @@
 (function(){
   if(window.bppV421) return; window.bppV421=1;
   var H=[
+["4.68","29.10.","Media Session: Steuerleiste in Android-Benachrichtigung und iPhone-Sperrbildschirm/Kontrollzentrum (metadata Titel/Aufnahme Pbj·Mtj/Album/Artwork, play·pause·prev·next Prayer, ±30 s, seekto, Position/State); nur MP3, YouTube unverändert; eine Stelle v468.js; critical=false."],
 ["4.67","29.10.","Hanumān Cālīsā Rec Mtj: Sync neu vermessen (Energie/Pausen + Whisper); zu früher Sprung 2→3 behoben (buddhi @59.8 s, Refrain Rāmajī erstmals @79.4 s); Startzeiten in sync/hanuman-mtj.json, Pbj unverändert; Service Worker cached Sync-Datei; critical=false."],
 ["4.66","29.10.","Fusszeile: Prayers runterladen / Als App installieren unter Windows wieder klickbar (waren in #bppOff mit pointer-events:none; show() zerstoerte Buttons); Install-Hinweis Chrome/Edge Adressleiste; critical=false."],
 ["4.65","29.10.","Menue+ ohne Download/Install (nur Fusszeile); Statistik default ein mit Zustand merken, Fusszeilen-Knopf zeigen/ausblenden (kein Auto-Zu beim Scrollen); Trennlinie + Ueberschrift Worldwide Statistik:; critical=false."],
