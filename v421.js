@@ -4,6 +4,7 @@
 (function(){
   if(window.bppV421) return; window.bppV421=1;
   var H=[
+["4.66","29.10.","Fusszeile: Prayers runterladen / Als App installieren unter Windows wieder klickbar (waren in #bppOff mit pointer-events:none; show() zerstoerte Buttons); Install-Hinweis Chrome/Edge Adressleiste; critical=false."],
 ["4.65","29.10.","Menue+ ohne Download/Install (nur Fusszeile); Statistik default ein mit Zustand merken, Fusszeilen-Knopf zeigen/ausblenden (kein Auto-Zu beim Scrollen); Trennlinie + Ueberschrift Worldwide Statistik:; critical=false."],
 ["4.64","28.10.","Hilfe stark gekuerzt (~1/3): Stichsaetze in allen Sprachen; Offline weiter 1. Download, 2. App; lange Zusatz-Hilfe (Wiederholen/Aufnahme/Gross/Statistik) komprimiert; critical=false."],
 ["4.63","28.10.","Fusszeile: eine Positionsquelle (Offline/Download/Install → Historie/Quellen/Support → Statistik); kein Button-Springen; critical=false."],
