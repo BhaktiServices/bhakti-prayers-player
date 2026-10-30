@@ -4,6 +4,7 @@
 (function(){
   if(window.bppV421) return; window.bppV421=1;
   var H=[
+["4.72","30.10.","Support-Knopf oben links unter dem Hilfe-Knopf (?); Atma Bhog rechts unter Stil (unter Sprachwahl), zweizeilig „Atma“ / „Bhog ↗“; Positionen eine Quelle v472.js (kein Positionskampf); critical=false."],
 ["4.71","30.10.","Śrī Nṛsiṃha Kavaca Stotram Rec Mtj: Lyrics-Sync neu vermessen (Demucs-Energie; Whisper nur Start-Anker). sync/nrsimha-mtj.json; Str.0 MP3 8,2→9,7 s; YT getrennt (kein konstanter Offset); Pbj unverändert; unsichere Stellen ohne klaren Phrasen-Einsatz alt belassen; critical=false."],
 ["4.70","29.10.","Offline immer auf MP3: bei navigator.onLine false (Start + offline-Event) oder YouTube-iframe/API-Timeout ~4 s automatisch MP3, YT-Feld aus, Position übernehmen; Nutzerwahl bpp-src (YT) nicht überschreiben – bei online wiederherstellen (nicht während Play, sonst bei Pause); Cache-Miss-Meldung „Offline nicht gespeichert – bitte Prayers runterladen“; eine Stelle v470.js; critical=false."],
 ["4.69","29.10.","Beim Start (Seitenaufruf/Reload/PWA) immer zum Titel scrollen (scrollRestoration=manual, scrollTo(0,0) nach Laden und ~1,5 s Layout); Auto-Scroll zur aktiven Strophe bis Play oder Nutzer-Scroll unterdrückt; eine Stelle v469.js; critical=false."],
