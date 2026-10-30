@@ -82,12 +82,18 @@ window.BPP_BUILD="4.65"; window.BPP_SHOW="4.65";
         open=!open; saveOpen(open); apply();
       });
     }
-    /* Knopf immer in die Fusszeile; v463 ist Positionsquelle (Reihenfolge) */
-    var foot=document.getElementById("bppFoot426");
-    if(foot){
-      if(b.parentNode!==foot) foot.appendChild(b);
-    } else if(!b.parentNode && box){
-      box.insertBefore(b, box.firstChild);
+    /* Knopf-Platz: v475 (Nachfolger v463) ist Positionsquelle; sonst Fusszeile.
+       Bei v475: Knopf trotzdem in DOM haengen (body, vor Box), sonst bleibt er Waise. */
+    if(!window.bppFootOrder475){
+      var foot=document.getElementById("bppFoot426");
+      if(foot){
+        if(b.parentNode!==foot) foot.appendChild(b);
+      } else if(!b.parentNode && box){
+        box.insertBefore(b, box.firstChild);
+      }
+    } else if(!b.parentNode){
+      if(box && box.parentNode) box.parentNode.insertBefore(b, box);
+      else document.body.appendChild(b);
     }
   }
 

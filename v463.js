@@ -118,7 +118,7 @@ window.BPP_BUILD="4.66"; window.BPP_SHOW="4.66";
     "#bppStatsBox457 #bppAbc443{order:3;margin:2px 12px 0 0!important}";
   document.head.appendChild(st);
 
-  function tick(){ try{ apply(); }catch(e){} }
+  function tick(){ if(window.bppFootOrder475) return; try{ apply(); }catch(e){} }
   setInterval(tick, 200);
   window.addEventListener("load", tick);
 })();

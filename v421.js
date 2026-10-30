@@ -4,6 +4,7 @@
 (function(){
   if(window.bppV421) return; window.bppV421=1;
   var H=[
+["4.75","30.10.","Fusszeile: Versions-Historie / Quellen / Support unter die Worldwide-Statistik; dezenter Trennstrich dazwischen (auch bei ausgeblendeter Statistik). Reihenfolge: Offline/Download/Install → Statistik-Knopf → Trennstrich → Worldwide Statistik → Trennstrich → Historie/Quellen/Support. Alleinige Positionsquelle v475 (Nachfolger v463); critical=false."],
 ["4.74","30.10.","Atma-Bhog-Button springt nicht mehr: Ursache war Positions-Kampf v343 (→header h1, 500ms) vs v472 (→#bppTopRight460, 200ms) plus v382 paddingBottom. Fix v474: alleinige Position in rechter Spalte, DOM-Züge gesperrt, Spalte feste Breite/Höhe, Titel-padding fest; critical=false."],
 ["4.73","30.10.","Android Chrome Media-Steuerleiste (Runterwischen): Ursache nicht WebAudio, sondern SVG/leeres MediaMetadata-Artwork (v201/v205/v468). Fix v473: nur PNG-http(s), Setter filtert SVG/data, play unmuted; YT-iframe unverändert ohne Host-Session; critical=false."],
 ["4.72","30.10.","Support-Knopf oben links unter dem Hilfe-Knopf (?); Atma Bhog rechts unter Stil (unter Sprachwahl), zweizeilig „Atma“ / „Bhog ↗“; Positionen eine Quelle v472.js (kein Positionskampf); critical=false."],

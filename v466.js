@@ -75,10 +75,12 @@ window.BPP_BUILD="4.66"; window.BPP_SHOW="4.66";
     if(dl && off && off.nextSibling!==dl) row.insertBefore(dl, off.nextSibling);
     if(inst && dl && dl.nextSibling!==inst) row.insertBefore(inst, dl.nextSibling);
     else if(inst && !dl && off && off.nextSibling!==inst) row.insertBefore(inst, off.nextSibling);
-    /* Foot darunter */
-    var foot=document.getElementById("bppFoot426");
-    if(foot && row.parentNode && row.nextSibling!==foot){
-      row.parentNode.insertBefore(foot, row.nextSibling);
+    /* Foot darunter – ab V4.75 Positionsquelle v475 (bar→stats→box→foot) */
+    if(!window.bppFootOrder475){
+      var foot=document.getElementById("bppFoot426");
+      if(foot && row.parentNode && row.nextSibling!==foot){
+        row.parentNode.insertBefore(foot, row.nextSibling);
+      }
     }
     /* pointer-events haerten (inline von v203 ueberschreiben fuer den Fall, dass jemand wieder Kinder setzt) */
     if(dl){ dl.style.pointerEvents="auto"; }
