@@ -1,0 +1,414 @@
+{
+  "file": [
+    {
+      "verse": 0,
+      "start": 9.7
+    },
+    {
+      "verse": 1,
+      "start": 25.6
+    },
+    {
+      "verse": 2,
+      "start": 41.5
+    },
+    {
+      "verse": 3,
+      "start": 58.3
+    },
+    {
+      "verse": 4,
+      "start": 75.2
+    },
+    {
+      "verse": 5,
+      "start": 91.0
+    },
+    {
+      "verse": 6,
+      "start": 107.3
+    },
+    {
+      "verse": 7,
+      "start": 123.7
+    },
+    {
+      "verse": 8,
+      "start": 140.0
+    },
+    {
+      "verse": 9,
+      "start": 156.2
+    },
+    {
+      "verse": 10,
+      "start": 172.8
+    },
+    {
+      "verse": 11,
+      "start": 193.2
+    },
+    {
+      "verse": 12,
+      "start": 205.6
+    },
+    {
+      "verse": 13,
+      "start": 221.7
+    },
+    {
+      "verse": 14,
+      "start": 237.9
+    },
+    {
+      "verse": 15,
+      "start": 258.4
+    },
+    {
+      "verse": 16,
+      "start": 270.4
+    },
+    {
+      "verse": 17,
+      "start": 286.5
+    },
+    {
+      "verse": 18,
+      "start": 302.6
+    },
+    {
+      "verse": 19,
+      "start": 318.9
+    },
+    {
+      "verse": 20,
+      "start": 335.2
+    },
+    {
+      "verse": 21,
+      "start": 350.7
+    },
+    {
+      "verse": 22,
+      "start": 366.4
+    },
+    {
+      "verse": 23,
+      "start": 381.7
+    },
+    {
+      "verse": 24,
+      "start": 397.2
+    },
+    {
+      "verse": 25,
+      "start": 412.5
+    },
+    {
+      "verse": 26,
+      "start": 426.9
+    },
+    {
+      "verse": 27,
+      "start": 439.4
+    },
+    {
+      "verse": 28,
+      "start": 458.6
+    },
+    {
+      "verse": 29,
+      "start": 473.8
+    },
+    {
+      "verse": 30,
+      "start": 519.9
+    },
+    {
+      "verse": 31,
+      "start": 540.4
+    },
+    {
+      "verse": 32,
+      "start": 551.2
+    },
+    {
+      "verse": 33,
+      "start": 573.5
+    },
+    {
+      "verse": 34,
+      "start": 584.9
+    },
+    {
+      "verse": 35,
+      "start": 607.1
+    },
+    {
+      "verse": 36,
+      "start": 624.2
+    },
+    {
+      "verse": 37,
+      "start": 652.6
+    },
+    {
+      "verse": 38,
+      "start": 675.5
+    },
+    {
+      "verse": 39,
+      "start": 703.7
+    },
+    {
+      "verse": 40,
+      "start": 720.6
+    },
+    {
+      "verse": 41,
+      "start": 737.2
+    },
+    {
+      "verse": 42,
+      "start": 764.7
+    },
+    {
+      "verse": 43,
+      "start": 788.5
+    },
+    {
+      "verse": 44,
+      "start": 803.8
+    },
+    {
+      "verse": 45,
+      "start": 816.2
+    },
+    {
+      "verse": 46,
+      "start": 829.8
+    },
+    {
+      "verse": 47,
+      "start": 842.4
+    },
+    {
+      "verse": 48,
+      "start": 846.2
+    },
+    {
+      "verse": 49,
+      "start": 905.1
+    },
+    {
+      "verse": 50,
+      "start": 920.4
+    }
+  ],
+  "yt": [
+    {
+      "verse": 0,
+      "start": 5.2
+    },
+    {
+      "verse": 1,
+      "start": 25.2
+    },
+    {
+      "verse": 2,
+      "start": 45.2
+    },
+    {
+      "verse": 3,
+      "start": 65.3
+    },
+    {
+      "verse": 4,
+      "start": 85.3
+    },
+    {
+      "verse": 5,
+      "start": 105.5
+    },
+    {
+      "verse": 6,
+      "start": 125.5
+    },
+    {
+      "verse": 7,
+      "start": 145.5
+    },
+    {
+      "verse": 8,
+      "start": 165.4
+    },
+    {
+      "verse": 9,
+      "start": 185.6
+    },
+    {
+      "verse": 10,
+      "start": 205.6
+    },
+    {
+      "verse": 11,
+      "start": 225.7
+    },
+    {
+      "verse": 12,
+      "start": 245.6
+    },
+    {
+      "verse": 13,
+      "start": 265.4
+    },
+    {
+      "verse": 14,
+      "start": 285.1
+    },
+    {
+      "verse": 15,
+      "start": 304.9
+    },
+    {
+      "verse": 16,
+      "start": 324.2
+    },
+    {
+      "verse": 17,
+      "start": 341.8
+    },
+    {
+      "verse": 18,
+      "start": 359.2
+    },
+    {
+      "verse": 19,
+      "start": 376.3
+    },
+    {
+      "verse": 20,
+      "start": 393.1
+    },
+    {
+      "verse": 21,
+      "start": 409.2
+    },
+    {
+      "verse": 22,
+      "start": 425.3
+    },
+    {
+      "verse": 23,
+      "start": 441.0
+    },
+    {
+      "verse": 24,
+      "start": 456.4
+    },
+    {
+      "verse": 25,
+      "start": 471.4
+    },
+    {
+      "verse": 26,
+      "start": 486.4
+    },
+    {
+      "verse": 27,
+      "start": 501.1
+    },
+    {
+      "verse": 28,
+      "start": 515.8
+    },
+    {
+      "verse": 29,
+      "start": 530.5
+    },
+    {
+      "verse": 30,
+      "start": 573.0
+    },
+    {
+      "verse": 31,
+      "start": 593.2
+    },
+    {
+      "verse": 32,
+      "start": 607.0
+    },
+    {
+      "verse": 33,
+      "start": 631.0
+    },
+    {
+      "verse": 34,
+      "start": 643.2
+    },
+    {
+      "verse": 35,
+      "start": 663.1
+    },
+    {
+      "verse": 36,
+      "start": 679.3
+    },
+    {
+      "verse": 37,
+      "start": 713.1
+    },
+    {
+      "verse": 38,
+      "start": 724.0
+    },
+    {
+      "verse": 39,
+      "start": 748.4
+    },
+    {
+      "verse": 40,
+      "start": 777.5
+    },
+    {
+      "verse": 41,
+      "start": 790.3
+    },
+    {
+      "verse": 42,
+      "start": 806.0
+    },
+    {
+      "verse": 43,
+      "start": 812.7
+    },
+    {
+      "verse": 44,
+      "start": 839.6
+    },
+    {
+      "verse": 45,
+      "start": 850.4
+    },
+    {
+      "verse": 46,
+      "start": 864.4
+    },
+    {
+      "verse": 47,
+      "start": 878.0
+    },
+    {
+      "verse": 48,
+      "start": 898.4
+    },
+    {
+      "verse": 49,
+      "start": 928.6
+    },
+    {
+      "verse": 50,
+      "start": 958.6
+    }
+  ]
+}

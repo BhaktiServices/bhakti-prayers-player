@@ -3,9 +3,9 @@
    ohne Netz aus dem Cache. Alte App-Caches werden beim Aktivieren geloescht.
    MP3 aus audio/: liegen im Cache "bpp-audio-v1" (laedt v203.js im Hintergrund). Abspielen aus dem Cache mit Range-Antworten (206),
    damit Spulen geht. Nicht im Cache: direkt aus dem Netz. YouTube und fremde Server laufen am Service Worker vorbei. */
-var VER="4700"; // [Grok-Bot] V4.70
+var VER="4710"; // [Grok-Bot] V4.71
 var APP="bpp-app-"+VER; var AUD="bpp-audio-v1"; /* [Grok-Bot] V4.59: Cache-Namen wieder gesetzt (fehlten) */
-var CORE=["./","index.html","follow.js","v218.js","manifest.json","icon-192.svg","icon-512.svg","icon-192.png","icon-512.png","icon-maskable-192.png","icon-maskable-512.png","apple-touch-icon.png","fonts/fonts-local.css","lib/mqtt.min.js","v204.js?v=205","version.json","sync/hanuman-mtj.json","start.jpg"]; /* [Grok.com] */
+var CORE=["./","index.html","follow.js","v218.js","manifest.json","icon-192.svg","icon-512.svg","icon-192.png","icon-512.png","icon-maskable-192.png","icon-maskable-512.png","apple-touch-icon.png","fonts/fonts-local.css","lib/mqtt.min.js","v204.js?v=205","version.json","sync/hanuman-mtj.json","sync/nrsimha-mtj.json","start.jpg"]; /* [Grok.com] */
 self.addEventListener("install", function(e){
   /* [Grok-Bot] V3.41: zusaetzlich ALLE lokalen Dateien vorab speichern: aus index.html (src/href mit ?v=), rekursiv aus nachgeladenen
      Skripten (document.write / src="...js") und die Schriften aus den CSS-Dateien (url(...woff2)) */
