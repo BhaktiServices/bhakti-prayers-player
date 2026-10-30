@@ -4,6 +4,7 @@
 (function(){
   if(window.bppV421) return; window.bppV421=1;
   var H=[
+["4.74","30.10.","Atma-Bhog-Button springt nicht mehr: Ursache war Positions-Kampf v343 (→header h1, 500ms) vs v472 (→#bppTopRight460, 200ms) plus v382 paddingBottom. Fix v474: alleinige Position in rechter Spalte, DOM-Züge gesperrt, Spalte feste Breite/Höhe, Titel-padding fest; critical=false."],
 ["4.73","30.10.","Android Chrome Media-Steuerleiste (Runterwischen): Ursache nicht WebAudio, sondern SVG/leeres MediaMetadata-Artwork (v201/v205/v468). Fix v473: nur PNG-http(s), Setter filtert SVG/data, play unmuted; YT-iframe unverändert ohne Host-Session; critical=false."],
 ["4.72","30.10.","Support-Knopf oben links unter dem Hilfe-Knopf (?); Atma Bhog rechts unter Stil (unter Sprachwahl), zweizeilig „Atma“ / „Bhog ↗“; Positionen eine Quelle v472.js (kein Positionskampf); critical=false."],
 ["4.71","30.10.","Śrī Nṛsiṃha Kavaca Stotram Rec Mtj: Lyrics-Sync neu vermessen (Demucs-Energie; Whisper nur Start-Anker). sync/nrsimha-mtj.json; Str.0 MP3 8,2→9,7 s; YT getrennt (kein konstanter Offset); Pbj unverändert; unsichere Stellen ohne klaren Phrasen-Einsatz alt belassen; critical=false."],
