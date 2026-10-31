@@ -1,12 +1,14 @@
-/* [Grok-Bot] V4.74: Atma-Bhog-Springen beheben.
+/* [Grok-Bot] V4.76: Atma-Bhog-Text (#bppAtma, Atma / Bhog ↗) horizontal zentriert.
+   Nur Textausrichtung in v474 (Owner); Position/Größe unverändert (kein Springen).
+   V4.74: Atma-Bhog-Springen beheben.
    Ursache: v343.js (alle 500 ms) hängt #bppAtma zurück in header h1; v472.js (alle 200 ms)
    zieht ihn in #bppTopRight460; v382.js setzt dann absolute top/right und h1.paddingBottom.
    Folge: Parent wechselt H1 ↔ bppTopRight460, Position springt, Titelzeilen rutschen.
    Fix: #bppAtma nur noch hier positionieren; appendChild/insertBefore/removeChild für
    #bppAtma blockieren (außer Ziel = Home-Spalte); rechte Spalte fixed Breite/Mindesthöhe;
    Titel-padding fest (kein Nachmessen); v382-paddingBottom neutralisieren. */
-window.BPP_BUILD = "4.74";
-window.BPP_SHOW = "4.74";
+window.BPP_BUILD = "4.76";
+window.BPP_SHOW = "4.76";
 
 (function () {
   if (window.bppV474) return;
@@ -39,7 +41,7 @@ window.BPP_SHOW = "4.74";
     "#" + HOME_ID + " #bppAtma,#bppAtma{order:2!important;position:static!important;" +
       "top:auto!important;right:auto!important;left:auto!important;transform:none!important;" +
       "margin:0!important;display:inline-flex!important;flex-direction:column!important;" +
-      "align-items:flex-end!important;justify-content:center!important;align-self:flex-end!important;" +
+      "align-items:center!important;justify-content:center!important;align-self:flex-end!important;text-align:center!important;" +
       "box-sizing:border-box!important;width:64px!important;min-width:64px!important;" +
       "height:34px!important;min-height:34px!important;max-height:34px!important;" +
       "padding:2px 8px!important;border:1px solid #D6BF90!important;border-radius:10px!important;" +
@@ -48,7 +50,7 @@ window.BPP_SHOW = "4.74";
       "letter-spacing:.05em;text-transform:uppercase;text-decoration:none!important;" +
       "white-space:normal!important;z-index:120;cursor:pointer;-webkit-tap-highlight-color:transparent}" +
     "#bppAtma:hover,#bppAtma:focus-visible{background:#D6BF90!important;color:#041236!important;outline:none}" +
-    "#bppAtma .bppAtmaL1,#bppAtma .bppAtmaL2{display:block;line-height:1.15;height:auto}" +
+    "#bppAtma .bppAtmaL1,#bppAtma .bppAtmaL2{display:block;line-height:1.15;height:auto;width:100%;text-align:center!important}" +
     "#bppAtma svg{display:none!important}" +
     /* Titel: feste Einzüge, kein paddingBottom von v382 */
     "header h1{position:relative!important;padding-right:" + PAD_R + "px!important;" +
