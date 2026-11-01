@@ -5,7 +5,7 @@ window.BPP_BUILD="3.03"; window.BPP_SHOW="3.03";
   function L(){var l=(typeof lang!=="undefined"&&lang)||"en";return T[l]?l:"en";}
   var st=document.createElement("style");
   st.textContent="#bppSrcEnd{margin:14px 12px 24px;display:flex;flex-direction:column;align-items:flex-start;gap:8px}"+
-  "#bppSrcEnd #btnDet{display:inline-flex!important}#bppSrcInfo{display:none;font-size:.85rem;color:var(--muted);line-height:1.45;border-left:2px solid #6b5338;padding:4px 10px}"+
+  "#bppSrcEnd #btnDet{display:none!important}#bppSrcInfo{display:none;font-size:.85rem;color:var(--muted);line-height:1.45;border-left:2px solid #6b5338;padding:4px 10px}"+
   "body.show-det #bppSrcInfo{display:block}#bppSrcInfo b{color:#e0b45a;font-weight:600}#bppSrcEnd #hint{display:none!important}";
   document.head.appendChild(st);
   function esc(s){return String(s==null?"":s).replace(/[&<>]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;"}[c];});}
