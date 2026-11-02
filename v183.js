@@ -260,7 +260,7 @@ window.BPP_BUILD="1.83";
     if(d<0 && page>0 && !(timed() && playing())){ page--; holdUntil=Date.now()+20000; lastKey=""; draw(); return; }
     var k=Math.max(0, Math.min(gs.length-1, (curK<0?0:curK)+d)); if(k===curK && d!==0){ return; }
     var st=(timed() && playing())?startOf(k):null;
-    if(st!==null){ seekTo(st+0.6); holdUntil=0; }
+    if(st!==null){ seekTo(st+0.6); holdUntil=Date.now()+1200; /* [Grok-Bot] V4.79: nicht holdUntil=0 – sonst autoK kurz alte Strophe bis Seek greift */ }
     else { holdUntil=Date.now()+20000; }
     manualK=k; curK=k; page=(d<0 && st===null)?Math.max(0,pages(k).length-1):0; lastKey=""; draw(); showBar();
   }

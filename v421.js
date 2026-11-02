@@ -4,6 +4,7 @@
 (function(){
   if(window.bppV421) return; window.bppV421=1;
   var H=[
+["4.79","02.11.","Vor/Zurück: Lyrics nach Prayer-Wechsel sicher nachladen (v479). Groß-Modus: beim Weiter zur nächsten Strophe kein kurzer Flash der vorherigen (v183: holdUntil nach Seek ~1,2 s statt 0). critical=false."],
 ["4.78","02.11.","critical:false (nach V4.77-Fix). Buttons Versions-Historie und Quellen ausgeblendet (v478; Footer-Quellen war trotz Grok.com noch via v443 sichtbar). Sonntagmorgen im SPN-Tagesplan: Nṛsiṁha Kavacam statt Nṛsiṁha Prayer, danach Hanumān Cālīsā (plan-v173)."],
 ["4.77","31.10.","Bugfix critical: Nach F5 (Windows) sprang Audio ~1s-Rhythmus auf gespeicherte Resume-Position zurück (pendingSeek blieb gesetzt; Media-Session seekto-Echo von setPositionState/v468). Resume nur einmal anwenden (v477); pendingSeek clear; stale seekto/currentTime auf Boot-Ziel verworfen. Nächstes Release: critical wieder false."],
 ["4.76","31.10.","Atma-Bhog-Button (#bppAtma): Text „Atma“ / „Bhog ↗“ horizontal zentriert (nur v474 Owner, keine Positionsänderung). critical=false."],
