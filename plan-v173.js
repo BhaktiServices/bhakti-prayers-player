@@ -39,6 +39,8 @@
     if(d===1) E2.splice(E2.indexOf("bhajare")+1,0,"durga-chalisa");
     if(d===6) E2.splice(E2.indexOf("saprem")+1,0,"panduranga-arati");
     if(d===4) M2.splice(M2.indexOf("narasimha"),0,"sri-suktam","bhu-suktam","nila-suktam"); if(d===5) M2.splice(M2.indexOf("narasimha"),0,"purusa-suktam","vishnu-sahasranama","narayana-suktam");
+    /* [Grok-Bot] V4.78: Sonntagmorgen Nṛsiṁha Kavacam statt Nṛsiṁha Prayer, danach Hanumān Cālīsā */
+    if(d===6){ var ni=M2.indexOf("narasimha"); if(ni>=0) M2.splice(ni,1,"kavacham","hanuman"); }
     E2.push("final-prayers");
     /* [Grok-Bot] V3.26: ashtotram-abend steht jetzt im Abendmenue (V3.25-Ausschluss entfaellt) */
     head(hM); M2.forEach(put); head(hE); E2.forEach(put);
