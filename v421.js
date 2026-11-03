@@ -4,6 +4,7 @@
 (function(){
   if(window.bppV421) return; window.bppV421=1;
   var H=[
+["4.81","03.11.","Prayers runterladen: pro Prayer MP3, Lyrics (App-Skripte) und Sync im Cache prüfen, nur Fehlendes laden; Meldung „Prayers vollständig offline verfügbar.“ in allen UI-Sprachen (v481). SW-Audio-Cache bpp-audio-v2 wie Client. critical=false."],
 ["4.80","02.11.","Vaiṣṇava Mantra: Rec Mtj = SPN Daily Livestream (YT qJodjtIyxM4, Schnitt 17:39–18:22; Nutzer 26:11 war an diesem Archiv nicht Vaishnava). MP3 HP/loudnorm mono 56k. Sync sync/vaishnava-mtj.json (Str. 0–2 Energie, von Grok ergänzt; 3–5 Whisper). Rec Pbj = Heft. Lyrics unverändert. critical=false."],
 ["4.79","02.11.","Vor/Zurück: Lyrics nach Prayer-Wechsel sicher nachladen (v479). Groß-Modus: beim Weiter zur nächsten Strophe kein kurzer Flash der vorherigen (v183: holdUntil nach Seek ~1,2 s statt 0). critical=false."],
 ["4.78","02.11.","critical:false (nach V4.77-Fix). Buttons Versions-Historie und Quellen ausgeblendet (v478; Footer-Quellen war trotz Grok.com noch via v443 sichtbar). Sonntagmorgen im SPN-Tagesplan: Nṛsiṁha Kavacam statt Nṛsiṁha Prayer, danach Hanumān Cālīsā (plan-v173)."],
