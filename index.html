@@ -11,7 +11,7 @@
 <meta name="theme-color" content="#041236"><link rel="apple-touch-icon" href="apple-touch-icon.png"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="BPPlayer"><!-- [Grok-Bot] V3.41 -->
 <title>Bhakti Prayers Player V4.79</title>
 <script>/* [Grok-Bot] V3.30: zentrale Version - aeltere Skripte (V1.66 usw.) koennen Kopf und Titel nicht mehr kurz ueberschreiben */
-window.BPP_VERSION="4.82";
+window.BPP_VERSION="4.83";
 /* [Grok-Bot] V4.27 Erststart: ohne Link-Parameter und ohne gespeicherte Einstellungen wie der Standard-Link starten (Auswertung durch v420/v315; nur Position, kein erzwungenes Abspielen) */
 (function(){ try{ var L=localStorage, has=false; for(var j=0;j<L.length;j++){ if(/^bpp/i.test(L.key(j))){ has=true; break; } }
   if(!has && !location.search && !L.getItem("bpp-first-run-done")) history.replaceState(null,"",location.pathname+"?p=guru-stotram&t=0&rec=pbj&cols=2&chords=zeile&tr=1&src=mp3"+location.hash);
@@ -866,5 +866,6 @@ layoutLyrics();
 <script src="v480.js?v=1"></script><!-- [Grok-Bot] V4.80: Vaiṣṇava Mantra Rec Mtj Livestream + Sync; Rec Pbj Heft -->
 <script src="v481.js?v=1"></script><!-- [Grok-Bot] V4.81: Prayers runterladen – Cache-Check MP3/Lyrics/Sync; Meldung vollständig offline -->
 <script src="v482.js?v=1"></script><!-- [Grok-Bot] V4.82: Vaishnava Sync +0,75s ab Str.1; Mtj einzige Aufnahme, kein Rec Pbj -->
+<script src="v483.js?v=1"></script><!-- [Grok-Bot] V4.83: Download nur Fehlendes (ignoreSearch/Key wie SW); Prayer-Wechsel nutzt Offline-Cache; SW Audio cache-first -->
 </body>
 </html>

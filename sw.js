@@ -1,9 +1,9 @@
 /* [Grok-Bot] V2.03: Service Worker fuer BPPlayer, offline-faehig.
    App-Dateien (HTML/JS/CSS/JSON/Symbole): network-first (neue Version kommt sofort), Kopie im Cache "bpp-app-<Version>"; Offline: Cache. V4.59: APP/AUD, Client-Notify.
    ohne Netz aus dem Cache. Alte App-Caches werden beim Aktivieren geloescht.
-   MP3 aus audio/: liegen im Cache "bpp-audio-v1" (laedt v203.js im Hintergrund). Abspielen aus dem Cache mit Range-Antworten (206),
-   damit Spulen geht. Nicht im Cache: direkt aus dem Netz. YouTube und fremde Server laufen am Service Worker vorbei. */
-var VER="4820"; // [Grok-Bot] V4.79
+   MP3 aus audio/: liegen im Cache "bpp-audio-v2" (Client v203/v481/v483). Abspielen cache-first mit Range-Antworten (206),
+   damit Spulen geht; bei Treffer kein Netz (auch online). Nicht im Cache: Netz. YouTube/fremde Server am SW vorbei. V4.83: kein Sonder-Netz-First mehr fuer guru-stotram-abend. */
+var VER="4830"; // [Grok-Bot] V4.83
 var APP="bpp-app-"+VER; var AUD="bpp-audio-v2"; /* [Grok-Bot] V4.59: Cache-Namen wieder gesetzt (fehlten) */
 var CORE=["./","index.html","follow.js","v218.js","manifest.json","icon-192.svg","icon-512.svg","icon-192.png","icon-512.png","icon-maskable-192.png","icon-maskable-512.png","apple-touch-icon.png","fonts/fonts-local.css","lib/mqtt.min.js","v204.js?v=205","version.json","sync/hanuman-mtj.json","sync/nrsimha-mtj.json","sync/vaishnava-mtj.json","start.jpg"]; /* [Grok.com] */
 self.addEventListener("install", function(e){
@@ -34,10 +34,9 @@ self.addEventListener("install", function(e){
 });
 self.addEventListener("activate", function(e){
   e.waitUntil(caches.keys().then(function(ks){ return Promise.all(ks.filter(function(k){ return k!==APP && k!==AUD; }).map(function(k){ return caches.delete(k); })); }).then(function(){
-    return caches.open(AUD).then(function(c){ return c.keys().then(function(keys){
-      return Promise.all(keys.filter(function(q){ return /guru-stotram-abend\.mp3/.test(q.url); }).map(function(q){ return c.delete(q); }));
-    }); }); /* [Grok-Bot] V2.20: eine Klammer zu viel entfernt (Skriptfehler, Service Worker liess sich nicht installieren) */
-  }).then(function(){ return self.clients.claim(); }).then(function(){
+    /* [Grok-Bot] V4.83: audio-Cache nicht mehr bei Activate anfassen (frueher: guru-stotram-abend loeschen → jeder Update-Zyklus erzwang Re-Download) */
+    return self.clients.claim();
+  }).then(function(){
     /* [Grok-Bot] V4.59: offene Fenster informieren (neuer Client-Code laedt dann neu) */
     return self.clients.matchAll({type:"window", includeUncontrolled:true}).then(function(cs){
       cs.forEach(function(c){ try{ c.postMessage({bppSwUpdate:VER}); }catch(x){} });
@@ -64,11 +63,7 @@ self.addEventListener("fetch", function(e){
   if(r.method!=="GET" || u.origin!==self.location.origin) return;
   if(isAudio(u)){
     if(u.searchParams.has("bppdl")) return; /* Hintergrund-Download: direkt Netz */
-    /* [Grok.com] alte Abend-Datei mit Om nie aus dem Cache */
-    if(/guru-stotram-abend\.mp3$/i.test(u.pathname)){
-      e.respondWith(fetch(r, {cache:"no-store"}).catch(function(){ return caches.open(AUD).then(function(c){ return c.match(audioKey(u)); }).then(function(hit){ return hit?ranged(r, hit):Response.error(); }); }));
-      return;
-    }
+    /* [Grok-Bot] V4.83: alle audio/ cache-first (inkl. Range aus Cache); Treffer → kein Netz, auch online */
     e.respondWith(caches.open(AUD).then(function(c){ return c.match(audioKey(u)); }).then(function(hit){
       if(hit) return ranged(r, hit);
       return fetch(r);

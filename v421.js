@@ -4,6 +4,7 @@
 (function(){
   if(window.bppV421) return; window.bppV421=1;
   var H=[
+["4.83","03.11.","Prayers-Download nur Fehlendes: Cache-Match mit ignoreSearch, Keys origin+pathname wie SW/v203 (bpp-audio-v2), Query/?bppdl-Keys migrieren; zweiter Klick 0 Bytes. Prayer-Wechsel nutzt Offline-MP3 auch online (preferFile/showFile bei Cache-Treffer). SW: Audio durchgängig cache-first inkl. Range, kein Activate-Löschen von guru-stotram-abend (v483). critical=false."],
 ["4.82","03.11.","Vaiṣṇava Mantra: Sync ab Str. 1 um +0,75 s (sync/vaishnava-mtj.json). Mtj-Livestream-Aufnahme ersetzt Heft/Pbj als einzige Version; Rec-Mtj/Pbj-Taste entfernt (v482). V4.81 Download-Check bleibt. critical=false."],
 ["4.81","03.11.","Prayers runterladen: pro Prayer MP3, Lyrics (App-Skripte) und Sync im Cache prüfen, nur Fehlendes laden; Meldung „Prayers vollständig offline verfügbar.“ in allen UI-Sprachen (v481). SW-Audio-Cache bpp-audio-v2 wie Client. critical=false."],
 ["4.80","02.11.","Vaiṣṇava Mantra: Rec Mtj = SPN Daily Livestream (YT qJodjtIyxM4, Schnitt 17:39–18:22; Nutzer 26:11 war an diesem Archiv nicht Vaishnava). MP3 HP/loudnorm mono 56k. Sync sync/vaishnava-mtj.json (Str. 0–2 Energie, von Grok ergänzt; 3–5 Whisper). Rec Pbj = Heft. Lyrics unverändert. critical=false."],
