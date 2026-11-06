@@ -4,6 +4,7 @@
 (function(){
   if(window.bppV421) return; window.bppV421=1;
   var H=[
+["4.86","06.11.","Offline nach Download: naechstes Stueck ohne Netz. Ursache: v248/v470 setzten preferFile vor play() wieder auf YT (bpp-src) – YouTube trotz Cache. Fix v486: bei Cache/Offline immer MP3 (showYt abfangen); SW App offline cache-first, Audio Miss mit catch. critical=false."],
 ["4.85","06.11.","Rec-Farben: Mtj rosa (#b0477a, Rahmen #e07aa8), Pbj blau (#1f4e86, Rahmen #4f86c6), Schrift weiss; Gold-Ring aktiv bleibt (v485). critical=false."],
 ["4.84","05.11.","Rec-Tasten farblich getrennt: Mtj blau (#1f4e86), Pbj violett (#5a2f86), Schrift weiss; Gold bleibt Aktiv-Kennzeichnung als goldener Ring. Nur Farbe, keine Position/Logik (v484). critical=false."],
 ["4.83","03.11.","Prayers-Download nur Fehlendes: Cache-Match mit ignoreSearch, Keys origin+pathname wie SW/v203 (bpp-audio-v2), Query/?bppdl-Keys migrieren; zweiter Klick 0 Bytes. Prayer-Wechsel nutzt Offline-MP3 auch online (preferFile/showFile bei Cache-Treffer). SW: Audio durchgängig cache-first inkl. Range, kein Activate-Löschen von guru-stotram-abend (v483). critical=false."],

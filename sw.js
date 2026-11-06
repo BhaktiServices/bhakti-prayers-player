@@ -1,9 +1,9 @@
 /* [Grok-Bot] V2.03: Service Worker fuer BPPlayer, offline-faehig.
-   App-Dateien (HTML/JS/CSS/JSON/Symbole): network-first (neue Version kommt sofort), Kopie im Cache "bpp-app-<Version>"; Offline: Cache. V4.59: APP/AUD, Client-Notify.
+   App-Dateien (HTML/JS/CSS/JSON/Symbole): online network-first, offline cache-first; Kopie im Cache "bpp-app-<Version>". V4.59/V4.86: APP/AUD, Client-Notify.
    ohne Netz aus dem Cache. Alte App-Caches werden beim Aktivieren geloescht.
    MP3 aus audio/: liegen im Cache "bpp-audio-v2" (Client v203/v481/v483). Abspielen cache-first mit Range-Antworten (206),
    damit Spulen geht; bei Treffer kein Netz (auch online). Nicht im Cache: Netz. YouTube/fremde Server am SW vorbei. V4.83: kein Sonder-Netz-First mehr fuer guru-stotram-abend. */
-var VER="4850"; // [Grok-Bot] V4.85
+var VER="4860"; // [Grok-Bot] V4.86
 var APP="bpp-app-"+VER; var AUD="bpp-audio-v2"; /* [Grok-Bot] V4.59: Cache-Namen wieder gesetzt (fehlten) */
 var CORE=["./","index.html","follow.js","v218.js","manifest.json","icon-192.svg","icon-512.svg","icon-192.png","icon-512.png","icon-maskable-192.png","icon-maskable-512.png","apple-touch-icon.png","fonts/fonts-local.css","lib/mqtt.min.js","v204.js?v=205","version.json","sync/hanuman-mtj.json","sync/nrsimha-mtj.json","sync/vaishnava-mtj.json","start.jpg"]; /* [Grok.com] */
 self.addEventListener("install", function(e){
@@ -63,16 +63,39 @@ self.addEventListener("fetch", function(e){
   if(r.method!=="GET" || u.origin!==self.location.origin) return;
   if(isAudio(u)){
     if(u.searchParams.has("bppdl")) return; /* Hintergrund-Download: direkt Netz */
-    /* [Grok-Bot] V4.83: alle audio/ cache-first (inkl. Range aus Cache); Treffer → kein Netz, auch online */
-    e.respondWith(caches.open(AUD).then(function(c){ return c.match(audioKey(u)); }).then(function(hit){
+    /* [Grok-Bot] V4.86: cache-first inkl. ignoreSearch; bei Miss Netz, offline Fehler statt Hang */
+    e.respondWith(caches.open(AUD).then(function(c){
+      return c.match(audioKey(u)).then(function(hit){ return hit || c.match(audioKey(u), {ignoreSearch:true}); });
+    }).then(function(hit){
       if(hit) return ranged(r, hit);
-      return fetch(r);
+      return fetch(r).catch(function(){ return Response.error(); });
     }));
     return;
   }
   var nav=(r.mode==="navigate");
   var noStore=/\/version\.json$/.test(u.pathname) || u.searchParams.has("t");
   var req=nav?new Request(r, {cache:"no-store"}):r; /* [Grok.com] Startseite nie aus altem Cache */
+  function fromApp(){
+    return caches.open(APP).then(function(ca){
+      if(nav) return ca.match("./").then(function(m){ return m || ca.match("index.html"); });
+      if(noStore) return ca.match(u.pathname).then(function(m){ return m || ca.match("version.json"); });
+      return ca.match(r).then(function(m){ return m || ca.match(r, {ignoreSearch:true}); });
+    }).then(function(m){ return m || Response.error(); });
+  }
+  /* [Grok-Bot] V4.86: offline cache-first (kein Warten auf Netz-Timeout); online weiter network-first */
+  if(typeof navigator!=="undefined" && navigator.onLine===false){
+    e.respondWith(fromApp().then(function(m){
+      if(m && m.status!==0) return m;
+      return fetch(req).then(function(res){
+        if(res && res.ok && res.type==="basic"){
+          var c2=res.clone();
+          caches.open(APP).then(function(ca){ ca.put(noStore?u.pathname:(nav?"./":r), c2); });
+        }
+        return res;
+      }).catch(function(){ return m || Response.error(); });
+    }));
+    return;
+  }
   e.respondWith(fetch(req).then(function(res){
     if(res && res.ok && res.type==="basic"){
       var c=res.clone(), c2=res.clone(); /* [Grok-Bot] V3.41: zweite Kopie zum Speichern (die erste ist nach text() verbraucht -> put schlug bisher still fehl) */
@@ -82,13 +105,7 @@ self.addEventListener("fetch", function(e){
       }).catch(function(){});
     }
     return res;
-  }).catch(function(){
-    return caches.open(APP).then(function(ca){
-      if(nav) return ca.match("./").then(function(m){ return m || ca.match("index.html"); });
-      if(noStore) return ca.match(u.pathname).then(function(m){ return m || ca.match("version.json"); });
-      return ca.match(r).then(function(m){ return m || ca.match(r, {ignoreSearch:true}); });
-    }).then(function(m){ return m || Response.error(); });
-  }));
+  }).catch(function(){ return fromApp(); }));
 });
 self.addEventListener("message", function(e){
   var d=e.data;
