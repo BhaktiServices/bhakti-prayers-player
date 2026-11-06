@@ -4,6 +4,7 @@
 (function(){
   if(window.bppV421) return; window.bppV421=1;
   var H=[
+["4.85","06.11.","Rec-Farben: Mtj rosa (#b0477a, Rahmen #e07aa8), Pbj blau (#1f4e86, Rahmen #4f86c6), Schrift weiss; Gold-Ring aktiv bleibt (v485). critical=false."],
 ["4.84","05.11.","Rec-Tasten farblich getrennt: Mtj blau (#1f4e86), Pbj violett (#5a2f86), Schrift weiss; Gold bleibt Aktiv-Kennzeichnung als goldener Ring. Nur Farbe, keine Position/Logik (v484). critical=false."],
 ["4.83","03.11.","Prayers-Download nur Fehlendes: Cache-Match mit ignoreSearch, Keys origin+pathname wie SW/v203 (bpp-audio-v2), Query/?bppdl-Keys migrieren; zweiter Klick 0 Bytes. Prayer-Wechsel nutzt Offline-MP3 auch online (preferFile/showFile bei Cache-Treffer). SW: Audio durchgängig cache-first inkl. Range, kein Activate-Löschen von guru-stotram-abend (v483). critical=false."],
 ["4.82","03.11.","Vaiṣṇava Mantra: Sync ab Str. 1 um +0,75 s (sync/vaishnava-mtj.json). Mtj-Livestream-Aufnahme ersetzt Heft/Pbj als einzige Version; Rec-Mtj/Pbj-Taste entfernt (v482). V4.81 Download-Check bleibt. critical=false."],
