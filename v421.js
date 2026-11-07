@@ -4,6 +4,7 @@
 (function(){
   if(window.bppV421) return; window.bppV421=1;
   var H=[
+["4.89","07.11.","Prayer-Wechsel: Wrapper-Marker zwischen v441/v456/v468/v473/v479/v483/v486 erhalten. Intervalle umhüllten play/Nav zuvor unbegrenzt neu, multiplizierten Lyrics/Layout-Arbeit. Kette bleibt jetzt stabil; kein Retry der gesamten play-Kette bei Fehler (v483). critical=true, Folgeversion wieder false."],
 ["4.88","07.11.","Pause/Android: Offline-Status liest nicht mehr alle MP3-Bodies alle 800 ms (v487). Cache-Audit ereignisbasiert und Header-Prüfung; doppelte Cache-Polls entfernt (v486). Pause beendet Quellen-Restore/Watchdog statt automatischem Neustart (v470). critical=false."],
 ["4.87","06.11.","Offline-Anzeige eine Quelle: Zähler, „vollständig“-Meldung und Download-Knopf aus derselben MP3-Prüfung (origin+pathname/ignoreSearch). Kein Widerspruch mehr v203 4/38 vs. Toast; Knopf nach Abschluss weg bzw. nicht busy. critical=false."],
 ["4.86","06.11.","Offline nach Download: naechstes Stueck ohne Netz. Ursache: v248/v470 setzten preferFile vor play() wieder auf YT (bpp-src) – YouTube trotz Cache. Fix v486: bei Cache/Offline immer MP3 (showYt abfangen); SW App offline cache-first, Audio Miss mit catch. critical=false."],

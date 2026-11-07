@@ -363,7 +363,7 @@ window.BPP_SHOW = "4.68";
       }, 800);
       return r;
     };
-    window.play.__bpp468 = 1;
+    bppWrapMarkers489(window.play,p0); window.play.__bpp468 = 1;
   }
 
   function init() {

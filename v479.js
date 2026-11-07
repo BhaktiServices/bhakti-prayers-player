@@ -20,7 +20,7 @@
   function wrapPlay(){
     var f=window.play; if(typeof f!=="function"||f.__v479) return;
     var w=function(idx, resume, auto){ var r=f.apply(this, arguments); afterNav(); return r; };
-    w.__v479=1; window.play=w;
+    bppWrapMarkers489(w,f); w.__v479=1; window.play=w;
   }
   function wrapNav(){
     var nv=window.bppPrayerNav; if(!nv||nv.__v479) return;
@@ -34,7 +34,7 @@
     ["nextSong","prevSong","stepSong"].forEach(function(n){
       var f=window[n]; if(typeof f!=="function"||f.__v479) return;
       var w=function(){ var r=f.apply(this, arguments); afterNav(); return r; };
-      w.__v479=1; window[n]=w;
+      bppWrapMarkers489(w,f); w.__v479=1; window[n]=w;
     });
   }
   wrapPlay(); wrapNav(); wrapStep();

@@ -93,7 +93,7 @@ window.BPP_BUILD="4.86"; window.BPP_SHOW="4.86";
       }catch(e){}
       return r;
     };
-    w._bpp486outer=1;
+    bppWrapMarkers489(w,op); w._bpp486outer=1;
     /* innere Kette behalten */
     window.play=w;
   }

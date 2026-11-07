@@ -83,9 +83,9 @@ window.BPP_BUILD="4.41"; window.BPP_SHOW="4.41";
   if(window.bppV441n) return; window.bppV441n=1;
   var lastPlay=0, seen={};
   function cur(){ return (typeof i!=="undefined"&&i>=0&&typeof PRAYERS!=="undefined")?PRAYERS[i]:null; }
-  function wrapPlay(){ var f=window.play; if(typeof f!=="function"||f.__v441) return; var w=function(){ lastPlay=Date.now(); seen={}; return f.apply(this,arguments); }; w.__v441=1; window.play=w; }
+  function wrapPlay(){ var f=window.play; if(typeof f!=="function"||f.__v441) return; var w=function(){ lastPlay=Date.now(); seen={}; return f.apply(this,arguments); }; bppWrapMarkers489(w,f); w.__v441=1; window.play=w; }
   function wrapSong(){ ["nextSong","prevSong"].forEach(function(n,k){ var f=window[n]; if(typeof f!=="function"||f.__v441) return;
-      var w=function(){ var nv=window.bppPrayerNav; if(nv&&typeof nv.next==="function"&&cur()){ try{ return k?nv.prev():nv.next(); }catch(e){} } return f.apply(this,arguments); }; w.__v441=1; window[n]=w; }); }
+      var w=function(){ var nv=window.bppPrayerNav; if(nv&&typeof nv.next==="function"&&cur()){ try{ return k?nv.prev():nv.next(); }catch(e){} } return f.apply(this,arguments); }; bppWrapMarkers489(w,f); w.__v441=1; window[n]=w; }); }
   function go(j, t){ var P=PRAYERS[j]; if(!P) return; try{ putSong(P.id,{time:t||0,line:0}); }catch(e){} try{ play(j,true); }catch(e){} }
   function vidOf(info){ if(!info) return null; if(info.videoData&&info.videoData.video_id) return info.videoData.video_id;
     if(typeof info.videoUrl==="string"){ var m=info.videoUrl.match(/[?&]v=([\w-]{11})/); if(m) return m[1]; } return null; }

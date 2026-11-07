@@ -321,9 +321,9 @@ window.BPP_BUILD="4.83"; window.BPP_SHOW="4.83";
           }catch(e){}
         }
         return r;
-      }catch(e){ return op.apply(this, arguments); }
+      }catch(e){ throw e; }
     };
-    w._bpp483=1; window.play=w;
+    bppWrapMarkers489(w,op); w._bpp483=1; window.play=w;
   }
   wrapPlay();
   setInterval(wrapPlay, 500);

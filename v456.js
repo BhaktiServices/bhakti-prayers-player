@@ -99,7 +99,7 @@
   function wrapPlay(){
     var f=window.play; if(typeof f!=="function"||f.__v456) return;
     var w=function(){ var r=f.apply(this,arguments); setTimeout(restore,30); setTimeout(restore,200); setTimeout(restore,600); return r; };
-    w.__v456=1; window.play=w;
+    bppWrapMarkers489(w,f); w.__v456=1; window.play=w;
   }
   function tick(){
     hookAudio(); wrapPlay(); unmute();
