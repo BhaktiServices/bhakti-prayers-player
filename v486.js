@@ -154,7 +154,7 @@ window.BPP_BUILD="4.86"; window.BPP_SHOW="4.86";
     quietUpdate();
   }
   boot();
-  setInterval(function(){ wrapShowYt(); wrapPlay(); patchShowFile(); quietUpdate(); refreshHave(); }, 700);
+  setInterval(function(){ wrapShowYt(); wrapPlay(); patchShowFile(); quietUpdate(); }, 700);
   window.addEventListener("offline", onOffline);
   if(document.readyState==="loading") document.addEventListener("DOMContentLoaded", boot);
   window.addEventListener("bpp-lang", refreshHave);
@@ -162,7 +162,7 @@ window.BPP_BUILD="4.86"; window.BPP_SHOW="4.86";
   setInterval(function(){
     try{
       var S=window.bppOfflineState;
-      if(S&&S.complete) refreshHave();
+      if(S&&S.complete && !window.bppV487) refreshHave();
     }catch(e){}
   }, 2000);
 })();

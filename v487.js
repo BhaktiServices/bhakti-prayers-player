@@ -38,7 +38,7 @@ window.BPP_BUILD="4.87"; window.BPP_SHOW="4.87";
     return out;
   }
 
-  var busy=false, lastAudit={have:0,total:0,complete:false,missing:[]};
+  var busy=false, lastAudit={have:0,total:0,complete:false,missing:[],haveKeys:[]};
 
   function toast(s){
     var m=document.getElementById("bppDlMsg");
@@ -122,13 +122,13 @@ window.BPP_BUILD="4.87"; window.BPP_SHOW="4.87";
             var k=keys[i];
             return c.match(k, {ignoreSearch:true}).then(function(h){
               if(!h){ missing.push(k); return one(i+1); }
-              /* Zu kleine Eintraege (abgebrochener Download / Altmuell) gelten als fehlend */
-              return h.blob().then(function(b){
-                var n=0; try{ n=+((h.headers&&h.headers.get("Content-Length"))||0)||b.size||0; }catch(e){ n=b.size||0; }
-                if(n>4096){ have++; haveKeys.push(k); }
-                else missing.push(k);
-                return one(i+1);
-              }).catch(function(){ missing.push(k); return one(i+1); });
+              /* V4.88: keine MP3-Bodies im Status-Poll lesen (54 Dateien ~160 MB).
+                 Downloads speichern eine verifizierte Content-Length; Alt-Eintraege ohne
+                 Laenge werden nur beim naechsten expliziten Download erneuert. */
+              var n=+(h.headers.get("Content-Length")||0);
+              if(h.status===200 && n>4096){ have++; haveKeys.push(k); }
+              else missing.push(k);
+              return one(i+1);
             });
           }
           return one(0);
@@ -239,7 +239,9 @@ window.BPP_BUILD="4.87"; window.BPP_SHOW="4.87";
   window.bppOfflineRefresh487=refresh;
 
   bind(); muteV203(); refresh();
-  setInterval(function(){ bind(); muteV203(); if(!busy) refresh(); }, 800);
+  setInterval(function(){ bind(); muteV203(); if(!busy) paintStatus(lastAudit); }, 800);
+  /* V4.88: Cache-Audit nur Start/Download/Netzwechsel/Fokus, nicht jede 800 ms. */
+  window.addEventListener("focus", function(){ if(!busy) refresh(); });
   window.addEventListener("online", function(){ if(!busy) refresh(); });
   window.addEventListener("offline", function(){ if(!busy) refresh(); });
   window.addEventListener("bpp-lang", function(){ if(!busy) refresh(); });

@@ -378,10 +378,13 @@ window.BPP_SHOW = "4.70";
     if (!a || a._v470pause) return;
     a._v470pause = 1;
     a.addEventListener("pause", function () {
-      if (pendingRestore && navigator.onLine && !playing()) doRestoreYt();
+      /* V4.88: Pause gehoert dem Nutzer. Quellenwechsel erst beim naechsten expliziten Play. */
+      pendingRestore = false;
+      clearYtWatch();
     });
     a.addEventListener("ended", function () {
-      if (pendingRestore && navigator.onLine) doRestoreYt();
+      pendingRestore = false;
+      clearYtWatch();
     });
   }
 
