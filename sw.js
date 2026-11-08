@@ -3,7 +3,7 @@
    ohne Netz aus dem Cache. Alte App-Caches werden beim Aktivieren geloescht.
    MP3 aus audio/: liegen im Cache "bpp-audio-v2" (Client v203/v481/v483). Abspielen cache-first mit Range-Antworten (206),
    damit Spulen geht; bei Treffer kein Netz (auch online). Nicht im Cache: Netz. YouTube/fremde Server am SW vorbei. V4.83: kein Sonder-Netz-First mehr fuer guru-stotram-abend. */
-var VER="4900"; // [Grok-Bot] V4.90
+var VER="4901"; // [Grok-Bot] V4.90: distinct cache generation for cache-busted modified modules
 var APP="bpp-app-"+VER; var AUD="bpp-audio-v2"; /* [Grok-Bot] V4.59: Cache-Namen wieder gesetzt (fehlten) */
 var CORE=["./","index.html","follow.js","v218.js","manifest.json","icon-192.svg","icon-512.svg","icon-192.png","icon-512.png","icon-maskable-192.png","icon-maskable-512.png","apple-touch-icon.png","fonts/fonts-local.css","lib/mqtt.min.js","v204.js?v=205","version.json","sync/vishwananda-chalisa-2026.json","sync/hanuman-mtj.json","sync/nrsimha-mtj.json","sync/vaishnava-mtj.json","start.jpg"]; /* [Grok.com] */
 self.addEventListener("install", function(e){

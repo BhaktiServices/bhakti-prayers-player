@@ -81,7 +81,7 @@ if(document.readyState==="loading"){ document.write('<script src="v183.js?v=353"
 if(document.readyState==="loading"){ document.write('<script src="v184.js?v=186"><\/script>'); }
 /* [Grok-Bot] V1.85-V1.87: Mitlesen (Ashtotram Name fuer Name, geschaetzte Marken je Quelle, alte Strophen-Tipps entschaerft), Vollbild-Menue nur nach Tippen,
    V1.87: Strophenwechsel am Ende des Gesangs (Pausentabelle), gemessene Marken Ashtotram, Vaishnava Mantra, Kavaca (v187.js ersetzt v186.js). */
-if(document.readyState==="loading"){ document.write('<script src="v187.js?v=188"><\/script>'); }
+if(document.readyState==="loading"){ document.write('<script src="v187.js?v=4901"><\/script>'); }
 /* V1.88: Mitlesen haelt an, solange die MP3 noch laedt (v188.js). */
 if(document.readyState==="loading"){ document.write('<script src="v188.js?v=188"><\/script>'); }
 /* [Grok-Bot] V1.89: Grossbild-Vorschau der ersten Zeile der naechsten Strophe bzw. des naechsten Teils waehrend der letzten Zeile, Ashtotram im Grossbild als Laufband,
