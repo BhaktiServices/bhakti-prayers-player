@@ -127,6 +127,7 @@ window.BPP_BUILD="1.87";
   }
   function realMarks(m, flag){ return !!(m && !flag && m.filter(function(x){ return typeof x==="number"; }).length>=2); }
   function estimate(P){
+    if(P && P._bppApproxSync) return false; // Explicit score/onset sync belongs to its data owner, not syllable estimation.
     if(!P || typeof stanzaGroups!=="function" || typeof i==="undefined" || i<0 || PRAYERS[i]!==P) return false;
     var yt=(typeof ytOn!=="undefined" && ytOn), key=yt?"marksYt":"marksFile", fl=yt?"_bppEstYt":"_bppEstMarks", fd=fl+"Dur";
     /* V1.85-Altlast: marksFile mit YouTube-Dauer geschaetzt → verwerfen */

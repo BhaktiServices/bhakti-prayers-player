@@ -1,11 +1,11 @@
 /* [Grok-Bot] V2.03: Service Worker fuer BPPlayer, offline-faehig.
-   App-Dateien (HTML/JS/CSS/JSON/Symbole): online network-first, offline cache-first; Kopie im Cache "bpp-app-<Version>". V4.59/V4.86: APP/AUD, Client-Notify.
+   App-Dateien (HTML/JS/CSS/JSON/Symbole): online network-first, offline cache-first; Kopie im Cache "bpp-app-<Version>". V4.59/V4.86: APP/AUD, Client-Notify; V4.90 Client-Netzstatus + begrenzter App-Netzversuch.
    ohne Netz aus dem Cache. Alte App-Caches werden beim Aktivieren geloescht.
    MP3 aus audio/: liegen im Cache "bpp-audio-v2" (Client v203/v481/v483). Abspielen cache-first mit Range-Antworten (206),
    damit Spulen geht; bei Treffer kein Netz (auch online). Nicht im Cache: Netz. YouTube/fremde Server am SW vorbei. V4.83: kein Sonder-Netz-First mehr fuer guru-stotram-abend. */
-var VER="4890"; // [Grok-Bot] V4.87
+var VER="4900"; // [Grok-Bot] V4.90
 var APP="bpp-app-"+VER; var AUD="bpp-audio-v2"; /* [Grok-Bot] V4.59: Cache-Namen wieder gesetzt (fehlten) */
-var CORE=["./","index.html","follow.js","v218.js","manifest.json","icon-192.svg","icon-512.svg","icon-192.png","icon-512.png","icon-maskable-192.png","icon-maskable-512.png","apple-touch-icon.png","fonts/fonts-local.css","lib/mqtt.min.js","v204.js?v=205","version.json","sync/hanuman-mtj.json","sync/nrsimha-mtj.json","sync/vaishnava-mtj.json","start.jpg"]; /* [Grok.com] */
+var CORE=["./","index.html","follow.js","v218.js","manifest.json","icon-192.svg","icon-512.svg","icon-192.png","icon-512.png","icon-maskable-192.png","icon-maskable-512.png","apple-touch-icon.png","fonts/fonts-local.css","lib/mqtt.min.js","v204.js?v=205","version.json","sync/vishwananda-chalisa-2026.json","sync/hanuman-mtj.json","sync/nrsimha-mtj.json","sync/vaishnava-mtj.json","start.jpg"]; /* [Grok.com] */
 self.addEventListener("install", function(e){
   /* [Grok-Bot] V3.41: zusaetzlich ALLE lokalen Dateien vorab speichern: aus index.html (src/href mit ?v=), rekursiv aus nachgeladenen
      Skripten (document.write / src="...js") und die Schriften aus den CSS-Dateien (url(...woff2)) */
@@ -43,6 +43,16 @@ self.addEventListener("activate", function(e){
     });
   }));
 });
+/* V4.90: worker navigator.onLine can lag behind an Android client. Never let
+   a stalled network-first navigation hold the cached app shell indefinitely. */
+var CLIENT_ONLINE=null, APP_NET_FAILED=false;
+function appFetch(req){
+  return new Promise(function(resolve,reject){
+    var ac=typeof AbortController!=="undefined"?new AbortController():null;
+    var timer=setTimeout(function(){ APP_NET_FAILED=true; if(ac)ac.abort(); reject(new Error("app-network-timeout")); },1500);
+    fetch(req,ac?{signal:ac.signal}:undefined).then(function(res){ clearTimeout(timer); APP_NET_FAILED=false; resolve(res); },function(err){ clearTimeout(timer); APP_NET_FAILED=true; reject(err); });
+  });
+}
 function isAudio(u){ return /\/audio\/[^\/]+\.(mp3|m4a|ogg|wav)$/i.test(u.pathname); }
 function audioKey(u){ return u.origin+u.pathname; }
 function ranged(req, res){
@@ -83,10 +93,10 @@ self.addEventListener("fetch", function(e){
     }).then(function(m){ return m || Response.error(); });
   }
   /* [Grok-Bot] V4.86: offline cache-first (kein Warten auf Netz-Timeout); online weiter network-first */
-  if(typeof navigator!=="undefined" && navigator.onLine===false){
+  if(CLIENT_ONLINE===false || (typeof navigator!=="undefined" && navigator.onLine===false) || (APP_NET_FAILED && !/\/version\.json$/.test(u.pathname))){
     e.respondWith(fromApp().then(function(m){
       if(m && m.status!==0) return m;
-      return fetch(req).then(function(res){
+      return appFetch(req).then(function(res){
         if(res && res.ok && res.type==="basic"){
           var c2=res.clone();
           caches.open(APP).then(function(ca){ ca.put(noStore?u.pathname:(nav?"./":r), c2); });
@@ -96,7 +106,7 @@ self.addEventListener("fetch", function(e){
     }));
     return;
   }
-  e.respondWith(fetch(req).then(function(res){
+  e.respondWith(appFetch(req).then(function(res){
     if(res && res.ok && res.type==="basic"){
       var c=res.clone(), c2=res.clone(); /* [Grok-Bot] V3.41: zweite Kopie zum Speichern (die erste ist nach text() verbraucht -> put schlug bisher still fehl) */
       c.text().then(function(txt){
@@ -109,6 +119,7 @@ self.addEventListener("fetch", function(e){
 });
 self.addEventListener("message", function(e){
   var d=e.data;
+  if(d && d.type==="bpp-network-state"){ CLIENT_ONLINE=!!d.online; if(CLIENT_ONLINE) APP_NET_FAILED=false; }
   if(d==="bpp-ver" && e.source) e.source.postMessage({bppSw:VER});
   if(d && d.type==="bpp-skip-waiting") self.skipWaiting(); /* [Grok-Bot] V4.59 */
 });

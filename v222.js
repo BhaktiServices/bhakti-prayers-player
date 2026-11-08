@@ -23,7 +23,7 @@
   function apply(){
     if(typeof PRAYERS==="undefined") return;
     PRAYERS.forEach(function(P){
-      if(P.youtube) return;
+      if(P.youtube || (P.id==="vchalisa" && window.bppV490)) return;
       if(MAP[P.id]) P.youtube=MAP[P.id];
     });
   }

@@ -51,7 +51,7 @@
   /* [Grok-Bot] V4.43: final-prayers - POS-Schluessel (Zeile/Teilzeile) stammen von vor V3.90 (Vishnu Arati davor eingefuegt) und trafen falsche Zeilen
      (z. B. "om jaya jagadisa hare" C F G statt C G). Standardansicht nimmt hier wie die Grossansicht die Heft-Positionen per Zeilentext (TXT). */
   var BYTXT={"final-prayers":1};
-  function std(){ var id=pid(), M=POS[id]||{}; var L=document.getElementById("lyrics"); if(!L) return;
+  function std(){ var id=pid(), M=(id==="vchalisa"&&window.bppV490)?{}:(POS[id]||{}); var L=document.getElementById("lyrics"); if(!L) return;
     [].forEach.call(L.querySelectorAll(".rowline[data-n]"),function(r){ var zi=r.getAttribute("data-n"), lns=r.querySelectorAll(".sa > .ln");
       [].forEach.call(lns,function(ln,li){ if(ln.__k361===steps+"|"+ln.textContent) return;
         var x2=ln.querySelector(".x2"), lt=tx(ln), t=(x2?lt.slice(0,lt.length-x2.textContent.length):lt);
@@ -66,7 +66,7 @@
         ln.innerHTML=build(t,an,raw)+(x2?x2.outerHTML:""); ln.classList.add("c361");
         if(col) [].forEach.call(ln.querySelectorAll(".k361"),function(k){ k.style.color=col; });
         ln.__k361=steps+"|"+ln.textContent; }); }); }
-  function fs(){ var id=pid(), M=TXT[id]||{}; var B=document.getElementById("bppFsBox"); if(!B) return; var ch=0;
+  function fs(){ var id=pid(), M=(id==="vchalisa"&&window.bppV490)?{}:(TXT[id]||{}); var B=document.getElementById("bppFsBox"); if(!B) return; var ch=0;
     var st=(typeof line!=="undefined")?line:-1, O=FSO[id]||{};
     [].forEach.call(B.querySelectorAll(".vl:not(.fch)"),function(v,vk){ if(v.__k361===steps+"|"+v.textContent) return;
       var t=norm(tx(v)), pv=v.previousElementSibling, src=pv&&pv.classList.contains("fch")?pv:null;

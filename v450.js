@@ -28,7 +28,7 @@ window.BPP_BUILD="4.50"; window.BPP_SHOW="4.50";
   function blockEstWhenSeq(){
     if(typeof PRAYERS==="undefined") return;
     PRAYERS.forEach(function(P){
-      if(!P) return;
+      if(!P || P._bppApproxSync) return; // V4.90: explicit approximate score sync keeps its provenance.
       var s=null;
       try{ s=(typeof window.bppSeqOf==="function")?window.bppSeqOf(P):((typeof ytOn!=="undefined"&&ytOn)?P.seqYt:P.seqFile); }catch(e){}
       if(!(s&&s.length)) return;

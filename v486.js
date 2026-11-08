@@ -134,7 +134,13 @@ window.BPP_BUILD="4.86"; window.BPP_SHOW="4.86";
     }catch(e){}
   }
 
+  /* V4.90: existing offline owner also reports the client state to its SW.
+     Worker navigator.onLine is not authoritative during Android/offline reload. */
+  function reportNetwork(){
+    try{ if(navigator.serviceWorker&&navigator.serviceWorker.controller) navigator.serviceWorker.controller.postMessage({type:"bpp-network-state",online:navigator.onLine}); }catch(e){}
+  }
   function onOffline(){
+    reportNetwork();
     try{
       if(typeof PRAYERS!=="undefined") PRAYERS.forEach(function(P){ if(P.audio) try{ P.preferFile=true; }catch(e){} });
     }catch(e){}
@@ -147,6 +153,7 @@ window.BPP_BUILD="4.86"; window.BPP_SHOW="4.86";
   }
 
   function boot(){
+    reportNetwork();
     refreshHave();
     wrapShowYt();
     wrapPlay();
@@ -156,6 +163,8 @@ window.BPP_BUILD="4.86"; window.BPP_SHOW="4.86";
   boot();
   setInterval(function(){ wrapShowYt(); wrapPlay(); patchShowFile(); quietUpdate(); }, 700);
   window.addEventListener("offline", onOffline);
+  window.addEventListener("online", reportNetwork);
+  if(navigator.serviceWorker) navigator.serviceWorker.addEventListener("controllerchange", reportNetwork);
   if(document.readyState==="loading") document.addEventListener("DOMContentLoaded", boot);
   window.addEventListener("bpp-lang", refreshHave);
   /* nach Download-Status */

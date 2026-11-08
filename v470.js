@@ -413,6 +413,15 @@ window.BPP_SHOW = "4.70";
     }
   }
 
+  /* V4.90: release active cached media before a real document navigation.
+     Android-emulated Chromium could stall an offline reload while a cached Range stream
+     was still playing. The existing pause/restore owner performs this cleanup;
+     no visibility handler (background playback must remain possible). */
+  window.addEventListener("beforeunload", function(){
+    try{ if(typeof persistNow==="function") persistNow(); }catch(e){}
+    pendingRestore=false; clearYtWatch();
+    try{ var a=document.getElementById("a"); if(a) a.pause(); }catch(e){}
+  });
   window.addEventListener("offline", onOffline);
   window.addEventListener("online", onOnline);
 
