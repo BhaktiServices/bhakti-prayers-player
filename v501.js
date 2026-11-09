@@ -204,6 +204,7 @@ window.BPP_BUILD="5.02"; window.BPP_SHOW="5.02";
       var box=document.getElementById("lyrics");
       if(isMms()&&on()){
         paintLock=Date.now();
+        if(typeof window.bppPaintNotes503==="function"){ window.bppPaintNotes503(); return; }
         if(typeof window.bppPaintNotes502==="function"){ window.bppPaintNotes502(); return; }
         paintNotesOnly();
         return;
@@ -221,6 +222,7 @@ window.BPP_BUILD="5.02"; window.BPP_SHOW="5.02";
     if(k&&k!==lastStanzaKey){
       lastStanzaKey=k;
       if(isMms()&&on()){
+        if(typeof window.bppNotesFollow503==="function"){ window.bppNotesFollow503(k); paintBtn(); return; }
         if(typeof window.bppNotesFollow502==="function"){ window.bppNotesFollow502(k); paintBtn(); return; }
         var el=document.querySelector("#lyrics .bppNotesPage501[data-stanza='"+k.replace(/'/g,"\\'")+"']");
         document.querySelectorAll("#lyrics .bppNotesPage501.active").forEach(function(n){ n.classList.remove("active"); });

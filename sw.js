@@ -3,9 +3,9 @@
    ohne Netz aus dem Cache. Alte App-Caches werden beim Aktivieren geloescht.
    MP3 aus audio/: liegen im Cache "bpp-audio-v2" (Client v203/v481/v483). Abspielen cache-first mit Range-Antworten (206),
    damit Spulen geht; bei Treffer kein Netz (auch online). Nicht im Cache: Netz. YouTube/fremde Server am SW vorbei. V4.83: kein Sonder-Netz-First mehr fuer guru-stotram-abend. */
-var VER="5020"; // [Grok-Bot] V5.02
+var VER="5030"; // [Grok-Bot] V5.03
 var APP="bpp-app-"+VER; var AUD="bpp-audio-v2"; /* [Grok-Bot] V4.59: Cache-Namen wieder gesetzt (fehlten) */
-var CORE=["./","index.html","follow.js","v218.js","manifest.json","icon-192.svg","icon-512.svg","icon-192.png","icon-512.png","icon-maskable-192.png","icon-maskable-512.png","apple-touch-icon.png","fonts/fonts-local.css","lib/mqtt.min.js","v204.js?v=205","version.json","sync/vishwananda-chalisa-2026.json","sync/hanuman-mtj.json","sync/nrsimha-mtj.json","sync/vaishnava-mtj.json","start.jpg","assets/mms-notes/manifest.json","v501.js?v=2","v502.js?v=5"]; /* [Grok.com] */
+var CORE=["./","index.html","follow.js","v218.js","manifest.json","icon-192.svg","icon-512.svg","icon-192.png","icon-512.png","icon-maskable-192.png","icon-maskable-512.png","apple-touch-icon.png","fonts/fonts-local.css","lib/mqtt.min.js","v204.js?v=205","version.json","sync/vishwananda-chalisa-2026.json","sync/hanuman-mtj.json","sync/nrsimha-mtj.json","sync/vaishnava-mtj.json","start.jpg","assets/mms-notes/manifest.json","v501.js?v=3","v502.js?v=5","v503.js?v=6"]; /* [Grok.com] */
 self.addEventListener("install", function(e){
   /* [Grok-Bot] V3.41: zusaetzlich ALLE lokalen Dateien vorab speichern: aus index.html (src/href mit ?v=), rekursiv aus nachgeladenen
      Skripten (document.write / src="...js") und die Schriften aus den CSS-Dateien (url(...woff2)) */
