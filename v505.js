@@ -2,7 +2,7 @@
    Gleicher Knopf 𝄞 Noten/Text, Zustand pro Prayer, contain-Rahmen (v503-Layout),
    Manifeste assets/mms-notes + assets/ramanuja-notes; Offline-Cache; Quelle.
    Ramanuja: 1 handschriftliche PDF-Seite = ganzes Stück (mapping single-page).
-   Owner: bppPaintNotes505 (v501/v503 weichen). critical=false. */
+   Owner: bppPaintNotes505 (v501/v503 weichen). critical=false. V5.07: setOn sync legacy LS; click yields to v507. */
 window.BPP_BUILD="5.05"; window.BPP_SHOW="5.05";
 (function(){
   if(window.bppV505) return; window.bppV505=1;
@@ -48,7 +48,12 @@ window.BPP_BUILD="5.05"; window.BPP_SHOW="5.05";
     return c.ls;
   }
   function on(){ try{ var k=lsKey(); return k?localStorage.getItem(k)==="1":false; }catch(e){ return false; } }
-  function setOn(v){ try{ var k=lsKey(); if(k) localStorage.setItem(k, v?"1":"0"); }catch(e){} }
+  function setOn(v){
+    try{
+      var k=lsKey(); if(k) localStorage.setItem(k, v?"1":"0");
+      var c=cfg(); if(c&&c.legacyLs) localStorage.setItem(c.legacyLs, v?"1":"0");
+    }catch(e){}
+  }
 
   function loadMan(id){
     id=id||notesId();
@@ -350,8 +355,16 @@ window.BPP_BUILD="5.05"; window.BPP_SHOW="5.05";
     if(!b){
       b=document.createElement("button"); b.type="button"; b.id="bppNotes501";
       b.innerHTML='<span class="sym" aria-hidden="true">𝄞</span><span class="lab"></span>';
+    }
+    /* V5.07 owns the click when present; else claim once (strip v501 MMS-only handler). */
+    if(!window.bppV507 && b.getAttribute("data-bpp-notes-click")!=="505"){
+      var nb=b.cloneNode(true);
+      if(b.parentNode) b.parentNode.replaceChild(nb, b);
+      b=nb;
+      b.setAttribute("data-bpp-notes-click","505");
       b.addEventListener("click", function(e){
         e.preventDefault(); e.stopPropagation();
+        if(window.bppV507) return; /* v507 sole click owner */
         if(!hasNotes()) return;
         setOn(!on());
         paintBtn();

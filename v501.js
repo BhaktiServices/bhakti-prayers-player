@@ -131,14 +131,17 @@ window.BPP_BUILD="5.02"; window.BPP_SHOW="5.02";
     if(!b){
       b=document.createElement("button"); b.type="button"; b.id="bppNotes501";
       b.innerHTML='<span class="sym" aria-hidden="true">𝄞</span><span class="lab"></span>';
-      b.addEventListener("click", function(e){
-        e.preventDefault(); e.stopPropagation();
-        if(!isMms()) return;
-        setOn(!on());
-        paintBtn();
-        if(typeof paintLyrics==="function") paintLyrics();
-        else paintNotesOnly();
-      }, true);
+      /* V5.05/V5.07 own multi-prayer click; do not attach MMS-only handler. */
+      if(!window.bppV505 && !window.bppV507){
+        b.addEventListener("click", function(e){
+          e.preventDefault(); e.stopPropagation();
+          if(!isMms()) return;
+          setOn(!on());
+          paintBtn();
+          if(typeof paintLyrics==="function") paintLyrics();
+          else paintNotesOnly();
+        }, true);
+      }
     }
     placeBtn(b);
     paintBtn();
@@ -157,9 +160,10 @@ window.BPP_BUILD="5.02"; window.BPP_SHOW="5.02";
   function paintBtn(){
     var b=document.getElementById("bppNotes501"); if(!b) return;
     var show=isMms() || (typeof window.bppHasNotes505==="function"&&window.bppHasNotes505());
-    if(typeof window.bppPaintNotes505==="function"){ /* v505 owns button state */ }
     b.style.display=show?"inline-flex":"none";
     if(!show) return;
+    /* v505/v507 own pressed/label (per-prayer LS); v501 must not overwrite with bpp-mms-notes only */
+    if(window.bppV505 || window.bppV507 || typeof window.bppPaintNotes505==="function") return;
     var t=L(), notes=on();
     /* Knopf zeigt nächste Aktion; Gold = Noten aktiv */
     var lab=notes?t.text:t.notes;

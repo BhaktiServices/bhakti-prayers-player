@@ -4,6 +4,7 @@
 (function(){
   if(window.bppV421) return; window.bppV421=1;
   var H=[
+["5.07","09.11.","Noten-Toggle Fix: Tippen auf 𝄞 Text schaltet wieder zuverlässig auf Lyrics (Mukunda + Ramanuja); Ursache war v501-Click nur auf bpp-mms-notes / Early-Return bei Nicht-MMS während v505 bpp-notes-<id> las. Ein Click-Owner v507 + Legacy-Sync. Notenblatt: Pinch-Zoom, Doppeltipp rein/zurück, Pan bei Zoom; Desktop +/− (Gold=aktiv); Zoom bei Strophenwechsel zurück. critical=false."],
 ["5.06","09.11.","Noten-Modus Android: kein Fixed-Overlay mehr (Noten im Dokumentfluss, scrollbar); Knopf in Titelzeile Flex/nowrap ohne Hüpfen; Strophen-Follow via timeupdate. critical=false."],
 ["5.05","09.11.","Ramanuja Mangalam: handschriftliche Noten (Telegram-PDF) umschaltbar Noten/Text wie MMS; 1 Seite = ganzes Stück (keine saubere Strophentrennung); multi-Prayer-Owner v505; Offline-Cache; Quelle; MMS-Regression + Resume-Test. critical=false."],
 ["5.04","09.11.","Bugfix critical: Nach Start sprang Wiedergabe alle ~1 s auf gespeicherte Resume-Position zurück (v491mem setzte pendingSeek/ensureAudioAt mehrfach; v477-Schwelle resumeTarget+2 ließ Media-Session-seekto-Echo durch). Resume nur einmal (Flag bppResumeOnce504, v504); pendingSeek clear; stale Seeks verworfen. Ramanuja-Noten zurückgestellt → V5.05. critical=true."],
