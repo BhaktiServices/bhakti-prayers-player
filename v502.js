@@ -52,7 +52,7 @@ window.BPP_BUILD="5.02"; window.BPP_SHOW="5.02";
     "#lyrics.bpp-notes-mode .bppNotesSlide502 .frame{flex:1 1 auto;min-height:0;min-width:0;width:100%;display:flex;align-items:center;justify-content:center;overflow:hidden;"+
       "background:#fff;border-radius:8px;border:1px solid #3d2f26}"+
     "#lyrics.bpp-notes-mode .bppNotesSlide502.active .frame{outline:2px solid #e0b45a;outline-offset:0}"+
-    "#lyrics.bpp-notes-mode .bppNotesSlide502 img{display:block;max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;background:#fff}"+
+    "#lyrics.bpp-notes-mode .bppNotesSlide502 img{display:block;width:100%;height:100%;max-width:100%;max-height:100%;object-fit:contain;object-position:center;background:#fff}"+
     /* Groß-Modus: gleiche Contain-Logik im Fs-Container */
     "#bppFsBox.bpp-notes-mode, #bppFsStage .bpp-notes-mode{overflow:hidden!important}"+
     "body.bpp-fs #lyrics.bpp-notes-mode, #bppFsBox #lyrics.bpp-notes-mode{max-height:none!important;height:100%!important}";
@@ -122,11 +122,12 @@ window.BPP_BUILD="5.02"; window.BPP_SHOW="5.02";
       if(frame){ frame.style.height=Math.max(40, innerH-capH)+"px"; frame.style.width="100%"; }
       var img=sl.querySelector("img");
       if(img){
+        img.style.width="100%";
+        img.style.height="100%";
         img.style.maxWidth="100%";
         img.style.maxHeight="100%";
-        img.style.width="auto";
-        img.style.height="auto";
         img.style.objectFit="contain";
+        img.style.objectPosition="center";
       }
     });
   }
