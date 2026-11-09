@@ -62,6 +62,7 @@ window.BPP_BUILD="4.91"; window.BPP_SHOW="4.91";
 
   function ensureAudioAt(id, t){
     try{
+      if(window.bppResumeOnce504 || window.bppResumeOnce) return;
       var A=document.getElementById("a"); if(!A) return;
       var P=(typeof PRAYERS!=="undefined")?PRAYERS.find(function(p){ return p.id===id; }):null;
       if(!P||!P.audio) return;
@@ -77,10 +78,18 @@ window.BPP_BUILD="4.91"; window.BPP_SHOW="4.91";
       }
       function seek(){
         if(!(t>=3)) return;
+        if(window.bppResumeOnce504 || window.bppResumeOnce) return;
         try{
           if(isFinite(A.duration) && t>=A.duration-4) return;
           if(Math.abs((A.currentTime||0)-t)>0.75) A.currentTime=t;
-          try{ pendingSeek=t; }catch(e){}
+          try{
+            if(!(window.bppResumeOnce504 || window.bppResumeOnce)) pendingSeek=t;
+          }catch(e){}
+          /* nach erstem erfolgreichen Seek: Flag – keine weiteren Mem-Seeks */
+          if(Math.abs((A.currentTime||0)-t)<=1.5){
+            window.bppResumeOnce504=1; window.bppResumeOnce=1;
+            try{ pendingSeek=0; }catch(e){}
+          }
         }catch(e){}
       }
       if(A.readyState>=1 && isFinite(A.duration)) seek();
@@ -123,22 +132,15 @@ window.BPP_BUILD="4.91"; window.BPP_SHOW="4.91";
       ensureAudioAt(id, t);
       rewriteMemTime(id, t); /* undo accidental 0 writes during load */
     }
-    setTimeout(function(){ ensureAudioAt(id, t); }, 400);
-    setTimeout(function(){ ensureAudioAt(id, t); softAutoplay(); }, 1200);
-    setTimeout(function(){ ensureAudioAt(id, t); if(t>=3) rewriteMemTime(id, t); softAutoplay(); }, 2800);
+    setTimeout(function(){ if(!(window.bppResumeOnce504||window.bppResumeOnce)) ensureAudioAt(id, t); }, 400);
+    setTimeout(function(){ if(!(window.bppResumeOnce504||window.bppResumeOnce)) ensureAudioAt(id, t); softAutoplay(); }, 1200);
     setTimeout(function(){
-      ensureAudioAt(id, t);
-      if(t>=3){
-        rewriteMemTime(id, t);
-        try{
-          var A=document.getElementById("a");
-          if(A && Math.abs((A.currentTime||0)-t)>1) A.currentTime=t;
-        }catch(e){}
-      }
+      /* Kein erneutes Seek auf Boot-Zeit – nur Persist-Freeze lösen + Autoplay */
       freezePersist=false;
       softAutoplay();
       try{ if(typeof syncPlayBtn==="function") syncPlayBtn(); }catch(e){}
-    }, 4500);
+      try{ if(t>=3) pendingSeek=0; }catch(e){}
+    }, 2800);
     window.bppStartOwner=window.bppStartOwner||"mem";
   }
 
