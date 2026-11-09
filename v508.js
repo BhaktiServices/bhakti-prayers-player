@@ -2,7 +2,7 @@
    Wenn Noten-Modus (Mukunda/Ramanuja) aktiv und Nutzer „Groß“ öffnet: Notenblatt
    statt Groß-Lyrics, contain so groß wie möglich, Strophen-Follow, Zoom (v507),
    Noten/Text-Knopf in der Groß-UI (ruft v507-Toggle). Verlassen von Groß → normale
-   Notenansicht. Owner: Groß-Noten-Shell/Btn = v508; Click-Zustand weiter v507.
+   Notenansicht. Owner: Groß-Noten-Shell/Btn = v508; Click/Taste E weiter v507.
    Ursache Lücke: #bppFs wird erst bei Open gebaut → v505-MO hing nie; v506/v507
    banden nur #lyrics. critical=false. */
 window.BPP_BUILD="5.08"; window.BPP_SHOW="5.08";
@@ -180,7 +180,8 @@ window.BPP_BUILD="5.08"; window.BPP_SHOW="5.08";
     var lang=(typeof window.lang==="string")?window.lang:"de";
     var lab=on?"Text":(lang==="en"?"Notes":"Noten");
     var span=b.querySelector(".lab"); if(span) span.textContent=lab;
-    b.title=on?"Text/Lyrics anzeigen":"Notation anzeigen";
+    var key=(window.bppNotesKey507||"E");
+    b.title=(on?"Text/Lyrics anzeigen":"Notation anzeigen")+" ("+key+")";
     b.setAttribute("aria-label", b.title);
     b.setAttribute("aria-pressed", on?"true":"false");
     b.classList.toggle("on", on); b.classList.toggle("gold", on);

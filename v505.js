@@ -387,7 +387,7 @@ window.BPP_BUILD="5.05"; window.BPP_SHOW="5.05";
     if(!show) return;
     var t=L(), notes=on();
     var span=b.querySelector(".lab"); if(span) span.textContent=notes?t.text:t.notes;
-    b.title=notes?t.titleText:t.titleNotes;
+    b.title=(notes?t.titleText:t.titleNotes)+((window.bppNotesKey507)?(" ("+window.bppNotesKey507+")"):"");
     b.setAttribute("aria-label", b.title);
     b.setAttribute("aria-pressed", notes?"true":"false");
     b.classList.toggle("on", notes); b.classList.toggle("gold", notes);

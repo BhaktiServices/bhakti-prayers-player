@@ -4,7 +4,7 @@
    togglte nur Legacy-Key während bpp-notes-mukunda an blieb → paintLyrics blieb Noten.
    Fix: v507 = alleiniger Click-Owner; schreibt bpp-notes-<id> + Legacy bpp-mms-notes
    für Mukunda; v501/v505 weichen. Zoom: Pinch, Doppeltipp, Pan; Desktop +/−;
-   Zoom bei Strophenwechsel zurücksetzen (Follow bleibt lesbar). V5.08: Zoom auch in Groß (#bppFs). critical=false. */
+   Zoom bei Strophenwechsel zurücksetzen (Follow bleibt lesbar). V5.08: Zoom auch in Groß (#bppFs); Taste E Noten/Text (N belegt). critical=false. */
 window.BPP_BUILD="5.07"; window.BPP_SHOW="5.07";
 (function(){
   if(window.bppV507) return; window.bppV507=1;
@@ -95,6 +95,7 @@ window.BPP_BUILD="5.07"; window.BPP_SHOW="5.07";
       }
       b.setAttribute("aria-pressed", notes?"true":"false");
       b.classList.toggle("on", notes); b.classList.toggle("gold", notes);
+      try{ if(b.title) b.title=withKeyHint(b.title); }catch(x){}
     }catch(e){}
   }
 
@@ -122,6 +123,29 @@ window.BPP_BUILD="5.07"; window.BPP_SHOW="5.07";
     b.addEventListener("click", toggleNotes, true);
     return b;
   }
+
+  /* ---- Keyboard: E = Noten/Text (N belegt: nächste Strophe) ---- */
+  var NOTES_KEY="E";
+  window.bppNotesKey507=NOTES_KEY;
+  function typing(el){
+    el=el||document.activeElement;
+    var n=el&&el.tagName;
+    return n==="INPUT"||n==="TEXTAREA"||n==="SELECT"||(el&&el.isContentEditable);
+  }
+  function withKeyHint(title){
+    title=String(title||"");
+    var suf=" ("+NOTES_KEY+")";
+    if(title.indexOf(suf)>=0) return title;
+    return title.replace(/\s*\([A-Z⇧0-9+#?,.\/ ]{1,8}\)\s*$/,"")+suf;
+  }
+  document.addEventListener("keydown", function(e){
+    if(e.ctrlKey||e.altKey||e.metaKey||e.shiftKey||typing(e.target)) return;
+    if(e.key!=="e"&&e.key!=="E") return;
+    if(!hasNotes()) return;
+    e.preventDefault(); e.stopPropagation();
+    if(e.repeat) return;
+    toggleNotes(e);
+  }, true);
 
   /* ---- Zoom ---- */
   function frameEl(){
