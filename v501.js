@@ -1,15 +1,15 @@
 /* [Grok-Bot] V5.01: Mukunda Mala Stotram – Notation (Note names in D) statt Lyrics,
    Umschalter Noten/Text (Knopf = nächste Aktion, Gold = Noten aktiv). Ein Besitzer.
    Zuordnung: PDF-Seite 1 = Mangala/Intro, Seiten 2–41 = Strophen 1–40 (gedruckte Nummer).
-   Offline: Notation-Bilder + Manifest im App-Cache beim Prayers-Download. critical=false. */
-window.BPP_BUILD="5.01"; window.BPP_SHOW="5.01";
+   Offline: Notation-Bilder + Manifest im App-Cache beim Prayers-Download. Fit/eine Seite: v502. critical=false. */
+window.BPP_BUILD="5.02"; window.BPP_SHOW="5.02";
 (function(){
   if(window.bppV501) return; window.bppV501=1;
   var PID="mukunda", LS="bpp-mms-notes", MAN="assets/mms-notes/manifest.json";
   var APP_CACHE=null; /* filled from sw VER when possible */
-  try{ APP_CACHE="bpp-app-"+(window.BPP_VERSION||"5.01").replace(/\./g,""); }catch(e){ APP_CACHE="bpp-app-5010"; }
+  try{ APP_CACHE="bpp-app-"+(window.BPP_VERSION||"5.01").replace(/\./g,""); }catch(e){ APP_CACHE="bpp-app-5020"; }
   /* Prefer live SW APP name via known VER bump */
-  APP_CACHE="bpp-app-5010";
+  APP_CACHE="bpp-app-5020";
 
   var LAB={
     de:{notes:"Noten",text:"Text",titleNotes:"Notation anzeigen",titleText:"Text/Lyrics anzeigen",sym:"𝄞"},
@@ -204,6 +204,7 @@ window.BPP_BUILD="5.01"; window.BPP_SHOW="5.01";
       var box=document.getElementById("lyrics");
       if(isMms()&&on()){
         paintLock=Date.now();
+        if(typeof window.bppPaintNotes502==="function"){ window.bppPaintNotes502(); return; }
         paintNotesOnly();
         return;
       }
@@ -220,6 +221,7 @@ window.BPP_BUILD="5.01"; window.BPP_SHOW="5.01";
     if(k&&k!==lastStanzaKey){
       lastStanzaKey=k;
       if(isMms()&&on()){
+        if(typeof window.bppNotesFollow502==="function"){ window.bppNotesFollow502(k); paintBtn(); return; }
         var el=document.querySelector("#lyrics .bppNotesPage501[data-stanza='"+k.replace(/'/g,"\\'")+"']");
         document.querySelectorAll("#lyrics .bppNotesPage501.active").forEach(function(n){ n.classList.remove("active"); });
         if(el){ el.classList.add("active"); el.scrollIntoView({block:"nearest",behavior:"smooth"}); }
