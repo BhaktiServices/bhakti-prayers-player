@@ -4,6 +4,7 @@
 (function(){
   if(window.bppV421) return; window.bppV421=1;
   var H=[
+["5.09","09.11.","Groß-Noten Layout: ein Titel (kein Doppel); Kopfzeile Titel… / Text vollständig / Strophe ohne Überlappung; Notenblatt nur zwischen Kopf und Steuerleiste (Bar messbar, z-index); Frame-Hintergrund dunkel statt großer Weißfläche. critical=false."],
 ["5.08","09.11.","Noten auch in Groß: bei aktivem Noten-Modus (Mukunda/Ramanuja) zeigt Groß das Notenblatt (contain, max. Fläche) statt Groß-Lyrics; Strophen-Follow; Zoom Pinch/Doppeltipp/+− auch dort; Noten/Text-Knopf in Groß-UI (v507-Toggle); Verlassen von Groß → normale Notenansicht. Owner v508. Taste E Noten/Text (N war belegt: nächste Strophe); Tooltip + Hilfe alle Sprachen. critical=false."],
 ["5.07","09.11.","Noten-Toggle Fix: Tippen auf 𝄞 Text schaltet wieder zuverlässig auf Lyrics (Mukunda + Ramanuja); Ursache war v501-Click nur auf bpp-mms-notes / Early-Return bei Nicht-MMS während v505 bpp-notes-<id> las. Ein Click-Owner v507 + Legacy-Sync. Notenblatt: Pinch-Zoom, Doppeltipp rein/zurück, Pan bei Zoom; Desktop +/− (Gold=aktiv); Zoom bei Strophenwechsel zurück. critical=false."],
 ["5.06","09.11.","Noten-Modus Android: kein Fixed-Overlay mehr (Noten im Dokumentfluss, scrollbar); Knopf in Titelzeile Flex/nowrap ohne Hüpfen; Strophen-Follow via timeupdate. critical=false."],

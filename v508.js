@@ -35,12 +35,7 @@ window.BPP_BUILD="5.08"; window.BPP_SHOW="5.08";
       "flex:1 1 auto;display:flex!important;flex-direction:column!important;gap:4px;"+
       "width:100%;height:100%;min-height:0;box-sizing:border-box;z-index:5;overflow:hidden"+
     "}"+
-    "#bppFs.bpp-notes-fs .bppNotesTitle503{"+
-      "position:static!important;height:auto!important;line-height:1.25!important;"+
-      "flex:0 0 auto;color:var(--gold,#e0b45a);font-family:'Gentium Book Plus',Georgia,serif;font-size:1rem;"+
-      "padding:2px 4px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;"+
-      "background:none!important;pointer-events:none;text-shadow:none"+
-    "}"+
+    "#bppFs.bpp-notes-fs .bppNotesTitle503{display:none!important}"+
     "#bppFs.bpp-notes-fs .bppNotesCap503{"+
       "position:static!important;height:auto!important;line-height:1.2!important;"+
       "flex:0 0 auto;text-align:center;font:600 .75rem/1.2 system-ui,sans-serif;color:#e0b45a;"+
@@ -205,9 +200,15 @@ window.BPP_BUILD="5.08"; window.BPP_SHOW="5.08";
         setTimeout(function(){ sync(); paintFsBtn(); }, 300);
       }, true);
     }
-    /* Prefer beside title text inside T1 */
-    if(t1){
-      if(b.parentNode!==t1) t1.appendChild(b);
+    /* V5.09: button is sibling of T1/T2 (not inside T1 — draw() textContent would wipe it) */
+    var t2=document.getElementById("bppFsT2");
+    if(t2 && t2.parentNode===top){
+      if(b.nextSibling!==t2) top.insertBefore(b, t2);
+    }else if(t1 && t1.parentNode===top){
+      if(b.previousSibling!==t1){
+        if(t1.nextSibling) top.insertBefore(b, t1.nextSibling);
+        else top.appendChild(b);
+      }
     }else if(b.parentNode!==top){
       top.appendChild(b);
     }
