@@ -4,7 +4,7 @@
    togglte nur Legacy-Key während bpp-notes-mukunda an blieb → paintLyrics blieb Noten.
    Fix: v507 = alleiniger Click-Owner; schreibt bpp-notes-<id> + Legacy bpp-mms-notes
    für Mukunda; v501/v505 weichen. Zoom: Pinch, Doppeltipp, Pan; Desktop +/−;
-   Zoom bei Strophenwechsel zurücksetzen (Follow bleibt lesbar). critical=false. */
+   Zoom bei Strophenwechsel zurücksetzen (Follow bleibt lesbar). V5.08: Zoom auch in Groß (#bppFs). critical=false. */
 window.BPP_BUILD="5.07"; window.BPP_SHOW="5.07";
 (function(){
   if(window.bppV507) return; window.bppV507=1;
@@ -34,7 +34,7 @@ window.BPP_BUILD="5.07"; window.BPP_SHOW="5.07";
       "pointer-events:none;"+
       "-webkit-user-drag:none;user-drag:none"+
     "}"+
-    "#bppNotesZoomBar507{"+
+    "#bppNotesZoomBar507,.bppNotesZoomBar507{"+
       "display:none;position:absolute;right:8px;bottom:8px;z-index:6;"+
       "flex-direction:row;gap:4px;pointer-events:auto"+
     "}"+
@@ -124,17 +124,38 @@ window.BPP_BUILD="5.07"; window.BPP_SHOW="5.07";
   }
 
   /* ---- Zoom ---- */
-  function frameEl(){ return document.querySelector("#lyrics .bppNotesFrame503"); }
-  function imgEl(frame){ return (frame||frameEl())&& (frame||frameEl()).querySelector("img"); }
+  function frameEl(){
+    /* Prefer Groß-Noten frame when visible */
+    var fs=document.querySelector("#bppFs.on.bpp-notes-fs .bppNotesFrame503");
+    if(fs) return fs;
+    return document.querySelector("#lyrics .bppNotesFrame503");
+  }
+  function allFrames(){
+    var out=[], seen={};
+    function add(sel){
+      document.querySelectorAll(sel).forEach(function(f){
+        if(seen[f]) return; seen[f]=1; out.push(f);
+      });
+    }
+    add("#bppFs.on.bpp-notes-fs .bppNotesFrame503");
+    add("#lyrics .bppNotesFrame503");
+    return out;
+  }
+  function imgEl(frame){ frame=frame||frameEl(); return frame?frame.querySelector("img"):null; }
 
   function applyZoom(){
-    var frame=frameEl(); if(!frame) return;
-    var img=imgEl(frame); if(!img) return;
-    img.classList.add("bppNotesZoomImg507");
     if(zScale<=1.001){ zScale=1; zTx=0; zTy=0; }
-    img.style.transform="translate("+zTx+"px,"+zTy+"px) scale("+zScale+")";
-    frame.classList.toggle("bpp-notes-zoomed", zScale>1.001);
-    ensureZoomBar(frame);
+    var frames=allFrames();
+    if(!frames.length){
+      var one=frameEl(); if(one) frames=[one];
+    }
+    frames.forEach(function(frame){
+      var img=imgEl(frame); if(!img) return;
+      img.classList.add("bppNotesZoomImg507");
+      img.style.transform="translate("+zTx+"px,"+zTy+"px) scale("+zScale+")";
+      frame.classList.toggle("bpp-notes-zoomed", zScale>1.001);
+      ensureZoomBar(frame);
+    });
     paintZoomBtns();
   }
   function clampPan(){
@@ -169,10 +190,10 @@ window.BPP_BUILD="5.07"; window.BPP_SHOW="5.07";
 
   function ensureZoomBar(frame){
     if(!frame) return;
-    var bar=frame.querySelector("#bppNotesZoomBar507");
+    var bar=frame.querySelector(".bppNotesZoomBar507");
     if(bar) return bar;
     bar=document.createElement("div");
-    bar.id="bppNotesZoomBar507";
+    bar.className="bppNotesZoomBar507"; bar.id="bppNotesZoomBar507";
     bar.innerHTML='<button type="button" data-z="in" aria-label="Zoom in" title="Zoom +">+</button>'+
       '<button type="button" data-z="out" aria-label="Zoom out" title="Zoom −">−</button>';
     frame.appendChild(bar);
@@ -187,11 +208,12 @@ window.BPP_BUILD="5.07"; window.BPP_SHOW="5.07";
     return bar;
   }
   function paintZoomBtns(){
-    var bar=document.getElementById("bppNotesZoomBar507"); if(!bar) return;
-    var inn=bar.querySelector('[data-z="in"]');
-    var out=bar.querySelector('[data-z="out"]');
-    if(inn){ inn.classList.toggle("gold", zScale<MAX_Z-0.01); inn.classList.toggle("on", zScale<MAX_Z-0.01); }
-    if(out){ out.classList.toggle("gold", zScale>1.01); out.classList.toggle("on", zScale>1.01); }
+    document.querySelectorAll(".bppNotesZoomBar507").forEach(function(bar){
+      var inn=bar.querySelector('[data-z="in"]');
+      var out=bar.querySelector('[data-z="out"]');
+      if(inn){ inn.classList.toggle("gold", zScale<MAX_Z-0.01); inn.classList.toggle("on", zScale<MAX_Z-0.01); }
+      if(out){ out.classList.toggle("gold", zScale>1.01); out.classList.toggle("on", zScale>1.01); }
+    });
   }
 
   function dist(a,b){ var dx=a.clientX-b.clientX, dy=a.clientY-b.clientY; return Math.sqrt(dx*dx+dy*dy); }
@@ -200,7 +222,7 @@ window.BPP_BUILD="5.07"; window.BPP_SHOW="5.07";
   function onTouchStart(e){
     var frame=frameEl(); if(!frame||!frame.contains(e.target) && e.target!==frame) return;
     if(e.touches.length===2){
-      e.preventDefault();
+      e.preventDefault(); if(e.stopPropagation) e.stopPropagation();
       pan=null;
       var d=dist(e.touches[0], e.touches[1]);
       var m=mid(e.touches[0], e.touches[1]);
@@ -211,7 +233,7 @@ window.BPP_BUILD="5.07"; window.BPP_SHOW="5.07";
       var now=Date.now();
       var t=e.touches[0];
       if(now-lastTap<280 && Math.abs(t.clientX-lastTapX)<28 && Math.abs(t.clientY-lastTapY)<28){
-        e.preventDefault();
+        e.preventDefault(); if(e.stopPropagation) e.stopPropagation();
         lastTap=0;
         if(zScale>1.05) resetZoom();
         else zoomAt(t.clientX, t.clientY, DBL_Z);
@@ -225,7 +247,7 @@ window.BPP_BUILD="5.07"; window.BPP_SHOW="5.07";
   }
   function onTouchMove(e){
     if(pinch && e.touches.length>=2){
-      e.preventDefault();
+      e.preventDefault(); if(e.stopPropagation) e.stopPropagation();
       var d=dist(e.touches[0], e.touches[1]);
       var m=mid(e.touches[0], e.touches[1]);
       var next=Math.max(MIN_Z, Math.min(MAX_Z, pinch.s0*(d/pinch.d0)));
@@ -233,7 +255,7 @@ window.BPP_BUILD="5.07"; window.BPP_SHOW="5.07";
       return;
     }
     if(pan && e.touches.length===1 && zScale>1.001){
-      e.preventDefault();
+      e.preventDefault(); if(e.stopPropagation) e.stopPropagation();
       var t=e.touches[0];
       zTx=pan.tx0+(t.clientX-pan.x0);
       zTy=pan.ty0+(t.clientY-pan.y0);
@@ -259,9 +281,9 @@ window.BPP_BUILD="5.07"; window.BPP_SHOW="5.07";
     zoomAt(e.clientX, e.clientY, zScale*factor);
   }
 
-  function bindFrame(){
-    var frame=frameEl(); if(!frame) return;
-    if(frame._bpp507zoom) { applyZoom(); return; }
+  function bindOneFrame(frame){
+    if(!frame) return;
+    if(frame._bpp507zoom) return;
     frame._bpp507zoom=1;
     frame.addEventListener("touchstart", onTouchStart, {passive:false});
     frame.addEventListener("touchmove", onTouchMove, {passive:false});
@@ -269,12 +291,17 @@ window.BPP_BUILD="5.07"; window.BPP_SHOW="5.07";
     frame.addEventListener("touchcancel", onTouchEnd, {passive:true});
     frame.addEventListener("wheel", onWheel, {passive:false});
     ensureZoomBar(frame);
+  }
+  function bindFrame(){
+    var frames=allFrames();
+    if(!frames.length){ var one=frameEl(); if(one) frames=[one]; }
+    frames.forEach(bindOneFrame);
     applyZoom();
   }
 
   function watchStanzaReset(){
     if(!on()||!hasNotes()){ lastCap=""; return; }
-    var cap=document.querySelector("#lyrics .bppNotesCap503");
+    var cap=document.querySelector("#bppFs.on.bpp-notes-fs .bppNotesCap503")||document.querySelector("#lyrics .bppNotesCap503");
     var txt=cap?String(cap.textContent||""):"";
     if(txt && lastCap && txt!==lastCap){ resetZoom(); }
     lastCap=txt;
@@ -308,6 +335,7 @@ window.BPP_BUILD="5.07"; window.BPP_SHOW="5.07";
 
   window.bppToggleNotes507=toggleNotes;
   window.bppResetNotesZoom507=resetZoom;
+  window.bppBindNotesZoom507=bindFrame;
   window.bppNotesOn507=on;
 
   function boot(){
