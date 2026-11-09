@@ -274,6 +274,7 @@ window.BPP_BUILD="5.03"; window.BPP_SHOW="5.03";
   }
 
   function paint(){
+    if(typeof window.bppPaintNotes505==="function" && window.bppV505){ return window.bppPaintNotes505(); }
     var box=document.getElementById("lyrics");
     if(!box||!isMms()||!on()){ setListHidden(false); clearStagePos(); return; }
     setListHidden(true);

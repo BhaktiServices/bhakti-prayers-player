@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "prayers": {
+    "mukunda": {
+      "manifest": "assets/mms-notes/manifest.json",
+      "ls": "bpp-notes-mukunda",
+      "legacyLs": "bpp-mms-notes",
+      "label": "Mukunda Mala Stotram"
+    },
+    "ramanuja": {
+      "manifest": "assets/ramanuja-notes/manifest.json",
+      "ls": "bpp-notes-ramanuja",
+      "label": "Ramanuja Mangalam"
+    }
+  }
+}

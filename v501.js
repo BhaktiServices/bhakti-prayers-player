@@ -156,7 +156,8 @@ window.BPP_BUILD="5.02"; window.BPP_SHOW="5.02";
   }
   function paintBtn(){
     var b=document.getElementById("bppNotes501"); if(!b) return;
-    var show=isMms();
+    var show=isMms() || (typeof window.bppHasNotes505==="function"&&window.bppHasNotes505());
+    if(typeof window.bppPaintNotes505==="function"){ /* v505 owns button state */ }
     b.style.display=show?"inline-flex":"none";
     if(!show) return;
     var t=L(), notes=on();
@@ -202,8 +203,9 @@ window.BPP_BUILD="5.02"; window.BPP_SHOW="5.02";
     window.paintLyrics=function(){
       ensureBtn();
       var box=document.getElementById("lyrics");
-      if(isMms()&&on()){
+      if((isMms()&&on()) || (typeof window.bppHasNotes505==="function"&&window.bppHasNotes505()&&window.bppNotesOn505&&window.bppNotesOn505())){
         paintLock=Date.now();
+        if(typeof window.bppPaintNotes505==="function"){ window.bppPaintNotes505(); return; }
         if(typeof window.bppPaintNotes503==="function"){ window.bppPaintNotes503(); return; }
         if(typeof window.bppPaintNotes502==="function"){ window.bppPaintNotes502(); return; }
         paintNotesOnly();
