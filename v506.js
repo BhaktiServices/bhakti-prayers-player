@@ -10,8 +10,7 @@ window.BPP_BUILD="5.06"; window.BPP_SHOW="5.06";
 
   var st=document.createElement("style");
   st.id="bppNotesFit506css";
-  st.textContent=
-    /* Stable title row: no wrap/jump */
+  st.textContent="body.bpp-notes-on503 #lyrics.panel,body.bpp-notes-on503 .panel#lyrics{max-height:var(--bpp-notes-host-h,60vh)!important}"+
     "#lyrTitle.l301,#lyrTitle{"+
       "display:flex!important;flex-wrap:nowrap!important;align-items:center!important;"+
       "gap:6px!important;max-width:100%;box-sizing:border-box}"+
@@ -20,7 +19,6 @@ window.BPP_BUILD="5.06"; window.BPP_SHOW="5.06";
     "#bppNotes501,#bppShare{"+
       "flex:0 0 auto!important;white-space:nowrap!important;align-self:center}"+
     "#bppNotes501{margin-left:0!important}"+
-    /* Cancel V5.03/V5.05 fixed overlay – notes stay in document flow */
     "body.bpp-notes-on503 .bar{"+
       "position:static!important;left:auto!important;right:auto!important;bottom:auto!important;"+
       "z-index:auto!important;max-height:none!important;overflow:visible!important;"+
@@ -29,48 +27,47 @@ window.BPP_BUILD="5.06"; window.BPP_SHOW="5.06";
     "body.bpp-notes-on503 .bar audio{height:28px!important;max-height:28px;width:100%}"+
     "body.bpp-notes-on503 #stage{"+
       "position:relative!important;left:auto!important;right:auto!important;top:auto!important;bottom:auto!important;"+
-      "z-index:auto!important;margin:8px 10px 12px!important;height:auto!important;max-height:none!important;"+
-      "display:block!important;grid-template-columns:none!important}"+
+      "z-index:auto!important;margin:8px 10px 12px!important;"+
+      "height:var(--bpp-notes-host-h,60vh)!important;max-height:var(--bpp-notes-host-h,60vh)!important;"+
+      "display:block!important;grid-template-columns:none!important;overflow:hidden!important}"+
     "body.bpp-notes-on503 #ytBox{display:none!important}"+
-    "body.bpp-notes-on503 #lyrTitle{display:flex!important}"+ /* don't hide on short screens */
+    "body.bpp-notes-on503 #lyrTitle{display:flex!important}"+
     "body.bpp-notes-on503 #bppL1{display:flex!important}"+
     "body.bpp-notes-on503 header{max-height:none!important;overflow:visible!important}"+
-    /* Scrollable in-flow lyrics / notes host */
     "body.bpp-notes-on503 #lyrics.bpp-notes-mode, body.bpp-notes-on503 #lyrics{"+
       "position:relative!important;display:block!important;"+
-      "height:auto!important;max-height:none!important;min-height:0!important;"+
+      "height:var(--bpp-notes-host-h,60vh)!important;"+
+      "max-height:var(--bpp-notes-host-h,60vh)!important;"+
+      "min-height:0!important;"+
       "overflow-x:hidden!important;overflow-y:auto!important;"+
       "-webkit-overflow-scrolling:touch!important;touch-action:pan-y!important;"+
       "overscroll-behavior:contain;padding:8px!important;box-sizing:border-box!important;"+
       "width:auto!important;margin:0!important;column-count:1!important}"+
-    /* Shell in normal flow (not absolute fill) */
     "#lyrics .bppNotesShell503{"+
       "position:relative!important;left:auto!important;right:auto!important;top:auto!important;bottom:auto!important;"+
       "display:flex!important;flex-direction:column!important;gap:4px;"+
-      "overflow:visible!important;min-height:0;width:100%;box-sizing:border-box}"+
+      "overflow:visible!important;min-height:0;width:100%;box-sizing:border-box;height:100%}"+
     "#lyrics .bppNotesTitle503,#lyrics .bppNotesCap503{"+
       "position:static!important;height:auto!important;line-height:1.25!important;"+
-      "background:none!important;pointer-events:auto;z-index:auto;padding:0 2px;"+
-      "text-shadow:none}"+
+      "background:none!important;pointer-events:auto;z-index:auto;padding:0 2px;text-shadow:none;flex:0 0 auto}"+
     "#lyrics .bppNotesTitle503{color:var(--gold);font-family:'Gentium Book Plus',Georgia,serif;font-size:1rem;"+
       "border-bottom:1px solid #6b5340;padding-bottom:4px;margin:0 0 2px}"+
     "#lyrics .bppNotesCap503{text-align:center;font:600 .75rem/1.2 system-ui,sans-serif;color:#e0b45a;margin:0 0 4px}"+
     "#lyrics .bppNotesFrame503{"+
       "position:relative!important;left:auto!important;right:auto!important;top:auto!important;bottom:auto!important;"+
-      "flex:0 0 auto;width:100%;"+
-      "min-height:42vh;height:var(--bpp-notes-frame-h,58vh);max-height:75vh;"+
+      "flex:1 1 auto;width:100%;min-height:0;"+
+      "height:var(--bpp-notes-frame-h,58vh);max-height:75vh;"+
       "background:#fff;border:2px solid #e0b45a;border-radius:10px;overflow:hidden;"+
       "box-sizing:border-box;padding:6px}"+
     "#lyrics .bppNotesFrame503 img{"+
       "display:block;width:100%;height:100%;object-fit:contain;object-position:center top;"+
       "background:#fff;border:0;pointer-events:auto;-webkit-user-drag:none}"+
-    /* Groß: keep absolute fill inside FS stage (already scrollable host) */
     "#bppFs.bpp-notes-fs .bppNotesShell503{display:flex!important;flex-direction:column!important}"+
     "#bppFs.bpp-notes-fs .bppNotesFrame503{flex:1 1 auto;min-height:0;height:auto!important;max-height:none}"+
     "@media(max-width:430px){"+
       "#lyrTitle.l301,#lyrTitle{padding-right:4px}"+
       "#bppNotes501{padding:3px 7px;font-size:.78rem}"+
-      "#lyrics .bppNotesFrame503{min-height:48vh;height:var(--bpp-notes-frame-h,55vh)}"+
+      "#lyrics .bppNotesFrame503{min-height:40vh}"+
     "}";
   document.head.appendChild(st);
 
@@ -142,25 +139,31 @@ window.BPP_BUILD="5.06"; window.BPP_SHOW="5.06";
   function applyGeom506(){
     if(!hasNotesOn()) return null;
     stabilizeTitle();
-    /* clear any leftover fixed offsets from v503/v505 */
     var stage=document.getElementById("stage");
     if(stage){
       stage.style.top=""; stage.style.bottom=""; stage.style.left=""; stage.style.right="";
-      stage.style.height=""; stage.style.maxHeight=""; stage.style.position="";
+      stage.style.height="auto"; stage.style.maxHeight="none"; stage.style.position="";
+      stage.style.minHeight="0";
     }
     var box=document.getElementById("lyrics");
     if(!box||!box.classList.contains("bpp-notes-mode")) return null;
-    box.style.height=""; box.style.maxHeight=""; box.style.minHeight="";
+    var fh=frameHeightPx();
+    var hostH=fh+72;
+    box.style.height=hostH+"px";
+    box.style.maxHeight=hostH+"px";
+    box.style.minHeight="0";
     box.style.overflowY="auto";
     box.style.webkitOverflowScrolling="touch";
-    var fh=frameHeightPx();
     box.style.setProperty("--bpp-notes-frame-h", fh+"px");
+    box.style.setProperty("--bpp-notes-host-h", hostH+"px");
+    if(stage) stage.style.setProperty("--bpp-notes-host-h", hostH+"px");
     var shell=box.querySelector(".bppNotesShell503");
     var frame=box.querySelector(".bppNotesFrame503");
     var img=frame&&frame.querySelector("img");
     if(shell){
       shell.style.position="relative";
       shell.style.left=""; shell.style.right=""; shell.style.top=""; shell.style.bottom="";
+      shell.style.height="auto";
     }
     if(frame){
       frame.style.position="relative";
@@ -173,11 +176,7 @@ window.BPP_BUILD="5.06"; window.BPP_SHOW="5.06";
       img.style.objectFit="contain"; img.style.objectPosition="center top";
     }
     box.dataset.bppFreeH=String(fh);
-    /* FS host still absolute – nudge via v505 apply if present */
-    try{
-      if(typeof window.bppFitNotes505==="function"){ /* geom overridden below */ }
-    }catch(e){}
-    return {frameH:fh};
+    return {frameH:fh, hostH:hostH};
   }
 
   function followNow(){

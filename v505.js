@@ -250,6 +250,7 @@ window.BPP_BUILD="5.05"; window.BPP_SHOW="5.05";
   }
 
   function applyGeom(){
+    if(window.bppV506) return null; /* V5.06 owns in-flow geom */
     var box=document.getElementById("lyrics");
     var stage=document.getElementById("stage");
     if(!box||!box.classList.contains("bpp-notes-mode")) return null;
@@ -314,7 +315,7 @@ window.BPP_BUILD="5.05"; window.BPP_SHOW="5.05";
 
   function schedule(){
     clearTimeout(fitT);
-    fitT=setTimeout(function(){ if(hasNotes()&&on()) applyGeom(); }, 40);
+    fitT=setTimeout(function(){ if(window.bppV506){ try{ window.bppFitNotes506&&window.bppFitNotes506(); }catch(e){} return; } if(hasNotes()&&on()) applyGeom(); }, 40);
   }
   function ensureRO(box){
     if(typeof ResizeObserver==="undefined") return;
