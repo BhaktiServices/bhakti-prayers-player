@@ -190,11 +190,11 @@ window.BPP_BUILD="4.53"; window.BPP_SHOW="4.53";
 
   function stampMtj(){
     if(!mtjZeilen) return;
-    var n=0;
-    mtjZeilen.forEach(function(x){
+    /* V5.10: nr = Zeilenindex (nicht Zähler), sonst sind ab Jaya alle Nummern um 1 zu klein (R belegt keinen Zähler-Slot). */
+    mtjZeilen.forEach(function(x,i){
       if(/rāmaji se rāma rāma kahiyo/.test(x.sa||"")){ x.nr="R"; x.x2=true; }
       else if(/^Kīrtan/i.test(String(x.nr||""))){ /* lassen */ }
-      else { x.nr=String(n++); x.x2=false; }
+      else { x.nr=String(i); x.x2=false; }
     });
   }
   function tick(){
