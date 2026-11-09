@@ -5,7 +5,7 @@ window.PRAYERS = [
     titel: "Mukunda Mala Stotram",
     autor: "Kulashekhara Alvar \u00b7 Bhakti Marga Music",
     youtube: "aDg6I2Bcx-g",
-    quelle: "Prathana with chords \u00b7 S. 38-42",
+    quelle: "Prathana with chords \u00b7 S. 38-42 \u00b7 Notation: Note names in D (Sibelius PDF, Dropbox)",
     hinweis: "Strophen vierzeilig wie im Heft.",
     zeilen: (function(){
       var out=[], n;
