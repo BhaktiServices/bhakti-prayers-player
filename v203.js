@@ -117,7 +117,7 @@ window.BPP_SW="sw.js?v=203";
   offlinePrefs();
   window.addEventListener("offline", function(){ offlinePrefs(); quick(); });
   /* [Grok.com] nicht mehr alles beim Start. Nur der laufende Gesang, alle auf den Knopf. */
-  window.bppOfflineRun=run;
+  window.bppOfflineRun=run; /* V4.91 overrides this after load */
   function cacheOne(url){
     if(!url || !navigator.onLine || !("caches" in window)) return;
     var u; try{ u=abs(url); }catch(e){ return; }

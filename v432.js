@@ -1,7 +1,7 @@
 /* [Grok-Bot] V4.32: Tschechisch (CZ) als neue Sprache.
    - Uebersetzungen aus dem tschechischen Prathana-Heft (Prathana_CZ.PDF) und "MUKUNDA MĀLĀ STOTRAṀ CZ.pdf", strophengenau je Gebet zugeordnet (Feld z.cz).
    - Wo es keine tschechische Uebersetzung gibt, zeigt CZ den Hinweis "Zatím bez překladu" (kein englischer Ersatz).
-   - Tschechische Bedien- und Hilfetexte: "Texty rozhraní a nápovědy doplnil Grok."
+   - Tschechische Bedien- und Hilfetexte: "Texty rozhraní a nápovědy (G+)"
    Daten: {gebet-id:[[zeilenindex, sa-anfang, vorkommen, text], ...]} */
 (function(){
   window.BPP_BUILD="4.32"; window.BPP_SHOW="4.32";

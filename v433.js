@@ -60,7 +60,7 @@ window.BPP_BUILD="4.33"; window.BPP_SHOW="4.33";
     var s=document.getElementById("selRate"); if(!s||!s.options.length) return; e.preventDefault(); e.stopPropagation();
     var n=s.options.length, k=(s.selectedIndex+(e.shiftKey?-1:1)+n)%n; s.selectedIndex=k; s.dispatchEvent(new Event("change",{bubbles:true})); s.dispatchEvent(new Event("input",{bubbles:true}));
   },true);
-  var HT={de:"Tempo: Taste K = schneller/nächste Stufe, Umschalt+K = zurück (von Grok ergänzt)",en:"Speed: key K = next step, Shift+K = back (added by Grok)",fr:"Vitesse : touche K = palier suivant, Maj+K = retour (ajouté par Grok)",es:"Velocidad: tecla K = siguiente nivel, Mayús+K = atrás (añadido por Grok)",ru:"Скорость: клавиша K — следующая ступень, Shift+K — назад (добавлено Grok)",hi:"गति: K = अगला स्तर, Shift+K = पीछे (Grok द्वारा जोड़ा गया)",pt:"Velocidade: tecla K = próximo nível, Shift+K = voltar (adicionado pelo Grok)",cz:"Rychlost: klávesa K = další stupeň, Shift+K = zpět (doplnil Grok)"};
+  var HT={de:"Tempo: Taste K = schneller/nächste Stufe, Umschalt+K = zurück (G+)",en:"Speed: key K = next step, Shift+K = back (G+)",fr:"Vitesse : touche K = palier suivant, Maj+K = retour (G+)",es:"Velocidad: tecla K = siguiente nivel, Mayús+K = atrás (G+)",ru:"Скорость: клавиша K — следующая ступень, Shift+K — назад (G+)",hi:"गति: K = अगला स्तर, Shift+K = पीछे (G+)",pt:"Velocidade: tecla K = próximo nível, Shift+K = voltar (G+)",cz:"Rychlost: klávesa K = další stupeň, Shift+K = zpět (G+)"};
   function lg(){ var l=(typeof lang!=="undefined"&&lang)||"en"; return HT[l]?l:"en"; }
   setInterval(function(){
     var s=document.getElementById("selRate"); if(s&&!/\(K \/ ⇧K\)$/.test(s.title)) s.title=String(s.title||"").replace(/\s*\(K \/ ⇧K\)$/,"")+" (K / ⇧K)";

@@ -61,6 +61,7 @@ window.BPP_BUILD="4.87"; window.BPP_SHOW="4.87";
   }
 
   function paintBtn(a){
+    if(window.bppV491) return;
     var b=document.getElementById("btnOffAll"); if(!b) return;
     if(busy){ b.classList.add("busy"); return; }
     b.classList.remove("busy");
@@ -77,6 +78,7 @@ window.BPP_BUILD="4.87"; window.BPP_SHOW="4.87";
   }
 
   function paintStatus(a){
+    if(window.bppV491){ lastAudit=a||lastAudit; return; }
     lastAudit=a;
     var el=ensureOff();
     var M=L();
@@ -163,6 +165,7 @@ window.BPP_BUILD="4.87"; window.BPP_SHOW="4.87";
   }
 
   function runDownload(){
+    if(window.bppV491 && typeof window.bppOfflineEnsure491==="function") return window.bppOfflineEnsure491();
     var M=L();
     if(!navigator.onLine){ toast(M.off); return Promise.resolve(lastAudit); }
     if(!("caches" in window)||!navigator.serviceWorker){ toast(M.off); return Promise.resolve(lastAudit); }
@@ -213,6 +216,7 @@ window.BPP_BUILD="4.87"; window.BPP_SHOW="4.87";
   }
 
   function bind(){
+    if(window.bppV491) return;
     var b=document.getElementById("btnOffAll"); if(!b) return;
     if(b._bpp487) return;
     try{
@@ -239,7 +243,7 @@ window.BPP_BUILD="4.87"; window.BPP_SHOW="4.87";
   window.bppOfflineRefresh487=refresh;
 
   bind(); muteV203(); refresh();
-  setInterval(function(){ bind(); muteV203(); if(!busy) paintStatus(lastAudit); }, 800);
+  setInterval(function(){ if(window.bppV491) return; bind(); muteV203(); if(!busy) paintStatus(lastAudit); }, 800);
   /* V4.88: Cache-Audit nur Start/Download/Netzwechsel/Fokus, nicht jede 800 ms. */
   window.addEventListener("focus", function(){ if(!busy) refresh(); });
   window.addEventListener("online", function(){ if(!busy) refresh(); });

@@ -1,4 +1,4 @@
-/* [Grok-Bot] V4.20: Teilen-Link mit allen Einstellungen (von Grok ergänzt).
+/* [Grok-Bot] V4.20: Teilen-Link mit allen Einstellungen (G+)
    ?p=<id>&t=<s>&rate=<x>&vol=<0-100>&rec=pbj|mtj|spn&cols=1|2|3&chords=aus|akk|zeile&tr=0|1&src=yt|mp3
    Sprache steht NICHT im Link: der Empfaenger bekommt seine Browsersprache (v315). Alte Links (?p=..&lang=..) gehen weiter.
    Beim Oeffnen: Werte vor v315-Direktlink in localStorage setzen, play() einmal mit Position fortsetzen, Lautstaerke auf <audio>. */

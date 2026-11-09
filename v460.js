@@ -21,14 +21,14 @@ window.BPP_BUILD="4.60"; window.BPP_SHOW="4.60";
   document.head.appendChild(st);
 
   var HLP={
-    de:"<b>Stil</b> (unter Sprachwahl): Auto, Morgen, Abend oder Nacht. <i>(von Grok ergänzt)</i>",
-    en:"<b>Style</b> (button under the language selector, top right): Auto, Morning, Evening or Night. <i>(added by Grok)</i>",
-    fr:"<b>Style</b> (bouton sous le sélecteur de langue, en haut à droite) : Auto, Matin, Soir ou Nuit. <i>(ajouté par Grok)</i>",
-    es:"<b>Estilo</b> (botón bajo el selector de idioma, arriba a la derecha): Auto, Mañana, Tarde o Noche. <i>(añadido por Grok)</i>",
-    ru:"<b>Стиль</b> (кнопка под выбором языка, вверху справа): Авто, Утро, Вечер или Ночь. <i>(добавлено Grok)</i>",
-    hi:"<b>शैली</b> (भाषा चयन के नीचे, ऊपर दाईं ओर बटन): स्वतः, सुबह, शाम या रात। <i>(Grok द्वारा जोड़ा गया)</i>",
-    pt:"<b>Estilo</b> (botão sob o seletor de idioma, canto superior direito): Auto, Manhã, Noite cedo ou Noite. <i>(acrescentado por Grok)</i>",
-    cz:"<b>Styl</b> (tlačítko pod výběrem jazyka vpravo nahoře): Auto, Ráno, Večer nebo Noc. <i>(doplnil Grok)</i>"
+    de:"<b>Stil</b> (unter Sprachwahl): Auto, Morgen, Abend oder Nacht. <i>(G+)</i>",
+    en:"<b>Style</b> (button under the language selector, top right): Auto, Morning, Evening or Night. <i>(G+)</i>",
+    fr:"<b>Style</b> (bouton sous le sélecteur de langue, en haut à droite) : Auto, Matin, Soir ou Nuit. <i>(G+)</i>",
+    es:"<b>Estilo</b> (botón bajo el selector de idioma, arriba a la derecha): Auto, Mañana, Tarde o Noche. <i>(G+)</i>",
+    ru:"<b>Стиль</b> (кнопка под выбором языка, вверху справа): Авто, Утро, Вечер или Ночь. <i>(G+)</i>",
+    hi:"<b>शैली</b> (भाषा चयन के नीचे, ऊपर दाईं ओर बटन): स्वतः, सुबह, शाम या रात। <i>(G+)</i>",
+    pt:"<b>Estilo</b> (botão sob o seletor de idioma, canto superior direito): Auto, Manhã, Noite cedo ou Noite. <i>(G+)</i>",
+    cz:"<b>Styl</b> (tlačítko pod výběrem jazyka vpravo nahoře): Auto, Ráno, Večer nebo Noc. <i>(G+)</i>"
   };
   function lg(){ var l=(typeof lang!=="undefined"&&lang)||"de"; return HLP[l]?l:"en"; }
 

@@ -33,7 +33,7 @@ for(const [label,opt] of [['desktop',{viewport:{width:1440,height:1000}}],['s9-t
    const follow=[];autoScroll=true;
    for(const k of [1,3,9,12,16,18,27,28,29,30]){a.currentTime=P.seqFile[k][0]+.25;try{holdLineUntil=0;window.bppManualAt=0;}catch(e){}a.dispatchEvent(new Event('timeupdate'));await new Promise(r=>setTimeout(r,350));let q=songProgress();follow.push({expected:k,computed:stanzaFromProgress(q),line});}
    bppFsOpen();await new Promise(r=>setTimeout(r,700));const full={on:bppFsState().on,text:document.getElementById('bppFsBox').textContent,fit:document.getElementById('bppFsBox').scrollWidth<=innerWidth};bppFsClose();
-   const languages=Object.fromEntries(['en','ue','fr','es','pt','cz','ru','hi'].map(k=>[k,P.zeilen.every(z=>!!z[k]&&(k==='en'||z[k].includes('(von Grok ergänzt)')))]));return {languages,cBefore,hasAm:chords.includes('Am'),hasSlash:chords.includes('C/G')&&chords.includes('C/B'),off,follow,full,source:P.quelle};
+   const languages=Object.fromEntries(['en','ue','fr','es','pt','cz','ru','hi'].map(k=>[k,P.zeilen.every(z=>!!z[k]&&(k==='en'||z[k].includes('(G+)')))]));return {languages,cBefore,hasAm:chords.includes('Am'),hasSlash:chords.includes('C/G')&&chords.includes('C/B'),off,follow,full,source:P.quelle};
   });
   if(Object.values(features.languages).some(x=>!x)||!features.cBefore||!features.hasAm||!features.hasSlash||!features.off||!features.full.on||!features.full.fit||features.follow.some(x=>x.computed!==x.expected))all=false;
   rounds.push({offline,range,checks,features,audioNetworkResponses:responses.slice(netStart).filter(r=>!r.sw).length});

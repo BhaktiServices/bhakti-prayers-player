@@ -34,14 +34,14 @@ window.BPP_BUILD="4.65"; window.BPP_SHOW="4.65";
     cz:"Worldwide Statistiky:"
   };
   var HP={
-    de:"<b>Statistik:</b> Knopf in der Fußzeile zeigt/ausblendet Aufrufe, Hörzeit, Orte; Zustand bleibt gemerkt. <i>(von Grok ergänzt)</i>",
-    en:"<b>Stats:</b> footer button shows/hides views, listen time, places; state remembered. <i>(added by Grok)</i>",
-    fr:"<b>Statistiques :</b> bouton pied de page affiche/masque vues, écoute, lieux ; état mémorisé. <i>(ajouté par Grok)</i>",
-    es:"<b>Estadísticas:</b> botón del pie muestra/oculta visitas, escucha, lugares; estado recordado. <i>(añadido por Grok)</i>",
-    ru:"<b>Статистика:</b> кнопка в подвале показывает/скрывает просмотры, время, места; состояние сохраняется. <i>(добавлено Grok)</i>",
-    hi:"<b>आँकड़े:</b> फ़ुटर बटन दिखाता/छिपाता है; स्थिति याद रहती है। <i>(Grok द्वारा जोड़ा गया)</i>",
-    pt:"<b>Estatísticas:</b> botão no rodapé mostra/oculta visitas, tempo, lugares; estado lembrado. <i>(acrescentado pelo Grok)</i>",
-    cz:"<b>Statistika:</b> tlačítko v zápatí zobrazí/skryje návštěvy, poslech, místa; stav se pamatuje. <i>(doplněno Grokem)</i>"
+    de:"<b>Statistik:</b> Knopf in der Fußzeile zeigt/ausblendet Aufrufe, Hörzeit, Orte; Zustand bleibt gemerkt. <i>(G+)</i>",
+    en:"<b>Stats:</b> footer button shows/hides views, listen time, places; state remembered. <i>(G+)</i>",
+    fr:"<b>Statistiques :</b> bouton pied de page affiche/masque vues, écoute, lieux ; état mémorisé. <i>(G+)</i>",
+    es:"<b>Estadísticas:</b> botón del pie muestra/oculta visitas, escucha, lugares; estado recordado. <i>(G+)</i>",
+    ru:"<b>Статистика:</b> кнопка в подвале показывает/скрывает просмотры, время, места; состояние сохраняется. <i>(G+)</i>",
+    hi:"<b>आँकड़े:</b> फ़ुटर बटन दिखाता/छिपाता है; स्थिति याद रहती है। <i>(G+)</i>",
+    pt:"<b>Estatísticas:</b> botão no rodapé mostra/oculta visitas, tempo, lugares; estado lembrado. <i>(G+)</i>",
+    cz:"<b>Statistika:</b> tlačítko v zápatí zobrazí/skryje návštěvy, poslech, místa; stav se pamatuje. <i>(G+)</i>"
   };
   function lg(){ var l=(typeof lang!=="undefined"&&lang)||"de"; return LAB[l]?l:"en"; }
   var st=document.createElement("style");

@@ -2,7 +2,7 @@
    Schnitt 17:39–18:22 = 43 s; Nutzerangabe 26:11–27:01 war an diesem Archiv nicht Vaishnava –
    Tag/DVR-abhängig). Bearbeitet wie V3.67 (HP 80 Hz, −16 LUFS, mono 56 kbit/s).
    audio/vaishnava-mantra-mtj.mp3; Sync sync/vaishnava-mtj.json (Energie-Pausen + Whisper-Anker;
-   Str. 0–2 ohne klares Whisper-„ato“ → von Grok ergänzt). Lyrics unverändert aus vaishnava.js
+   Str. 0–2 ohne klares Whisper-„ato“ → (G+)). Lyrics unverändert aus vaishnava.js
    (nichts erfunden). Rec: Pbj = bisherige Heftaufnahme audio/vaishnava-mantra.mp3 + seqFile.
    Standard = Mtj. Taste wie Hanuman (eigene Stelle, nicht v415-Map). critical=false. */
 window.BPP_BUILD="4.80"; window.BPP_SHOW="4.80";
@@ -74,7 +74,7 @@ window.BPP_BUILD="4.80"; window.BPP_SHOW="4.80";
     },set:function(v){ baseBag.quelle=v; }});
     Object.defineProperty(P,"hinweis",{configurable:true,enumerable:true,get:function(){
       return mtj()
-        ?"Rec: Mtj – Livestream-Schnitt; Sync Str. 0–2 aus Energie (von Grok ergänzt), Str. 3–5 Whisper-Anker."
+        ?"Rec: Mtj – Livestream-Schnitt; Sync Str. 0–2 aus Energie (G+), Str. 3–5 Whisper-Anker."
         :(baseBag.hinweis||"Capo 0 bis +2. Zeilen wie in der Heftvorlage.");
     },set:function(v){ baseBag.hinweis=v; }});
     hooked=P;

@@ -1,5 +1,5 @@
 /* [Grok-Bot] V3.68: Narayana Suktam – Schlusszeile der Aufnahme ab 3:24 ergaenzt (nicht im Heft, Marke 204 s in v367.js),
-   Uebersetzungen von Grok ergaenzt (im Quellenhinweis gekennzeichnet). Deckt auch die Markenkorrektur aus 51185c1 ab. */
+   Uebersetzungen (G+) (im Quellenhinweis gekennzeichnet). Deckt auch die Markenkorrektur aus 51185c1 ab. */
 window.BPP_BUILD="3.68"; window.BPP_SHOW="3.68";
 (function(){
   function apply(){

@@ -18,6 +18,7 @@ window.BPP_BUILD="3.11"; window.BPP_SHOW="3.11";
     m.textContent=s; m.style.display=""; clearTimeout(msg._t); msg._t=setTimeout(function(){ m.style.display="none"; },6000); }
   var busy=false;
   function go(e){
+    if(window.bppV491){ if(e){ e.preventDefault(); e.stopImmediatePropagation(); } if(typeof window.bppOfflineEnsure491==="function") window.bppOfflineEnsure491(); return; }
     if(e){ e.preventDefault(); e.stopImmediatePropagation(); }
     var b=document.getElementById("btnOffAll"); if(busy||!b) return;
     if(!navigator.onLine){ msg(t(2)); return; }
@@ -44,5 +45,5 @@ window.BPP_BUILD="3.11"; window.BPP_SHOW="3.11";
   var n=0,iv=setInterval(function(){ var b=document.getElementById("btnOffAll"); if(b&&!b._v311){ b._v311=1; b.onclick=null; b.addEventListener("click",go,true); }
     if((b&&b._v311)||++n>100) clearInterval(iv); },300);
   /* Beschriftung zurueck: v305 setzt sie jede Sekunde; leer -> sofort neu */
-  setInterval(function(){ var b=document.getElementById("btnOffAll"); if(b&&!busy&&!b.textContent){ b.textContent=({de:"Prayers runterladen",en:"Download prayers",fr:"Télécharger les prières",es:"Descargar oraciones",ru:"Скачать молитвы",hi:"प्रार्थनाएँ डाउनलोड करें",pt:"Baixar orações"})[(typeof lang!=="undefined"&&lang)]||"Download prayers"; } },200);
+  setInterval(function(){ if(window.bppV491) return; var b=document.getElementById("btnOffAll"); if(b&&!busy&&!b.textContent){ b.textContent=({de:"Prayers runterladen",en:"Download prayers",fr:"Télécharger les prières",es:"Descargar oraciones",ru:"Скачать молитвы",hi:"प्रार्थनाएँ डाउनलोड करें",pt:"Baixar orações"})[(typeof lang!=="undefined"&&lang)]||"Download prayers"; } },200);
 })();

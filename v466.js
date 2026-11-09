@@ -103,6 +103,11 @@ window.BPP_BUILD="4.66"; window.BPP_SHOW="4.66";
     m.textContent=s; m.style.display=""; clearTimeout(msg._t); msg._t=setTimeout(function(){ m.style.display="none"; },6000); }
 
   function goDl(e){
+    if(window.bppV491){
+      if(e){ e.preventDefault(); e.stopImmediatePropagation(); }
+      if(typeof window.bppOfflineEnsure491==="function") window.bppOfflineEnsure491();
+      return;
+    }
     if(e){ e.preventDefault(); e.stopImmediatePropagation(); }
     window.__bppDl466 = (window.__bppDl466||0)+1;
     var b=document.getElementById("btnOffAll"); if(busy||!b) return;

@@ -3,7 +3,7 @@
        aus Stimmenband-Korrelation der Refrain-Phrase + Silbenfüllung; Schlussanker 711.2 s.
    (2) Hanumān Cālīsā: Bhavani-Aufnahme = Rec: Mtj in id=hanuman, Rec: Pbj = V4.52-Aufnahme audio/hanuman-kanaka.mp3 + YT fBw-BSoZGgM + Marken v306
        (V4.53 hatte fälschlich audio/hanuman-prabhus.mp3). Mtj: Strophe 0 Mangala Mūrti, Refrain „rāmaji se rāma rāma kahiyo“
-       (Wortlaut aus follow.js/V2.00; Übersetzungen von Grok ergänzt). seq neu gemappt.
+       (Wortlaut aus follow.js/V2.00; Übersetzungen (G+)). seq neu gemappt.
        ?p=hanuman-bhavani → hanuman&rec=mtj; Eintrag nicht mehr unter Weitere.
    (3) Taste „Tagesleiste“: Labels lagen hier kurz parallel zu v435 → Flackern; ab V4.54 nur noch v435. */
 window.BPP_BUILD="4.53"; window.BPP_SHOW="4.53";
@@ -41,8 +41,8 @@ window.BPP_BUILD="4.53"; window.BPP_SHOW="4.53";
     return m;
   }
   var REF_SA="siyā vara rāmacandra pada jai śaraṇam\nrāmaji se rāma rāma kahiyo";
-  var REF_UE="Zuflucht zu den Füßen Ramachandras, des Gemahls von Sita. Hanuman, sag Rama unser „Rama, Rama“. (von Grok ergänzt)";
-  var REF_EN="Refuge at the feet of Ramachandra, Sita's beloved. Hanuman, tell Rama our \"Rama, Rama\". (added by Grok)";
+  var REF_UE="Zuflucht zu den Füßen Ramachandras, des Gemahls von Sita. Hanuman, sag Rama unser „Rama, Rama“. (G+)";
+  var REF_EN="Refuge at the feet of Ramachandra, Sita's beloved. Hanuman, tell Rama our \"Rama, Rama\". (G+)";
 
   var baseZeilen=null, mtjZeilen=null, pbjZeilen=null, hooked=null, baseBag={};
 
