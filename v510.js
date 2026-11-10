@@ -33,6 +33,11 @@ window.BPP_BUILD="5.10"; window.BPP_SHOW="5.10";
       (m||[]).forEach(function(x,g){ if(typeof x==="number"&&g<p.gs.length) A[g]=x; });
     }
     if(!A||!Object.keys(A).length) return null;
+    /* [Grok-Bot] V5.20: lückenhafte Marken (nur erste/letzte, z. B. Āratī Saprem) nicht exakt
+       „letzte Marke ≤ t“ verwenden – sonst bleibt die Anzeige auf Gruppe 0. Interpolation (bppStarts). */
+    var marked=0;
+    Object.keys(A).forEach(function(g){ g=+g; if(g<p.gs.length&&typeof A[g]==="number") marked++; });
+    if(marked<2 || marked<p.gs.length*0.5) return null;
     var best=0;
     Object.keys(A).forEach(function(g){ g=+g; if(g<p.gs.length&&A[g]<=t+0.05&&g>=best) best=g; });
     return best;

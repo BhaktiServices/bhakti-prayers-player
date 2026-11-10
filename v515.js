@@ -136,8 +136,7 @@ window.BPP_BUILD="5.15"; window.BPP_SHOW="5.15";
       if(tr.height>=8) topPx=Math.max(topPx, Math.round(tr.bottom+12));
     }
     var botPx=Math.round(vh*0.04);
-    var reserveBar=false;
-    try{ reserveBar=(parseInt(localStorage.getItem(window.bppFsColsKey||"bpp-fs-cols")||"0",10)===2); }catch(e){}
+    var reserveBar=false; /* [Grok-Bot] V5.20: keine 2-Spalten-Reserve mehr */
     if(bar && (barVisible(bar) || reserveBar)){
       var br=bar.getBoundingClientRect();
       var barH=br.height>=8?br.height:(bar.offsetHeight||64);
@@ -155,9 +154,7 @@ window.BPP_BUILD="5.15"; window.BPP_SHOW="5.15";
       clearTimeout(geomT);
       /* V5.19: bei 2 Spalten kein resize-Dispatch (sonst Pumpen durch Leisten-Hide). */
       geomT=setTimeout(function(){
-        var two=false;
-        try{ two=(parseInt(localStorage.getItem(window.bppFsColsKey||"bpp-fs-cols")||"0",10)===2); }catch(e){}
-        if(!two){ try{ window.dispatchEvent(new Event("resize")); }catch(e){} }
+        try{ window.dispatchEvent(new Event("resize")); }catch(e){}
         setTimeout(clampBoxToGap, 120);
       }, 60);
     }
@@ -239,20 +236,14 @@ window.BPP_BUILD="5.15"; window.BPP_SHOW="5.15";
     try{ localStorage.setItem(window.bppFsColsKey||"bpp-fs-cols", String(n)); }catch(e){}
   }
   function toggleFsCols(){
-    if(!fsOn()||notesFs()) return;
-    var u=0;
-    try{ u=parseInt(localStorage.getItem(window.bppFsColsKey||"bpp-fs-cols")||"0",10); }catch(e){}
-    /* Im Hochkant bleibt die Anzeige 1-spaltig; der Knopf merkt die Vorliebe fürs Querformat. */
-    var next=(u===2)?1:2;
-    setUserCols(next);
-    try{ if(typeof window.bppFsApplyCols==="function") window.bppFsApplyCols(); }catch(e){}
-    try{ window.dispatchEvent(new Event("resize")); }catch(e){}
-    setTimeout(paintFsCols, 80);
-    setTimeout(paintFsCols, 280);
+    /* [Grok-Bot] V5.20: kein 2-Spalten-Modus mehr in Groß */
+    return;
   }
   window.bppFsColsToggle=toggleFsCols;
   function paintFsCols(){
-    var b=document.getElementById("bppFsCols515"); if(!b) return;
+    var b=document.getElementById("bppFsCols515");
+    if(b&&b.parentNode){ try{ b.parentNode.removeChild(b); }catch(e){} return; }
+    return;
     var on=fsOn()&&!notesFs();
     b.style.setProperty("display", on?"inline-flex":"none", "important");
     if(!on) return;
@@ -266,6 +257,10 @@ window.BPP_BUILD="5.15"; window.BPP_SHOW="5.15";
     b.setAttribute("aria-pressed", n===2?"true":"false");
   }
   function ensureFsColsBtn(){
+    /* [Grok-Bot] V5.20: Spalten-Knopf in der Groß-Leiste entfernen, nicht neu anlegen */
+    var b0=document.getElementById("bppFsCols515");
+    if(b0&&b0.parentNode) try{ b0.parentNode.removeChild(b0); }catch(e){}
+    return;
     var bar=document.getElementById("bppFsBar"); if(!bar) return;
     var b=document.getElementById("bppFsCols515");
     if(!b){
@@ -295,10 +290,10 @@ window.BPP_BUILD="5.15"; window.BPP_SHOW="5.15";
     var t=e.target, n=t&&t.tagName;
     if(n==="INPUT"||n==="TEXTAREA"||n==="SELECT"||(t&&t.isContentEditable)) return;
     if(!fsOn()||notesFs()) return;
+    /* [Grok-Bot] V5.20: Taste S in Groß ohne Wirkung (nicht Standard-Spalten umschalten) */
     e.preventDefault();
     e.stopPropagation();
     if(e.stopImmediatePropagation) e.stopImmediatePropagation();
-    toggleFsCols();
   }, true);
 
   function tick(){

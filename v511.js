@@ -122,9 +122,8 @@ window.BPP_BUILD="5.12"; window.BPP_SHOW="5.12";
     return w<=h && w/h<1.15;
   }
   function wantTwo(){
-    if(!fsOn()||notesOn()) return false;
-    /* [Grok-Bot] V5.19: Default immer 1 Spalte. 2 Spalten nur bei expliziter Wahl (Knopf/S). */
-    return userFsCols()===2;
+    /* [Grok-Bot] V5.20: In Groß immer genau 1 Spalte; 2-Spalten-Zweige bleiben aus. */
+    return false;
   }
   window.bppFsColsKey=FSKEY;
   window.bppFsWantTwo=wantTwo;
