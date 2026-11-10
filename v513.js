@@ -410,7 +410,12 @@ window.BPP_BUILD="5.13"; window.BPP_SHOW="5.13";
 
   function near(a,b,d){ return isFinite(a)&&isFinite(b)&&Math.abs(a-b)<=(d==null?1.6:d); }
   function now(){ return Date.now(); }
-  function userOk(){ return now()<allowUntil; }
+  function userOk(){
+    if(now()<allowUntil) return true;
+    /* [Grok-Bot] V5.22: nur Gesten an der Audio-Leiste (bppUserSeekOk513), nicht jeder Seitenklick */
+    try{ if(typeof window.bppUserSeekOk513==="function" && window.bppUserSeekOk513()) return true; }catch(e){}
+    return false;
+  }
 
   /* [Grok-Bot] V5.18: Strophen-/Prayer-Wiederholung ist gewollt, kein automatischer Fehl-Seek */
   function isRepeatSeek(cur, v){
