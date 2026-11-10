@@ -4,6 +4,7 @@
 (function(){
   if(window.bppV421) return; window.bppV421=1;
   var H=[
+["5.11","10.11.","Standard: 2 Spalten nach Inhaltsbreite (≥700 px), nicht nach Gerätetyp; gewählter Modus bleibt beim Drehen. Groß quer: aktuelle Strophe automatisch in 2 Spalten (nie 3), Akkorde auf der Silbe, Übersetzung darunter, Schrift-Fit ohne Überlauf; Noten unverändert; Strophenwechsel ohne Ghosting. critical=false."],
 ["5.10","09.11.","Hanumān Mitsingen: exakte Marken (kein Vorlauf/Pausen-Flackern), Mtj-Nummern korrigiert (Saba=17); Groß: Schrift an Breite + Wrap, Akkorde bleiben; Strophenwechsel ohne Doppel-Animation/Rücksprung (Suprabhātam). critical=false."],
 ["5.09","09.11.","Groß-Noten Layout: ein Titel (kein Doppel); Kopfzeile Titel… / Text vollständig / Strophe ohne Überlappung; Notenblatt nur zwischen Kopf und Steuerleiste (Bar messbar, z-index); Frame-Hintergrund dunkel statt großer Weißfläche. critical=false."],
 ["5.08","09.11.","Noten auch in Groß: bei aktivem Noten-Modus (Mukunda/Ramanuja) zeigt Groß das Notenblatt (contain, max. Fläche) statt Groß-Lyrics; Strophen-Follow; Zoom Pinch/Doppeltipp/+− auch dort; Noten/Text-Knopf in Groß-UI (v507-Toggle); Verlassen von Groß → normale Notenansicht. Owner v508. Taste E Noten/Text (N war belegt: nächste Strophe); Tooltip + Hilfe alle Sprachen. critical=false."],

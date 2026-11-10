@@ -20,7 +20,7 @@
   var M={de:"Für {n} Spalten ist der Bildschirm zu schmal.",en:"The screen is too narrow for {n} columns.",fr:"L’écran est trop étroit pour {n} colonnes.",es:"La pantalla es demasiado estrecha para {n} columnas.",ru:"Экран слишком узкий для {n} колонок.",hi:"{n} कॉलम के लिए स्क्रीन बहुत संकरी है।",pt:"A tela é estreita demais para {n} colunas."};
   M.ru="Экран слишком узкий для {n} колонок."; 
   function lg(){ var l=(typeof lang!=="undefined"&&lang)||"en"; return M[l]?l:"en"; }
-  function maxCols(){ var w=window.innerWidth||1000; return w<700?1:(w<1100?2:3); }
+  function maxCols(){ if(typeof window.bppMaxCols==="function") return window.bppMaxCols(); var w=window.innerWidth||1000; return w<700?1:(w<1100?2:3); }
   function cur(){ var v=parseInt(localStorage.getItem("bpp-cols")||"1",10); v=v>=1&&v<=3?v:1; return Math.min(v,maxCols()); }
   var tt=null;
   function toast(n){ var h=$("bppNoTime"); if(!h){ h=document.createElement("div"); h.id="bppNoTime"; h.setAttribute("role","status"); }

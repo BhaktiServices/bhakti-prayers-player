@@ -9,7 +9,7 @@ window.BPP_BUILD="4.14"; window.BPP_SHOW="4.14";
   var LAB={de:"Spalten",en:"Columns",fr:"Colonnes",es:"Columnas",ru:"Колонки",hi:"कॉलम",pt:"Colunas"};
   var TIT={de:"Strophen in 1, 2 oder 3 Spalten nebeneinander",en:"Stanzas in 1, 2 or 3 columns side by side",fr:"Strophes sur 1, 2 ou 3 colonnes",es:"Estrofas en 1, 2 o 3 columnas",ru:"Строфы в 1, 2 или 3 колонки",hi:"श्लोक 1, 2 या 3 कॉलम में",pt:"Estrofes em 1, 2 ou 3 colunas lado a lado"};
   function want(){ var v=parseInt(localStorage.getItem(KEY)||"1",10); return v>=1&&v<=3?v:1; }
-  function maxCols(){ var w=window.innerWidth||1000; return w<700?1:(w<1100?2:3); }
+  function maxCols(){ if(typeof window.bppMaxCols==="function") return window.bppMaxCols(); var w=window.innerWidth||1000; return w<700?1:(w<1100?2:3); }
   function eff(){ return Math.min(want(), maxCols()); }
   function L(o){ var l=(typeof lang!=="undefined"&&lang)||"en"; return o[l]||o.en; }
   var css=document.createElement("style");

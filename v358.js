@@ -14,7 +14,7 @@
   function lg(){ var l=(typeof lang!=="undefined"&&lang)||"en"; return L[l]?l:"en"; }
   function $(i){ return document.getElementById(i); }
   function playing(){ try{ return !!isPlaying(); }catch(e){ return false; } }
-  function maxCols(){ var w=window.innerWidth||1000; return w<700?1:(w<1100?2:3); }
+  function maxCols(){ if(typeof window.bppMaxCols==="function") return window.bppMaxCols(); var w=window.innerWidth||1000; return w<700?1:(w<1100?2:3); }
   function cols(){ var v=parseInt(localStorage.getItem("bpp-cols")||"1",10); v=v>=1&&v<=3?v:1; return Math.min(v,maxCols()); }
   function state(){ var t=L[lg()], b=document.body, S={};
     var p=playing(); S.btnPlay=[p?t.pause:t.play,p,p?t.tPause:t.tPlay];
