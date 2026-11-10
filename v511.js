@@ -115,8 +115,18 @@ window.BPP_BUILD="5.12"; window.BPP_SHOW="5.12";
     if(sh>0 && sh<130) return false;
     return true;
   }
+  function isPortrait(){
+    var w=stageW()||window.innerWidth||0;
+    var h=window.innerHeight||0;
+    if(!(w>0&&h>0)) return false;
+    return w<=h && w/h<1.15;
+  }
   function wantTwo(){
     if(!fsOn()||notesOn()) return false;
+    /* Hochkant: immer genau eine Strophe in 1 Spalte, auch wenn bpp-fs-cols=2
+       (Vorliebe gilt erst wieder im Querformat). Sonst stapeln L/R oder die
+       Schrift springt, und es wirken zwei Strophen. */
+    if(isPortrait()) return false;
     var u=userFsCols();
     if(u===1) return false;
     if(u===2) return stageW()>=200;
@@ -133,6 +143,7 @@ window.BPP_BUILD="5.12"; window.BPP_SHOW="5.12";
     if(prev&&prev.__v511) return;
     var w=function(f,fa,fb,n,cut){
       if(wantTwo()) return false;
+      if(isPortrait()) return false;
       return typeof prev==="function"?prev.apply(this,arguments):true;
     };
     w.__v511=1; window.bppFsSplitOk=w;
@@ -209,18 +220,8 @@ window.BPP_BUILD="5.12"; window.BPP_SHOW="5.12";
       S.style.paddingBottom="";
       /* Layout neu, dann gegen die Lesefläche prüfen */
       void S.offsetHeight;
-      var a=readingRect(S), pad=8;
+      var a=readingRect(S);
       if(B.scrollHeight>a.height+16) return true;
-      var nodes=B.querySelectorAll(".vl, .fch:not(.h361), .ftr, .bppFsC2L, .bppFsC2R");
-      for(var i=0;i<nodes.length;i++){
-        var el=nodes[i], cs=getComputedStyle(el);
-        if(cs.display==="none"||cs.visibility==="hidden"||el.classList.contains("h361")) continue;
-        var r=el.getBoundingClientRect();
-        if(r.width<2||r.height<2) continue;
-        if(r.right>a.right+pad || r.left<a.left-pad) return true;
-        if(r.bottom>a.bottom+pad || r.top<a.top-pad) return true;
-        if((el.classList.contains("vl")||el.classList.contains("ftr")) && el.scrollWidth>el.clientWidth+1) return true;
-      }
       return false;
     } finally {
       S.style.paddingBottom=savePad;
@@ -229,27 +230,14 @@ window.BPP_BUILD="5.12"; window.BPP_SHOW="5.12";
   }
   function overflows(B,S){
     if(!B||!S) return false;
-    var a=availRect(S), pad=8;
-    if(B.scrollWidth>S.clientWidth+12) return true;
-    var ah=Math.max(40, a.bottom-a.top);
-    if(B.scrollHeight>ah+12) return true;
-    var nodes=B.querySelectorAll(".vl, .fch:not(.h361), .ftr, .bppFsC2L, .bppFsC2R");
-    for(var i=0;i<nodes.length;i++){
-      var el=nodes[i], cs=getComputedStyle(el);
-      if(cs.display==="none"||cs.visibility==="hidden"||el.classList.contains("h361")) continue;
-      var r=el.getBoundingClientRect();
-      if(r.width<2||r.height<2) continue;
-      if(r.right>a.right+pad || r.left<a.left-pad) return true;
-      if(r.bottom>a.bottom+pad || r.top<a.top-pad) return true;
-      /* Text kann innerhalb der Box abgeschnitten sein, ohne dass die Border-Box übersteht */
-      if((el.classList.contains("vl")||el.classList.contains("ftr")) && el.scrollWidth>el.clientWidth+1) return true;
-    }
-    return false;
+    /* Nur die Bühnenhöhe: horizontale Passung prüft linesOverflow / Umbruch.
+       Element-Rects und Box-scrollWidth waren zu streng (Grid-Min-Content, k361). */
+    return B.scrollHeight>S.clientHeight+4;
   }
 
   function fitBox(B,S){
     var lo=18;
-    var hi=Math.max(lo+4, Math.min(200, (S.clientHeight||200)*0.20, (S.clientWidth||400)*0.085));
+    var hi=Math.max(lo+4, Math.min(200, (S.clientHeight||200)*0.34, (S.clientWidth||400)*0.13));
     var best=lo, g;
     /* immer von einer großzügigen Größe heruntertasten, nicht von einem zuvor verkleinerten Wert */
     B.style.fontSize=hi.toFixed(1)+"px";
@@ -288,8 +276,22 @@ window.BPP_BUILD="5.12"; window.BPP_SHOW="5.12";
     B.classList.remove("bpp-fs-wrap");
     var fs=fitBox(B,S);
     if(linesOverflow(B)){
-      B.classList.add("bpp-fs-wrap");
-      /* an der Untergrenze bleiben, nicht wegen Umbruch wieder wachsen */
+      /* Zuerst verkleinern, damit Zeilen einzeilig bleiben. Umbruch nur, wenn
+         selbst MINFS noch nicht reicht — nicht bei 46 px mitten im Wort umbrechen. */
+      var lo=MINFS, hi=fs, best=MINFS, g, mid;
+      for(g=0;g<16 && hi-lo>0.4;g++){
+        mid=(lo+hi)/2;
+        B.style.fontSize=mid.toFixed(1)+"px";
+        if(linesOverflow(B)||overflows(B,S)) hi=mid;
+        else { best=mid; lo=mid; }
+      }
+      B.style.fontSize=best.toFixed(1)+"px";
+      if(linesOverflow(B)){
+        B.classList.add("bpp-fs-wrap");
+        fs=fitBox(B,S);
+      } else {
+        fs=best;
+      }
     }
     return parseFloat(B.style.fontSize)||fs;
   }
@@ -371,6 +373,11 @@ window.BPP_BUILD="5.12"; window.BPP_SHOW="5.12";
         syncStagePad(S);
         /* Schrift nach Auto-Hide der Leiste oder k361 noch einmal einpassen, DOM nicht anfassen */
         fitTwoCol(B,S);
+        if(overflows(B,S)){
+          var sz2=parseFloat(B.style.fontSize)||18, g2=0;
+          while(overflows(B,S) && sz2>14 && g2++<12){ sz2-=1; B.style.fontSize=sz2.toFixed(1)+"px"; }
+          if(overflows(B,S)){ undo(B); lastApplied="1|ov|"+geo; }
+        }
         return;
       }
       undo(B);
@@ -413,12 +420,21 @@ window.BPP_BUILD="5.12"; window.BPP_SHOW="5.12";
     /* Einzeilig bevorzugen; Umbruch nur an der 18-px-Untergrenze.
        Reicht 18 px oder die freie Fläche nicht, sauber auf 1 Spalte zurück. */
     var used=fitTwoCol(B,S);
-    /* Fallback nur, wenn 2 Spalten auch in der Lesefläche (Leiste ausgeblendet) nicht passen.
-       Sonst bleibt 2-spaltig; die Leiste überlagert kurz und blendet nach 3 s aus. */
-    if((used && used<MINFS-0.05) || overflowsReading(B,S)){
+    /* 1-Spalte nur, wenn selbst die Mindestschrift in 2 Spalten nicht reicht
+       oder die Strophe selbst bei 14 px die Bühne übersteigt (sonst fehlen Lyrics nach dem Drehen). */
+    if(used && used<MINFS-0.05){
       undo(B);
       lastApplied="1|min|"+geo;
       return;
+    }
+    if(overflows(B,S)){
+      var sz=parseFloat(B.style.fontSize)||used||18, g=0;
+      while(overflows(B,S) && sz>14 && g++<12){ sz-=1; B.style.fontSize=sz.toFixed(1)+"px"; }
+      if(overflows(B,S)){
+        undo(B);
+        lastApplied="1|ov|"+geo;
+        return;
+      }
     }
     lastApplied=key;
     try{ [].forEach.call(B.querySelectorAll(".vl"),function(v){ v.__k361=null; }); }catch(e){}
@@ -428,10 +444,16 @@ window.BPP_BUILD="5.12"; window.BPP_SHOW="5.12";
   }
 
   function bustAndApply(){
+    lastApplied="";
     wrapSplit();
+    try{
+      var B0=document.getElementById("bppFsBox");
+      if(B0 && B0.classList.contains("bppFsC2") && !wantTwo()) undo(B0);
+    }catch(e){}
     try{ window.dispatchEvent(new Event("resize")); }catch(e){}
-    setTimeout(apply, 80);
-    setTimeout(apply, 280);
+    setTimeout(apply, 40);
+    setTimeout(apply, 160);
+    setTimeout(apply, 400);
   }
 
   wrapSplit();
@@ -453,6 +475,16 @@ window.BPP_BUILD="5.12"; window.BPP_SHOW="5.12";
   hook();
   setInterval(function(){ hook(); wrapSplit(); try{ if(fsOn()) apply(); }catch(e){} }, 400);
   window.addEventListener("orientationchange", bustAndApply);
-  window.addEventListener("resize", function(){ clearTimeout(window.__v511rt); window.__v511rt=setTimeout(apply,150); });
+  window.addEventListener("resize", function(){
+    lastApplied="";
+    clearTimeout(window.__v511rt);
+    window.__v511rt=setTimeout(function(){
+      try{
+        var B0=document.getElementById("bppFsBox");
+        if(B0 && B0.classList.contains("bppFsC2") && !wantTwo()) undo(B0);
+      }catch(e){}
+      apply();
+    }, 80);
+  });
   document.addEventListener("DOMContentLoaded", hook);
 })();

@@ -35,7 +35,7 @@ window.BPP_BUILD="1.83";
   var css=document.createElement("style");
   css.textContent="#bppFs{position:fixed;inset:0;z-index:2147483000;background:#0b0b0d;color:#f3eee2;display:none;overflow:hidden;font-family:inherit;touch-action:manipulation;user-select:none;-webkit-user-select:none}"+
     "#bppFs.on{display:block}#bppFsStage{position:absolute;left:3vw;right:3vw;top:5vh;bottom:4vh;display:flex;align-items:center;justify-content:center}"+
-    "#bppFsBox{display:inline-block;text-align:center;line-height:1.22;max-width:100%}#bppFsBox .vl{white-space:nowrap}"+
+    "#bppFsBox{display:inline-block;text-align:center;line-height:1.22;max-width:100%}#bppFsBox.bppFsC2 .vl{white-space:nowrap}#bppFsBox:not(.bppFsC2) .vl:not(.fch){white-space:normal;overflow-wrap:break-word;word-break:normal}"+
     "#bppFsBox .fch{white-space:nowrap;color:#f0d24a; /* [Grok.com] Akkorde immer gelb */font-size:.42em;margin-bottom:.25em;letter-spacing:.04em}"+
     "#bppFsBox .ftr{white-space:normal;color:#a9a39a;font-size:.36em;line-height:1.3;margin:.7em auto 0;font-style:italic}"+
     "#bppFsTop{position:absolute;left:10px;right:10px;top:6px;font-size:13px;color:#8d877c;display:flex;justify-content:space-between;pointer-events:none}"+

@@ -8,7 +8,7 @@ window.BPP_BUILD="5.15"; window.BPP_SHOW="5.15";
 (function(){
   if(window.bppV515) return; window.bppV515=1;
   if(!document.querySelector('link[href^="theme-v515.css"]')){
-    var l=document.createElement("link"); l.rel="stylesheet"; l.href="theme-v515.css?v=4"; document.head.appendChild(l);
+    var l=document.createElement("link"); l.rel="stylesheet"; l.href="theme-v515.css?v=6"; document.head.appendChild(l);
   }
 
   var FS_CSS=
@@ -28,8 +28,18 @@ window.BPP_BUILD="5.15"; window.BPP_SHOW="5.15";
       "box-sizing:border-box!important;"+
       "display:flex!important;align-items:center!important;justify-content:center!important"+
     "}"+
-    "#bppFs.on:not(.bpp-notes-fs) #bppFsBox{"+
-      "display:inline-block!important;max-width:100%;max-height:100%;box-sizing:border-box"+
+    "#bppFs.on:not(.bpp-notes-fs) #bppFsBox:not(.bppFsC2){"+
+      "display:inline-block!important;max-width:100%;max-height:100%;box-sizing:border-box;overflow:hidden"+
+    "}"+
+    "#bppFs.on:not(.bpp-notes-fs) #bppFsBox.bppFsC2:not(:has(.bppFsC2L)){"+
+      "display:inline-block!important;max-width:100%;max-height:100%;box-sizing:border-box;overflow:hidden"+
+    "}"+
+    "#bppFs.on:not(.bpp-notes-fs) #bppFsBox.bppFsC2:has(.bppFsC2L){"+
+      "display:grid!important;grid-template-columns:minmax(0,1fr) minmax(0,1fr);"+
+      "max-width:100%;max-height:100%;box-sizing:border-box;width:100%!important;overflow:hidden"+
+    "}"+
+    "#bppFs.on:not(.bpp-notes-fs) #bppFsBox:not(.bppFsC2) .vl:not(.fch){"+
+      "white-space:normal!important;overflow-wrap:break-word;word-break:normal"+
     "}"+
     "html body #bppFs #bppFsBar #bppFsCols515,"+
     "html body #bppFs #bppFsBar .row>#bppFsCols515{"+
@@ -72,8 +82,8 @@ window.BPP_BUILD="5.15"; window.BPP_SHOW="5.15";
   function ensureCss(){
     var st=document.getElementById("bppV515css");
     if(!st){ st=document.createElement("style"); st.id="bppV515css"; }
-    if(st.getAttribute("data-v")!=="5"){
-      st.setAttribute("data-v","5");
+    if(st.getAttribute("data-v")!=="6"){
+      st.setAttribute("data-v","6");
       st.textContent=FS_CSS;
     }
     (document.head||document.documentElement).appendChild(st);
@@ -138,14 +148,12 @@ window.BPP_BUILD="5.15"; window.BPP_SHOW="5.15";
     try{ stage.style.paddingBottom=""; }catch(e){}
     if(geo!==lastGeom){
       lastGeom=geo;
-      clampBoxToGap();
       clearTimeout(geomT);
+      /* Erst einpassen (v183/v511, Schrift darf wieder wachsen), Clamp nur falls wirklich über der Leiste. */
       geomT=setTimeout(function(){
         try{ window.dispatchEvent(new Event("resize")); }catch(e){}
-        setTimeout(clampBoxToGap, 80);
+        setTimeout(clampBoxToGap, 120);
       }, 60);
-    }else{
-      clampBoxToGap();
     }
   }
   function clampBoxToGap(){
@@ -225,7 +233,10 @@ window.BPP_BUILD="5.15"; window.BPP_SHOW="5.15";
   }
   function toggleFsCols(){
     if(!fsOn()||notesFs()) return;
-    var next=twoActive()?1:2;
+    var u=0;
+    try{ u=parseInt(localStorage.getItem(window.bppFsColsKey||"bpp-fs-cols")||"0",10); }catch(e){}
+    /* Im Hochkant bleibt die Anzeige 1-spaltig; der Knopf merkt die Vorliebe fürs Querformat. */
+    var next=(u===2)?1:2;
     setUserCols(next);
     try{ if(typeof window.bppFsApplyCols==="function") window.bppFsApplyCols(); }catch(e){}
     try{ window.dispatchEvent(new Event("resize")); }catch(e){}

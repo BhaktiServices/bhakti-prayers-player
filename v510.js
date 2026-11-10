@@ -165,27 +165,14 @@ window.BPP_BUILD="5.10"; window.BPP_SHOW="5.10";
     var x=stageBox(), B=x.B, S=x.S; if(!B||!S) return;
     var ov=document.getElementById("bppFs"); if(!ov||!ov.classList.contains("on")) return;
     if(ov.classList.contains("bpp-notes-fs")) return;
+    /* 2-Spalten: v511 ist der Owner. 1-Spalte darf umbrechen und die freie Höhe nutzen.
+       Die alte Deckelung min(Breite,Höhe)*0.048 (~18,6 px bei 412 px) hat die Schrift
+       alle 700 ms wieder zusammengestaucht — sichtbar als Sprung und viel Leere. */
+    if(B.classList.contains("bppFsC2")) return;
     var fs=parseFloat(B.style.fontSize)||parseFloat(getComputedStyle(B).fontSize)||24;
     var guard=0;
-    B.classList.remove("bpp-fs-wrap");
-    /* Zielbreite: sichtbarer Text inkl. Akkorde muss rein; Android-Fonts ~8% breiter */
-    var target=S.clientWidth*0.078;
-    while((overflows(B,S) || fs>target) && fs>12 && guard++<36){
-      fs=Math.max(12, fs*(overflows(B,S)?0.88:0.96));
-      B.style.fontSize=fs.toFixed(1)+"px";
-    }
-    if(overflows(B,S)){
-      B.classList.add("bpp-fs-wrap");
-      guard=0;
-      while(overflows(B,S) && fs>10 && guard++<18){
-        fs=Math.max(10, fs*0.9);
-        B.style.fontSize=fs.toFixed(1)+"px";
-      }
-    }
-    /* Schmale Viewports: zusätzliche Marge (Android-Fonts/Safe-Area) */
-    if(S.clientWidth<=500){
-      var maxFs=Math.max(12, Math.min(S.clientWidth, S.clientHeight)*0.048);
-      if(fs>maxFs) fs=maxFs;
+    while((overflows(B,S) || B.scrollHeight>S.clientHeight-4) && fs>12 && guard++<36){
+      fs=Math.max(12, fs-1);
       B.style.fontSize=fs.toFixed(1)+"px";
     }
     try{ [].forEach.call(B.querySelectorAll(".vl"),function(v){ v.__k361=null; }); }catch(e){}

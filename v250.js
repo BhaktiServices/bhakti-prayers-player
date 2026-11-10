@@ -86,9 +86,12 @@ window.BPP_BUILD="2.52"; window.BPP_SHOW="2.52";
     }
     if(changed){
       var st=document.getElementById("bppFsStage");
-      if(st && bx.id==="bppFsBox"){ for(var it=0; it<8 && (bx.scrollHeight>st.clientHeight+1 || bx.scrollWidth>st.clientWidth+1); it++){
-        var fs=parseFloat(bx.style.fontSize)||0; if(!fs) break; bx.style.fontSize=(fs*0.93).toFixed(1)+"px";
-        Array.prototype.forEach.call(bx.querySelectorAll(".ftr,.fch"), function(e){ var f=parseFloat(e.style.fontSize); if(f) e.style.fontSize=(f*0.93).toFixed(1)+"px"; }); } }
+      /* V5.16: In 2 Spalten passt die Box-scrollWidth oft nicht (Grid-Min-Content) – den Fit macht v511.
+         Nur bei 1 Spalte und echter Höhen-/Breitenüberschreitung verkleinern. */
+      if(st && bx.id==="bppFsBox" && !bx.classList.contains("bppFsC2")){
+        for(var it=0; it<8 && (bx.scrollHeight>st.clientHeight+1 || bx.scrollWidth>st.clientWidth+8); it++){
+          var fs=parseFloat(bx.style.fontSize)||0; if(!fs) break; bx.style.fontSize=(fs*0.93).toFixed(1)+"px";
+          Array.prototype.forEach.call(bx.querySelectorAll(".ftr,.fch"), function(e){ var f=parseFloat(e.style.fontSize); if(f) e.style.fontSize=(f*0.93).toFixed(1)+"px"; }); } }
     }
     bx.__v250sig=bx.innerHTML;
   }
