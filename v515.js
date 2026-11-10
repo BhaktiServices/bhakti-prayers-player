@@ -8,7 +8,7 @@ window.BPP_BUILD="5.15"; window.BPP_SHOW="5.15";
 (function(){
   if(window.bppV515) return; window.bppV515=1;
   if(!document.querySelector('link[href^="theme-v515.css"]')){
-    var l=document.createElement("link"); l.rel="stylesheet"; l.href="theme-v515.css?v=6"; document.head.appendChild(l);
+    var l=document.createElement("link"); l.rel="stylesheet"; l.href="theme-v515.css?v=7"; document.head.appendChild(l);
   }
 
   var FS_CSS=
@@ -82,8 +82,8 @@ window.BPP_BUILD="5.15"; window.BPP_SHOW="5.15";
   function ensureCss(){
     var st=document.getElementById("bppV515css");
     if(!st){ st=document.createElement("style"); st.id="bppV515css"; }
-    if(st.getAttribute("data-v")!=="6"){
-      st.setAttribute("data-v","6");
+    if(st.getAttribute("data-v")!=="7"){
+      st.setAttribute("data-v","7");
       st.textContent=FS_CSS;
     }
     (document.head||document.documentElement).appendChild(st);
@@ -133,7 +133,7 @@ window.BPP_BUILD="5.15"; window.BPP_SHOW="5.15";
     var topPx=Math.round(vh*0.05);
     if(topEl){
       var tr=topEl.getBoundingClientRect();
-      if(tr.height>=8) topPx=Math.max(topPx, Math.round(tr.bottom+8));
+      if(tr.height>=8) topPx=Math.max(topPx, Math.round(tr.bottom+12));
     }
     var botPx=Math.round(vh*0.04);
     if(barVisible(bar)){
@@ -168,7 +168,7 @@ window.BPP_BUILD="5.15"; window.BPP_SHOW="5.15";
     }
     var top=document.getElementById("bppFsTop");
     var minTop=8;
-    if(top){ var tr=top.getBoundingClientRect(); if(tr.height>=8) minTop=tr.bottom+6; }
+    if(top){ var tr=top.getBoundingClientRect(); if(tr.height>=8) minTop=tr.bottom+12; }
     function bot(){
       var bb=B.getBoundingClientRect(), lo=bb.bottom;
       var nodes=B.querySelectorAll(".ftr,.vl,.bppFsC2Foot");

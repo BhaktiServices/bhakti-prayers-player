@@ -88,8 +88,12 @@ window.BPP_BUILD="5.16"; window.BPP_SHOW="5.16";
     if(!wrapping && horizOverflow(B)) return;
     g=0;
     while(B.scrollHeight<=S.clientHeight-16 && !boxOverflowsStage(B,S) && size<80 && g++<40){
+      if(typeof window.bppFsAllowGrow==="function"){
+        try{ if(!window.bppFsAllowGrow(B,S,size+1)) break; }catch(e){}
+      }
       size+=1; applySize(B,size);
-      if(B.scrollHeight>S.clientHeight-8 || boxOverflowsStage(B,S) || (!wrapping && horizOverflow(B))){
+      if(B.scrollHeight>S.clientHeight-8 || boxOverflowsStage(B,S) || (!wrapping && horizOverflow(B)) ||
+         (typeof window.bppFsAllowGrow==="function" && !window.bppFsAllowGrow(B,S,size))){
         size-=1; applySize(B,size); break;
       }
     }
