@@ -24,7 +24,7 @@ window.BPP_BUILD="4.61"; window.BPP_SHOW="4.61";
     /* [Grok-Bot] V4.61: + auch als "=" (US-Taste ohne Shift), NumpadAdd, Equal; Fokus von Play/Audio loesen */
     if(k==="+"||k==="="||code==="NumpadAdd"||(code==="Equal"&&!e.altKey&&!e.metaKey&&!e.ctrlKey)) k="+";
     if(k==="h"||k==="H"&&!e.shiftKey||k==="?"){ e.preventDefault(); e.stopPropagation(); try{ window.bppHelp&&window.bppHelp(); }catch(x){} return; }
-    if(k==="y"||k==="Y"&&!e.shiftKey){ var y=$("btnSrcYt"), f=$("btnSrcMp3"); var t=(y&&!y.classList.contains("gold"))?y:f; if(t){ e.preventDefault(); e.stopPropagation(); t.click(); } return; }
+    if(k==="y"||k==="Y"&&!e.shiftKey){ if(window.BPP_YT_ENABLED===false) return; var y=$("btnSrcYt"), f=$("btnSrcMp3"); var t=(y&&!y.classList.contains("gold"))?y:f; if(t){ e.preventDefault(); e.stopPropagation(); t.click(); } return; }
     if(e.shiftKey&&(k==="N"||k==="V")) id=K[k];
     else if(!e.shiftKey||"+#?".indexOf(k)>=0) id=K[k.length===1&&/[A-Z]/.test(k)?k.toLowerCase():k];
     if(!id) return;

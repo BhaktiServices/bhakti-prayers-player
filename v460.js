@@ -15,11 +15,11 @@ window.BPP_BUILD="4.60"; window.BPP_SHOW="4.60";
       "background:transparent!important;border:1px solid #e0b45a!important;color:#e0b45a!important;"+
       "border-radius:6px!important;padding:0 5px!important;font-size:.72rem!important;line-height:1.25!important;"+
       "min-height:auto!important;cursor:pointer;z-index:110}"+
-    "html.th-morgen #bppTheme{border-color:#5e420c!important;color:#5e420c!important}"+
-    "html.th-abend #bppTheme{border-color:#e0b45a!important;color:#e0b45a!important}"+
-    "html.th-swami #bppTheme{border-color:#7A1F00!important;color:#7A1F00!important}"+
-    "html.th-rishi #bppTheme{border-color:#F0C9A0!important;color:#F0C9A0!important}"+
-    "html.th-brahmachari #bppTheme{border-color:#5C3200!important;color:#5C3200!important}"+
+    "html.th-morgen #bppTopRight460 #bppTheme,html.th-morgen #bppTheme{border-color:#5e420c!important;color:#5e420c!important}"+
+    "html.th-abend #bppTopRight460 #bppTheme,html.th-abend #bppTheme{border-color:#e0b45a!important;color:#e0b45a!important}"+
+    "html.th-swami #bppTopRight460 #bppTheme,html.th-swami #bppTheme{border-color:#7A1F00!important;color:#7A1F00!important}"+
+    "html.th-rishi #bppTopRight460 #bppTheme,html.th-rishi #bppTheme{border-color:#F0C9A0!important;color:#F0C9A0!important}"+
+    "html.th-brahmachari #bppTopRight460 #bppTheme,html.th-brahmachari #bppTheme{border-color:#5C3200!important;color:#5C3200!important}"+
     "@media(max-width:400px){#bppTopRight460{top:6px;right:6px;gap:3px}#bppTheme{font-size:.68rem!important;padding:0 4px!important}}header h1{padding-right:var(--bpp-tr460,56px)!important;box-sizing:border-box}@media(max-width:420px){header h1{padding-right:var(--bpp-tr460,56px)!important}}";
   document.head.appendChild(st);
 

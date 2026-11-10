@@ -52,7 +52,8 @@ window.BPP_BUILD="5.07"; window.BPP_SHOW="5.07";
     "}"+
     "@media(pointer:coarse){"+
       "#bppNotesZoomBar507{display:none!important}"+
-    "}";
+    "}"+
+    "#bppNotes501{touch-action:manipulation;position:relative;z-index:8;-webkit-tap-highlight-color:transparent}";
   document.head.appendChild(st);
 
   function curP(){
@@ -99,8 +100,14 @@ window.BPP_BUILD="5.07"; window.BPP_SHOW="5.07";
     }catch(e){}
   }
 
+  var lastToggleAt=0;
   function toggleNotes(e){
     if(e){ e.preventDefault(); e.stopPropagation(); if(e.stopImmediatePropagation) e.stopImmediatePropagation(); }
+    /* V5.15: Android fires pointerup + click, or a second click after a moved node.
+       Without a debounce the gold 𝄞 Text button appears to "do nothing" (on and immediately off). */
+    var now=Date.now();
+    if(now-lastToggleAt<400) return;
+    lastToggleAt=now;
     if(!hasNotes()) return;
     setOn(!on());
     resetZoom();
@@ -111,16 +118,31 @@ window.BPP_BUILD="5.07"; window.BPP_SHOW="5.07";
     paintBtnSafe();
   }
 
+  function bindToggle(b){
+    if(!b||b._bpp507bound) return;
+    b._bpp507bound=1;
+    b.setAttribute("data-bpp-notes-click","507");
+    b.addEventListener("click", toggleNotes, true);
+    /* V5.15: on Android a click is often dropped if insertBefore/clone ran mid-gesture.
+       pointerup (touch) is the fallback; debounce in toggleNotes prevents a double flip. */
+    b.addEventListener("pointerup", function(e){
+      if(!e||e.pointerType!=="touch") return;
+      toggleNotes(e);
+    }, true);
+    try{ b.style.touchAction="manipulation"; }catch(x){}
+  }
   function claimBtn(){
     var b=document.getElementById("bppNotes501");
     if(!b) return null;
-    if(b.getAttribute("data-bpp-notes-click")==="507" && b._bpp507bound) return b;
+    /* Never clone a button we already marked — cloneNode mid-tap cancels the click on Android. */
+    if(b.getAttribute("data-bpp-notes-click")==="507"){
+      bindToggle(b);
+      return b;
+    }
     var nb=b.cloneNode(true);
     if(b.parentNode) b.parentNode.replaceChild(nb, b);
     b=nb;
-    b.setAttribute("data-bpp-notes-click","507");
-    b._bpp507bound=1;
-    b.addEventListener("click", toggleNotes, true);
+    bindToggle(b);
     return b;
   }
 

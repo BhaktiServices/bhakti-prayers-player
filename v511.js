@@ -51,6 +51,7 @@ window.BPP_BUILD="5.12"; window.BPP_SHOW="5.12";
 (function(){
   if(window.bppV511f) return; window.bppV511f=1;
   var W2=680, lastApplied="";
+  var FSKEY="bpp-fs-cols", MINFS=18;
   var css=document.createElement("style");
   css.id="bppFsC2511";
   css.textContent=
@@ -97,12 +98,34 @@ window.BPP_BUILD="5.12"; window.BPP_SHOW="5.12";
     if(S&&S.clientWidth) return S.clientWidth;
     return window.innerWidth||0;
   }
-  function wantTwo(){
+  function userFsCols(){
+    try{ var v=localStorage.getItem(FSKEY); if(v==="1"||v==="2") return +v; }catch(e){}
+    return 0; /* 0 = Auto, bis der Nutzer wählt */
+  }
+  function autoTwo(){
     if(!fsOn()||notesOn()) return false;
     var w=stageW();
-    /* Breite entscheidet, nicht Gerät; typisch Querformat ab ~700 px Stage */
-    return w>=W2;
+    if(w<W2) return false;
+    var h=window.innerHeight||0;
+    var S=document.getElementById("bppFsStage");
+    var sh=S?(S.clientHeight||0):h;
+    /* Auto: nur Querformat, und nur wenn die freie Höhe für 2 Spalten reicht */
+    var land=h>0 && (w>h || w/h>=1.15);
+    if(!land) return false;
+    if(sh>0 && sh<130) return false;
+    return true;
   }
+  function wantTwo(){
+    if(!fsOn()||notesOn()) return false;
+    var u=userFsCols();
+    if(u===1) return false;
+    if(u===2) return stageW()>=200;
+    return autoTwo();
+  }
+  window.bppFsColsKey=FSKEY;
+  window.bppFsWantTwo=wantTwo;
+  window.bppFsUserCols=userFsCols;
+  window.bppFsApplyCols=function(){ lastApplied=""; try{ apply(); }catch(e){} };
 
   /* Keine Seiten-Teilung, wenn 2 Spalten die ganze Strophe gleichzeitig zeigen */
   function wrapSplit(){
@@ -164,6 +187,45 @@ window.BPP_BUILD="5.12"; window.BPP_SHOW="5.12";
     var pad=Math.max(0, Math.round(sr.bottom-a.bottom));
     S.style.boxSizing="border-box";
     S.style.paddingBottom=pad?pad+"px":"";
+  }
+  function readingRect(S){
+    var sr=S.getBoundingClientRect();
+    var vh=window.innerHeight||sr.bottom;
+    var a={left:sr.left,right:sr.right,top:sr.top,bottom:vh-Math.round(vh*0.04),width:S.clientWidth,height:0};
+    var top=document.getElementById("bppFsTop");
+    if(top){
+      var tr=top.getBoundingClientRect();
+      if(tr.height>=8) a.top=Math.max(a.top, tr.bottom+8);
+    }
+    a.height=Math.max(40, a.bottom-a.top);
+    return a;
+  }
+  function overflowsReading(B,S){
+    if(!B||!S) return false;
+    var savePad=S.style.paddingBottom, saveBot, fsEl=document.getElementById("bppFs");
+    try{ saveBot=fsEl?fsEl.style.getPropertyValue("--bpp-fs-bot"):""; }catch(e){ saveBot=""; }
+    try{
+      if(fsEl) fsEl.style.setProperty("--bpp-fs-bot", Math.round((window.innerHeight||400)*0.04)+"px");
+      S.style.paddingBottom="";
+      /* Layout neu, dann gegen die Lesefläche prüfen */
+      void S.offsetHeight;
+      var a=readingRect(S), pad=8;
+      if(B.scrollHeight>a.height+16) return true;
+      var nodes=B.querySelectorAll(".vl, .fch:not(.h361), .ftr, .bppFsC2L, .bppFsC2R");
+      for(var i=0;i<nodes.length;i++){
+        var el=nodes[i], cs=getComputedStyle(el);
+        if(cs.display==="none"||cs.visibility==="hidden"||el.classList.contains("h361")) continue;
+        var r=el.getBoundingClientRect();
+        if(r.width<2||r.height<2) continue;
+        if(r.right>a.right+pad || r.left<a.left-pad) return true;
+        if(r.bottom>a.bottom+pad || r.top<a.top-pad) return true;
+        if((el.classList.contains("vl")||el.classList.contains("ftr")) && el.scrollWidth>el.clientWidth+1) return true;
+      }
+      return false;
+    } finally {
+      S.style.paddingBottom=savePad;
+      try{ if(fsEl){ if(saveBot) fsEl.style.setProperty("--bpp-fs-bot", saveBot); else fsEl.style.removeProperty("--bpp-fs-bot"); } }catch(e){}
+    }
   }
   function overflows(B,S){
     if(!B||!S) return false;
@@ -348,8 +410,16 @@ window.BPP_BUILD="5.12"; window.BPP_SHOW="5.12";
     if(!foot.childNodes.length) B.removeChild(foot);
     B.classList.add("bppFsC2");
 
-    /* Einzeilig bevorzugen; Umbruch nur an der 18-px-Untergrenze */
-    fitTwoCol(B,S);
+    /* Einzeilig bevorzugen; Umbruch nur an der 18-px-Untergrenze.
+       Reicht 18 px oder die freie Fläche nicht, sauber auf 1 Spalte zurück. */
+    var used=fitTwoCol(B,S);
+    /* Fallback nur, wenn 2 Spalten auch in der Lesefläche (Leiste ausgeblendet) nicht passen.
+       Sonst bleibt 2-spaltig; die Leiste überlagert kurz und blendet nach 3 s aus. */
+    if((used && used<MINFS-0.05) || overflowsReading(B,S)){
+      undo(B);
+      lastApplied="1|min|"+geo;
+      return;
+    }
     lastApplied=key;
     try{ [].forEach.call(B.querySelectorAll(".vl"),function(v){ v.__k361=null; }); }catch(e){}
     function refit(){ try{ if(B.classList.contains("bppFsC2")) fitTwoCol(B,S); }catch(e){} }

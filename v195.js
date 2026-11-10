@@ -227,6 +227,10 @@ window.bppPv191=1; /* schaltet die alte Vorschau in v189.js ab */
     var t=!has?tNo:(on?tOn:tOff); if(b.title!==t){ b.title=t; b.setAttribute("aria-label", t); }
   }
   function sync(){
+    if(window.BPP_YT_ENABLED===false){
+      try{ if(!grp) build(); if(grp) grp.style.display="none"; if(bY) bY.style.display="none"; }catch(e){}
+      return;
+    }
     if(!build()) return;
     var p=cur(), hasY=!!(p && p.youtube), hasM=!!(p && p.audio), isYt=(typeof ytOn!=="undefined" && !!ytOn);
     grp.style.display=(hasY || hasM)?"":"none"; if(!(hasY || hasM)) return;

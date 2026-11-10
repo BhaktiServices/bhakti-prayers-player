@@ -4,6 +4,7 @@
 (function(){
   if(window.bppV421) return; window.bppV421=1;
   var H=[
+["5.15","10.11.","YT-Knopf (▶ YT) bleibt bei BPP_YT_ENABLED=false auch im offenen Menü aus. Kontrast in Swami, Rishi und Brahmachari (WCAG AA), auch Groß-Noten. Groß hochkant: Strophe wieder mittig im Spalt zwischen Kopf und Leiste. Groß quer: 2 Spalten ohne Chaos (Höhe und Mindestschrift, sonst 1 Spalte). Neuer Groß-Knopf „Spalten“ (Zahl im Tooltip, bpp-fs-cols, Taste S). Zurück von Noten zu Lyrics per Touch, Kopfzeile 360–412 px ohne Überlappung von Stil/DE/ATMA. critical=false."],
 ["5.14","10.11.","Drei neue Stile im bestehenden Wechsel: Swami (Safran-Orange), Rishi (edles Rot), Brahmachari (kräftiges Gelb). Gespeichert wie die bisherigen, Namen und Hilfe in allen Sprachen, Standard, Groß und Noten. Aktiv-Farbe klar unterscheidbar, Textkontrast WCAG AA. critical=false."],
 ["5.13","10.11.","critical: Start-Schleife nach Strg+F5 (Mukunda ab gespeicherter Zeit ~5 s, 1 s Wiedergabe, dann zurück) gestoppt: nur noch genau ein Resume-Seek, Watchdog blockiert weitere automatische Rücksprünge. Groß-Noten: Menü über dem Blatt, Noten↔Lyrics in beide Richtungen, Knopf ohne Flackern, Strophenwechsel bleibt sichtbar. Prayer-Wechsel zeigt immer die Lyrics des gewählten Gebets. YT-Knopf aus (Schalter BPP_YT_ENABLED). Spalten-Knopf nur noch „Spalten“. critical=true."],
 ["5.12","10.11.","Groß 2 Spalten: Schrift so verkleinern, dass jede Verszeile einzeilig in die Spalte passt; Umbruch nur, wenn sonst unter 18 px. critical=false."],

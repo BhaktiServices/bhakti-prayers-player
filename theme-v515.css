@@ -1,0 +1,109 @@
+/* [Grok-Bot] V5.15: (a) YT-Knopf (#btnSrcYt / #bppSrc195) auch bei offenem Menü aus, wenn BPP_YT_ENABLED=false.
+   Spezifität schlägt v301 display:inline-flex!important. (b)(c) Stil-Knopf und Tonart/Tonhöhe/Tempo-Labels
+   auf hellen Stilen dunkel. Weitere Kontrastkorrekturen für Swami/Rishi/Brahmachari. */
+
+/* YT aus: Quelle-Zweierwahl komplett verbergen (nur MP3, kein Umschalter) */
+html.bpp-yt-off #btnSrc,
+html.bpp-yt-off #btnSrc189,
+html.bpp-yt-off #btnSrcYt,
+html.bpp-yt-off #bppSrc195,
+html.bpp-yt-off #ytBox,
+html.bpp-yt-off body.bpp-yt-off .bar .r301 #bppSrc195,
+html.bpp-yt-off body.bpp-yt-off .bar .r301 #btnSrcYt,
+html.bpp-yt-off body.bpp-yt-off .bar .r301 #btnSrcMp3,
+html.bpp-yt-off body.menu-full #bppSrc195,
+html.bpp-yt-off body.menu-full #btnSrcYt,
+html.bpp-yt-off body.menu-full #btnSrcMp3,
+html.bpp-yt-off body.menu-full .bar #bppSrc195,
+html.bpp-yt-off body.menu-full .bar #btnSrcYt{display:none!important}
+
+/* Stil-Knopf: #bppTopRight460 #bppTheme (2 IDs) schlug theme-Regeln; hier höher */
+html.th-swami #bppTopRight460 #bppTheme,html.th-swami #bppTheme{border-color:#7A1F00!important;color:#7A1F00!important;background:transparent!important}
+html.th-rishi #bppTopRight460 #bppTheme,html.th-rishi #bppTheme{border-color:#F0C9A0!important;color:#F0C9A0!important;background:transparent!important}
+html.th-brahmachari #bppTopRight460 #bppTheme,html.th-brahmachari #bppTheme{border-color:#5C3200!important;color:#5C3200!important;background:transparent!important}
+html.th-morgen #bppTopRight460 #bppTheme,html.th-morgen #bppTheme{border-color:#5e420c!important;color:#5e420c!important}
+
+/* Tonart / Tonhöhe / Tempo: Inline color:#e8c57a schlägt ohne !important */
+html.th-swami #xpLab,html.th-swami #capoLab,html.th-swami #scLab{color:#7A1F00!important}
+html.th-rishi #xpLab,html.th-rishi #capoLab,html.th-rishi #scLab{color:#F0C9A0!important}
+html.th-brahmachari #xpLab,html.th-brahmachari #capoLab,html.th-brahmachari #scLab{color:#5C3200!important}
+
+/* Selects inkl. 1,0× – v189 dunkler Grund darf auf hellen Stilen nicht gewinnen */
+html.th-swami select#selRate,html.th-swami select#selRate option{background:#FFF1DC!important;color:#1F1208!important}
+html.th-swami select#selRate.off1,html.th-swami select#selRate.cur{color:#7A1F00!important;border-color:#7A1F00!important;background:#FFF1DC!important}
+html.th-brahmachari select#selRate,html.th-brahmachari select#selRate option{background:#FFF3A8!important;color:#1A1400!important}
+html.th-brahmachari select#selRate.off1,html.th-brahmachari select#selRate.cur{color:#5C3200!important;border-color:#5C3200!important;background:#FFF3A8!important}
+html.th-rishi select#selRate,html.th-rishi select#selRate option{background:#3E121C!important;color:#FDECEC!important}
+html.th-rishi select#selRate.off1,html.th-rishi select#selRate.cur{color:#E8C070!important;border-color:#E8C070!important;background:#3E121C!important}
+
+/* Hilfe-Überschriften, die sonst auf #e0b45a bleiben */
+html.th-swami #bppHelp h2,html.th-swami #bppHelp b,html.th-swami #bppHelp a{color:#7A1F00!important}
+html.th-brahmachari #bppHelp h2,html.th-brahmachari #bppHelp b,html.th-brahmachari #bppHelp a{color:#5C3200!important}
+html.th-rishi #bppHelp h2,html.th-rishi #bppHelp b,html.th-rishi #bppHelp a{color:#E8C070!important}
+
+/* Placeholder, Hinweise, deaktivierte Labels */
+html.th-swami .hint,html.th-swami .quelle,html.th-swami #hint,html.th-swami ::placeholder{color:#5A3518!important}
+html.th-brahmachari .hint,html.th-brahmachari .quelle,html.th-brahmachari #hint,html.th-brahmachari ::placeholder{color:#4A3800!important}
+html.th-rishi .hint,html.th-rishi .quelle,html.th-rishi #hint,html.th-rishi ::placeholder{color:#E8C8CC!important}
+html.th-swami button:disabled,html.th-swami [disabled],html.th-swami .off{color:#5A3518!important;opacity:.75}
+html.th-brahmachari button:disabled,html.th-brahmachari [disabled],html.th-brahmachari .off{color:#4A3800!important;opacity:.75}
+html.th-rishi button:disabled,html.th-rishi [disabled],html.th-rishi .off{color:#E8C8CC!important;opacity:.8}
+
+/* Kopf 360–412px: #bppTopRight460 ist bei v460/v474 position:fixed. Sobald der
+   Seitentitel aus dem Sichtfeld gescrollt ist, liegt Stil S / DE / ATMA BHOG
+   über #bppSel (Vedische Gesänge) und der Titelzeile. Auf schmalen Viewports
+   daher absolut im Dokumentfluss (scrollt mit dem Kopf), nicht mehr fixed. */
+@media (max-width:430px){
+  html body #bppTopRight460{
+    position:absolute!important;
+    top:8px!important;
+    right:8px!important;
+    z-index:130!important;
+    max-width:96px
+  }
+}
+
+/* Groß: Bühne = Spalt zwischen Kopf und sichtbarer Leiste (Lyrics mittig). */
+#bppFs.on:not(.bpp-notes-fs) #bppFsStage{
+  top:var(--bpp-fs-top,5vh)!important;
+  bottom:var(--bpp-fs-bot,4vh)!important;
+  padding-bottom:0!important;
+  box-sizing:border-box!important;
+  display:flex!important;align-items:center!important;justify-content:center!important
+}
+#bppFs.on:not(.bpp-notes-fs) #bppFsBox{display:inline-block!important;max-width:100%;max-height:100%;box-sizing:border-box}
+html body #bppFs #bppFsBar #bppFsCols515,
+html body #bppFs #bppFsBar .row>#bppFsCols515{
+  display:inline-flex!important;align-items:center;justify-content:center;
+  visibility:visible!important
+}
+#bppFs.bpp-notes-fs #bppFsCols515,
+html body #bppFs.bpp-notes-fs #bppFsBar #bppFsCols515{display:none!important}
+@media (orientation:landscape) and (max-height:500px){
+  #bppFs.on:not(.bpp-notes-fs) #bppFsBar{gap:4px!important;padding:4px 6px!important}
+  #bppFs.on:not(.bpp-notes-fs) #bppFsBar button#bppFsPlay{width:52px!important;height:52px!important;min-width:52px!important}
+}
+
+
+/* Groß-Noten-Kontrast gegen v509 #e0b45a/#a9a39a auf hellen Stilen */
+html.th-swami #bppFs.bpp-notes-fs #bppFsT1,
+html.th-swami #bppFs.bpp-notes-fs .bppNotesCap503{color:#7A1F00!important}
+html.th-swami #bppFs.bpp-notes-fs #bppFsT2{color:#5A3518!important}
+html.th-brahmachari #bppFs.bpp-notes-fs #bppFsT1,
+html.th-brahmachari #bppFs.bpp-notes-fs .bppNotesCap503{color:#5C3200!important}
+html.th-brahmachari #bppFs.bpp-notes-fs #bppFsT2{color:#4A3800!important}
+html.th-rishi #bppFs.bpp-notes-fs #bppFsT1,
+html.th-rishi #bppFs.bpp-notes-fs .bppNotesCap503{color:#F0C9A0!important}
+html.th-rishi #bppFs.bpp-notes-fs #bppFsT2{color:#E8C8CC!important}
+html.th-swami #bppFs.bpp-notes-fs #bppNotesFs508.on,
+html.th-swami #bppFs.bpp-notes-fs #bppNotesFs508.gold,
+html.th-swami #bppFs.bpp-notes-fs #bppNotesFs508.on *,
+html.th-swami #bppFs.bpp-notes-fs #bppNotesFs508.gold *,
+html.th-brahmachari #bppFs.bpp-notes-fs #bppNotesFs508.on,
+html.th-brahmachari #bppFs.bpp-notes-fs #bppNotesFs508.gold,
+html.th-brahmachari #bppFs.bpp-notes-fs #bppNotesFs508.on *,
+html.th-brahmachari #bppFs.bpp-notes-fs #bppNotesFs508.gold *,
+html.th-rishi #bppFs.bpp-notes-fs #bppNotesFs508.on,
+html.th-rishi #bppFs.bpp-notes-fs #bppNotesFs508.gold,
+html.th-rishi #bppFs.bpp-notes-fs #bppNotesFs508.on *,
+html.th-rishi #bppFs.bpp-notes-fs #bppNotesFs508.gold *{color:#1a1208!important}

@@ -98,7 +98,7 @@ if(document.readyState==="loading"){ document.write('<script src="v193.js?v=193"
 if(document.readyState==="loading"){ document.write('<script src="v194.js?v=202"><\/script>'); }
 /* [Grok-Bot] V1.95: Grossbild – die ganze naechste Strophe faehrt waehrend der letzten Zeile von unten hoch, nahtloser Wechsel (v195.js ersetzt v191.js);
    Quellenwahl als Zweier-Auswahl "YT | MP3". Laufband (v189) und Tastenschutz (v194) unveraendert. */
-if(document.readyState==="loading"){ document.write('<script src="v195.js?v=197"><\/script>'); }
+if(document.readyState==="loading"){ document.write('<script src="v195.js?v=515"><\/script>'); }
 /* [Grok-Bot] V1.96: Kavaca Stotram - Strophenzeiten MP3 und YouTube neu gemessen (Abfolge + Pausentabelle), alte Strophen-Tipps ohne Wirkung. */
 if(document.readyState==="loading"){ document.write('<script src="v196.js?v=196"><\/script>'); }
 /* [Grok.com] V1.98: Hanuman Chalisa spielt die Bhavani-Datei. BPP_BUILD muss nach v196 stehen, sonst setzt v177 die Anzeige wieder auf 1.96. */
