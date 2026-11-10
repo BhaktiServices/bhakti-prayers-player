@@ -4,6 +4,7 @@
 (function(){
   if(window.bppV421) return; window.bppV421=1;
   var H=[
+["5.12","10.11.","Groß 2 Spalten: Schrift so verkleinern, dass jede Verszeile einzeilig in die Spalte passt; Umbruch nur, wenn sonst unter 18 px. critical=false."],
 ["5.11","10.11.","Standard: 2 Spalten nach Inhaltsbreite (≥700 px), nicht nach Gerätetyp; gewählter Modus bleibt beim Drehen. Groß quer: aktuelle Strophe automatisch in 2 Spalten (nie 3), Akkorde auf der Silbe, Übersetzung darunter, Schrift-Fit ohne Überlauf; Noten unverändert; Strophenwechsel ohne Ghosting. critical=false."],
 ["5.10","09.11.","Hanumān Mitsingen: exakte Marken (kein Vorlauf/Pausen-Flackern), Mtj-Nummern korrigiert (Saba=17); Groß: Schrift an Breite + Wrap, Akkorde bleiben; Strophenwechsel ohne Doppel-Animation/Rücksprung (Suprabhātam). critical=false."],
 ["5.09","09.11.","Groß-Noten Layout: ein Titel (kein Doppel); Kopfzeile Titel… / Text vollständig / Strophe ohne Überlappung; Notenblatt nur zwischen Kopf und Steuerleiste (Bar messbar, z-index); Frame-Hintergrund dunkel statt großer Weißfläche. critical=false."],

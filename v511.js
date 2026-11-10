@@ -1,11 +1,12 @@
-/* [Grok-Bot] V5.11: (1) Standard-Spalten: ein Owner, nach verfügbarer Inhaltsbreite (#lyrics),
+/* [Grok-Bot] V5.11/V5.12: (1) Standard-Spalten: ein Owner, nach verfügbarer Inhaltsbreite (#lyrics),
    nicht nach Gerätetyp (kein pointer:coarse / UA / max-height / kürzere Seite). 2 Spalten ab 700 px,
    3 ab 1100 px. Gewünschter Modus bleibt beim Drehen erhalten (localStorage bpp-cols), wird nur
    auf das gerade Machbare begrenzt. (2) Groß: im Querformat bei ausreichender Breite die aktuelle
    Strophe automatisch auf 2 Spalten (nie 3) – links erste Hälfte, rechts zweite, Akkorde an der
-   Silbe, Übersetzung darunter; Schrift-Fit ohne Überlauf; nur wenn die Schrift dadurch nicht
-   kleiner wird. Noten-Modus unverändert. Strophenwechsel ohne zusätzliche Ghosts. critical=false. */
-window.BPP_BUILD="5.11"; window.BPP_SHOW="5.11";
+   Silbe, Übersetzung darunter; Schrift so, dass jede Verszeile einzeilig in die Spalte passt;
+   Umbruch nur, wenn sonst die Mindestgröße (18 px) unterschritten würde. Noten-Modus unverändert.
+   Strophenwechsel ohne zusätzliche Ghosts. critical=false. */
+window.BPP_BUILD="5.12"; window.BPP_SHOW="5.12";
 
 /* --- Ein Owner für die Spaltenzahl --- */
 (function(){
@@ -58,7 +59,7 @@ window.BPP_BUILD="5.11"; window.BPP_SHOW="5.11";
     "#bppFsBox.bppFsC2 .bppFsC2L,#bppFsBox.bppFsC2 .bppFsC2R{min-width:0;max-width:100%;padding:1.1em 12px 0;box-sizing:border-box;overflow:visible;text-align:left}"+
     "#bppFsBox.bppFsC2 .vl,#bppFsBox.bppFsC2 .fch,#bppFsBox.bppFsC2 .ftr{max-width:100%;box-sizing:border-box}"+
     "#bppFsBox.bppFsC2 .vl.c361{line-height:2.55!important;padding-top:.05em}"+
-    "#bppFsBox.bppFsC2 .vl{white-space:normal!important;overflow-wrap:break-word;word-break:normal}"+
+    "#bppFsBox.bppFsC2 .vl{white-space:nowrap}"+"#bppFsBox.bppFsC2.bpp-fs-wrap .vl{white-space:normal!important;overflow-wrap:break-word;word-break:normal}"+
     "#bppFsBox.bppFsC2 .bppFsC2Head .fch{margin-bottom:.15em}"+
     "#bppFsBox.bppFsC2 .bppFsC2Foot .ftr{margin-top:.35em;white-space:normal!important;max-width:100%!important;text-align:center;overflow-wrap:break-word}";
   document.head.appendChild(css);
@@ -207,6 +208,30 @@ window.BPP_BUILD="5.11"; window.BPP_SHOW="5.11";
     return best;
   }
 
+  /* Verszeilen, die in der Spalte horizontal nicht einzeilig passen */
+  function linesOverflow(B){
+    var nodes=B.querySelectorAll(".vl:not(.fch)");
+    for(var i=0;i<nodes.length;i++){
+      var el=nodes[i];
+      if(el.classList.contains("h361")) continue;
+      var cs=getComputedStyle(el);
+      if(cs.display==="none"||cs.visibility==="hidden") continue;
+      if(el.scrollWidth>el.clientWidth+1) return true;
+    }
+    return false;
+  }
+  /* Zuerst Schrift verkleinern, bis jede Verszeile einzeilig passt.
+     Umbruch nur, wenn selbst 18 px noch nicht reicht. */
+  function fitTwoCol(B,S){
+    B.classList.remove("bpp-fs-wrap");
+    var fs=fitBox(B,S);
+    if(linesOverflow(B)){
+      B.classList.add("bpp-fs-wrap");
+      /* an der Untergrenze bleiben, nicht wegen Umbruch wieder wachsen */
+    }
+    return parseFloat(B.style.fontSize)||fs;
+  }
+
   function undo(B){
     if(!B||!B.classList.contains("bppFsC2")) return;
     var L=B.querySelector(".bppFsC2L"), R=B.querySelector(".bppFsC2R");
@@ -283,9 +308,7 @@ window.BPP_BUILD="5.11"; window.BPP_SHOW="5.11";
       if(lastApplied==="2|"+geo){
         syncStagePad(S);
         /* Schrift nach Auto-Hide der Leiste oder k361 noch einmal einpassen, DOM nicht anfassen */
-        B.classList.add("bpp-fs-wrap");
-        var fsKeep=fitBox(B,S);
-        if(!(fsKeep>0)) B.classList.remove("bpp-fs-wrap");
+        fitTwoCol(B,S);
         return;
       }
       undo(B);
@@ -325,12 +348,11 @@ window.BPP_BUILD="5.11"; window.BPP_SHOW="5.11";
     if(!foot.childNodes.length) B.removeChild(foot);
     B.classList.add("bppFsC2");
 
-    /* In 2 Spalten immer umbrechen, damit lange Zeilen nicht abgeschnitten werden und die Schrift wachsen kann */
-    B.classList.add("bpp-fs-wrap");
-    fitBox(B,S);
+    /* Einzeilig bevorzugen; Umbruch nur an der 18-px-Untergrenze */
+    fitTwoCol(B,S);
     lastApplied=key;
-    try{ [].forEach.call(B.querySelectorAll(".vl"),function(v){ v.__k361=null; if(v.classList.contains("c361")){ /* k361 baut nach Tick neu */ } }); }catch(e){}
-    function refit(){ try{ if(B.classList.contains("bppFsC2")) fitBox(B,S); }catch(e){} }
+    try{ [].forEach.call(B.querySelectorAll(".vl"),function(v){ v.__k361=null; }); }catch(e){}
+    function refit(){ try{ if(B.classList.contains("bppFsC2")) fitTwoCol(B,S); }catch(e){} }
     setTimeout(refit, 400);
     setTimeout(refit, 750);
   }
