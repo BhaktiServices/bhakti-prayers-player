@@ -9,9 +9,9 @@
 <meta property="og:image" content="start.jpg">
 <link rel="manifest" href="manifest.json?v=341"><!-- [Grok-Bot] V2.53: PWA wieder installierbar -->
 <meta name="theme-color" content="#041236"><link rel="apple-touch-icon" href="apple-touch-icon.png"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="BPPlayer"><!-- [Grok-Bot] V3.41 -->
-<title>Bhakti Prayers Player V5.13</title>
+<title>Bhakti Prayers Player V5.14</title>
 <script>/* [Grok-Bot] V3.30: zentrale Version - aeltere Skripte (V1.66 usw.) koennen Kopf und Titel nicht mehr kurz ueberschreiben */
-window.BPP_VERSION="5.13";
+window.BPP_VERSION="5.14";
 window.BPP_YT_ENABLED=false; /* [Grok-Bot] V5.13: YouTube vorerst aus; Schalter, Code bleibt */
 /* V4.89: one registry for wrapper installation markers; no playback behaviour here. */
 window.bppWrapMarkers489=function(to,from){
@@ -160,7 +160,7 @@ body.show-ch .rowline .rch{display:block}
 /* [Grok.com] Startbild, sichtbar bis ein Gebet gewaehlt ist */
 </style>
 <link rel="stylesheet" href="theme-atmabhog.css?v=3"><!-- [Grok-Bot] V3.34 atmabhog-Theme -->
-<link rel="stylesheet" href="theme-v379.css?v=1"><!-- [Grok-Bot] V3.79 drei Stile --><link rel="stylesheet" href="theme-v380.css?v=1"><!-- [Grok-Bot] V3.80 Lesbarkeit --><link rel="stylesheet" href="theme-v381.css?v=2"><!-- [Grok-Bot] V3.81 Fusszeile --><link rel="stylesheet" href="theme-v385.css?v=1"><!-- [Grok-Bot] V3.85 Ueberschrift indisch --><script>try{var m=localStorage.getItem("bpp-theme");if(m&&m!=="auto")document.documentElement.classList.add("th-"+m);}catch(e){}</script>
+<link rel="stylesheet" href="theme-v379.css?v=1"><!-- [Grok-Bot] V3.79 drei Stile --><link rel="stylesheet" href="theme-v380.css?v=2"><!-- [Grok-Bot] V3.80 Lesbarkeit --><link rel="stylesheet" href="theme-v381.css?v=2"><!-- [Grok-Bot] V3.81 Fusszeile --><link rel="stylesheet" href="theme-v385.css?v=1"><!-- [Grok-Bot] V3.85 Ueberschrift indisch --><link rel="stylesheet" href="theme-v514.css?v=2"><!-- [Grok-Bot] V5.14 Swami/Rishi/Brahmachari --><script>try{var m=localStorage.getItem("bpp-theme");if(m&&m!=="auto")document.documentElement.classList.add("th-"+m);}catch(e){}</script>
 </head>
 <body tabindex="0">
 <header>
@@ -834,7 +834,7 @@ layoutLyrics();
 <script src="v376.js?v=1"></script><!-- [Grok-Bot] V3.76 Gross: Lage per Sensor -->
 <script src="v377.js?v=1"></script><!-- [Grok-Bot] V3.77 Bhu Suktam Schreibkorrekturen -->
 <script src="v378.js?v=2"></script><!-- [Grok-Bot] V3.78 ✎ in Überarbeitung, Hilfe-Reihenfolge -->
-<script src="v379.js?v=7"></script><!-- [Grok-Bot] V3.79 Stile Auto/Morgen/Abend/Nacht, Hilfe bei Sprachwechsel -->
+<script src="v379.js?v=10"></script><!-- [Grok-Bot] V3.79 Stile Auto/Morgen/Abend/Nacht + V5.14 Swami/Rishi/Brahmachari -->
 <script src="v380.js?v=1"></script><!-- [Grok-Bot] V3.80 Lesbarkeit, Hilfe Blaettern kurz -->
 <script src="v381.js?v=397"></script><!-- [Grok-Bot] V3.81 Gross: Uebersetzung-Knopf, X immer sichtbar -->
 <script src="v382.js?v=1"></script><!-- [Grok-Bot] V3.82 Atma Bhog unter dem Titel -->
@@ -905,7 +905,7 @@ layoutLyrics();
 <script src="v456.js?v=458"></script><!-- [Grok-Bot] V4.56/V4.58: Offline-Tipp + Lautstaerke (Fix: kein 0, Mobil aus) -->
 <script src="v457.js?v=475"></script><!-- [Grok-Bot] V4.65: Statistik default ein, Fusszeilen-Knopf, Zustand merken, Worldwide-Ueberschrift -->
 <script src="v459.js?v=1"></script><!-- [Grok-Bot] V4.59: Auto-Update version.json + Reload -->
-<script src="v460.js?v=1"></script><!-- [Grok-Bot] V4.60: Stil unter Sprachwahl (rechtsbuendig gestapelt) -->
+<script src="v460.js?v=514"></script><!-- [Grok-Bot] V4.60: Stil unter Sprachwahl (rechtsbuendig gestapelt) -->
 <script src="v461.js?v=465"></script><!-- [Grok-Bot] V4.61: Menue+ ohne DL/Install (nur Fusszeile); Support oben; + Fokus -->
 <script src="v462.js?v=465"></script><!-- [Grok-Bot] V4.62: Menue+-Zeile ohne DL/Install (Wd, Spalten, Menue) -->
 <script src="v463.js?v=475"></script><!-- [Grok-Bot] V4.66: Offline/Install-Buttons ausserhalb #bppOff (pointer-events) -->
@@ -944,6 +944,7 @@ layoutLyrics();
 <script src="v510.js?v=6"></script><!-- [Grok-Bot] V5.10: Mitsingen-Marken/Groß-Fit/Strophenwechsel -->
 <script src="v511.js?v=14"></script><!-- [Grok-Bot] V5.12: Spalten nach Inhaltsbreite; Groß 2 Spalten, Zeilen einzeilig -->
 <script src="v513.js?v=3"></script><!-- [Grok-Bot] V5.13: Groß-Noten Menü/Toggle/Knopf ruhig/Strophenwechsel -->
+<script src="v514.js?v=1"></script><!-- [Grok-Bot] V5.14: Stile Swami, Rishi, Brahmachari -->
 <script src="v488.js?v=1"></script>
 <script src="v489.js?v=1"></script>
 </body>

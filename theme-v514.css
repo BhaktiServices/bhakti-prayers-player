@@ -1,0 +1,170 @@
+/* [Grok-Bot] V5.14: drei weitere Stile. Swami = Safran-Orange (hell), Rishi = edles Rot (dunkel),
+   Brahmachari = kraeftiges Gelb (hell). Kontraste Text >= 4.5:1 (WCAG AA), Lyrics/Akkorde typisch >= 7:1.
+   Aktiv-Farbe klar vom Ruhezustand und vom Grund unterscheidbar; Gold bleibt die Aktiv-Farbe, wo sie
+   auf dem Grund trägt (Rishi), sonst ein deutlich anderes Aktiv (Swami: dunkles Safran, Brahmachari: Indigo mit Goldschrift). */
+
+/* ---------- Swami (Safran-Orange, hell) ---------- */
+html.th-swami{--bg:#F6D09A;--card:#FFF1DC;--gold:#7A1F00;--text:#1F1208;--muted:#5A3518;--lyric:#1A0E04;--ab-btn:#E8C396;--ab-line:rgba(122,31,0,.22);--ab-cream:#FFF1DC;--bpp-on:#9A2E00;--bpp-on-fg:#FFF8F0}
+html.th-swami,html.th-swami body{background:#F6D09A!important;color:#1F1208}
+html.th-swami body{background:radial-gradient(1200px 600px at 50% -200px,#FFD08A 0%,rgba(246,208,154,0) 70%),#F6D09A!important}
+html.th-swami .bar,html.th-swami .now{background:rgba(246,208,154,.94)!important}
+html.th-swami button,html.th-swami select{background:#E8C396!important;color:#1F1208!important;border-color:rgba(122,31,0,.35)!important}
+html.th-swami button.on,html.th-swami button.gold,html.th-swami #btnMenu,html.th-swami #btnPlay,html.th-swami #bppFsPlay,html.th-swami #bppFsMenu,html.th-swami #bppFsCh.on,html.th-swami .daybar button.on{background:#9A2E00!important;color:#FFF8F0!important;border-color:#7A1F00!important}
+html.th-swami button.on *,html.th-swami #btnPlay *,html.th-swami #bppFsPlay *{color:#FFF8F0!important;fill:#FFF8F0!important}
+html.th-swami #bppFsPlay svg,html.th-swami #bppFsPlay svg *{fill:#FFF8F0!important;color:#FFF8F0!important}
+html.th-swami #bppFs #bppFsPlay i.pl{border-left-color:#FFF8F0!important}
+html.th-swami #bppFs #bppFsPlay i.pa{border-left-color:#FFF8F0!important;border-right-color:#FFF8F0!important}
+html.th-swami select,html.th-swami select option{color:#1F1208!important;background:#FFF1DC!important}
+html.th-swami select.cur,html.th-swami select#selRate.off1{color:#7A1F00!important;border-color:#7A1F00!important}
+html.th-swami .panel{background:#FFF1DC!important;box-shadow:0 6px 14px -6px rgba(80,30,0,.25)}
+html.th-swami h1,html.th-swami #lyrTitle,html.th-swami .songtitle,html.th-swami .grp,html.th-swami .head .vn,html.th-swami .rowline .x2{color:#7A1F00!important}
+html.th-swami h1 .ver{color:#5A3518!important}
+html.th-swami .stanza.on{background:rgba(154,46,0,.14)!important;box-shadow:inset 5px 0 0 #9A2E00,0 0 0 1px rgba(154,46,0,.55)!important}
+html.th-swami .stanza.on .sa,html.th-swami .rowline .sa{color:#1A0E04!important}
+html.th-swami .stanza.on .head .vn{color:#5A1600!important}
+html.th-swami .head .ch,html.th-swami .rowline .lch,html.th-swami .rowline .rch{color:#8A2A00!important}
+html.th-swami .rowline .de,html.th-swami .stanza>.de{color:#4A2A14!important}
+html.th-swami .quelle,html.th-swami .hint,html.th-swami footer,html.th-swami .legend,html.th-swami .legend b,html.th-swami .sub{color:#5A3518!important}
+html.th-swami .item,html.th-swami .item *{color:#1F1208}
+html.th-swami .item.active,html.th-swami .item.active *{background:rgba(154,46,0,.22)!important;color:#7A1F00!important}
+html.th-swami #bppFs{background:#FAE0B8!important;color:#1A0E04!important}
+html.th-swami #bppFsBox .fch{color:#8A2A00!important}
+html.th-swami #bppFsBox .ftr{color:#4A2A14!important}
+html.th-swami #bppFsBar{background:rgba(232,195,150,.96)!important}
+html.th-swami #bppFsTop,html.th-swami #bppFsTop *{color:#5A3518!important}
+html.th-swami #bppFsBar button{color:#1F1208!important}
+html.th-swami #bppFsBar button.on,html.th-swami #bppFsBar #bppFsPlay,html.th-swami #bppFsBar #bppFsMenu,html.th-swami #bppFsBar #bppFsCh.on{background:#9A2E00!important;color:#FFF8F0!important;border-color:#7A1F00!important}
+html.th-swami #bppFsBar button.on *,html.th-swami #bppFsBar #bppFsPlay *,html.th-swami #bppFsBar #bppFsMenu *{color:#FFF8F0!important;fill:#FFF8F0!important}
+html.th-swami #bppFsMenu,html.th-swami #bppFsMenu *{color:#FFF8F0!important}
+html.th-swami #bppFs #bppFsX,html.th-swami #bppFs #bppFsTr381{background:#FFF1DC!important;color:#1F1208!important;border-color:#7A1F00!important}
+html.th-swami #bppFs #bppFsTr381.on{background:#9A2E00!important;color:#FFF8F0!important;border-color:#9A2E00!important}
+html.th-swami #bppHelp{background:rgba(246,208,154,.98)!important}
+html.th-swami #bppHelp .in,html.th-swami #bppHelp p{color:#1F1208!important}
+html.th-swami #bppHelp b,html.th-swami #bppHelp h2,html.th-swami #bppHelp .kbh357{color:#7A1F00!important}
+html.th-swami #bppHelp .kb357{background:#FFF1DC!important;border-color:#C47A3A!important}
+html.th-swami #bppHelp .kb357 kbd{border-color:#7A1F00!important;color:#1F1208!important}
+html.th-swami #bppHelp .bppContact,html.th-swami #bppHelp .esc355{color:#5A3518!important}
+html.th-swami #bppHelp a{color:#7A1F00!important}
+html.th-swami #bppHelp .x{background:#E8C396!important;color:#1F1208!important;border-color:#7A1F00!important}
+html.th-swami #bppHelpTip{background:#7A1F00!important;color:#FFF8F0!important;border-color:#7A1F00!important}
+html.th-swami #bppHelpTip *{color:#FFF8F0!important}
+html.th-swami #bpp-stats,html.th-swami #bpp-orte24,html.th-swami #bppOff{background:#FFF8F0!important;color:#1F1208!important;border-color:#C47A3A!important}
+html.th-swami #bppNoTr369,html.th-swami .notr{color:#5A3518!important}
+html.th-swami #bppNoTime,html.th-swami #bppRot{color:#1F1208!important;background:#FFF1DC!important;border-color:#7A1F00!important}
+html.th-swami #bppNotes501.on,html.th-swami #bppNotes501.gold,
+html.th-swami #bppFsTop #bppNotesFs508.on,html.th-swami #bppFsTop #bppNotesFs508.gold{background:#9A2E00!important;border-color:#7A1F00!important;color:#FFF8F0!important}
+html.th-swami #bppFsTop #bppNotesFs508{background:#E8C396!important;color:#1F1208!important;border-color:rgba(122,31,0,.45)!important}
+html.th-swami #bppFs.bpp-notes-fs .bppNotesCap503{color:#7A1F00!important}
+html.th-swami #bppFs.bpp-notes-fs .bppNotesFrame503{border-color:#9A2E00!important}
+html.th-swami body header h1 #bppVer386,html.th-swami header h1 .ver{color:#5A3518!important}
+html.th-swami #bppHelp>div.in>h3.s449{color:#7A1F00;border-bottom-color:rgba(122,31,0,.35)}
+html.th-swami #bppSup461{background:#FFF1DC;color:#7A1F00;border-color:#C47A3A}
+
+/* ---------- Rishi (edles Rot, dunkel) ---------- */
+html.th-rishi{--bg:#2C0B12;--card:#3E121C;--gold:#E8C070;--text:#FDECEC;--muted:#E8C8CC;--lyric:#FFF8F6;--ab-btn:#5A1E28;--ab-line:rgba(255,220,220,.16);--ab-cream:#F0C9A0;--bpp-on:#E8C070;--bpp-on-fg:#2C0B12}
+html.th-rishi,html.th-rishi body{background:#2C0B12!important;color:#FDECEC}
+html.th-rishi body{background:radial-gradient(1200px 600px at 50% -200px,#5A1824 0%,rgba(44,11,18,0) 70%),#2C0B12!important}
+html.th-rishi .bar,html.th-rishi .now{background:rgba(44,11,18,.92)!important}
+html.th-rishi button,html.th-rishi select{background:#5A1E28!important;color:#FDECEC!important;border-color:rgba(255,220,220,.18)!important}
+html.th-rishi button.on,html.th-rishi button.gold,html.th-rishi #btnMenu,html.th-rishi #btnPlay,html.th-rishi #bppFsPlay,html.th-rishi #bppFsMenu,html.th-rishi #bppFsCh.on,html.th-rishi .daybar button.on{background:#E8C070!important;color:#2C0B12!important;border-color:#E8C070!important}
+html.th-rishi button.on *,html.th-rishi #btnPlay *,html.th-rishi #bppFsPlay *{color:#2C0B12!important;fill:#2C0B12!important}
+html.th-rishi #bppFsPlay svg,html.th-rishi #bppFsPlay svg *{fill:#2C0B12!important;color:#2C0B12!important}
+html.th-rishi #bppFs #bppFsPlay i.pl{border-left-color:#2C0B12!important}
+html.th-rishi #bppFs #bppFsPlay i.pa{border-left-color:#2C0B12!important;border-right-color:#2C0B12!important}
+html.th-rishi select,html.th-rishi select option{color:#FDECEC!important;background:#3E121C!important}
+html.th-rishi select.cur,html.th-rishi select#selRate.off1{color:#E8C070!important;border-color:#E8C070!important}
+html.th-rishi .panel{background:#3E121C!important;box-shadow:0 10px 15px -3px rgba(0,0,0,.35)}
+html.th-rishi h1,html.th-rishi #lyrTitle,html.th-rishi .songtitle,html.th-rishi .grp,html.th-rishi .head .vn,html.th-rishi .rowline .x2{color:#F0C9A0!important}
+html.th-rishi h1 .ver{color:#E8C8CC!important}
+html.th-rishi .stanza.on{background:rgba(232,192,112,.16)!important;box-shadow:inset 5px 0 0 #E8C070,0 0 0 1px rgba(232,192,112,.7)!important}
+html.th-rishi .stanza.on .sa{color:#FFF8F6!important}
+html.th-rishi .stanza.on .head .vn{color:#F8E0C0!important}
+html.th-rishi .head .ch,html.th-rishi .rowline .lch,html.th-rishi .rowline .rch{color:#FFC4B0!important}
+html.th-rishi .rowline .de,html.th-rishi .stanza>.de{color:#F0D4D0!important}
+html.th-rishi .quelle,html.th-rishi .hint,html.th-rishi footer,html.th-rishi .legend,html.th-rishi .legend b,html.th-rishi .sub{color:#E8C8CC!important}
+html.th-rishi .item.active,html.th-rishi .item.active *{background:rgba(232,192,112,.2)!important;color:#E8C070!important}
+html.th-rishi #bppFs{background:#2C0B12!important;color:#FFF8F6!important}
+html.th-rishi #bppFsBox .fch{color:#FFC4B0!important}
+html.th-rishi #bppFsBox .ftr{color:#F0D4D0!important}
+html.th-rishi #bppFsBar{background:rgba(62,18,28,.94)!important}
+html.th-rishi #bppFsTop,html.th-rishi #bppFsTop *{color:#E8C8CC!important}
+html.th-rishi #bppFsBar button{color:#FDECEC!important}
+html.th-rishi #bppFsBar button.on,html.th-rishi #bppFsBar #bppFsPlay,html.th-rishi #bppFsBar #bppFsMenu,html.th-rishi #bppFsBar #bppFsCh.on{background:#E8C070!important;color:#2C0B12!important;border-color:#E8C070!important}
+html.th-rishi #bppFsBar button.on *,html.th-rishi #bppFsBar #bppFsPlay *,html.th-rishi #bppFsBar #bppFsMenu *{color:#2C0B12!important;fill:#2C0B12!important}
+html.th-rishi #bppFsMenu,html.th-rishi #bppFsMenu *{color:#2C0B12!important}
+html.th-rishi #bppFs #bppFsX,html.th-rishi #bppFs #bppFsTr381{background:#5A1E28!important;color:#FFFFFF!important;border-color:#FFFFFF!important}
+html.th-rishi #bppFs #bppFsTr381.on{background:#E8C070!important;color:#2C0B12!important;border-color:#E8C070!important}
+html.th-rishi #bppHelp{background:rgba(44,11,18,.97)!important}
+html.th-rishi #bppHelp .in,html.th-rishi #bppHelp p{color:#FDECEC!important}
+html.th-rishi #bppHelp b,html.th-rishi #bppHelp h2,html.th-rishi #bppHelp .kbh357{color:#E8C070!important}
+html.th-rishi #bppHelp .kb357{background:#3E121C!important;border-color:#8A4A52!important}
+html.th-rishi #bppHelp a{color:#F0C9A0!important}
+html.th-rishi #bppHelpTip{background:#3E121C!important;color:#E8C070!important;border-color:#E8C070!important}
+html.th-rishi #bpp-stats,html.th-rishi #bpp-orte24,html.th-rishi #bppOff{background:#1A070A!important;color:#FDECEC!important;border-color:#8A4A52!important}
+html.th-rishi #bppNoTr369,html.th-rishi .notr{color:#E8C8CC!important}
+html.th-rishi #bppNoTime,html.th-rishi #bppRot{color:#FDECEC!important;background:#3E121C!important;border-color:#E8C070!important}
+html.th-rishi #bppNotes501.on,html.th-rishi #bppNotes501.gold,
+html.th-rishi #bppFsTop #bppNotesFs508.on,html.th-rishi #bppFsTop #bppNotesFs508.gold{background:#E8C070!important;border-color:#E8C070!important;color:#2C0B12!important}
+html.th-rishi #bppFsTop #bppNotesFs508{background:#5A1E28!important;color:#FDECEC!important;border-color:rgba(255,220,220,.3)!important}
+html.th-rishi #bppFs.bpp-notes-fs .bppNotesCap503{color:#E8C070!important}
+html.th-rishi #bppFs.bpp-notes-fs .bppNotesFrame503{border-color:#E8C070!important}
+html.th-rishi body header h1 #bppVer386,html.th-rishi header h1 .ver{color:#E8C8CC!important}
+html.th-rishi #bppHelp>div.in>h3.s449{color:#E8C070;border-bottom-color:rgba(232,192,112,.35)}
+html.th-rishi #bppSup461{background:#3E121C;color:#E8C070;border-color:#8A4A52}
+
+/* ---------- Brahmachari (kraeftiges Gelb, hell) ---------- */
+html.th-brahmachari{--bg:#F0D020;--card:#FFF3A8;--gold:#5C3200;--text:#1A1400;--muted:#4A3800;--lyric:#141000;--ab-btn:#D4B010;--ab-line:rgba(92,50,0,.28);--ab-cream:#FFF3A8;--bpp-on:#1F1840;--bpp-on-fg:#FFD84A}
+html.th-brahmachari,html.th-brahmachari body{background:#F0D020!important;color:#1A1400}
+html.th-brahmachari body{background:radial-gradient(1200px 600px at 50% -200px,#FFE44A 0%,rgba(240,208,32,0) 70%),#F0D020!important}
+html.th-brahmachari .bar,html.th-brahmachari .now{background:rgba(232,196,48,.94)!important}
+html.th-brahmachari button,html.th-brahmachari select{background:#D4B010!important;color:#1A1400!important;border-color:#6B4A00!important}
+html.th-brahmachari button.on,html.th-brahmachari button.gold,html.th-brahmachari #btnMenu,html.th-brahmachari #btnPlay,html.th-brahmachari #bppFsPlay,html.th-brahmachari #bppFsMenu,html.th-brahmachari #bppFsCh.on,html.th-brahmachari .daybar button.on{background:#1F1840!important;color:#FFD84A!important;border-color:#1F1840!important}
+html.th-brahmachari button.on *,html.th-brahmachari #btnPlay *,html.th-brahmachari #bppFsPlay *{color:#FFD84A!important;fill:#FFD84A!important}
+html.th-brahmachari #bppFsPlay svg,html.th-brahmachari #bppFsPlay svg *{fill:#FFD84A!important;color:#FFD84A!important}
+html.th-brahmachari #bppFs #bppFsPlay i.pl{border-left-color:#FFD84A!important}
+html.th-brahmachari #bppFs #bppFsPlay i.pa{border-left-color:#FFD84A!important;border-right-color:#FFD84A!important}
+html.th-brahmachari select,html.th-brahmachari select option{color:#1A1400!important;background:#FFF3A8!important}
+html.th-brahmachari select.cur,html.th-brahmachari select#selRate.off1{color:#5C3200!important;border-color:#5C3200!important}
+html.th-brahmachari .panel{background:#FFF3A8!important;box-shadow:0 6px 14px -6px rgba(60,40,0,.28)}
+html.th-brahmachari h1,html.th-brahmachari #lyrTitle,html.th-brahmachari .songtitle,html.th-brahmachari .grp,html.th-brahmachari .head .vn,html.th-brahmachari .rowline .x2{color:#5C3200!important}
+html.th-brahmachari h1 .ver{color:#4A3800!important}
+html.th-brahmachari .stanza.on{background:rgba(31,24,64,.12)!important;box-shadow:inset 5px 0 0 #1F1840,0 0 0 1px rgba(31,24,64,.45)!important}
+html.th-brahmachari .stanza.on .sa,html.th-brahmachari .rowline .sa{color:#141000!important}
+html.th-brahmachari .stanza.on .head .vn{color:#3A2000!important}
+html.th-brahmachari .head .ch,html.th-brahmachari .rowline .lch,html.th-brahmachari .rowline .rch{color:#6B2E00!important}
+html.th-brahmachari .rowline .de,html.th-brahmachari .stanza>.de{color:#3A2C00!important}
+html.th-brahmachari .quelle,html.th-brahmachari .hint,html.th-brahmachari footer,html.th-brahmachari .legend,html.th-brahmachari .legend b,html.th-brahmachari .sub{color:#4A3800!important}
+html.th-brahmachari .item,html.th-brahmachari .item *{color:#1A1400}
+html.th-brahmachari .item.active,html.th-brahmachari .item.active *{background:rgba(31,24,64,.16)!important;color:#1F1840!important}
+html.th-brahmachari #bppFs{background:#F3D63A!important;color:#141000!important}
+html.th-brahmachari #bppFsBox .fch{color:#6B2E00!important}
+html.th-brahmachari #bppFsBox .ftr{color:#3A2C00!important}
+html.th-brahmachari #bppFsBar{background:rgba(212,176,16,.96)!important}
+html.th-brahmachari #bppFsTop,html.th-brahmachari #bppFsTop *{color:#4A3800!important}
+html.th-brahmachari #bppFsBar button{color:#1A1400!important}
+html.th-brahmachari #bppFsBar button.on,html.th-brahmachari #bppFsBar #bppFsPlay,html.th-brahmachari #bppFsBar #bppFsMenu,html.th-brahmachari #bppFsBar #bppFsCh.on{background:#1F1840!important;color:#FFD84A!important;border-color:#1F1840!important}
+html.th-brahmachari #bppFsBar button.on *,html.th-brahmachari #bppFsBar #bppFsPlay *,html.th-brahmachari #bppFsBar #bppFsMenu *{color:#FFD84A!important;fill:#FFD84A!important}
+html.th-brahmachari #bppFsMenu,html.th-brahmachari #bppFsMenu *{color:#FFD84A!important}
+html.th-brahmachari #bppFs #bppFsX,html.th-brahmachari #bppFs #bppFsTr381{background:#FFF3A8!important;color:#1A1400!important;border-color:#1A1400!important}
+html.th-brahmachari #bppFs #bppFsTr381.on{background:#1F1840!important;color:#FFD84A!important;border-color:#1F1840!important}
+html.th-brahmachari #bppHelp{background:rgba(240,208,32,.98)!important}
+html.th-brahmachari #bppHelp .in,html.th-brahmachari #bppHelp p{color:#1A1400!important}
+html.th-brahmachari #bppHelp b,html.th-brahmachari #bppHelp h2,html.th-brahmachari #bppHelp .kbh357{color:#5C3200!important}
+html.th-brahmachari #bppHelp .kb357{background:#FFF3A8!important;border-color:#6B4A00!important}
+html.th-brahmachari #bppHelp .kb357 kbd{border-color:#5C3200!important;color:#1A1400!important}
+html.th-brahmachari #bppHelp .bppContact,html.th-brahmachari #bppHelp .esc355{color:#4A3800!important}
+html.th-brahmachari #bppHelp a{color:#5C3200!important}
+html.th-brahmachari #bppHelp .x{background:#D4B010!important;color:#1A1400!important;border-color:#5C3200!important}
+html.th-brahmachari #bppHelpTip{background:#1F1840!important;color:#FFD84A!important;border-color:#1F1840!important}
+html.th-brahmachari #bppHelpTip *{color:#FFD84A!important}
+html.th-brahmachari #bpp-stats,html.th-brahmachari #bpp-orte24,html.th-brahmachari #bppOff{background:#FFF8D0!important;color:#1A1400!important;border-color:#6B4A00!important}
+html.th-brahmachari #bppNoTr369,html.th-brahmachari .notr{color:#4A3800!important}
+html.th-brahmachari #bppNoTime,html.th-brahmachari #bppRot{color:#1A1400!important;background:#FFF3A8!important;border-color:#5C3200!important}
+html.th-brahmachari #bppNotes501.on,html.th-brahmachari #bppNotes501.gold,
+html.th-brahmachari #bppFsTop #bppNotesFs508.on,html.th-brahmachari #bppFsTop #bppNotesFs508.gold{background:#1F1840!important;border-color:#1F1840!important;color:#FFD84A!important}
+html.th-brahmachari #bppFsTop #bppNotesFs508{background:#D4B010!important;color:#1A1400!important;border-color:#6B4A00!important}
+html.th-brahmachari #bppFs.bpp-notes-fs .bppNotesCap503{color:#5C3200!important}
+html.th-brahmachari #bppFs.bpp-notes-fs .bppNotesFrame503{border-color:#1F1840!important}
+html.th-brahmachari body header h1 #bppVer386,html.th-brahmachari header h1 .ver{color:#4A3800!important}
+html.th-brahmachari #bppHelp>div.in>h3.s449{color:#5C3200;border-bottom-color:rgba(92,50,0,.35)}
+html.th-brahmachari #bppSup461{background:#FFF3A8;color:#5C3200;border-color:#6B4A00}

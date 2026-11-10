@@ -5,11 +5,11 @@
 #bpp-stats,#bpp-orte24,#bppOff,.notr,#bppNoTr369,.bpp353,.bpp378,#bppHelp .esc355,#bppHelp .bppContact{opacity:1!important}
 h1 .ver{opacity:1!important}
 /* Nacht (Navy) */
-html:not(.th-morgen):not(.th-abend) h1 .ver{color:#C4CADB!important}
-html:not(.th-morgen):not(.th-abend) #bpp-stats,html:not(.th-morgen):not(.th-abend) #bpp-orte24{color:#E2D3B4!important}
-html:not(.th-morgen):not(.th-abend) .notr,html:not(.th-morgen):not(.th-abend) #bppNoTr369{color:#D5DAE8!important}
-html:not(.th-morgen):not(.th-abend) #bppFsX{background:#2F3C5F!important;color:#FFFFFF!important}
-html:not(.th-morgen):not(.th-abend) .quelle,html:not(.th-morgen):not(.th-abend) .hint,html:not(.th-morgen):not(.th-abend) footer,html:not(.th-morgen):not(.th-abend) .legend,html:not(.th-morgen):not(.th-abend) .sub{color:#C4CADB!important}
+html:not(.th-morgen):not(.th-abend):not(.th-swami):not(.th-rishi):not(.th-brahmachari) h1 .ver{color:#C4CADB!important}
+html:not(.th-morgen):not(.th-abend):not(.th-swami):not(.th-rishi):not(.th-brahmachari) #bpp-stats,html:not(.th-morgen):not(.th-abend):not(.th-swami):not(.th-rishi):not(.th-brahmachari) #bpp-orte24{color:#E2D3B4!important}
+html:not(.th-morgen):not(.th-abend):not(.th-swami):not(.th-rishi):not(.th-brahmachari) .notr,html:not(.th-morgen):not(.th-abend):not(.th-swami):not(.th-rishi):not(.th-brahmachari) #bppNoTr369{color:#D5DAE8!important}
+html:not(.th-morgen):not(.th-abend):not(.th-swami):not(.th-rishi):not(.th-brahmachari) #bppFsX{background:#2F3C5F!important;color:#FFFFFF!important}
+html:not(.th-morgen):not(.th-abend):not(.th-swami):not(.th-rishi):not(.th-brahmachari) .quelle,html:not(.th-morgen):not(.th-abend):not(.th-swami):not(.th-rishi):not(.th-brahmachari) .hint,html:not(.th-morgen):not(.th-abend):not(.th-swami):not(.th-rishi):not(.th-brahmachari) footer,html:not(.th-morgen):not(.th-abend):not(.th-swami):not(.th-rishi):not(.th-brahmachari) .legend,html:not(.th-morgen):not(.th-abend):not(.th-swami):not(.th-rishi):not(.th-brahmachari) .sub{color:#C4CADB!important}
 /* Abend */
 html.th-abend h1 .ver,html.th-abend .quelle,html.th-abend .hint,html.th-abend footer,html.th-abend .legend,html.th-abend .sub{color:#E3D0B2!important}
 html.th-abend #bpp-stats,html.th-abend #bpp-orte24,html.th-abend .notr,html.th-abend #bppNoTr369{color:#EAD9BE!important}
@@ -45,4 +45,4 @@ html.th-morgen #bppNoTime,html.th-morgen #bppRot{color:#141A33!important;backgro
 html.th-morgen .stanza.on .head .vn{color:#3A2806!important}
 html.th-morgen.th-dim .head .vn{color:#4A3308!important}
 html.th-morgen #bppFsMenu,html.th-morgen #bppFsMenu *{color:#0E0A02!important}
-html:not(.th-morgen) select{color:#FFFFFF!important}
+html:not(.th-morgen):not(.th-swami):not(.th-brahmachari) select{color:#FFFFFF!important}

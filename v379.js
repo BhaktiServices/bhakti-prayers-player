@@ -8,21 +8,23 @@ window.BPP_BUILD="3.79"; window.BPP_SHOW="3.79";
 (function(){
   if(window.bppV379) return; window.bppV379=1;
   if(!document.querySelector('link[href^="theme-v379.css"]')){ var l=document.createElement("link"); l.rel="stylesheet"; l.href="theme-v379.css?v=1"; document.head.appendChild(l); }
-  var MODES=["auto","morgen","abend","nacht"], SYM={auto:"A",morgen:"\u263c\ufe0e",abend:"\u25d0\ufe0e",nacht:"\u263e\ufe0e"};
-  var N={de:{auto:"Auto",morgen:"Morgen (hell)",abend:"Abend (warm)",nacht:"Nacht (dunkel)",st:"Stil",now:"jetzt",cl:"Klick"},
-    en:{auto:"Auto",morgen:"Morning (light)",abend:"Evening (warm)",nacht:"Night (dark)",st:"Style",now:"now",cl:"click"},
-    fr:{auto:"Auto",morgen:"Matin (clair)",abend:"Soir (chaud)",nacht:"Nuit (sombre)",st:"Style",now:"actuel",cl:"clic"},
-    es:{auto:"Auto",morgen:"Mañana (claro)",abend:"Tarde (cálido)",nacht:"Noche (oscuro)",st:"Estilo",now:"ahora",cl:"clic"},
-    ru:{auto:"Авто",morgen:"Утро (светлый)",abend:"Вечер (тёплый)",nacht:"Ночь (тёмный)",st:"Стиль",now:"сейчас",cl:"нажатие"},
-    hi:{auto:"स्वतः",morgen:"सुबह (हल्का)",abend:"शाम (गर्म)",nacht:"रात (गहरा)",st:"शैली",now:"अभी",cl:"क्लिक"},
-    pt:{auto:"Auto",morgen:"Manhã (claro)",abend:"Noite cedo (quente)",nacht:"Noite (escuro)",st:"Estilo",now:"agora",cl:"clique"}};
-  /* [Grok-Bot] V3.94: Saetze zu Klick/Auto/Open-Meteo entfernt */ var HLP={de:"<b>Stil</b> (unter Sprachwahl): Auto, Morgen, Abend oder Nacht. <i>(G+)</i>",
-    en:"<b>Style</b> (button under the language selector, top right): Auto, Morning, Evening or Night. <i>(G+)</i>",
-    fr:"<b>Style</b> (bouton sous le sélecteur de langue, en haut à droite) : Auto, Matin, Soir ou Nuit. <i>(G+)</i>",
-    es:"<b>Estilo</b> (botón bajo el selector de idioma, arriba a la derecha): Auto, Mañana, Tarde o Noche. <i>(G+)</i>",
-    ru:"<b>Стиль</b> (кнопка под выбором языка, вверху справа): Авто, Утро, Вечер или Ночь. <i>(G+)</i>",
-    hi:"<b>शैली</b> (भाषा चयन के नीचे, ऊपर दाईं ओर बटन): स्वतः, सुबह, शाम या रात। <i>(G+)</i>",
-    pt:"<b>Estilo</b> (botão sob o seletor de idioma, canto superior direito): Auto, Manhã, Noite cedo ou Noite. <i>(G+)</i>"};
+  var MODES=["auto","morgen","abend","nacht","swami","rishi","brahmachari"], SYM={auto:"A",morgen:"\u263c\ufe0e",abend:"\u25d0\ufe0e",nacht:"\u263e\ufe0e",swami:"S",rishi:"R",brahmachari:"B"};
+  var N={de:{auto:"Auto",morgen:"Morgen (hell)",abend:"Abend (warm)",nacht:"Nacht (dunkel)",swami:"Swami (Safran-Orange)",rishi:"Rishi (edles Rot)",brahmachari:"Brahmachari (kräftiges Gelb)",st:"Stil",now:"jetzt",cl:"Klick"},
+    en:{auto:"Auto",morgen:"Morning (light)",abend:"Evening (warm)",nacht:"Night (dark)",swami:"Swami (saffron orange)",rishi:"Rishi (noble red)",brahmachari:"Brahmachari (strong yellow)",st:"Style",now:"now",cl:"click"},
+    fr:{auto:"Auto",morgen:"Matin (clair)",abend:"Soir (chaud)",nacht:"Nuit (sombre)",swami:"Swami (orange safran)",rishi:"Rishi (rouge noble)",brahmachari:"Brahmachari (jaune soutenu)",st:"Style",now:"actuel",cl:"clic"},
+    es:{auto:"Auto",morgen:"Mañana (claro)",abend:"Tarde (cálido)",nacht:"Noche (oscuro)",swami:"Swami (naranja azafrán)",rishi:"Rishi (rojo noble)",brahmachari:"Brahmachari (amarillo intenso)",st:"Estilo",now:"ahora",cl:"clic"},
+    ru:{auto:"Авто",morgen:"Утро (светлый)",abend:"Вечер (тёплый)",nacht:"Ночь (тёмный)",swami:"Свами (шафраново-оранжевый)",rishi:"Риши (благородный красный)",brahmachari:"Брахмачари (насыщенный жёлтый)",st:"Стиль",now:"сейчас",cl:"нажатие"},
+    hi:{auto:"स्वतः",morgen:"सुबह (हल्का)",abend:"शाम (गर्म)",nacht:"रात (गहरा)",swami:"स्वामी (केसरिया-नारंगी)",rishi:"ऋषि (शिष्ट लाल)",brahmachari:"ब्रह्मचारी (गहरा पीला)",st:"शैली",now:"अभी",cl:"क्लिक"},
+    pt:{auto:"Auto",morgen:"Manhã (claro)",abend:"Noite cedo (quente)",nacht:"Noite (escuro)",swami:"Swami (laranja-açafrão)",rishi:"Rishi (vermelho nobre)",brahmachari:"Brahmachari (amarelo intenso)",st:"Estilo",now:"agora",cl:"clique"},
+    cz:{auto:"Auto",morgen:"Ráno (světlý)",abend:"Večer (teplý)",nacht:"Noc (tmavý)",swami:"Swami (šafránově oranžová)",rishi:"Rishi (vznešená červená)",brahmachari:"Brahmachari (sytá žlutá)",st:"Styl",now:"nyní",cl:"klik"}};
+  /* [Grok-Bot] V3.94: Saetze zu Klick/Auto/Open-Meteo entfernt; V5.14: drei weitere Stile */ var HLP={de:"<b>Stil</b> (unter Sprachwahl): Auto, Morgen, Abend, Nacht, Swami (Safran-Orange), Rishi (edles Rot) oder Brahmachari (kräftiges Gelb). <i>(G+)</i>",
+    en:"<b>Style</b> (button under the language selector, top right): Auto, Morning, Evening, Night, Swami (saffron orange), Rishi (noble red) or Brahmachari (strong yellow). <i>(G+)</i>",
+    fr:"<b>Style</b> (bouton sous le sélecteur de langue, en haut à droite) : Auto, Matin, Soir, Nuit, Swami (orange safran), Rishi (rouge noble) ou Brahmachari (jaune soutenu). <i>(G+)</i>",
+    es:"<b>Estilo</b> (botón bajo el selector de idioma, arriba a la derecha): Auto, Mañana, Tarde, Noche, Swami (naranja azafrán), Rishi (rojo noble) o Brahmachari (amarillo intenso). <i>(G+)</i>",
+    ru:"<b>Стиль</b> (кнопка под выбором языка, вверху справа): Авто, Утро, Вечер, Ночь, Свами (шафраново-оранжевый), Риши (благородный красный) или Брахмачари (насыщенный жёлтый). <i>(G+)</i>",
+    hi:"<b>शैली</b> (भाषा चयन के नीचे, ऊपर दाईं ओर बटन): स्वतः, सुबह, शाम, रात, स्वामी (केसरिया-नारंगी), ऋषि (शिष्ट लाल) या ब्रह्मचारी (गहरा पीला)। <i>(G+)</i>",
+    pt:"<b>Estilo</b> (botão sob o seletor de idioma, canto superior direito): Auto, Manhã, Noite cedo, Noite, Swami (laranja-açafrão), Rishi (vermelho nobre) ou Brahmachari (amarelo intenso). <i>(G+)</i>",
+    cz:"<b>Styl</b> (tlačítko pod výběrem jazyka vpravo nahoře): Auto, Ráno, Večer, Noc, Swami (šafránově oranžová), Rishi (vznešená červená) nebo Brahmachari (sytá žlutá). <i>(G+)</i>"};
   function lg(){ var x=(typeof lang!=="undefined"&&lang)||"en"; return N[x]?x:"en"; }
   function get(k){ try{ return localStorage.getItem(k); }catch(e){ return null; } }
   function set(k,v){ try{ localStorage.setItem(k,v); }catch(e){} }
@@ -49,17 +51,26 @@ window.BPP_BUILD="3.79"; window.BPP_SHOW="3.79";
   function dim(){ if(!W||Date.now()-W.at>3*3600e3) return false; var c=W.code|0; return (W.cloud>=75)||c===45||c===48||c>=51; }
   function eff(){ return mode==="auto"?autoTheme():mode; }
   function apply(){ var h=document.documentElement, th=eff();
-    ["morgen","abend","nacht"].forEach(function(x){ h.classList.toggle("th-"+x, x===th); });
+    ["morgen","abend","nacht","swami","rishi","brahmachari"].forEach(function(x){ h.classList.toggle("th-"+x, x===th); });
     h.classList.toggle("th-dim", mode==="auto" && dim());
-    var m=document.querySelector('meta[name="theme-color"]'); if(m){ var c=th==="morgen"?"#F6F0E2":(th==="abend"?"#1E130B":"#041236"); if(m.content!==c) m.content=c; }
+    var m=document.querySelector('meta[name="theme-color"]'); if(m){ var C={morgen:"#F6F0E2",abend:"#1E130B",nacht:"#041236",swami:"#F6D09A",rishi:"#2C0B12",brahmachari:"#F0D020"}; var c=C[th]||"#041236"; if(m.content!==c) m.content=c; }
     btn(); }
   function btn(){ var box=document.querySelector("#bppTopRight460 .lang")||document.querySelector("header .lang")||document.querySelector(".lang.l307"); if(!box) return; var b=document.getElementById("bppTheme");
-    if(!b){ b=document.createElement("button"); b.type="button"; b.id="bppTheme"; b.onclick=function(e){ e.stopPropagation(); mode=MODES[(MODES.indexOf(mode)+1)%4]; set("bpp-theme",mode); apply(); };
+    if(!b){ b=document.createElement("button"); b.type="button"; b.id="bppTheme"; b.onclick=function(e){ e.stopPropagation(); mode=MODES[(MODES.indexOf(mode)+1)%MODES.length]; set("bpp-theme",mode); apply(); };
       b.style.cssText="background:transparent;border:1px solid #6b5340;border-radius:6px;padding:1px 6px;font-size:.8rem;min-height:auto;color:#e0b45a;cursor:pointer;line-height:1.3";
       box.appendChild(b); /* [Grok-Bot] V4.60: Lage steuert v460 (unter Sprache) */ }
-    var nx=MODES[(MODES.indexOf(mode)+1)%4], T=N[lg()], t="Stil "+SYM[nx];
+    var nx=MODES[(MODES.indexOf(mode)+1)%MODES.length], T=N[lg()], t="Stil "+SYM[nx];
     var ti=(mode==="auto"?"A = automatisch, wählt nach Ortszeit den passenden Stil. ":"")+T.st+": "+T.now+" "+T[mode]+(mode==="auto"?" ("+T[eff()]+")":"")+" · "+T.cl+": "+T[nx];
-    if(b.textContent!==t) b.textContent=t; if(b.title!==ti){ b.title=ti; b.setAttribute("aria-label",ti); } }
+    if(b.textContent!==t) b.textContent=t;
+    /* V5.14: Titel nativ setzen. v359 blockt Updates, deren alter Titel auf (1–8 Zeichen) endet
+       (hält Tastenhinweise fest) – „Nacht (dunkel)“ / „Evening (warm)“ trifft das fälschlich, neue Namen wie
+       „Swami (Safran-Orange)“ wären sonst unsichtbar im Hover. */
+    if(b.getAttribute("title")!==ti || b.getAttribute("aria-label")!==ti){
+      var DT=Object.getOwnPropertyDescriptor(HTMLElement.prototype,"title");
+      if(DT&&DT.set) DT.set.call(b,ti); else b.title=ti;
+      Element.prototype.setAttribute.call(b,"title",ti);
+      Element.prototype.setAttribute.call(b,"aria-label",ti);
+    } }
   function fetchWx(){ if(!navigator.onLine) return; if(W&&Date.now()-W.at<30*6e4&&W.day===new Date().toDateString()) return;
     var pos=(W&&W.lat!=null)?Promise.resolve([W.lat,W.lon]):fetch("https://get.geojs.io/v1/ip/geo.json").then(function(r){ return r.json(); }).then(function(g){ return [+g.latitude,+g.longitude]; });
     pos.then(function(p){ if(!isFinite(p[0])||!isFinite(p[1])) throw 0;
@@ -70,7 +81,8 @@ window.BPP_BUILD="3.79"; window.BPP_SHOW="3.79";
             rise:j.daily&&ts(j.daily.sunrise[0]),set:j.daily&&ts(j.daily.sunset[0])};
           set("bpp-wx379",JSON.stringify(W)); window.bppWx379=W; apply(); }); }).catch(function(){});
   }
-  window.bppTheme379=function(){ return {mode:mode, theme:eff(), dim:mode==="auto"&&dim(), wx:W}; };
+  window.bppTheme379=function(){ return {mode:mode, theme:eff(), dim:mode==="auto"&&dim(), wx:W, modes:MODES.slice()}; };
+  window.bppSetTheme379=function(m){ if(MODES.indexOf(m)<0) return; mode=m; set("bpp-theme",mode); apply(); };
   apply(); document.addEventListener("DOMContentLoaded", apply);
   document.addEventListener("visibilitychange", function(){ if(!document.hidden){ apply(); fetchWx(); } }); window.addEventListener("focus", apply); /* [Grok-Bot] V3.99 */
   setInterval(apply, 60000); setInterval(btn, 1000); setTimeout(fetchWx, 2500); setInterval(fetchWx, 10*6e4);

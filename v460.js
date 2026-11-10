@@ -17,18 +17,21 @@ window.BPP_BUILD="4.60"; window.BPP_SHOW="4.60";
       "min-height:auto!important;cursor:pointer;z-index:110}"+
     "html.th-morgen #bppTheme{border-color:#5e420c!important;color:#5e420c!important}"+
     "html.th-abend #bppTheme{border-color:#e0b45a!important;color:#e0b45a!important}"+
+    "html.th-swami #bppTheme{border-color:#7A1F00!important;color:#7A1F00!important}"+
+    "html.th-rishi #bppTheme{border-color:#F0C9A0!important;color:#F0C9A0!important}"+
+    "html.th-brahmachari #bppTheme{border-color:#5C3200!important;color:#5C3200!important}"+
     "@media(max-width:400px){#bppTopRight460{top:6px;right:6px;gap:3px}#bppTheme{font-size:.68rem!important;padding:0 4px!important}}header h1{padding-right:var(--bpp-tr460,56px)!important;box-sizing:border-box}@media(max-width:420px){header h1{padding-right:var(--bpp-tr460,56px)!important}}";
   document.head.appendChild(st);
 
   var HLP={
-    de:"<b>Stil</b> (unter Sprachwahl): Auto, Morgen, Abend oder Nacht. <i>(G+)</i>",
-    en:"<b>Style</b> (button under the language selector, top right): Auto, Morning, Evening or Night. <i>(G+)</i>",
-    fr:"<b>Style</b> (bouton sous le sélecteur de langue, en haut à droite) : Auto, Matin, Soir ou Nuit. <i>(G+)</i>",
-    es:"<b>Estilo</b> (botón bajo el selector de idioma, arriba a la derecha): Auto, Mañana, Tarde o Noche. <i>(G+)</i>",
-    ru:"<b>Стиль</b> (кнопка под выбором языка, вверху справа): Авто, Утро, Вечер или Ночь. <i>(G+)</i>",
-    hi:"<b>शैली</b> (भाषा चयन के नीचे, ऊपर दाईं ओर बटन): स्वतः, सुबह, शाम या रात। <i>(G+)</i>",
-    pt:"<b>Estilo</b> (botão sob o seletor de idioma, canto superior direito): Auto, Manhã, Noite cedo ou Noite. <i>(G+)</i>",
-    cz:"<b>Styl</b> (tlačítko pod výběrem jazyka vpravo nahoře): Auto, Ráno, Večer nebo Noc. <i>(G+)</i>"
+    de:"<b>Stil</b> (unter Sprachwahl): Auto, Morgen, Abend, Nacht, Swami (Safran-Orange), Rishi (edles Rot) oder Brahmachari (kräftiges Gelb). <i>(G+)</i>",
+    en:"<b>Style</b> (button under the language selector, top right): Auto, Morning, Evening, Night, Swami (saffron orange), Rishi (noble red) or Brahmachari (strong yellow). <i>(G+)</i>",
+    fr:"<b>Style</b> (bouton sous le sélecteur de langue, en haut à droite) : Auto, Matin, Soir, Nuit, Swami (orange safran), Rishi (rouge noble) ou Brahmachari (jaune soutenu). <i>(G+)</i>",
+    es:"<b>Estilo</b> (botón bajo el selector de idioma, arriba a la derecha): Auto, Mañana, Tarde, Noche, Swami (naranja azafrán), Rishi (rojo noble) o Brahmachari (amarillo intenso). <i>(G+)</i>",
+    ru:"<b>Стиль</b> (кнопка под выбором языка, вверху справа): Авто, Утро, Вечер, Ночь, Свами (шафраново-оранжевый), Риши (благородный красный) или Брахмачари (насыщенный жёлтый). <i>(G+)</i>",
+    hi:"<b>शैली</b> (भाषा चयन के नीचे, ऊपर दाईं ओर बटन): स्वतः, सुबह, शाम, रात, स्वामी (केसरिया-नारंगी), ऋषि (शिष्ट लाल) या ब्रह्मचारी (गहरा पीला)। <i>(G+)</i>",
+    pt:"<b>Estilo</b> (botão sob o seletor de idioma, canto superior direito): Auto, Manhã, Noite cedo, Noite, Swami (laranja-açafrão), Rishi (vermelho nobre) ou Brahmachari (amarelo intenso). <i>(G+)</i>",
+    cz:"<b>Styl</b> (tlačítko pod výběrem jazyka vpravo nahoře): Auto, Ráno, Večer, Noc, Swami (šafránově oranžová), Rishi (vznešená červená) nebo Brahmachari (sytá žlutá). <i>(G+)</i>"
   };
   function lg(){ var l=(typeof lang!=="undefined"&&lang)||"de"; return HLP[l]?l:"en"; }
 
