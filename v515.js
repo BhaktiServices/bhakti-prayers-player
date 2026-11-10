@@ -8,88 +8,29 @@ window.BPP_BUILD="5.15"; window.BPP_SHOW="5.15";
 (function(){
   if(window.bppV515) return; window.bppV515=1;
   if(!document.querySelector('link[href^="theme-v515.css"]')){
-    var l=document.createElement("link"); l.rel="stylesheet"; l.href="theme-v515.css?v=7"; document.head.appendChild(l);
+    var l=document.createElement("link"); l.rel="stylesheet"; l.href="theme-v515.css?v=8"; document.head.appendChild(l);
   }
 
+  /* [Grok-Bot] V5.21: nur Kopf-Überlappungsfix ≤430px + Platzhalter; kein Groß-Layout, keine Noten */
   var FS_CSS=
-    "html body #bppTopRight460{}"+
     "@media(max-width:430px){"+
       "html body #bppTopRight460{"+
         "position:absolute!important;top:8px!important;right:8px!important;"+
         "z-index:130!important;max-width:96px"+
       "}"+
-    "}"+
-    "#bppNotes501,#bppNotesFs508{touch-action:manipulation;-webkit-tap-highlight-color:transparent}"+
-    /* Groß-Lyrics: Bühne = freier Spalt zwischen Kopf und sichtbarer Leiste */
-    "#bppFs.on:not(.bpp-notes-fs) #bppFsStage{"+
-      "top:var(--bpp-fs-top,5vh)!important;"+
-      "bottom:var(--bpp-fs-bot,4vh)!important;"+
-      "padding-bottom:0!important;"+
-      "box-sizing:border-box!important;"+
-      "display:flex!important;align-items:center!important;justify-content:center!important"+
-    "}"+
-    "#bppFs.on:not(.bpp-notes-fs) #bppFsBox:not(.bppFsC2){"+
-      "display:inline-block!important;max-width:100%;max-height:100%;box-sizing:border-box;overflow:hidden"+
-    "}"+
-    "#bppFs.on:not(.bpp-notes-fs) #bppFsBox.bppFsC2:not(:has(.bppFsC2L)){"+
-      "display:inline-block!important;max-width:100%;max-height:100%;box-sizing:border-box;overflow:hidden"+
-    "}"+
-    "#bppFs.on:not(.bpp-notes-fs) #bppFsBox.bppFsC2:has(.bppFsC2L){"+
-      "display:grid!important;grid-template-columns:minmax(0,1fr) minmax(0,1fr);"+
-      "max-width:100%;max-height:100%;box-sizing:border-box;width:100%!important;overflow:hidden"+
-    "}"+
-    "#bppFs.on:not(.bpp-notes-fs) #bppFsBox:not(.bppFsC2) .vl:not(.fch){"+
-      "white-space:normal!important;overflow-wrap:break-word;word-break:normal"+
-    "}"+
-    "html body #bppFs #bppFsBar #bppFsCols515,"+
-    "html body #bppFs #bppFsBar .row>#bppFsCols515{"+
-      "display:inline-flex!important;align-items:center;justify-content:center;"+
-      "visibility:visible!important;font:600 15px/1.1 system-ui,sans-serif!important;"+
-      "white-space:nowrap;padding:0 10px!important"+
-    "}"+
-    "#bppFs.bpp-notes-fs #bppFsCols515,"+
-    "html body #bppFs.bpp-notes-fs #bppFsBar #bppFsCols515{display:none!important}"+
-    "@media (orientation:landscape) and (max-height:500px){"+
-      "#bppFs.on:not(.bpp-notes-fs) #bppFsBar{gap:4px!important;padding:4px 6px!important}"+
-      "#bppFs.on:not(.bpp-notes-fs) #bppFsBar button#bppFsPlay{width:52px!important;height:52px!important;min-width:52px!important}"+
-      "#bppFs.on:not(.bpp-notes-fs) #bppFsPlay i.pl{border-width:11px 0 11px 18px!important;margin-left:5px!important}"+
-      "#bppFs.on:not(.bpp-notes-fs) #bppFsPlay i.pa{width:18px!important;height:22px!important;border-left-width:6px!important;border-right-width:6px!important}"+
-      "#bppFs.on:not(.bpp-notes-fs) #bppFsBar button{min-height:34px!important;font-size:15px!important}"+
-    "}"+
-    /* Groß-Noten-Kontrast: v509 setzt #e0b45a/#a9a39a !important auf hellen Stilen */
-    "html.th-swami #bppFs.bpp-notes-fs #bppFsT1,"+
-    "html.th-swami #bppFs.bpp-notes-fs .bppNotesCap503{color:#7A1F00!important}"+
-    "html.th-swami #bppFs.bpp-notes-fs #bppFsT2{color:#5A3518!important}"+
-    "html.th-brahmachari #bppFs.bpp-notes-fs #bppFsT1,"+
-    "html.th-brahmachari #bppFs.bpp-notes-fs .bppNotesCap503{color:#5C3200!important}"+
-    "html.th-brahmachari #bppFs.bpp-notes-fs #bppFsT2{color:#4A3800!important}"+
-    "html.th-rishi #bppFs.bpp-notes-fs #bppFsT1,"+
-    "html.th-rishi #bppFs.bpp-notes-fs .bppNotesCap503{color:#F0C9A0!important}"+
-    "html.th-rishi #bppFs.bpp-notes-fs #bppFsT2{color:#E8C8CC!important}"+
-    "html.th-swami #bppFs.bpp-notes-fs #bppNotesFs508.on,"+
-    "html.th-swami #bppFs.bpp-notes-fs #bppNotesFs508.gold,"+
-    "html.th-swami #bppFs.bpp-notes-fs #bppNotesFs508.on *,"+
-    "html.th-swami #bppFs.bpp-notes-fs #bppNotesFs508.gold *,"+
-    "html.th-brahmachari #bppFs.bpp-notes-fs #bppNotesFs508.on,"+
-    "html.th-brahmachari #bppFs.bpp-notes-fs #bppNotesFs508.gold,"+
-    "html.th-brahmachari #bppFs.bpp-notes-fs #bppNotesFs508.on *,"+
-    "html.th-brahmachari #bppFs.bpp-notes-fs #bppNotesFs508.gold *,"+
-    "html.th-rishi #bppFs.bpp-notes-fs #bppNotesFs508.on,"+
-    "html.th-rishi #bppFs.bpp-notes-fs #bppNotesFs508.gold,"+
-    "html.th-rishi #bppFs.bpp-notes-fs #bppNotesFs508.on *,"+
-    "html.th-rishi #bppFs.bpp-notes-fs #bppNotesFs508.gold *{color:#1a1208!important}";
+    "}";
 
   function ensureCss(){
     var st=document.getElementById("bppV515css");
     if(!st){ st=document.createElement("style"); st.id="bppV515css"; }
-    if(st.getAttribute("data-v")!=="7"){
-      st.setAttribute("data-v","7");
+    if(st.getAttribute("data-v")!=="521"){
+      st.setAttribute("data-v","521");
       st.textContent=FS_CSS;
     }
     (document.head||document.documentElement).appendChild(st);
   }
 
-  function hookFsNotesBtn(){
+  function hookFsNotesBtn(){ return;
     var b=document.getElementById("bppNotesFs508");
     if(!b||b._bpp515pu) return;
     b._bpp515pu=1;
@@ -120,6 +61,7 @@ window.BPP_BUILD="5.15"; window.BPP_SHOW="5.15";
     return true;
   }
   function syncFsGeom(){
+    return; /* V5.21: Groß-Geometrie wie V4.91 (v183 5vh/4vh) */
     var fs=document.getElementById("bppFs");
     var stage=document.getElementById("bppFsStage");
     if(!fs||!stage||!fs.classList.contains("on")) return;
@@ -160,6 +102,7 @@ window.BPP_BUILD="5.15"; window.BPP_SHOW="5.15";
     }
   }
   function clampBoxToGap(){
+    return; /* V5.21 */
     var B=document.getElementById("bppFsBox");
     var bar=document.getElementById("bppFsBar");
     var fs=document.getElementById("bppFs");
@@ -200,7 +143,8 @@ window.BPP_BUILD="5.15"; window.BPP_SHOW="5.15";
       }
     }
   }
-  function hookBar(){
+  function hookBar(){ return; /* V5.21 */ }
+  function hookBarOff(){
     var bar=document.getElementById("bppFsBar");
     if(!bar||bar._bpp515mo) return;
     bar._bpp515mo=1;
@@ -299,15 +243,11 @@ window.BPP_BUILD="5.15"; window.BPP_SHOW="5.15";
   function tick(){
     ensureCss();
     hideYt();
-    hookFsNotesBtn();
-    hookBar();
-    syncFsGeom();
-    ensureFsColsBtn();
-    paintFsCols();
+    /* V5.21: kein Groß-Geom, kein Noten-Hook, kein Spalten-Knopf */
   }
   tick();
   if(document.readyState==="loading") document.addEventListener("DOMContentLoaded", tick);
-  window.addEventListener("resize", function(){ syncFsGeom(); paintFsCols(); });
-  window.addEventListener("orientationchange", function(){ setTimeout(function(){ syncFsGeom(); paintFsCols(); }, 200); });
+  window.addEventListener("resize", function(){ hideYt(); });
+  window.addEventListener("orientationchange", function(){ setTimeout(hideYt, 200); });
   setInterval(tick, 500);
 })();

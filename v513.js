@@ -15,6 +15,8 @@
    Owner: Groß-Noten-Chrome / Sync / Knopf-Ruhe v513. critical=false. */
 window.BPP_BUILD="5.13"; window.BPP_SHOW="5.13";
 (function(){
+  /* [Grok-Bot] V5.21: Groß-Noten-Block deaktiviert */
+  return;
   if(window.bppV513) return; window.bppV513=1;
 
   var st=document.createElement("style");

@@ -89,8 +89,9 @@ window.BPP_BUILD="5.10"; window.BPP_SHOW="5.10";
   setInterval(function(){ wrapProg(); wrapLead(); fixMtjNr(); },400);
 })();
 
-/* --- (3) Groß-Wechsel: v187-Slide aus wenn v195 aktiv; kein Rücksprung-Flackern --- */
+/* --- (3)+(2) [Grok-Bot] V5.21: Groß-Fit/Wechsel-Patches deaktiviert, Layout wie V4.91 --- */
 (function(){
+  return;
   if(window.bppV510a) return; window.bppV510a=1;
   var lastK=-1, lastAt=0;
   function wrapAnim(){
@@ -133,8 +134,9 @@ window.BPP_BUILD="5.10"; window.BPP_SHOW="5.10";
   setInterval(function(){ wrapAnim(); wrapFsDraw(); },600);
 })();
 
-/* --- (2) Groß: Fit mit Rand, Wrap, Nachmessen nach Akkord-Spans --- */
-(function(){
+/* --- (2) [Grok-Bot] V5.21: Groß-Fit deaktiviert --- */
+(function(){ return;
+
   if(window.bppV510o) return; window.bppV510o=1;
   var st=document.createElement("style");
   st.id="bppFsFit510css";

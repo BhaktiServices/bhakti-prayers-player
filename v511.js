@@ -47,8 +47,9 @@ window.BPP_BUILD="5.12"; window.BPP_SHOW="5.12";
   try{ new ResizeObserver(onSize).observe(document.getElementById("lyrics")||document.body); }catch(e){}
 })();
 
-/* --- Groß: 2 Spalten (automatisch nach Breite), nicht im Noten-Modus --- */
+/* --- Groß: 2 Spalten [Grok-Bot] V5.21 deaktiviert, Layout wie V4.91, immer 1 Spalte --- */
 (function(){
+  return;
   if(window.bppV511f) return; window.bppV511f=1;
   var W2=680, lastApplied="";
   var FSKEY="bpp-fs-cols", MINFS=18;
