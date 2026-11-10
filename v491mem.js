@@ -123,7 +123,11 @@ window.BPP_BUILD="4.91"; window.BPP_SHOW="4.91";
     if(st.chMode && typeof chMode!=="undefined" && chMode!==st.chMode){
       try{ var n=0; while(chMode!==st.chMode && n++<3) toggleCh(); }catch(e){}
     }
-    if(typeof i==="undefined"||i<0||!PRAYERS[i]||PRAYERS[i].id!==id){
+    /* V5.13: play() nicht ein zweites Mal – resumeLast() hat das Prayer schon gesetzt.
+       Ein erneutes play() leert a.src, lädt neu und springt zur Resume-Zeit zurück. */
+    if(window.bppStartOwner==="mem" && typeof i==="number"&&i>=0&&PRAYERS[i]&&PRAYERS[i].id===id){
+      /* schon ausgewählt */
+    }else if(typeof i==="undefined"||i<0||!PRAYERS[i]||PRAYERS[i].id!==id){
       var idx=PRAYERS.findIndex(function(p){ return p.id===id; });
       if(idx>=0 && typeof play==="function") play(idx, true, false);
     }

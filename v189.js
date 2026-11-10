@@ -180,13 +180,14 @@ window.BPP_BUILD="1.89";
         window.bppSetSrc(P, ytOn?"file":"yt"); play(i,false); setTimeout(sync, 50); };
       orig.parentNode.insertBefore(my, orig); orig.parentNode.removeChild(orig); /* tr-hi.js pflegt die alte Taste weiter, aber unsichtbar */
     }
-    if(my){ var P=(typeof i!=="undefined"&&i>=0)?PRAYERS[i]:null, show=!!(P&&P.youtube&&P.audio), on=(typeof ytOn!=="undefined" && !!ytOn);
+    if(my){ var P=(typeof i!=="undefined"&&i>=0)?PRAYERS[i]:null, show=window.BPP_YT_ENABLED!==false && !!(P&&P.youtube&&P.audio), on=(typeof ytOn!=="undefined" && !!ytOn);
       my.style.display=show?"":"none"; my.classList.toggle("on", on);
       var t=on?(de()?"YouTube ist an (Tippen: MP3)":"YouTube is on (tap: MP3)"):(de()?"MP3 spielt (Tippen: YouTube)":"MP3 is playing (tap: YouTube)");
       if(typeof lang!=="undefined"&&lang==="pt") t=on?"YouTube ligado (toque: MP3)":"MP3 tocando (toque: YouTube)"; /* [Grok-Bot] V3.54 */
       if(my.title!==t){ my.title=t; my.setAttribute("aria-label", t); my.setAttribute("aria-pressed", on?"true":"false"); } }
   }
   function sync(){
+    if(window.BPP_YT_ENABLED===false){ try{ var s0=document.getElementById("btnSrc"); if(s0) s0.style.display="none"; if(my) my.style.display="none"; }catch(e){} }
     var bp=document.getElementById("btnPlay"); if(bp && bp.classList.contains("gold")){ bp.classList.remove("gold"); try{ syncPlayBtn(); }catch(e){} }
     var d=document.getElementById("btnDe"); if(d && typeof showDe!=="undefined") (d.classList.contains("m358")||d.classList.toggle("on", !!showDe));
     var c=document.getElementById("btnCh"); if(c && typeof showCh!=="undefined") (c.classList.contains("m358")||c.classList.toggle("on", !!showCh));

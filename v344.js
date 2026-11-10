@@ -6,8 +6,8 @@ window.BPP_BUILD="4.14"; window.BPP_SHOW="4.14";
 (function(){
   if(window.bppV344) return; window.bppV344=1;
   var KEY="bpp-cols", GAP=22;
-  var LAB={de:"Spalten",en:"Columns",fr:"Colonnes",es:"Columnas",ru:"Колонки",hi:"कॉलम",pt:"Colunas"};
-  var TIT={de:"Strophen in 1, 2 oder 3 Spalten nebeneinander",en:"Stanzas in 1, 2 or 3 columns side by side",fr:"Strophes sur 1, 2 ou 3 colonnes",es:"Estrofas en 1, 2 o 3 columnas",ru:"Строфы в 1, 2 или 3 колонки",hi:"श्लोक 1, 2 या 3 कॉलम में",pt:"Estrofes em 1, 2 ou 3 colunas lado a lado"};
+  var LAB={de:"Spalten",en:"Columns",fr:"Colonnes",es:"Columnas",ru:"Колонки",hi:"कॉलम",pt:"Colunas",cz:"Sloupce"};
+  var TIT={de:"Strophen in 1, 2 oder 3 Spalten nebeneinander",en:"Stanzas in 1, 2 or 3 columns side by side",fr:"Strophes sur 1, 2 ou 3 colonnes",es:"Estrofas en 1, 2 o 3 columnas",ru:"Строфы в 1, 2 или 3 колонки",hi:"श्लोक 1, 2 या 3 कॉलम में",pt:"Estrofes em 1, 2 ou 3 colunas lado a lado",cz:"Sloky vedle sebe v 1, 2 nebo 3 sloupcích"};
   function want(){ var v=parseInt(localStorage.getItem(KEY)||"1",10); return v>=1&&v<=3?v:1; }
   function maxCols(){ if(typeof window.bppMaxCols==="function") return window.bppMaxCols(); var w=window.innerWidth||1000; return w<700?1:(w<1100?2:3); }
   function eff(){ return Math.min(want(), maxCols()); }
@@ -57,7 +57,9 @@ window.BPP_BUILD="4.14"; window.BPP_SHOW="4.14";
   function sync(){
     var b=document.getElementById("btnCols"); if(!b) return;
     var mx=maxCols(), n=eff();
-    var t=L(LAB)+" "+n; if(b.textContent!==t) b.textContent=t; b.title=L(TIT);
+    /* V5.13: Knopf nur „Spalten“ (übersetzt), Zahl nur im Tooltip */
+    var lab=L(LAB); if(b.textContent!==lab) b.textContent=lab;
+    var tip=L(TIT)+" ("+n+")"; if(b.title!==tip) b.title=tip;
     b.classList.toggle("on", n>1);
     var hide=false; /* [Grok-Bot] V3.52: Spalten immer sichtbar */ if(b.style.display!==(hide?"none":"")) b.style.display=hide?"none":"";
   }

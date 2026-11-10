@@ -13,6 +13,30 @@ hi:["भक्ति प्रेयर्स प्लेयर कैसे �
 pt:["Como funciona o Bhakti Prayers Player","<b>Oração:</b> Manhã/Noite/Mais/Cantos Védicos; “Todas”=um menu. <b>Idioma</b> no canto superior direito. <b>Ajuda:</b> “?” / título.","<b>Reprodução:</b> Tocar/Pausa, |◀ ▶|, −30/+30 s. MP3; YT só online. <b>Acompanhar</b> segue o canto. <b>Mão:</b> deslizar/roda/Page; tocar=ir.","<b>Grande:</b> estrofe em tela cheia; ✕/Esc; toque=barra; deslizar. Celular: paisagem. <b>Colunas 1/2/3</b> (estreita=1).","<b>Acordes/Trad./Tom/Altura</b>; ♭♯, −/+. <b>Menu+:</b> Repetir, ±10 s, andamento, YT/MP3, trad., tom, altura.","<b>Compartilhar</b> ⤴=link. <b>Rodapé:</b> “Mostrar fontes”.","<b>Offline:</b> 1. Baixar orações, 2. Instalar como app. Uma vez online; YT só online. <b>App:</b> tela inicial; iPhone Safari → Compartilhar → Início + DL uma vez (senão Safari apaga offline).","<b>Pronúncia:</b> ā ī ū longas · ṃ ṅ ñ ṇ nasal · ś ṣ sh suave/forte · ṛ ri. <b>Dourado</b>=on. <b>(G+)</b>=acrescentado pelo Grok. Fechar: toque/✕/Esc."],
 cz:["Jak funguje Bhakti Prayers Player","<b>Modlitba:</b> Ranní/Večerní/Další/Védské zpěvy; „Vše“=jedno menu. <b>Jazyk</b> vpravo nahoře. <b>Nápověda:</b> „?“ / nadpis.","<b>Přehrávání:</b> Přehrát/Pauza, |◀ ▶|, −30/+30 s. MP3; YT jen online. <b>Sledovat</b> sleduje zpěv. <b>Ručně:</b> přejetí/kolečko/Page; klepnutí=přesun.","<b>Velké:</b> sloka na celou obrazovku; ✕/Esc; klepnutí=lišta; přejetí. Telefon: na šířku. <b>Sloupce 1/2/3</b> (úzká=1).","<b>Akordy/Překlad/Tónina/Výška</b>; ♭♯, −/+. <b>Menu+:</b> Opakovat, ±10 s, tempo, YT/MP3, překlad, tónina, výška.","<b>Sdílet</b> ⤴=odkaz. <b>Zápatí:</b> „Ukázat zdroje“.","<b>Offline:</b> 1. Stáhnout modlitby, 2. Instalovat jako aplikaci. Jednou online; YT jen online. <b>Aplikace:</b> domovská obrazovka; iPhone Safari → Sdílet → Plocha + jednou DL (jinak Safari smaže offline).","<b>Výslovnost:</b> ā ī ū dlouze · ṃ ṅ ñ ṇ nosově · ś ṣ měkké/tvrdé š · ṛ ri. <b>Česky:</b> Prathana + Mukunda Mála Stotram CZ; chybí-li „Zatím bez překladu“. <b>Zlatá</b>=zap. <b>(G+)</b>=doplněno Grokem. Zavřít: klepnutí/✕/Esc."]
 };
+function ytOffHelp(arr){
+  if(window.BPP_YT_ENABLED!==false) return arr;
+  var r={
+    "MP3; YT online only.":"MP3.",
+    "MP3; YT nur online.":"MP3.",
+    "MP3 ; YT en ligne seulement.":"MP3.",
+    "MP3; YT solo en línea.":"MP3.",
+    "MP3; YT только онлайн.":"MP3.",
+    "MP3; YT केवल ऑनलाइन।":"MP3।",
+    "MP3; YT só online.":"MP3.",
+    "MP3; YT jen online.":"MP3.",
+    ", YT/MP3,":",",
+    ", YT/MP3, ":", ",
+    "; YT online only.":".",
+    "; YT nur online.":".",
+    " ; YT en ligne seulement.":".",
+    "; YT solo en línea.":".",
+    "; YT только онлайн.":".",
+    "; YT केवल ऑनलाइन।":"।",
+    "; YT só online.":".",
+    "; YT jen online.":"."
+  };
+  return arr.map(function(s){ var o=s; Object.keys(r).forEach(function(k){ o=o.split(k).join(r[k]); }); return o; });
+}
 function L(){var l=(typeof lang!=="undefined"&&lang)||"en";return H[l]?l:"en";}
 var st=document.createElement("style");
 st.textContent="h1{cursor:pointer}#bppHelp{position:fixed;inset:0;z-index:2147483500;background:rgba(20,14,10,.96);overflow:auto;-webkit-overflow-scrolling:touch;display:flex;justify-content:center;align-items:flex-start;padding:18px 12px}"+
@@ -22,7 +46,7 @@ st.textContent="h1{cursor:pointer}#bppHelp{position:fixed;inset:0;z-index:214748
 document.head.appendChild(st);
 function close(){var d=document.getElementById("bppHelp");if(d)d.remove();document.removeEventListener("keydown",esc,true);}
 function esc(e){if(e.key==="Escape"){e.stopPropagation();e.preventDefault();close();}}
-function open(){if(document.getElementById("bppHelp"))return;var t=H[L()];var d=document.createElement("div");d.id="bppHelp";
+function open(){if(document.getElementById("bppHelp"))return;var t=ytOffHelp(H[L()].slice());var d=document.createElement("div");d.id="bppHelp";
  d.innerHTML='<button type="button" class="x" aria-label="X">✕</button><div class="in"><img src="start.jpg?v=1" alt=""><h2>'+t[0]+'</h2>'+t.slice(1).map(function(s){return"<p>"+s+"</p>";}).join("")+'<p class="jg"><b>Jai Gurudev</b></p></div>';
  d.addEventListener("click",function(e){e.stopPropagation();close();});
  document.body.appendChild(d);document.addEventListener("keydown",esc,true);

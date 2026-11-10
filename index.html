@@ -9,9 +9,10 @@
 <meta property="og:image" content="start.jpg">
 <link rel="manifest" href="manifest.json?v=341"><!-- [Grok-Bot] V2.53: PWA wieder installierbar -->
 <meta name="theme-color" content="#041236"><link rel="apple-touch-icon" href="apple-touch-icon.png"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="BPPlayer"><!-- [Grok-Bot] V3.41 -->
-<title>Bhakti Prayers Player V5.12</title>
+<title>Bhakti Prayers Player V5.13</title>
 <script>/* [Grok-Bot] V3.30: zentrale Version - aeltere Skripte (V1.66 usw.) koennen Kopf und Titel nicht mehr kurz ueberschreiben */
-window.BPP_VERSION="5.12";
+window.BPP_VERSION="5.13";
+window.BPP_YT_ENABLED=false; /* [Grok-Bot] V5.13: YouTube vorerst aus; Schalter, Code bleibt */
 /* V4.89: one registry for wrapper installation markers; no playback behaviour here. */
 window.bppWrapMarkers489=function(to,from){
   Object.keys(from||{}).forEach(function(k){
@@ -510,6 +511,12 @@ function ytCmd(fn){
   try{ yt.contentWindow.postMessage(JSON.stringify({event:"command",func:fn,args:[]}),"*"); }catch(e){}
 }
 function showYt(P, startSec){
+  if(window.BPP_YT_ENABLED===false){
+    try{ ytOn=false; ytPlaying=false; ytBox.classList.remove("on"); stage.classList.remove("has-yt"); yt.src=""; }catch(e){}
+    if(P && P.audio && typeof showFile==="function"){ showFile(P); return; }
+    try{ if(typeof window.bppNoAudioHint513==="function") window.bppNoAudioHint513(); }catch(e){}
+    return;
+  }
   a.pause();
   a.style.display="none";
   ytOn=true; ytPlaying=true;
@@ -527,7 +534,7 @@ function showFile(P){
   stage.classList.remove("has-yt");
   yt.src="";
   a.style.display="block";
-  a.onerror=function(){ if(P.youtube) showYt(P, pendingSeek||P.youtubeStart); };
+  a.onerror=function(){ if(window.BPP_YT_ENABLED!==false && P.youtube) showYt(P, pendingSeek||P.youtubeStart); else { try{ if(typeof window.bppNoAudioHint513==="function") window.bppNoAudioHint513(); }catch(e){} } };
   a.src=P.audio;
   markPlayOrigin();
   a.play().then(syncPlayBtn).catch(function(){ syncPlayBtn(); });
@@ -568,8 +575,9 @@ function play(idx, resume, auto){ /* [Grok.com] auto false = kein Autostart */
   a.setAttribute("data-prayer", P.id);
   if(auto!==false){
     if(P.preferFile && P.audio) showFile(P);
-    else if(P.youtube) showYt(P, pendingSeek||P.youtubeStart);
+    else if(window.BPP_YT_ENABLED!==false && P.youtube) showYt(P, pendingSeek||P.youtubeStart);
     else if(P.audio) showFile(P);
+    else { try{ if(typeof window.bppNoAudioHint513==="function") window.bppNoAudioHint513(); }catch(e){} }
   }else if(resume && P.audio && !(typeof ytOn!=="undefined"&&ytOn)){
     /* [Grok-Bot] V4.91: Quelle laden ohne Autoplay; Seek auch wenn metadata schon da (Cache) */
     try{
@@ -577,7 +585,16 @@ function play(idx, resume, auto){ /* [Grok.com] auto false = kein Autostart */
       a.style.display="block"; a.setAttribute("data-prayer", P.id); a.preload="auto";
       var _ps=pendingSeek;
       function _seekQuiet(){
-        try{ if(_ps>=3 && isFinite(a.duration) && _ps<a.duration-4) a.currentTime=_ps; a.pause(); }catch(e){}
+        /* V5.13: nach dem einen Resume oder wenn schon gespielt wird, nicht zurückspringen/pausieren */
+        try{
+          if(window.bppResumeOnce504||window.bppResumeOnce||window.bppUserPlay513) return;
+          if(a && !a.paused && (a.currentTime||0)>_ps+0.3) return;
+          if(_ps>=3 && isFinite(a.duration) && _ps<a.duration-4){
+            if(Math.abs((a.currentTime||0)-_ps)>0.4) a.currentTime=_ps;
+          }
+          if(a && a.paused===false) return;
+          a.pause();
+        }catch(e){}
         try{ syncPlayBtn(); }catch(e){}
       }
       a.src=P.audio;
@@ -592,7 +609,7 @@ function play(idx, resume, auto){ /* [Grok.com] auto false = kein Autostart */
   paintList(); paintLyrics(); syncPlayBtn(); applyUI();
   try{ document.body.focus(); }catch(e){}
 }
-function canPlay(P){ return !!(P && (P.audio || P.youtube)); }
+function canPlay(P){ return !!(P && (P.audio || (window.BPP_YT_ENABLED!==false && P.youtube))); }
 function stepSong(dir){
   if(!PRAYERS.length) return;
   var was=isPlaying(); /* [Grok.com] nur weiterspielen, wenn Play schon an war */
@@ -667,7 +684,7 @@ function onKey(e){
   if(code==="KeyV" || k==="v"){ e.preventDefault(); prevLine(); }
 }
 a.addEventListener("loadedmetadata", function(){
-  if(pendingSeek>=3 && isFinite(a.duration) && pendingSeek<a.duration-4){
+  if(!(window.bppResumeOnce504||window.bppResumeOnce) && pendingSeek>=3 && isFinite(a.duration) && pendingSeek<a.duration-4){
     try{ a.currentTime=pendingSeek; }catch(e){}
   }
   syncPlayBtn();
@@ -743,7 +760,7 @@ layoutLyrics();
 <script src="v255.js?v=1"></script><!-- [Grok-Bot] V2.55 Titel nur einmal -->
 <script src="v301.js?v=1"></script><!-- [Grok-Bot] V3.01 Layout neu geordnet -->
 <script src="v302.js?v=1"></script><!-- [Grok-Bot] V3.02 Heft-Hinweis an Quellen-Schalter -->
-<script src="v302h.js?v=457"></script><!-- [Grok-Bot] V3.02 Hilfe per Tipp auf Ueberschrift -->
+<script src="v302h.js?v=458"></script><!-- [Grok-Bot] V3.02 Hilfe per Tipp auf Ueberschrift -->
 <script src="v302m.js?v=1"></script><!-- [Grok-Bot] V3.02 Menue+/- wie vorher -->
 <script src="v303.js?v=410"></script><!-- [Grok-Bot] V3.03 Quellen am Ende der Lyrics -->
 <script src="v304.js?v=2"></script><!-- [Grok-Bot] V3.04 Akkorde je Zeile gold -->
@@ -784,7 +801,7 @@ layoutLyrics();
 <script src="v339.js?v=14"></script><!-- [Grok-Bot] V3.39 Grossbild: X immer sichtbar -->
 <script src="v341.js?v=463"></script><!-- [Grok-Bot] V3.41 Als App installieren -->
 <script src="v343.js?v=393"></script><!-- [Grok-Bot] V3.43 Atma-Bhog-Knopf im Kopf -->
-<script src="v344.js?v=10"></script><!-- [Grok-Bot] V3.44 Spalten 1/2/3 -->
+<script src="v344.js?v=11"></script><!-- [Grok-Bot] V3.44 Spalten 1/2/3 -->
 <script src="v345.js?v=393"></script><!-- [Grok-Bot] V3.45 Atma-Bhog-Tooltip 3-zeilig -->
 <script src="v346.js?v=7"></script><!-- [Grok-Bot] V3.46 Vishnu-Arati mit Chakar-Teil -->
 <script src="v347.js?v=6"></script><!-- [Grok-Bot] V3.47 Blaettern spult bei Mitlesen (800 ms) -->
@@ -798,7 +815,7 @@ layoutLyrics();
 <script src="v355.js?v=2"></script><!-- [Grok-Bot] V3.55 Purusa Suktam + Visnu Sahasranama mit Aufnahme, Hilfe beim ersten Start -->
 <script src="v356.js?v=4"></script><!-- [Grok-Bot] V3.56 Purusa Suktam + VSN: Heft-Uebersetzungen DE + 6 Sprachen -->
 <script src="v357.js?v=508"></script><!-- [Grok-Bot] V3.57 Hilfe: Abschnitt Tastenkuerzel (7 Sprachen) -->
-<script src="v358.js?v=433"></script><!-- [Grok-Bot] V3.58 Knoepfe zeigen Aktion; aktiv Gold, 2-stufig Silber/Gold -->
+<script src="v358.js?v=434"></script><!-- [Grok-Bot] V3.58 Knoepfe zeigen Aktion; aktiv Gold, 2-stufig Silber/Gold -->
 <script src="v359.js?v=2"></script><!-- [Grok-Bot] V3.59 Leertaste, Grossbild-X, Spalten-Hinweis, Jukebox nur 1x/Sitzung -->
 <script src="v360.js?v=1"></script><!-- [Grok-Bot] V3.60 Pfeiltasten markieren Strophe, Enter springt -->
 <!-- [Grok-Bot] V3.63: v361.js ersetzt durch v363.js -->
@@ -853,7 +870,7 @@ layoutLyrics();
 <script src="v414.js?v=1"></script>
 <script src="v415.js?v=31"></script><!-- [Grok.com] V4.18 Rec: Pbj/Mtj + Supra unter Prabhujis --><!-- [Grok-Bot] V4.11 Gross dreht mit (Lagesensor) -->
 <script src="v419.js?v=1"></script><!-- [Grok-Bot] V4.19 Rec-Taste schaltet wieder -->
-<script src="v420.js?v=4"></script><!-- [Grok-Bot] V4.20 Teilen-Link mit allen Einstellungen, Rec: SPN -->
+<script src="v420.js?v=5"></script><!-- [Grok-Bot] V4.20 Teilen-Link mit allen Einstellungen, Rec: SPN -->
 <script src="v421.js?v=5090"></script><!-- [Grok-Bot] V4.21 Versions-Historie -->
 <script src="v422.js?v=1"></script><!-- [Grok-Bot] V4.22 Historie bis V1.0, Auto-Zuklappen -->
 <script src="v423.js?v=1"></script><!-- [Grok-Bot] V4.23 Uebersetzungen Sri/Bhu Suktam -->
@@ -896,7 +913,7 @@ layoutLyrics();
 <script src="v467.js?v=1"></script><!-- [Grok-Bot] V4.67: Hanuman Mtj Sync-Datei sync/hanuman-mtj.json, neu vermessen -->
 <script src="v468.js?v=1"></script><!-- [Grok-Bot] V4.68: Media Session API (Android-Benachrichtigung / iOS Sperrbildschirm) -->
 <script src="v469.js?v=1"></script><!-- [Grok-Bot] V4.69: Start immer zum Titel scrollen; Auto-Strophen-Scroll bis Play/Nutzer -->
-<script src="v470.js?v=4901"></script><!-- [Grok-Bot] V4.70: Offline immer auf MP3; YT-Timeout ~4s; bpp-src erhalten -->
+<script src="v470.js?v=4902"></script><!-- [Grok-Bot] V4.70: Offline immer auf MP3; YT-Timeout ~4s; bpp-src erhalten -->
 <script src="v471.js?v=1"></script><!-- [Grok-Bot] V4.71: Nrsimha Kavaca Rec Mtj Sync sync/nrsimha-mtj.json neu vermessen -->
 <script src="v472.js?v=1"></script><!-- [Grok-Bot] V4.72: Support unter ?; Atma Bhog unter Stil zweizeilig -->
 <script src="v473.js?v=1"></script><!-- [Grok-Bot] V4.73: Android Media-Steuerleiste – PNG-only Artwork, kein SVG/leeres Meta -->
@@ -913,19 +930,20 @@ layoutLyrics();
 <script src="v485.js?v=1"></script><!-- [Grok-Bot] V4.85: Rec-Farben Mtj rosa / Pbj blau, Gold-Ring aktiv -->
 <script src="v486.js?v=4901"></script><!-- [Grok-Bot] V4.86: Offline naechstes Stueck – Cache vor YT (v248), SW offline cache-first -->
 <script src="v487.js?v=4910"></script><!-- [Grok-Bot] V4.87: Offline-Zaehler/Toast/Knopf eine Quelle (audit MP3) -->
-<script src="v491mem.js?v=4"></script><!-- [Grok-Bot] V4.91: letzte Position merken/fortsetzen, ein Start-Besitzer -->
+<script src="v491mem.js?v=5"></script><!-- [Grok-Bot] V4.91: letzte Position merken/fortsetzen, ein Start-Besitzer -->
 <script src="v491.js?v=2"></script><!-- [Grok-Bot] V4.91: Download aktiv+unten-links Fortschritt/Fertig -->
 <script src="v501.js?v=5"></script><!-- [Grok-Bot] V5.01: Mukunda Mala Notation Noten/Text -->
 <script src="v502.js?v=5"></script><!-- [Grok-Bot] V5.02: Notation contain-Fit eine Seite -->
 <script src="v503.js?v=7"></script><!-- [Grok-Bot] V5.03: Notation-Rahmen volle verfügbare Höhe -->
 <script src="v504.js?v=1"></script><!-- [Grok-Bot] V5.04: Resume-Seek nur einmal (kein 1s-Loop) -->
-<script src="v505.js?v=5"></script><!-- [Grok-Bot] V5.05: Notation multi-Prayer (MMS + Ramanuja) -->
+<script src="v505.js?v=6"></script><!-- [Grok-Bot] V5.05: Notation multi-Prayer (MMS + Ramanuja) -->
 <script src="v506.js?v=5"></script><!-- [Grok-Bot] V5.06: Noten Android in-flow/scroll/Follow -->
 <script src="v507.js?v=3"></script><!-- [Grok-Bot] V5.07: Noten-Toggle Fix + Pinch/Doppeltipp-Zoom -->
-<script src="v508.js?v=3"></script><!-- [Grok-Bot] V5.08: Noten auch in Groß-Ansicht -->
-<script src="v509.js?v=2"></script><!-- [Grok-Bot] V5.09: Groß-Noten Layout (Titel/Knopf/Bar) -->
+<script src="v508.js?v=4"></script><!-- [Grok-Bot] V5.08: Noten auch in Groß-Ansicht -->
+<script src="v509.js?v=3"></script><!-- [Grok-Bot] V5.09: Groß-Noten Layout (Titel/Knopf/Bar) -->
 <script src="v510.js?v=6"></script><!-- [Grok-Bot] V5.10: Mitsingen-Marken/Groß-Fit/Strophenwechsel -->
 <script src="v511.js?v=14"></script><!-- [Grok-Bot] V5.12: Spalten nach Inhaltsbreite; Groß 2 Spalten, Zeilen einzeilig -->
+<script src="v513.js?v=3"></script><!-- [Grok-Bot] V5.13: Groß-Noten Menü/Toggle/Knopf ruhig/Strophenwechsel -->
 <script src="v488.js?v=1"></script>
 <script src="v489.js?v=1"></script>
 </body>

@@ -138,15 +138,18 @@ window.BPP_BUILD="5.09"; window.BPP_SHOW="5.09";
       if(bar){
         bar.classList.remove("hid");
         var br=bar.getBoundingClientRect();
-        var need=Math.max(96, Math.ceil(vh-br.top+12));
-        /* If bar not laid out yet, estimate from play btn */
-        if(br.height<20) need=Math.max(110, Math.min(Math.floor(vh*0.45), 180));
-        /* Prefer measured need; only soft-cap at 55% viewport (landscape needs more than 42%) */
-        bot=Math.max(100, Math.min(Math.floor(vh*0.55), need));
+        var need=Math.max(72, Math.ceil(vh-br.top+8));
+        /* If bar not laid out yet, estimate — do not cap so low that the stage covers the bar */
+        if(br.height<16 || br.top<=0) need=Math.max(96, Math.min(Math.ceil((bar.offsetHeight||120)+16), Math.floor(vh*0.48)));
+        bot=need;
+        var maxBot=Math.max(72, vh-(topH+40));
+        if(bot>maxBot) bot=maxBot;
       }
     }catch(e){}
-    fs.style.setProperty("--bpp-fs-notes-top", topH+"px");
-    fs.style.setProperty("--bpp-fs-notes-bot", bot+"px");
+    /* V5.13: owner may replace this; still dirty-write vars */
+    if(typeof window.bppFsNotesGeom513==="function"){ window.bppFsNotesGeom513(); return; }
+    if(fs.style.getPropertyValue("--bpp-fs-notes-top")!==topH+"px") fs.style.setProperty("--bpp-fs-notes-top", topH+"px");
+    if(fs.style.getPropertyValue("--bpp-fs-notes-bot")!==bot+"px") fs.style.setProperty("--bpp-fs-notes-bot", bot+"px");
     placeBtn();
   }
 

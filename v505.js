@@ -240,8 +240,14 @@ window.BPP_BUILD="5.05"; window.BPP_SHOW="5.05";
     if(!fsOn()) return null;
     var shell=ensureFsNotes(); if(!shell) return null;
     var stage=document.getElementById("bppFsStage");
-    if(stage){ stage.style.left="2vw"; stage.style.right="2vw"; stage.style.top="4vh"; stage.style.bottom="12vh"; stage.style.display="block"; }
-    shell.style.left="8px"; shell.style.right="8px"; shell.style.top="8px"; shell.style.bottom="8px";
+    /* V5.13 owns Groß geometry (header–bar gap, z-index). Do not stomp with 4vh/12vh. */
+    if(!window.bppV513){
+      if(stage){ stage.style.left="2vw"; stage.style.right="2vw"; stage.style.top="4vh"; stage.style.bottom="12vh"; stage.style.display="block"; }
+      shell.style.left="8px"; shell.style.right="8px"; shell.style.top="8px"; shell.style.bottom="8px";
+    }else if(stage){
+      stage.style.top=""; stage.style.bottom=""; stage.style.left=""; stage.style.right="";
+      shell.style.left=""; shell.style.right=""; shell.style.top=""; shell.style.bottom="";
+    }
     var id=notesId();
     var man=mans[id];
     if(man&&man.pages&&man.pages[pageIdx]){
@@ -383,14 +389,18 @@ window.BPP_BUILD="5.05"; window.BPP_SHOW="5.05";
   function paintBtn(){
     var b=document.getElementById("bppNotes501"); if(!b) return;
     var show=hasNotes();
-    b.style.display=show?"inline-flex":"none";
+    var disp=show?"inline-flex":"none";
+    if(b.style.display!==disp) b.style.display=disp;
     if(!show) return;
     var t=L(), notes=on();
-    var span=b.querySelector(".lab"); if(span) span.textContent=notes?t.text:t.notes;
-    b.title=(notes?t.titleText:t.titleNotes)+((window.bppNotesKey507)?(" ("+window.bppNotesKey507+")"):"");
-    b.setAttribute("aria-label", b.title);
-    b.setAttribute("aria-pressed", notes?"true":"false");
-    b.classList.toggle("on", notes); b.classList.toggle("gold", notes);
+    var lab=notes?t.text:t.notes;
+    var span=b.querySelector(".lab"); if(span && span.textContent!==lab) span.textContent=lab;
+    var title=(notes?t.titleText:t.titleNotes)+((window.bppNotesKey507)?(" ("+window.bppNotesKey507+")"):"");
+    if(b.title!==title){ b.title=title; b.setAttribute("aria-label", title); }
+    var pressed=notes?"true":"false";
+    if(b.getAttribute("aria-pressed")!==pressed) b.setAttribute("aria-pressed", pressed);
+    if(b.classList.contains("on")!==!!notes) b.classList.toggle("on", notes);
+    if(b.classList.contains("gold")!==!!notes) b.classList.toggle("gold", notes);
   }
 
   /* Offline */

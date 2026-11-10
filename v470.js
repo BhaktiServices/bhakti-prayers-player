@@ -39,6 +39,7 @@ window.BPP_SHOW = "4.70";
   }
 
   function wantYt(P) {
+    if (window.BPP_YT_ENABLED===false) return false;
     if (!P || !P.youtube) return false;
     return srcMap()[P.id] === "yt";
   }

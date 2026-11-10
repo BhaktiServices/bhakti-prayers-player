@@ -25,7 +25,7 @@ window.BPP_BUILD="4.20"; window.BPP_SHOW="4.20";
     q.set("cols",String(parseInt(ls("bpp-cols")||"1",10)||1));
     if(typeof chMode!=="undefined") q.set("chords",chMode);
     if(typeof showDe!=="undefined") q.set("tr",showDe?"1":"0");
-    q.set("src",(typeof ytOn!=="undefined"&&ytOn)?"yt":"mp3");
+    q.set("src",(window.BPP_YT_ENABLED!==false && typeof ytOn!=="undefined"&&ytOn)?"yt":"mp3");
     return u+"?"+q.toString();
   }
   window.bppShareLink420=link;
@@ -47,7 +47,7 @@ window.BPP_BUILD="4.20"; window.BPP_SHOW="4.20";
   var rpq=(q.get("rep")||"").toLowerCase(); if(/^(str|one|list|all|off)$/.test(rpq)) ls("bpp-rep435",rpq); /* [Grok-Bot] V4.35 */
   var c=parseInt(q.get("cols"),10); if(c>=1&&c<=3) ls("bpp-cols",String(c));
   var r=parseFloat(q.get("rate")); if(r>=0.5&&r<=2){ try{ var m=JSON.parse(ls("bpp-rate")||"{}")||{}; if(r===1) delete m[pid]; else m[pid]=r; ls("bpp-rate",JSON.stringify(m)); }catch(e){} }
-  var sr=(q.get("src")||"").toLowerCase();
+  var sr=(q.get("src")||"").toLowerCase(); if(window.BPP_YT_ENABLED===false && sr==="yt") sr="mp3";
   var t=parseFloat(q.get("t")), vol=parseInt(q.get("vol"),10);
   function hookPlay(){
     if(typeof play!=="function"||typeof PRAYERS==="undefined") return setTimeout(hookPlay,50);

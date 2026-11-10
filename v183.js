@@ -249,6 +249,7 @@ window.BPP_BUILD="1.83";
     /* App-Ansicht mitziehen */
     try{ if(line!==g.start && g.idx.indexOf(line)<0){ line=g.start; } }catch(e){}
   }
+  window.bppFsDraw=draw;
   function syncPlay(){ if(!bPlay) return; var on=playing(), c=on?"pa":"pl"; bPlay.classList.toggle("on", on); var ic=bPlay.firstChild; if(!ic || ic.className!==c) bPlay.innerHTML="<i class='"+c+"'></i>"; bPlay.title=on?"Pause":"Play"; bPlay.setAttribute("aria-label", bPlay.title); }
   function doToggle(){ try{ togglePlay(); }catch(e){} holdUntil=0; syncPlay(); [150,400,900].forEach(function(t){ setTimeout(function(){ syncPlay(); draw(); }, t); }); }
   function showBar(){ bar.classList.remove("hid"); clearTimeout(hideT); if(endIs) return; hideT=setTimeout(function(){ if(!endIs) bar.classList.add("hid"); }, 3000); }

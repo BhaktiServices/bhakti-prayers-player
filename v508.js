@@ -164,22 +164,34 @@ window.BPP_BUILD="5.08"; window.BPP_SHOW="5.08";
     var sh=stage&&stage.querySelector(".bppNotesShell503");
     if(sh) sh.remove();
     lastSrc=""; lastCap="";
+    /* V5.13: inline hide from ensureShell must not remain after leaving notes */
+    try{
+      if(typeof window.bppRestoreFsBox513==="function") window.bppRestoreFsBox513();
+      else {
+        var box=document.getElementById("bppFsBox");
+        if(box){ box.style.opacity=""; box.style.pointerEvents=""; box.style.visibility=""; box.style.overflow=""; box.style.zIndex=""; }
+      }
+    }catch(e){}
   }
 
   function paintFsBtn(){
+    if(typeof window.bppPaintNotesBtn513==="function"){ window.bppPaintNotesBtn513(); return; }
     var b=document.getElementById("bppNotesFs508"); if(!b) return;
     var show=fsOn() && hasNotes();
-    b.style.display=show?"inline-flex":"none";
+    var disp=show?"inline-flex":"none";
+    if(b.style.display!==disp) b.style.display=disp;
     if(!show) return;
     var on=notesOn();
     var lang=(typeof window.lang==="string")?window.lang:"de";
     var lab=on?"Text":(lang==="en"?"Notes":"Noten");
-    var span=b.querySelector(".lab"); if(span) span.textContent=lab;
+    var span=b.querySelector(".lab"); if(span && span.textContent!==lab) span.textContent=lab;
     var key=(window.bppNotesKey507||"E");
-    b.title=(on?"Text/Lyrics anzeigen":"Notation anzeigen")+" ("+key+")";
-    b.setAttribute("aria-label", b.title);
-    b.setAttribute("aria-pressed", on?"true":"false");
-    b.classList.toggle("on", on); b.classList.toggle("gold", on);
+    var title=(on?"Text/Lyrics anzeigen":"Notation anzeigen")+" ("+key+")";
+    if(b.title!==title){ b.title=title; b.setAttribute("aria-label", title); }
+    var pressed=on?"true":"false";
+    if(b.getAttribute("aria-pressed")!==pressed) b.setAttribute("aria-pressed", pressed);
+    if(b.classList.contains("on")!==!!on) b.classList.toggle("on", on);
+    if(b.classList.contains("gold")!==!!on) b.classList.toggle("gold", on);
   }
 
   function ensureFsBtn(){
