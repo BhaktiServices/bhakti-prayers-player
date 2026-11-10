@@ -123,14 +123,8 @@ window.BPP_BUILD="5.12"; window.BPP_SHOW="5.12";
   }
   function wantTwo(){
     if(!fsOn()||notesOn()) return false;
-    /* Hochkant: immer genau eine Strophe in 1 Spalte, auch wenn bpp-fs-cols=2
-       (Vorliebe gilt erst wieder im Querformat). Sonst stapeln L/R oder die
-       Schrift springt, und es wirken zwei Strophen. */
-    if(isPortrait()) return false;
-    var u=userFsCols();
-    if(u===1) return false;
-    if(u===2) return stageW()>=200;
-    return autoTwo();
+    /* [Grok-Bot] V5.19: Default immer 1 Spalte. 2 Spalten nur bei expliziter Wahl (Knopf/S). */
+    return userFsCols()===2;
   }
   window.bppFsColsKey=FSKEY;
   window.bppFsWantTwo=wantTwo;
@@ -370,14 +364,7 @@ window.BPP_BUILD="5.12"; window.BPP_SHOW="5.12";
     if(B.classList.contains("bppFsC2") && hasCols){
       if(!wantTwo()){ undo(B); lastApplied="1|"+geo; return; }
       if(lastApplied==="2|"+geo){
-        syncStagePad(S);
-        /* Schrift nach Auto-Hide der Leiste oder k361 noch einmal einpassen, DOM nicht anfassen */
-        fitTwoCol(B,S);
-        if(overflows(B,S)){
-          var sz2=parseFloat(B.style.fontSize)||18, g2=0;
-          while(overflows(B,S) && sz2>14 && g2++<12){ sz2-=1; B.style.fontSize=sz2.toFixed(1)+"px"; }
-          if(overflows(B,S)){ undo(B); lastApplied="1|ov|"+geo; }
-        }
+        /* V5.19: schon eingepasst – Größe nicht erneut tasten (kein Pumpen) */
         return;
       }
       undo(B);
@@ -419,28 +406,11 @@ window.BPP_BUILD="5.12"; window.BPP_SHOW="5.12";
 
     /* Einzeilig bevorzugen; Umbruch nur an der 18-px-Untergrenze.
        Reicht 18 px oder die freie Fläche nicht, sauber auf 1 Spalte zurück. */
-    var used=fitTwoCol(B,S);
-    /* 1-Spalte nur, wenn selbst die Mindestschrift in 2 Spalten nicht reicht
-       oder die Strophe selbst bei 14 px die Bühne übersteigt (sonst fehlen Lyrics nach dem Drehen). */
-    if(used && used<MINFS-0.05){
-      undo(B);
-      lastApplied="1|min|"+geo;
-      return;
-    }
-    if(overflows(B,S)){
-      var sz=parseFloat(B.style.fontSize)||used||18, g=0;
-      while(overflows(B,S) && sz>14 && g++<12){ sz-=1; B.style.fontSize=sz.toFixed(1)+"px"; }
-      if(overflows(B,S)){
-        undo(B);
-        lastApplied="1|ov|"+geo;
-        return;
-      }
-    }
+    /* V5.19: ein Owner (v519) passt einmal ein; kein automatischer Rückfall auf 1 Spalte */
+    if(typeof window.bppFsFit2Col519==="function") window.bppFsFit2Col519(B,S);
+    else fitTwoCol(B,S);
     lastApplied=key;
     try{ [].forEach.call(B.querySelectorAll(".vl"),function(v){ v.__k361=null; }); }catch(e){}
-    function refit(){ try{ if(B.classList.contains("bppFsC2")) fitTwoCol(B,S); }catch(e){} }
-    setTimeout(refit, 400);
-    setTimeout(refit, 750);
   }
 
   function bustAndApply(){
@@ -475,7 +445,11 @@ window.BPP_BUILD="5.12"; window.BPP_SHOW="5.12";
   hook();
   setInterval(function(){ hook(); wrapSplit(); try{ if(fsOn()) apply(); }catch(e){} }, 400);
   window.addEventListener("orientationchange", bustAndApply);
+  var lastWin="";
   window.addEventListener("resize", function(){
+    var win=(window.innerWidth||0)+"x"+(window.innerHeight||0);
+    if(win===lastWin) return; /* Leisten-Ein/Ausblendung ändert --bpp-fs-bot, nicht das Fenster */
+    lastWin=win;
     lastApplied="";
     clearTimeout(window.__v511rt);
     window.__v511rt=setTimeout(function(){

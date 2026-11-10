@@ -135,6 +135,7 @@ window.BPP_BUILD="5.17"; window.BPP_SHOW="5.17";
     var S=document.getElementById("bppFsStage");
     var fs=document.getElementById("bppFs");
     if(!B||!S||!fs||!fs.classList.contains("on")||fs.classList.contains("bpp-notes-fs")) return;
+    if(window.bppFsFitLocked519 && B.classList.contains("bppFsC2")) return; /* V5.19: ein Fit-Owner */
     var size=parseFloat(B.style.fontSize)||parseFloat(getComputedStyle(B).fontSize)||20;
     var g=0;
     while((chordHitsHeader(B) || tooManyWraps(B) || overflowsBottom(B,S)) && size>14 && g++<36){

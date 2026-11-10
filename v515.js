@@ -136,9 +136,13 @@ window.BPP_BUILD="5.15"; window.BPP_SHOW="5.15";
       if(tr.height>=8) topPx=Math.max(topPx, Math.round(tr.bottom+12));
     }
     var botPx=Math.round(vh*0.04);
-    if(barVisible(bar)){
+    var reserveBar=false;
+    try{ reserveBar=(parseInt(localStorage.getItem(window.bppFsColsKey||"bpp-fs-cols")||"0",10)===2); }catch(e){}
+    if(bar && (barVisible(bar) || reserveBar)){
       var br=bar.getBoundingClientRect();
-      if(br.height>=8) botPx=Math.max(botPx, Math.round(vh-br.top+18));
+      var barH=br.height>=8?br.height:(bar.offsetHeight||64);
+      if(barVisible(bar) && br.height>=8) botPx=Math.max(botPx, Math.round(vh-br.top+18));
+      else botPx=Math.max(botPx, Math.round(barH+18));
     }
     /* Mindestens etwas Bühnenhöhe lassen (kurze Landscape-Leiste) */
     if(vh-topPx-botPx<80) botPx=Math.max(8, vh-topPx-80);
@@ -149,9 +153,11 @@ window.BPP_BUILD="5.15"; window.BPP_SHOW="5.15";
     if(geo!==lastGeom){
       lastGeom=geo;
       clearTimeout(geomT);
-      /* Erst einpassen (v183/v511, Schrift darf wieder wachsen), Clamp nur falls wirklich über der Leiste. */
+      /* V5.19: bei 2 Spalten kein resize-Dispatch (sonst Pumpen durch Leisten-Hide). */
       geomT=setTimeout(function(){
-        try{ window.dispatchEvent(new Event("resize")); }catch(e){}
+        var two=false;
+        try{ two=(parseInt(localStorage.getItem(window.bppFsColsKey||"bpp-fs-cols")||"0",10)===2); }catch(e){}
+        if(!two){ try{ window.dispatchEvent(new Event("resize")); }catch(e){} }
         setTimeout(clampBoxToGap, 120);
       }, 60);
     }
@@ -161,6 +167,7 @@ window.BPP_BUILD="5.15"; window.BPP_SHOW="5.15";
     var bar=document.getElementById("bppFsBar");
     var fs=document.getElementById("bppFs");
     if(!B||!fs||fs.classList.contains("bpp-notes-fs")) return;
+    if(window.bppFsFitLocked519 && B.classList.contains("bppFsC2")) return;
     var limit=window.innerHeight-8;
     if(barVisible(bar)){
       var br=bar.getBoundingClientRect();

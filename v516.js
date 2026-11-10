@@ -77,6 +77,7 @@ window.BPP_BUILD="5.16"; window.BPP_SHOW="5.16";
     var S=document.getElementById("bppFsStage");
     var fs=document.getElementById("bppFs");
     if(!B||!S||!fs||!fs.classList.contains("on")||fs.classList.contains("bpp-notes-fs")) return;
+    if(window.bppFsFitLocked519 && B.classList.contains("bppFsC2")) return; /* V5.19: ein Fit-Owner */
     var size=parseFloat(B.style.fontSize)||parseFloat(getComputedStyle(B).fontSize)||20;
     var g=0;
     /* Zuerst schrumpfen: nach dem Drehen bleibt sonst die Hochkant-Schrift und
