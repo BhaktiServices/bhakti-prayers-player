@@ -63,7 +63,7 @@ window.BPP_BUILD="4.34"; window.BPP_SHOW="4.34";
     for(var j=k+1;j<m.length;j++){ last=false; if(m[j]!=null){ e=(j===k+1)?m[j]:null; break; } }
     if(!last && e==null) return null; /* naechste Marke fehlt: keine Zeit erfinden */
     if(e==null) e=dur(); if(e==null) return null; return {s:m[k], e:e}; }
-  function seek(t){ try{ if(ytOn){ yt.contentWindow.postMessage(JSON.stringify({event:"command",func:"seekTo",args:[t,true]}),"*"); ytTime=t; } else { A().currentTime=t; } }catch(e){} later(); }
+  function seek(t){ try{ if(window.bppAllowSeek513) window.bppAllowSeek513("stanza-loop", 2000); if(ytOn){ yt.contentWindow.postMessage(JSON.stringify({event:"command",func:"seekTo",args:[t,true]}),"*"); ytTime=t; } else { A().currentTime=t; } }catch(e){} later(); }
   var btn=null, msgT=0;
   function paint(){ if(!btn) return; var on=!!loop, t=tx(on?1:0)+" (⇧R)"; if(btn.title!==t) btn.title=t; if(btn.getAttribute("aria-label")!==t) btn.setAttribute("aria-label",t);
     if(btn.classList.contains("act358")!==on) btn.classList.toggle("act358",on); if(btn.classList.contains("gold")!==on) btn.classList.toggle("gold",on);

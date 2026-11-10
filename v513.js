@@ -410,9 +410,29 @@ window.BPP_BUILD="5.13"; window.BPP_SHOW="5.13";
   function now(){ return Date.now(); }
   function userOk(){ return now()<allowUntil; }
 
+  /* [Grok-Bot] V5.18: Strophen-/Prayer-Wiederholung ist gewollt, kein automatischer Fehl-Seek */
+  function isRepeatSeek(cur, v){
+    try{
+      var loop=window.bppStanzaLoop;
+      if(loop && isFinite(loop.s) && Math.abs(v-loop.s)<=1.2) return "stanza-loop";
+    }catch(e){}
+    try{
+      var mode=null;
+      try{ mode=localStorage.getItem("bpp-rep435"); }catch(e2){}
+      var r=0;
+      try{ if(window.bppPrayerNav && typeof window.bppPrayerNav.rep==="function") r=window.bppPrayerNav.rep(); }catch(e2){}
+      if((mode==="one" || r===1) && v<1.2 && cur>2) return "prayer-loop";
+    }catch(e){}
+    return null;
+  }
+
   window.bppAllowSeek513=function(why, ms){
     allowUntil=now()+(ms==null?2000:ms);
     allowWhy=why||"user";
+    /* [Grok-Bot] V5.18: manuelle/gewollte Seeks dürfen den Watchdog nie auslösen und müssen ihn zurücksetzen */
+    locked=false;
+    backLog=[];
+    window.bppSeekWatchdog513=0;
   };
   window.bppMarkUserPlay513=function(){ window.bppUserPlay513=1; };
 
@@ -434,8 +454,10 @@ window.BPP_BUILD="5.13"; window.BPP_SHOW="5.13";
     v=+v;
     var cur=0;
     try{ cur=proto.get.call(el); }catch(e){}
-    if(userOk()){
+    var repWhy=isRepeatSeek(cur,v);
+    if(userOk() || repWhy){
       if(resumeTarget>=3&&!resumeUsed&&near(v,resumeTarget,2)) markResume();
+      if(repWhy){ locked=false; backLog=[]; window.bppSeekWatchdog513=0; }
       return setter.call(el,v);
     }
     /* genau ein automatisches Resume */
@@ -527,6 +549,7 @@ window.BPP_BUILD="5.13"; window.BPP_SHOW="5.13";
     wrapFn(window,"nextSong","nextSong");
     wrapFn(window,"prevSong","prevSong");
     wrapFn(window,"stepSong","stepSong");
+    wrapFn(window,"bppSkip","bppSkip");
   }
 
   function wrapPlay(){
@@ -537,12 +560,16 @@ window.BPP_BUILD="5.13"; window.BPP_SHOW="5.13";
       try{
         var want=(typeof PRAYERS!=="undefined"&&PRAYERS[idx])?PRAYERS[idx].id:null;
         var curId=(typeof i==="number"&&i>=0&&PRAYERS[i])?PRAYERS[i].id:null;
-        if(want && want!==curId && userOk()){
+        var mode=null; try{ mode=localStorage.getItem("bpp-rep435"); }catch(e){}
+        var autoRep=(mode==="one"||mode==="list"||mode==="all");
+        if(want && want!==curId && (userOk() || autoRep)){
           var st=0;
           try{ st=+((typeof songState==="function"&&songState(want).time)||0); }catch(e){}
           resumeTarget=st>=3?st:0;
           resumeUsed=false;
           window.bppAllowSeek513("play-switch", 2500);
+        } else if(want && want===curId && (userOk() || autoRep || mode==="str")){
+          window.bppAllowSeek513("play-repeat", 2500);
         }
       }catch(e){}
       return o.apply(this, arguments);
@@ -563,14 +590,18 @@ window.BPP_BUILD="5.13"; window.BPP_SHOW="5.13";
 
   document.addEventListener("pointerdown", function(e){
     var t=e.target; if(!t||!t.closest) return;
-    if(t.closest("#btnPrev,#btnNext,#btnSeek,#lyrics .stanza,#bppSel,.list .item,input[type=range],#a,#bppFsBar .pn,button.pn")){
+    if(t.closest("#btnPrev,#btnNext,#btnSeek,#btnBack10,#btnFwd10,#btnBack30,#btnFwd30,.bppJmp,#btnPPrev,#btnPNext,#btnRep,#bppFsRep,#lyrics .stanza,#lyrics .line,#bppSel,.list .item,input[type=range],#a,#bppFsBar button,#bppFsSide button,[id^=bppFsJ],[id^=bppFsSt],#bppFsPrev,#bppFsNext,#bppFsB30,#bppFsF30,#bppFsSideB30,#bppFsSideF30,button.pn,button.j,button.j30,button.bppFsJ,button.bppFsSt")){
       window.bppAllowSeek513("pointer", 2500);
     }
     if(t.closest("#btnPlay,[id^=bppFsPlay]")) window.bppMarkUserPlay513();
   }, true);
   document.addEventListener("keydown", function(e){
     var k=(e.key||"").toLowerCase(), c=e.code||"";
-    if(k==="n"||k==="v"||c==="ArrowLeft"||c==="ArrowRight"||c==="Home") window.bppAllowSeek513("key", 2000);
+    if(k==="n"||k==="v"||k==="j"||k==="l"||k===","||k==="."||k==="r"||
+       c==="ArrowLeft"||c==="ArrowRight"||c==="ArrowUp"||c==="ArrowDown"||
+       c==="PageUp"||c==="PageDown"||c==="Home"||c==="KeyJ"||c==="KeyL"||c==="Comma"||c==="Period"){
+      window.bppAllowSeek513("key", 2500);
+    }
     if(c==="Space"||k===" "||k==="p") window.bppMarkUserPlay513();
   }, true);
 
@@ -604,7 +635,8 @@ window.BPP_BUILD="5.13"; window.BPP_SHOW="5.13";
   window.bppV513SeekApi={
     locked:function(){ return locked; },
     used:function(){ return resumeUsed; },
-    target:function(){ return resumeTarget; }
+    target:function(){ return resumeTarget; },
+    reset:function(){ locked=false; backLog=[]; window.bppSeekWatchdog513=0; }
   };
 })();
 

@@ -94,10 +94,11 @@ window.BPP_BUILD="1.83";
   function onEnded(){
     if(typeof i==="undefined" || i<0 || endFor===i) return; endFor=i;
     if(rep===1){ setTimeout(function(){
+        try{ if(window.bppAllowSeek513) window.bppAllowSeek513("prayer-loop", 2500); }catch(e){}
         if(typeof ytOn!=="undefined" && ytOn){ startPrayer({idx:i, head:curSec().head}); }
         else { endFor=-1; try{ a.currentTime=0; markPlayOrigin(); a.play().then(syncPlayBtn).catch(function(){ syncPlayBtn(); }); }catch(e){} }
       }, 500); return; }
-    if(rep===2){ var nb=neighbor(1, true); if(nb){ setTimeout(function(){ startPrayer(nb); }, 900); return; } }
+    if(rep===2){ var nb=neighbor(1, true); if(nb){ setTimeout(function(){ try{ if(window.bppAllowSeek513) window.bppAllowSeek513("prayer-list-loop", 2500); }catch(e){} startPrayer(nb); }, 900); return; } }
     endOn();
   }
   document.addEventListener("DOMContentLoaded", function(){ var au=document.getElementById("a"); if(!au) return;
@@ -273,6 +274,7 @@ window.BPP_BUILD="1.83";
   window.bppFsRelease=function(){ if(holdUntil>Date.now()+3e5){ holdUntil=0; lastKey=""; draw(); } };
   function seekTo(t){
     t=Math.max(0,t);
+    try{ if(window.bppAllowSeek513) window.bppAllowSeek513("fs-seekTo", 2500); }catch(e){}
     if(typeof ytOn!=="undefined" && ytOn){ try{ yt.contentWindow.postMessage(JSON.stringify({event:"command",func:"seekTo",args:[t,true]}),"*"); }catch(e){} ytTime=t; }
     else { try{ a.currentTime=t; }catch(e){} }
   }
