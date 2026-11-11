@@ -81,7 +81,7 @@ if(document.readyState==="loading"){ document.write('<script src="v183.js?v=521"
 if(document.readyState==="loading"){ document.write('<script src="v184.js?v=186"><\/script>'); }
 /* [Grok-Bot] V1.85-V1.87: Mitlesen (Ashtotram Name fuer Name, geschaetzte Marken je Quelle, alte Strophen-Tipps entschaerft), Vollbild-Menue nur nach Tippen,
    V1.87: Strophenwechsel am Ende des Gesangs (Pausentabelle), gemessene Marken Ashtotram, Vaishnava Mantra, Kavaca (v187.js ersetzt v186.js). */
-if(document.readyState==="loading"){ document.write('<script src="v187.js?v=4901"><\/script>'); }
+if(document.readyState==="loading"){ document.write('<script src="v187.js?v=523"><\/script>'); }
 /* V1.88: Mitlesen haelt an, solange die MP3 noch laedt (v188.js). */
 if(document.readyState==="loading"){ document.write('<script src="v188.js?v=188"><\/script>'); }
 /* [Grok-Bot] V1.89: Grossbild-Vorschau der ersten Zeile der naechsten Strophe bzw. des naechsten Teils waehrend der letzten Zeile, Ashtotram im Grossbild als Laufband,
@@ -98,7 +98,7 @@ if(document.readyState==="loading"){ document.write('<script src="v193.js?v=193"
 if(document.readyState==="loading"){ document.write('<script src="v194.js?v=202"><\/script>'); }
 /* [Grok-Bot] V1.95: Grossbild – die ganze naechste Strophe faehrt waehrend der letzten Zeile von unten hoch, nahtloser Wechsel (v195.js ersetzt v191.js);
    Quellenwahl als Zweier-Auswahl "YT | MP3". Laufband (v189) und Tastenschutz (v194) unveraendert. */
-if(document.readyState==="loading"){ document.write('<script src="v195.js?v=515"><\/script>'); }
+if(document.readyState==="loading"){ document.write('<script src="v195.js?v=523"><\/script>'); }
 /* [Grok-Bot] V1.96: Kavaca Stotram - Strophenzeiten MP3 und YouTube neu gemessen (Abfolge + Pausentabelle), alte Strophen-Tipps ohne Wirkung. */
 if(document.readyState==="loading"){ document.write('<script src="v196.js?v=196"><\/script>'); }
 /* [Grok.com] V1.98: Hanuman Chalisa spielt die Bhavani-Datei. BPP_BUILD muss nach v196 stehen, sonst setzt v177 die Anzeige wieder auf 1.96. */

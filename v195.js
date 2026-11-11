@@ -135,6 +135,9 @@ window.bppPv191=1; /* schaltet die alte Vorschau in v189.js ab */
     if(!ph){
       /* Wiederholung derselben Strophe: v183 zeichnet nicht neu - den Wechsel trotzdem nahtlos machen */
       if(live && live.e>0.9 && norm(box.textContent)===live.text){ var lv=live; seam(take(), lv); return; }
+      /* [Grok-Bot] V5.23: Vorschau steht, Box hat noch die alte Strophe – nicht reset()
+         (sonst springt die alte Strophe voll in die Mitte und die nächste verschwindet). */
+      if(live && norm(box.textContent)!==live.text){ return; }
       reset(); return;
     }
     var g=null; try{ g=geom(ph); }catch(e){ g=null; }
