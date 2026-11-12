@@ -226,6 +226,12 @@ window.BPP_BUILD="1.87";
   function animate(prev, cur){
     stop();
     if(!prev || !prev.html || !box.animate) return;
+    /* [Grok-Bot] V5.23: ein Owner – wenn v195 die Naht führt, keine zweite Animation
+       (sonst erscheint die alte Strophe noch einmal ganz in der Mitte). */
+    try{
+      var pv=window.bppPreviewInfo&&window.bppPreviewInfo();
+      if(pv && (pv.on || (typeof pv.e==="number" && pv.e>0.2))) return;
+    }catch(e){}
     var fwd=(cur.st.k>prev.st.k) || (cur.st.k===prev.st.k && cur.st.page>prev.st.page);
     ghost=document.createElement("div"); ghost.className="bppGhost"; ghost.setAttribute("aria-hidden","true");
     var gb=document.createElement("div"); gb.className="gbox"; gb.innerHTML=prev.html; gb.style.fontSize=prev.fs;
