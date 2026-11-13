@@ -3,7 +3,7 @@
    ohne Netz aus dem Cache. Alte App-Caches werden beim Aktivieren geloescht.
    MP3 aus audio/: liegen im Cache "bpp-audio-v2" (Client v203/v481/v483). Abspielen cache-first mit Range-Antworten (206),
    damit Spulen geht; bei Treffer kein Netz (auch online). Nicht im Cache: Netz. YouTube/fremde Server am SW vorbei. V4.83: kein Sonder-Netz-First mehr fuer guru-stotram-abend. */
-var VER="5240"; // [Grok-Bot] V5.24
+var VER="5250"; // [Grok-Bot] V5.25
 var APP="bpp-app-"+VER; var AUD="bpp-audio-v2"; /* [Grok-Bot] V4.59: Cache-Namen wieder gesetzt (fehlten) */
 var CORE=["./","index.html","follow.js","v218.js","manifest.json","icon-192.svg","icon-512.svg","icon-192.png","icon-512.png","icon-maskable-192.png","icon-maskable-512.png","apple-touch-icon.png","fonts/fonts-local.css","lib/mqtt.min.js","v204.js?v=205","version.json","sync/vishwananda-chalisa-2026.json","sync/hanuman-mtj.json","sync/nrsimha-mtj.json","sync/vaishnava-mtj.json","start.jpg","assets/mms-notes/manifest.json","v501.js?v=5","v502.js?v=5","v503.js?v=7","v504.js?v=1","v505.js?v=5","v506.js?v=5","v507.js?v=515","v508.js?v=3","v509.js?v=2","v510.js?v=9","v511.js?v=521","assets/ramanuja-notes/manifest.json","assets/ramanuja-notes/p01.webp","assets/notes-registry.json"]; /* [Grok.com] */
 self.addEventListener("install", function(e){
