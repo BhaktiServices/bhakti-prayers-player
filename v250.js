@@ -23,7 +23,7 @@ window.BPP_BUILD="2.52"; window.BPP_SHOW="2.52";
     var want=mode()==="akk";
     if(fsCh()!==want){ try{ orig.call(b, {stopPropagation:function(){}}); }catch(err){} }
     b.classList.toggle("line", mode()==="zeile");
-    var L={aus:"♯",akk:"♯",zeile:"♯≡"}; if(b.textContent!==L[mode()]) b.textContent=L[mode()];
+    if(!window.bppV526){ var L={aus:"♯",akk:"♯",zeile:"♯≡"}; if(b.textContent!==L[mode()]) b.textContent=L[mode()]; }
     if(lastMode!==mode()){ lastMode=mode(); try{ window.dispatchEvent(new Event("resize")); }catch(err){} } /* Grossbild neu einpassen */
   }
   var lastMode=null;
