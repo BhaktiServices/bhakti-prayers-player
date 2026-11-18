@@ -4,6 +4,7 @@
 (function(){
   if(window.bppV421) return; window.bppV421=1;
   var H=[
+["5.31","18.11.","Nur eine BPP-Instanz spielt gleichzeitig: startet die Wiedergabe in einem Tab, Fenster oder der installierten App, pausieren alle anderen im selben Browser von selbst (BroadcastChannel, sonst localStorage). Beim Öffnen ein kurzer Hinweis, wenn BPP schon in einem anderen Fenster läuft. Ein anderer Browser bleibt unsichtbar. critical=false."],
 ["5.30","18.11.","Nach Wiederholen desselben Prayers (↻1 Prayer) folgt die Normalansicht den Lyrics wieder: bisher blieb die Markierung oft auf Strophe 1 stehen, während Groß die richtige Strophe zeigte, weil die Hold-Sperre nach dem Rücksprung an den Anfang nicht gelöst und das Mitlesen nicht neu gebunden wurde. critical=true."],
 ["5.29","18.11.","Beim Wiederholen der Liste oder aller Prayer bleibt Mitsingen an, wenn es an war: bisher überschrieb der Wechsel den Zustand mit dem gespeicherten Wert des nächsten Stücks (meist aus), dadurch liefen die Lyrics nicht mehr mit. Play/Pause, Leertaste, Media Session und Groß steuern weiter die tatsächlich laufende Aufnahme, keine zweite Aufnahme bleibt im Hintergrund. critical=true."],
 ["5.28","17.11.","Mitsingen, Übersetzung und Akkorde zeigen Gold und Silber wieder in allen Farbschemen (die Theme-Regeln hatten die Zustandsfarbe überdeckt; die Taste M erzeugte nur ein kurzes Aufleuchten). Der Play-Knopf ist während der Wiedergabe mit der Beschriftung Play gold, sonst mit Pause silbern. Gilt auch in Groß. critical=false."],
