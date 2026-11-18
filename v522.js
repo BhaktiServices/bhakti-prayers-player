@@ -72,7 +72,15 @@ window.BPP_BUILD="5.22"; window.BPP_SHOW="5.22";
         if(typeof paintLyrics==="function") paintLyrics();
         setTimeout(function(){ try{ if(typeof pinStanza==="function") pinStanza(); }catch(e){} }, 30);
       }
-      if(hadHold){ try{ holdLineUntil=held; }catch(e){} }
+      if(hadHold){
+        try{
+          var au=document.getElementById("a");
+          var t0=au&&isFinite(au.currentTime)?au.currentTime:0;
+          var left=(held||0)-Date.now();
+          /* [Grok-Bot] V5.30: nach 1-Prayer-Loop (t wieder vorn) eine lange Hold-Sperre nicht wiederherstellen, sonst bleibt die Normalansicht auf Strophe 1. */
+          if(!(t0<1.5 && left>3000)) holdLineUntil=held;
+        }catch(e){ try{ holdLineUntil=held; }catch(x){} }
+      }
     }catch(e){}
   }
 
