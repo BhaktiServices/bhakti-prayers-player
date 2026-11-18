@@ -18,7 +18,7 @@
   function maxCols(){ if(typeof window.bppMaxCols==="function") return window.bppMaxCols(); var w=window.innerWidth||1000; return w<700?1:(w<1100?2:3); }
   function cols(){ var v=parseInt(localStorage.getItem("bpp-cols")||"1",10); v=v>=1&&v<=3?v:1; return Math.min(v,maxCols()); }
   function state(){ var t=L[lg()], b=document.body, S={};
-    var p=playing(); S.btnPlay=[p?t.pause:t.play,p,p?t.tPause:t.tPlay];
+    var p=playing(); S.btnPlay=[p?t.play:t.pause,p,p?t.tPlay:t.tPause]; /* [Grok-Bot] V5.28: Play+Gold beim Spielen, Pause+Silber im Stillstand */
     var au=typeof autoScroll!=="undefined"&&!!autoScroll; S.btnAuto=[t.auto||t.autoOn,au];
     var cm=typeof chMode!=="undefined"?chMode:"aus"; S.btnCh=[t.ch||t.chOn,cm==="akk"?1:(cm==="zeile"?2:0)];
     var de=typeof showDe!=="undefined"&&!!showDe; S.btnDe=[t.tr||t.trOn,de];
