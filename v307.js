@@ -23,14 +23,21 @@ window.BPP_BUILD="3.07"; window.BPP_SHOW="3.07";
     stdStep(d);
   }
   window.bppStanzaStep=step;
-  /* Freigabe: sobald die Zeit-Strophe wechselt (oder Wiedergabe neu gestartet wird) */
+  /* Freigabe: sobald die Zeit-Strophe wechselt oder die Wiedergabe neu startet (Rücksprung an den Anfang, z. B. ↻1 Prayer). */
+  var lastT=null;
+  function releaseHold(){ held=false; k0=null; try{ holdLineUntil=0; }catch(e){} try{ if(window.bppFsRelease) window.bppFsRelease(); }catch(e){} }
+  window.bppReleaseHold307=releaseHold;
   setInterval(function(){
+    var t=null; try{ var pr=songProgress(); t=pr?pr.t:null; }catch(e){}
+    var jumped=(lastT!=null && t!=null && lastT>2 && t<1.5 && lastT-t>5);
+    if(t!=null) lastT=t;
     if(!held) return;
     if(window.bppSeekPending) return; /* [Grok-Bot] V3.47: waehrend der Spul-Wartezeit nicht freigeben */
+    if(jumped){ releaseHold(); return; }
     var playing=false; try{ playing=isPlaying(); }catch(e){}
     if(!playing) return;
     var k=timeK(); if(k0===null){ k0=k; return; }
-    if(k!==null && k!==k0){ held=false; holdLineUntil=0; if(window.bppFsRelease) window.bppFsRelease(); }
+    if(k!==null && k!==k0){ releaseHold(); }
   },250);
   function typing(t){ return t && (/^(INPUT|SELECT|TEXTAREA)$/.test(t.tagName) || t.isContentEditable); }
   /* Tasten: vor den Grossbild-Tasten (v183 nutzt Bild hoch/runter zum Spulen) */
