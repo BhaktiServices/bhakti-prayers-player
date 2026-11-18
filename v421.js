@@ -4,6 +4,7 @@
 (function(){
   if(window.bppV421) return; window.bppV421=1;
   var H=[
+["5.29","18.11.","Beim Wiederholen der Liste oder aller Prayer bleibt Mitsingen an, wenn es an war: bisher überschrieb der Wechsel den Zustand mit dem gespeicherten Wert des nächsten Stücks (meist aus), dadurch liefen die Lyrics nicht mehr mit. Play/Pause, Leertaste, Media Session und Groß steuern weiter die tatsächlich laufende Aufnahme, keine zweite Aufnahme bleibt im Hintergrund. critical=false."],
 ["5.28","17.11.","Mitsingen, Übersetzung und Akkorde zeigen Gold und Silber wieder in allen Farbschemen (die Theme-Regeln hatten die Zustandsfarbe überdeckt; die Taste M erzeugte nur ein kurzes Aufleuchten). Der Play-Knopf ist während der Wiedergabe mit der Beschriftung Play gold, sonst mit Pause silbern. Gilt auch in Groß. critical=false."],
 ["5.27","16.11.","Der Play-Knopf ist gold, solange die Aufnahme wirklich läuft; bei Pause, Stopp oder Stückende ist er dunkler als die normalen Tasten. Gilt auch in Groß. Die Beschriftung bleibt Pause während der Wiedergabe und Play im Stillstand. critical=false."],
 ["5.26","15.11.","Mitsingen, Übersetzung, Akkorde und Tagesleiste behalten ihren Namen; der Zustand steht nur in der Farbe (Gold = an). Bei Akkorde drei Stufen in der bisherigen Reihenfolge: aus (Standard) → über der Strophe (Silber) → in der Zeile (Gold). Gilt in der Standardansicht, in Groß (Menü+) und in der Hilfe. critical=false."],
