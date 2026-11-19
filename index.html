@@ -885,7 +885,7 @@ layoutLyrics();
 <script src="v432.js?v=1"></script><!-- [Grok-Bot] V4.32 Tschechisch (CZ) -->
 <script src="v433.js?v=6"></script><!-- [Grok-Bot] V4.33 Hanuman-Uebersetzungen strophengenau -->
 <script src="v434.js?v=8"></script><!-- [Grok-Bot] V4.34 Tagesleiste, Strophe aus Medienzeit, Strophe wiederholen, ruhiges Scrollen -->
-<script src="v435.js?v=526"></script><!-- [Grok-Bot] V4.35 Guru Stotram Pbj ab 0:25 -->
+<script src="v435.js?v=533"></script><!-- [Grok-Bot] V4.35 Guru Stotram Pbj ab 0:25 -->
 <script src="v436.js?v=1"></script><!-- [Grok-Bot] V4.36 Hilfe einspaltig -->
 <script src="v437.js?v=1"></script><!-- [Grok-Bot] V4.37 Mausrad: Seite zuerst, Fusszeile/Statistik erreichbar -->
 <script src="v438.js?v=1"></script><!-- [Grok-Bot] V4.38 Vishwananda Calisa Akkorde -->
@@ -964,6 +964,7 @@ layoutLyrics();
   function missing(){
     var m=[];
     if(typeof window.bppReleaseHold307!=="function") m.push("v307");
+    if(!window.bppWd435Fix533) m.push("v435"); /* alte v435 (Beschriftung „Tagesleiste ein/aus“) */
     ["bppV530","bppV531","bppV532","bppV533"].forEach(function(k){ if(!window[k]) m.push(k); });
     (window.bppScriptFail533||[]).forEach(function(u){ if(/\.js(\?|$)/.test(u)) m.push(u.replace(location.origin,"")); });
     return m;
