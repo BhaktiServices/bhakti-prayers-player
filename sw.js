@@ -3,7 +3,7 @@
    ohne Netz aus dem Cache. Alte App-Caches werden beim Aktivieren geloescht.
    MP3 aus audio/: liegen im Cache "bpp-audio-v2" (Client v203/v481/v483). Abspielen cache-first mit Range-Antworten (206),
    damit Spulen geht; bei Treffer kein Netz (auch online). Nicht im Cache: Netz. YouTube/fremde Server am SW vorbei. V4.83: kein Sonder-Netz-First mehr fuer guru-stotram-abend. */
-var VER="5320"; // [Grok-Bot] V5.32
+var VER="5330"; // [Grok-Bot] V5.33
 var APP="bpp-app-"+VER; var AUD="bpp-audio-v2"; /* [Grok-Bot] V4.59: Cache-Namen wieder gesetzt (fehlten) */
 var CORE=["./","index.html","follow.js","v218.js","manifest.json","icon-192.svg","icon-512.svg","icon-192.png","icon-512.png","icon-maskable-192.png","icon-maskable-512.png","apple-touch-icon.png","fonts/fonts-local.css","lib/mqtt.min.js","v204.js?v=205","version.json","sync/vishwananda-chalisa-2026.json","sync/hanuman-mtj.json","sync/nrsimha-mtj.json","sync/vaishnava-mtj.json","start.jpg","assets/mms-notes/manifest.json","v501.js?v=5","v502.js?v=5","v503.js?v=7","v504.js?v=1","v505.js?v=5","v506.js?v=5","v507.js?v=515","v508.js?v=3","v509.js?v=2","v510.js?v=9","v511.js?v=521","assets/ramanuja-notes/manifest.json","assets/ramanuja-notes/p01.webp","assets/notes-registry.json"]; /* [Grok.com] */
 self.addEventListener("install", function(e){
@@ -45,14 +45,22 @@ self.addEventListener("activate", function(e){
 });
 /* V4.90: worker navigator.onLine can lag behind an Android client. Never let
    a stalled network-first navigation hold the cached app shell indefinitely. */
-var CLIENT_ONLINE=null, APP_NET_FAILED=false;
-function appFetch(req){
+var CLIENT_ONLINE=null, APP_NET_FAILED=false, APP_NET_FAILED_AT=0;
+/* [Grok-Bot] V5.33: Nach dem Ruhemodus ist das Netz oft einige Sekunden weg/langsam. Bisher blieb APP_NET_FAILED
+   dann bis zum Neustart des Workers gesetzt, und Skripte kamen per ignoreSearch aus dem Cache – auch in einer
+   ALTEN Fassung (z. B. v307.js?v=5 statt ?v=6) oder gar nicht (neue Dateien). Ergebnis: index.html neu, Teile
+   alt → Mitsingen folgte der Aufnahme nicht mehr (V5.30-Fix fehlte). Jetzt: Flag läuft nach 10 s ab, versionierte
+   Dateien (?v=) nur exakt aus dem Cache; eine andere Fassung nur, wenn wirklich offline. */
+function netFailed(){ if(APP_NET_FAILED && Date.now()-APP_NET_FAILED_AT>10000) APP_NET_FAILED=false; return APP_NET_FAILED; }
+function markNetFailed(){ APP_NET_FAILED=true; APP_NET_FAILED_AT=Date.now(); }
+function reallyOffline(){ return CLIENT_ONLINE===false || (typeof navigator!=="undefined" && navigator.onLine===false); }
+function appFetch(req, ms){
   return new Promise(function(resolve,reject){
     var ac=typeof AbortController!=="undefined"?new AbortController():null;
-    var timer=setTimeout(function(){ APP_NET_FAILED=true; if(ac)ac.abort(); reject(new Error("app-network-timeout")); },1500);
+    var timer=setTimeout(function(){ markNetFailed(); if(ac)ac.abort(); reject(new Error("app-network-timeout")); },ms||1500);
     /* [Grok-Bot] V5.24: JS/HTML nicht aus dem HTTP-Cache (sonst bleibt follow.js?v=515 auf der alten Datei) */
     var opts={cache:"no-store"}; if(ac) opts.signal=ac.signal;
-    fetch(req,opts).then(function(res){ clearTimeout(timer); APP_NET_FAILED=false; resolve(res); },function(err){ clearTimeout(timer); APP_NET_FAILED=true; reject(err); });
+    fetch(req,opts).then(function(res){ clearTimeout(timer); APP_NET_FAILED=false; resolve(res); },function(err){ clearTimeout(timer); markNetFailed(); reject(err); });
   });
 }
 function isAudio(u){ return /\/audio\/[^\/]+\.(mp3|m4a|ogg|wav)$/i.test(u.pathname); }
@@ -87,24 +95,35 @@ self.addEventListener("fetch", function(e){
   var nav=(r.mode==="navigate");
   var noStore=/\/version\.json$/.test(u.pathname) || u.searchParams.has("t");
   var req=nav?new Request(r, {cache:"no-store"}):r; /* [Grok.com] Startseite nie aus altem Cache */
-  function fromApp(){
+  var versioned=!nav && !noStore && /[?&]v=/.test(u.search); /* [Grok-Bot] V5.33 */
+  function fromApp(loose){
     return caches.open(APP).then(function(ca){
       if(nav) return ca.match("./").then(function(m){ return m || ca.match("index.html"); });
       if(noStore) return ca.match(u.pathname).then(function(m){ return m || ca.match("version.json"); });
-      return ca.match(r).then(function(m){ return m || ca.match(r, {ignoreSearch:true}); });
+      return ca.match(r).then(function(m){
+        if(m) return m;
+        /* [Grok-Bot] V5.33: andere ?v=-Fassung nur offline – sonst Mischstand alt/neu */
+        if(versioned && !loose && !reallyOffline()) return null;
+        return ca.match(r, {ignoreSearch:true});
+      });
     }).then(function(m){ return m || Response.error(); });
   }
+  function slowNet(){
+    /* [Grok-Bot] V5.33: Netz nach dem Aufwachen langsam – mit mehr Geduld erneut versuchen, erst dann lose aus dem Cache */
+    return appFetch(req, 12000).then(function(res){ keep(res); return res; }).catch(function(){ return fromApp(true); });
+  }
+  function keep(res){
+    if(res && res.ok && res.type==="basic"){
+      var c2=res.clone();
+      caches.open(APP).then(function(ca){ ca.put(noStore?u.pathname:(nav?"./":r), c2); });
+    }
+  }
   /* [Grok-Bot] V4.86: offline cache-first (kein Warten auf Netz-Timeout); online weiter network-first */
-  if(CLIENT_ONLINE===false || (typeof navigator!=="undefined" && navigator.onLine===false) || (APP_NET_FAILED && !/\/version\.json$/.test(u.pathname))){
+  if(reallyOffline() || (netFailed() && !/\/version\.json$/.test(u.pathname))){
     e.respondWith(fromApp().then(function(m){
       if(m && m.status!==0) return m;
-      return appFetch(req).then(function(res){
-        if(res && res.ok && res.type==="basic"){
-          var c2=res.clone();
-          caches.open(APP).then(function(ca){ ca.put(noStore?u.pathname:(nav?"./":r), c2); });
-        }
-        return res;
-      }).catch(function(){ return m || Response.error(); });
+      if(reallyOffline()) return appFetch(req).then(function(res){ keep(res); return res; }).catch(function(){ return m || Response.error(); });
+      return slowNet();
     }));
     return;
   }
@@ -117,7 +136,10 @@ self.addEventListener("fetch", function(e){
       }).catch(function(){});
     }
     return res;
-  }).catch(function(){ return fromApp(); }));
+  }).catch(function(){
+    /* [Grok-Bot] V5.33: exakt aus dem Cache, sonst länger aufs Netz warten (nicht still eine alte Fassung) */
+    return fromApp().then(function(m){ if(m && m.status!==0) return m; return reallyOffline()?fromApp(true):slowNet(); });
+  }));
 });
 self.addEventListener("message", function(e){
   var d=e.data;
