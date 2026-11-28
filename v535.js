@@ -1,4 +1,4 @@
-/* [Grok-Bot] V5.35: Neue Studio-Aufnahmen "Samstag SVD" (Dropbox 03 Bhakti Marga/05 Prayers Bhajan Vedic Chants/Samstag SVD, WAV 48 kHz 16 Bit stereo),
+/* [Grok-Bot] V5.35: Neue Studio-Aufnahmen "HQ" (Dropbox 03 Bhakti Marga/05 Prayers Bhajan Vedic Chants/HQ, WAV 48 kHz 16 Bit stereo),
    als MP3 mit 192 kbit/s (CBR, 48 kHz, stereo) - nichts unter 160 kbit/s, nichts gequetscht. Die bisherigen Aufnahmen bleiben unveraendert und bleiben Standard.
    (1) Gleiche Darbietung, nur bessere Datei (belegt, siehe unten): Die Zeitmarken bleiben gueltig, es wird nur die Datei getauscht.
        - Krishna Suprabhatam, Rec: Pbj (audio/suprabhatam-ra.mp3) -> audio/svd-suprabhatam.mp3 (aus 04_Ganesha+Gayatri+Krishna ab 70,0209 s).
@@ -11,9 +11,9 @@
        Methode: Gesang mit Demucs getrennt, Pausen im Gesangs-Pegel gemessen, Zeilenraster (Zeilen = Zeilen der BPP-Texte, bei Luecken gleichmaessig aufgefuellt),
        Strophenanfang = Zeilenzaehlung aus dem BPP-Text. Nichts erfunden: Narasimha V1/V2 und Hanuman V2 bleiben ohne Marken ("Timing folgt").
    (4) Gebete mit neuer SVD-Aufnahme tragen in der Liste einen kleinen goldenen Punkt (#D6BF90, nur Zierde per CSS, Beschriftungen unveraendert).
-   (5) Weitere reine Audio-Eintraege (kein Text im Player, keine Zeiten) unter "Weitere": Sammeldateien und Lieder aus Samstag SVD (audio/svd/, MP3 192 kbit/s).
+   (5) Weitere reine Audio-Eintraege (kein Text im Player, keine Zeiten) unter "Weitere": Sammeldateien und Lieder aus HQ (audio/svd/, MP3 192 kbit/s).
    Die neuen Dateien stehen nicht in den Offline-Listen (Groesse), sie werden beim Abspielen geladen. */
-window.BPP_BUILD="5.36"; window.BPP_SHOW="5.36";
+window.BPP_BUILD="5.37"; window.BPP_SHOW="5.37";
 (function(){
   if(window.bppV535) return; window.bppV535=1;
   var UP={"audio/suprabhatam-ra.mp3":"audio/svd-suprabhatam.mp3","audio/hanuman-kanaka.mp3":"audio/svd-hanuman-1.mp3"};
@@ -28,20 +28,20 @@ window.BPP_BUILD="5.36"; window.BPP_SHOW="5.36";
   };
   var PROP={"hanuman":{"1":[6.8, 30.6, 49.4, 58.6, 84.4, 107.9, 131.6, 154.4, 177.6, 200.6, 223.4, 246.0, 267.3, 288.2, 308.9, 329.6, 349.9, 370.0, 386.1, 402.0, 417.9, 433.6, 448.5, 463.1, 478.1, 507.0, 540.2]},"guru-stotram":{"1":[27.0,43.3,60.7,78.9,96.8,114.7,132.8,150.9,169.1,187.1,205.4,223.3,241.7,260.6]},"vishnu-arati":{"1":[1.2,24.0,47.1,70.1,93.2,116.3,139.2,161.9,184.6,null,null,null]},"govinda":{"1":[null,34.6,61.6,88.3,115.0,141.9,168.9,195.8,222.7,249.6,276.5,302.4,328.1,353.7,379.2,404.7,429.9,455.1,480.1,505.1,530.2,555.3,580.2,605.1,629.7,654.5,679.1,703.9,730.5],"2":[null,25.2,49.7,73.2,97.0,120.6,144.2,167.9,191.4,215.3,239.5,263.6,288.0,312.4,336.8,360.8,384.7,408.7,432.8,456.9,481.0,505.0,528.9,552.8,576.6,600.7,624.8,649.0,674.8]},"vishnu-sahasranama":{"1":[5.2,14.0,23.1,31.7,40.6,49.3,58.3,74.9,86.6,95.7,106.3,114.7,123.3,132.4,141.5,149.8,158.6,167.4,176.2,185.4,194.6,203.6,212.6,308.7,328.4,363.3,374.8,393.0,406.3,421.2,429.7,446.3,455.0,463.7,472.4,480.9,489.2,497.7,506.2,515.0,523.7,532.2,540.6,549.4,558.1,566.6,574.9,583.4,592.0,600.5,608.8,617.4,626.0,634.4,643.1,651.8,660.2,668.7,681.6,694.3,703.0,711.5,720.0,728.7,737.5,745.9,754.5,763.5,772.0,780.5,789.2,798.1,806.7,815.1,823.9,832.1,840.9,849.6,858.4,866.9,875.4,884.0,892.5,901.3,909.9,918.0,926.7,935.0,943.7,952.7,961.2,969.6,977.9,986.6,995.2,1004.0,1012.4,1020.7,1028.8,1037.6,1046.4,1054.8,1063.7,1072.4,1081.4,1090.2,1098.7,1107.3,1115.6,1124.1,1132.6,1141.3,1150.1,1158.6,1167.1,1175.7,1184.1,1192.5,1200.6,1209.0,1217.4,1225.9,1234.0,1242.4,1250.6,1259.1,1267.5,1275.9,1284.4,1292.8,1301.4,1309.9,1318.3,1327.2,1336.5,1343.5,1352.2,1360.8,1391.0,1399.2,1407.5,1415.6,1424.2,1432.7,1441.2,1450.0,1458.7,1467.0,1475.5,1483.9,1492.3,1500.9,1509.6,1518.2,1526.2,1534.4,1540.8,1548.6,1556.5,1562.2,1577.3,1588.5,1605.6,1620.8,1650.3,1666.0,1677.4,1687.0,1693.3,1701.0]}}; /* proposed: Zeitvorschlag (Sekunden je Strophe, null = ohne Marke) */
   var TAG={"de":"Timing folgt","en":"Timing follows","fr":"Minutage à venir","es":"Tiempos pendientes","ru":"Тайминг будет позже","hi":"टाइमिंग जल्द","pt":"Tempos em breve"};
-  var TIP2={"de":"Neue Studio-Aufnahme Samstag SVD (192 kbit/s). Zeiten: automatischer Vorschlag aus der Pausenmessung, bitte anhören und prüfen. Nochmal tippen: nächste Fassung bzw. zurück.",
-           "en":"New studio recording Saturday SVD (192 kbit/s). Timings: automatic suggestion from pause measurement, please listen and check. Tap again: next version or back.",
-           "fr":"Nouvel enregistrement studio samedi SVD (192 kbit/s). Minutage : suggestion automatique (mesure des pauses), à vérifier à l'écoute.",
-           "es":"Nueva grabación de estudio sábado SVD (192 kbit/s). Tiempos: sugerencia automática por medición de pausas, escucha y comprueba.",
-           "ru":"Новая студийная запись суббота SVD (192 кбит/с). Тайминг: автоматическое предложение по паузам, проверьте на слух.",
-           "hi":"नई स्टूडियो रिकॉर्डिंग शनिवार SVD (192 kbit/s)। टाइमिंग: विराम मापन से स्वचालित सुझाव, सुनकर जाँचें।",
-           "pt":"Nova gravação de estúdio sábado SVD (192 kbit/s). Tempos: sugestão automática pela medição das pausas, ouça e confira."};
-  var TIP={"de":"Neue Studio-Aufnahme Samstag SVD (192 kbit/s). Noch ohne Zeitmarken. Nochmal tippen: nächste Fassung bzw. zurück.",
-           "en":"New studio recording Saturday SVD (192 kbit/s). No timings yet. Tap again: next version or back.",
-           "fr":"Nouvel enregistrement studio samedi SVD (192 kbit/s). Pas encore de minutage. Toucher à nouveau : version suivante ou retour.",
-           "es":"Nueva grabación de estudio sábado SVD (192 kbit/s). Aún sin tiempos. Toca otra vez: siguiente versión o volver.",
-           "ru":"Новая студийная запись суббота SVD (192 кбит/с). Тайминга пока нет. Нажмите ещё раз: следующая версия или назад.",
-           "hi":"नई स्टूडियो रिकॉर्डिंग शनिवार SVD (192 kbit/s)। अभी टाइमिंग नहीं। फिर दबाएँ: अगला संस्करण या वापस।",
-           "pt":"Nova gravação de estúdio sábado SVD (192 kbit/s). Ainda sem tempos. Toque de novo: próxima versão ou voltar."};
+  var TIP2={"de":"Neue Studio-Aufnahme HQ (192 kbit/s). Zeiten: automatischer Vorschlag aus der Pausenmessung, bitte anhören und prüfen. Nochmal tippen: nächste Fassung bzw. zurück.",
+           "en":"New studio recording HQ (192 kbit/s). Timings: automatic suggestion from pause measurement, please listen and check. Tap again: next version or back.",
+           "fr":"Nouvel enregistrement studio HQ (192 kbit/s). Minutage : suggestion automatique (mesure des pauses), à vérifier à l'écoute.",
+           "es":"Nueva grabación de estudio HQ (192 kbit/s). Tiempos: sugerencia automática por medición de pausas, escucha y comprueba.",
+           "ru":"Новая студийная запись HQ (192 кбит/с). Тайминг: автоматическое предложение по паузам, проверьте на слух.",
+           "hi":"नई स्टूडियो रिकॉर्डिंग HQ (192 kbit/s)। टाइमिंग: विराम मापन से स्वचालित सुझाव, सुनकर जाँचें।",
+           "pt":"Nova gravação de estúdio HQ (192 kbit/s). Tempos: sugestão automática pela medição das pausas, ouça e confira."};
+  var TIP={"de":"Neue Studio-Aufnahme HQ (192 kbit/s). Noch ohne Zeitmarken. Nochmal tippen: nächste Fassung bzw. zurück.",
+           "en":"New studio recording HQ (192 kbit/s). No timings yet. Tap again: next version or back.",
+           "fr":"Nouvel enregistrement studio HQ (192 kbit/s). Pas encore de minutage. Toucher à nouveau : version suivante ou retour.",
+           "es":"Nueva grabación de estudio HQ (192 kbit/s). Aún sin tiempos. Toca otra vez: siguiente versión o volver.",
+           "ru":"Новая студийная запись HQ (192 кбит/с). Тайминга пока нет. Нажмите ещё раз: следующая версия или назад.",
+           "hi":"नई स्टूडियो रिकॉर्डिंग HQ (192 kbit/s)। अभी टाइमिंग नहीं। फिर दबाएँ: अगला संस्करण या वापस।",
+           "pt":"Nova gravação de estúdio HQ (192 kbit/s). Ainda sem tempos. Toque de novo: próxima versão ou voltar."};
   var CDN="https://cdn.jsdelivr.net/gh/BhaktiServices/bhakti-prayers-player@main/";
   function lg(){ return (typeof lang!=="undefined"&&TAG[lang])?lang:"en"; }
   function K(id){ return "bpp-svd-"+id; }
@@ -81,8 +81,8 @@ window.BPP_BUILD="5.36"; window.BPP_SHOW="5.36";
       "html.bppSvdOn536 .bppRec:not(.svd535),html.bppSvdOn536 button[id^=bppRec][data-rec]:not(.svd535),html.bppSvdOn536 button[id^=bppRec][data-rec]:not(.svd535).on,html.bppSvdOn536 button[id^=bppRec][data-rec]:not(.svd535).spnOn,html.bppSvdOn536 button[id^=bppRec][data-rec]:not(.svd535).pbj{background:#c5c9d0!important;border:1px solid rgba(30,35,64,.25)!important;color:#141a33!important;box-shadow:none!important;opacity:.85}";
     (document.head||document.documentElement).appendChild(st); })();
   function recMark(on){ var h=document.documentElement; if(on&&!h.classList.contains("bppSvdOn536")) h.classList.add("bppSvdOn536"); else if(!on&&h.classList.contains("bppSvdOn536")) h.classList.remove("bppSvdOn536"); }
-  /* V5.36: ?rec=svd (oder svd1/svd2) im Link startet die SVD-Aufnahme des Gebets p= (nur beim Laden) */
-  (function(){ try{ var q=new URLSearchParams(location.search), r=(q.get("rec")||"").toLowerCase(), p=q.get("p"); var m=/^svd([12]?)$/.exec(r);
+  /* V5.37: Beschriftung "Rec: HQ" (vorher SVD; intern unveraendert). ?rec=svd oder ?rec=hq (auch svd1/svd2/hq1/hq2) im Link startet die SVD-Aufnahme des Gebets p= (nur beim Laden) */
+  (function(){ try{ var q=new URLSearchParams(location.search), r=(q.get("rec")||"").toLowerCase(), p=q.get("p"); var m=/^(?:svd|hq)([12]?)$/.exec(r);
     if(m&&p&&CF[p]){ var n=m[1]?parseInt(m[1],10):1; if(n>=1&&n<=CF[p].length) setSel(p,n); } else if(r&&p&&CF[p]) setSel(p,0); }catch(e){} })();
   function place(){
     var t=document.getElementById("lyrTitle"), p=cur(); var b=document.getElementById("bppSvd535"), tg=document.getElementById("bppSvdTag535");
@@ -95,7 +95,7 @@ window.BPP_BUILD="5.36"; window.BPP_SHOW="5.36";
         try{ putSong(q.id,{line:0,time:0}); }catch(x){} try{ play(PRAYERS.indexOf(q),true,was); }catch(x){} }); }
     if(!tg){ tg=document.createElement("span"); tg.id="bppSvdTag535"; tg.style.cssText="margin-left:.4em;font-size:.7rem;color:#e8c98a;white-space:nowrap"; }
     var s=sel(p.id), n=CF[p.id].length;
-    b.textContent="Rec: SVD"+(s&&n>1?" "+s:""); b.setAttribute("aria-pressed",s?"true":"false"); b.title=TIP[lg()];
+    b.textContent="Rec: HQ"+(s&&n>1?" "+s:""); b.setAttribute("aria-pressed",s?"true":"false"); b.title=TIP[lg()];
     b.style.display=""; recMark(!!s);
     var pr=s?proposed(p.id,s):null; tg.textContent=TAG[lg()]; tg.style.display=(s&&!pr&&many(p))?"":"none"; if(pr) b.title=TIP2[lg()];
     if(b.parentNode!==t){ var sh=document.getElementById("bppShare"); if(sh&&sh.parentNode===t) t.insertBefore(b,sh); else t.appendChild(b); }
@@ -113,21 +113,21 @@ window.BPP_BUILD="5.36"; window.BPP_SHOW="5.36";
     Object.keys(f).forEach(function(k){ w[k]=f[k]; }); w.__v535=1; window.bppStarts=w; try{ bppStarts=w; }catch(e){} }
 
   /* (5) Weitere reine Audio-Eintraege unter "Weitere" (kein Text, keine Zeiten) */
-  var EX=[["svd-names-vaishnava","Names + Vaishnava (SVD)","names-vaishnava"],
-    ["svd-ramanuja-vishnu-arati","Ramanuja + Vishnu Arati (SVD)","ramanuja-vishnu-arati"],
-    ["svd-om-stotram-names-arati","Om + Stotram + Names + Arati (SVD)","om-stotram-names-arati"],
-    ["svd-ganesha-gayatri-narasimha-1","Ganesha + Gayatri + Narasimha V1 (SVD)","ganesha-gayatri-narasimha-1"],
-    ["svd-ganesha-gayatri-narasimha-2","Ganesha + Gayatri + Narasimha V2 (SVD)","ganesha-gayatri-narasimha-2"],
-    ["svd-shayan-arati","Shayan Arati (SVD)","shayan-arati"],
-    ["svd-bhajo-guru-vishwananda","Bhajo Guru Vishwananda (SVD)","bhajo-guru-vishwananda"],
-    ["svd-sri-gurudev-satgurudev","Sri Gurudev Satgurudev (SVD)","sri-gurudev-satgurudev"],
-    ["svd-svgpn-guruji","SVGPN Guruji (SVD)","svgpn-guruji"]];
+  var EX=[["svd-names-vaishnava","Names + Vaishnava (HQ)","names-vaishnava"],
+    ["svd-ramanuja-vishnu-arati","Ramanuja + Vishnu Arati (HQ)","ramanuja-vishnu-arati"],
+    ["svd-om-stotram-names-arati","Om + Stotram + Names + Arati (HQ)","om-stotram-names-arati"],
+    ["svd-ganesha-gayatri-narasimha-1","Ganesha + Gayatri + Narasimha V1 (HQ)","ganesha-gayatri-narasimha-1"],
+    ["svd-ganesha-gayatri-narasimha-2","Ganesha + Gayatri + Narasimha V2 (HQ)","ganesha-gayatri-narasimha-2"],
+    ["svd-shayan-arati","Shayan Arati (HQ)","shayan-arati"],
+    ["svd-bhajo-guru-vishwananda","Bhajo Guru Vishwananda (HQ)","bhajo-guru-vishwananda"],
+    ["svd-sri-gurudev-satgurudev","Sri Gurudev Satgurudev (HQ)","sri-gurudev-satgurudev"],
+    ["svd-svgpn-guruji","SVGPN Guruji (HQ)","svgpn-guruji"]];
   var NOTXT={"ue":"Nur Aufnahme – noch kein Text im Player.","en":"Recording only – no text in the player yet.","pt":"Só a gravação – ainda sem texto no player."};
   var DOT={"suprabhatam":1,"hanuman":1}; Object.keys(CF).forEach(function(k){ DOT[k]=1; }); EX.forEach(function(e){ DOT[e[0]]=1; });
   function addExtras(){ if(window.bppExtras535||typeof PRAYERS==="undefined"||typeof window.paintList!=="function") return;
     if(!document.querySelector("button.item")) return; window.bppExtras535=1;
     EX.forEach(function(e){ if(PRAYERS.some(function(p){ return p.id===e[0]; })) return;
-      PRAYERS.push({id:e[0],titel:e[1],autor:"",quelle:"Aufnahme: Samstag SVD (Dropbox), MP3 192 kbit/s. Nur Audio, ohne Text und ohne Zeiten.",hinweis:"",
+      PRAYERS.push({id:e[0],titel:e[1],autor:"",quelle:"Aufnahme: HQ (Dropbox), MP3 192 kbit/s. Nur Audio, ohne Text und ohne Zeiten.",hinweis:"",
         zeilen:[{nr:"",sa:"\u266a",ue:NOTXT.ue,en:NOTXT.en,pt:NOTXT.pt}],audio:"audio/svd/"+e[2]+".mp3",preferFile:true}); });
     try{ window.paintList(); }catch(x){} }
   /* Menue = <select>-Optionen (reiner Text, wie schon "✎"): goldener Punkt als Suffix; Farbe wirkt in Desktop-Listen, mobil zeigt das System-Menue den Punkt in Textfarbe. Zusaetzlich Punkt an button.item, falls die Listenansicht genutzt wird. */
