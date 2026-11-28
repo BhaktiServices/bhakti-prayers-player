@@ -16,7 +16,8 @@
 window.BPP_BUILD="5.37"; window.BPP_SHOW="5.37";
 (function(){
   if(window.bppV535) return; window.bppV535=1;
-  var UP={"audio/suprabhatam-ra.mp3":"audio/svd-suprabhatam.mp3","audio/hanuman-kanaka.mp3":"audio/svd-hanuman-1.mp3"};
+  var UP={"audio/hanuman-kanaka.mp3":"audio/svd-hanuman-1.mp3"}; /* V5.37: Suprabhatam-Pbj bleibt die alte Datei, die bessere Datei hat jetzt den eigenen Knopf Rec: HQ */
+  var SAME={"suprabhatam":1}; /* gleiche Darbietung wie Pbj: HQ nutzt die Pbj-Zeiten unveraendert */
   var CF={
     "guru-stotram":["audio/svd-guru-stotram.mp3"],
     "guruji-gayatri":["audio/svd-guruji-gayatri.mp3"],
@@ -24,7 +25,8 @@ window.BPP_BUILD="5.37"; window.BPP_SHOW="5.37";
     "vishnu-sahasranama":["audio/svd-vishnu-sahasranama.mp3"],
     "narasimha":["audio/svd-narasimha-1.mp3","audio/svd-narasimha-2.mp3"],
     "vishnu-arati":["audio/svd-vishnu-arati.mp3"],
-    "hanuman":["audio/svd-hanuman-2.mp3"]
+    "hanuman":["audio/svd-hanuman-2.mp3"],
+    "suprabhatam":["audio/svd-suprabhatam.mp3"]
   };
   var PROP={"hanuman":{"1":[6.8, 30.6, 49.4, 58.6, 84.4, 107.9, 131.6, 154.4, 177.6, 200.6, 223.4, 246.0, 267.3, 288.2, 308.9, 329.6, 349.9, 370.0, 386.1, 402.0, 417.9, 433.6, 448.5, 463.1, 478.1, 507.0, 540.2]},"guru-stotram":{"1":[27.0,43.3,60.7,78.9,96.8,114.7,132.8,150.9,169.1,187.1,205.4,223.3,241.7,260.6]},"vishnu-arati":{"1":[1.2,24.0,47.1,70.1,93.2,116.3,139.2,161.9,184.6,null,null,null]},"govinda":{"1":[null,34.6,61.6,88.3,115.0,141.9,168.9,195.8,222.7,249.6,276.5,302.4,328.1,353.7,379.2,404.7,429.9,455.1,480.1,505.1,530.2,555.3,580.2,605.1,629.7,654.5,679.1,703.9,730.5],"2":[null,25.2,49.7,73.2,97.0,120.6,144.2,167.9,191.4,215.3,239.5,263.6,288.0,312.4,336.8,360.8,384.7,408.7,432.8,456.9,481.0,505.0,528.9,552.8,576.6,600.7,624.8,649.0,674.8]},"vishnu-sahasranama":{"1":[5.2,14.0,23.1,31.7,40.6,49.3,58.3,74.9,86.6,95.7,106.3,114.7,123.3,132.4,141.5,149.8,158.6,167.4,176.2,185.4,194.6,203.6,212.6,308.7,328.4,363.3,374.8,393.0,406.3,421.2,429.7,446.3,455.0,463.7,472.4,480.9,489.2,497.7,506.2,515.0,523.7,532.2,540.6,549.4,558.1,566.6,574.9,583.4,592.0,600.5,608.8,617.4,626.0,634.4,643.1,651.8,660.2,668.7,681.6,694.3,703.0,711.5,720.0,728.7,737.5,745.9,754.5,763.5,772.0,780.5,789.2,798.1,806.7,815.1,823.9,832.1,840.9,849.6,858.4,866.9,875.4,884.0,892.5,901.3,909.9,918.0,926.7,935.0,943.7,952.7,961.2,969.6,977.9,986.6,995.2,1004.0,1012.4,1020.7,1028.8,1037.6,1046.4,1054.8,1063.7,1072.4,1081.4,1090.2,1098.7,1107.3,1115.6,1124.1,1132.6,1141.3,1150.1,1158.6,1167.1,1175.7,1184.1,1192.5,1200.6,1209.0,1217.4,1225.9,1234.0,1242.4,1250.6,1259.1,1267.5,1275.9,1284.4,1292.8,1301.4,1309.9,1318.3,1327.2,1336.5,1343.5,1352.2,1360.8,1391.0,1399.2,1407.5,1415.6,1424.2,1432.7,1441.2,1450.0,1458.7,1467.0,1475.5,1483.9,1492.3,1500.9,1509.6,1518.2,1526.2,1534.4,1540.8,1548.6,1556.5,1562.2,1577.3,1588.5,1605.6,1620.8,1650.3,1666.0,1677.4,1687.0,1693.3,1701.0]}}; /* proposed: Zeitvorschlag (Sekunden je Strophe, null = ohne Marke) */
   var TAG={"de":"Timing folgt","en":"Timing follows","fr":"Minutage à venir","es":"Tiempos pendientes","ru":"Тайминг будет позже","hi":"टाइमिंग जल्द","pt":"Tempos em breve"};
@@ -35,6 +37,13 @@ window.BPP_BUILD="5.37"; window.BPP_SHOW="5.37";
            "ru":"Новая студийная запись HQ (192 кбит/с). Тайминг: автоматическое предложение по паузам, проверьте на слух.",
            "hi":"नई स्टूडियो रिकॉर्डिंग HQ (192 kbit/s)। टाइमिंग: विराम मापन से स्वचालित सुझाव, सुनकर जाँचें।",
            "pt":"Nova gravação de estúdio HQ (192 kbit/s). Tempos: sugestão automática pela medição das pausas, ouça e confira."};
+  var TIP3={"de":"Dieselbe Darbietung wie Rec: Pbj, in besserer Klangqualität (MP3 192 kbit/s). Zeiten wie bei Pbj. Nochmal tippen: zurück.",
+           "en":"Same performance as Rec: Pbj, in better sound quality (MP3 192 kbit/s). Timings as for Pbj. Tap again: back.",
+           "fr":"Même interprétation que Rec: Pbj, meilleure qualité sonore (MP3 192 kbit/s). Minutage comme Pbj.",
+           "es":"Misma interpretación que Rec: Pbj, con mejor calidad de sonido (MP3 192 kbit/s). Tiempos como en Pbj.",
+           "ru":"То же исполнение, что Rec: Pbj, но лучшее качество звука (MP3 192 кбит/с). Тайминг как у Pbj.",
+           "hi":"Rec: Pbj जैसी ही प्रस्तुति, बेहतर ध्वनि गुणवत्ता (MP3 192 kbit/s)। टाइमिंग Pbj जैसी।",
+           "pt":"Mesma interpretação de Rec: Pbj, com melhor qualidade de som (MP3 192 kbit/s). Tempos como no Pbj."};
   var TIP={"de":"Neue Studio-Aufnahme HQ (192 kbit/s). Noch ohne Zeitmarken. Nochmal tippen: nächste Fassung bzw. zurück.",
            "en":"New studio recording HQ (192 kbit/s). No timings yet. Tap again: next version or back.",
            "fr":"Nouvel enregistrement studio HQ (192 kbit/s). Pas encore de minutage. Toucher à nouveau : version suivante ou retour.",
@@ -63,9 +72,9 @@ window.BPP_BUILD="5.37"; window.BPP_SHOW="5.37";
         chain(P,"youtube",function(v){ return S()?null:v; });
         chain(P,"youtubeStart",function(v){ return S()?0:v; });
         chain(P,"preferFile",function(v){ return S()?true:v; });
-        ["marksFile","seqFile","marksYt","seqYt"].forEach(function(k){ chain(P,k,function(v){ var s=S(); if(!s) return v; var pr=proposed(id,s); return (k==="marksFile"&&pr)?pr.slice():[]; }); });
+        ["marksFile","seqFile","marksYt","seqYt"].forEach(function(k){ chain(P,k,function(v){ var s=S(); if(!s||SAME[id]) return v; var pr=proposed(id,s); return (k==="marksFile"&&pr)?pr.slice():[]; }); });
       }
-      if(id==="suprabhatam"||id==="hanuman"){
+      if(id==="hanuman"){
         chain(P,"audio",function(v){ var u=typeof v==="string"?UP[strip(v)]:null; return u?u:v; },"u");
       }
     });
@@ -90,14 +99,14 @@ window.BPP_BUILD="5.37"; window.BPP_SHOW="5.37";
     if(!b){ b=document.createElement("button"); b.type="button"; b.id="bppSvd535"; b.className="bppRec svd535";
       
       b.addEventListener("click",function(e){ e.stopPropagation(); var q=cur(); if(!q||!CF[q.id]) return;
-        var s=sel(q.id), n=CF[q.id].length; setSel(q.id,s>=n?0:s+1);
+        var s=sel(q.id), n=CF[q.id].length; if(SAME[q.id]&&!s){ try{ localStorage.setItem("bpp-prabhus-"+q.id,"prabhus"); }catch(x){} } setSel(q.id,s>=n?0:s+1);
         var was=false; try{ was=(typeof isPlaying==="function")&&isPlaying(); }catch(x){}
         try{ putSong(q.id,{line:0,time:0}); }catch(x){} try{ play(PRAYERS.indexOf(q),true,was); }catch(x){} }); }
     if(!tg){ tg=document.createElement("span"); tg.id="bppSvdTag535"; tg.style.cssText="margin-left:.4em;font-size:.7rem;color:#e8c98a;white-space:nowrap"; }
     var s=sel(p.id), n=CF[p.id].length;
     b.textContent="Rec: HQ"+(s&&n>1?" "+s:""); b.setAttribute("aria-pressed",s?"true":"false"); b.title=TIP[lg()];
     b.style.display=""; recMark(!!s);
-    var pr=s?proposed(p.id,s):null; tg.textContent=TAG[lg()]; tg.style.display=(s&&!pr&&many(p))?"":"none"; if(pr) b.title=TIP2[lg()];
+    var pr=s?proposed(p.id,s):null; tg.textContent=TAG[lg()]; tg.style.display=(s&&!pr&&!SAME[p.id]&&many(p))?"":"none"; if(pr) b.title=TIP2[lg()]; if(SAME[p.id]) b.title=TIP3[lg()];
     if(b.parentNode!==t){ var sh=document.getElementById("bppShare"); if(sh&&sh.parentNode===t) t.insertBefore(b,sh); else t.appendChild(b); }
     if(tg.parentNode!==t||tg.previousSibling!==b) t.insertBefore(tg,b.nextSibling);
     mtjBtn(t,p,b,tg,s); }
@@ -113,12 +122,14 @@ window.BPP_BUILD="5.37"; window.BPP_SHOW="5.37";
     m.title=MTJ_TIP[lg()]||MTJ_TIP.en; m.setAttribute("aria-pressed",s?"false":"true"); m.style.display="";
     if(m.parentNode!==t||m.previousSibling!==tg) t.insertBefore(m,tg.nextSibling); }
   document.addEventListener("click",function(e){ /* andere Rec-Tasten (Mtj/Pbj/SPN) schalten SVD aus */
-    try{ var el=e.target&&e.target.closest?e.target.closest(".bppRec,#bppRec402,#bppRec408"):null; if(!el||el.id==="bppSvd535") return;
-      var p=cur(); if(p&&CF[p.id]&&sel(p.id)) setSel(p.id,0); }catch(x){} },true);
+    try{ var el=e.target&&e.target.closest?e.target.closest(".bppRec,#bppRec402,#bppRec408"):null; if(!el||el.id==="bppSvd535"||el.id==="bppRecMtj537") return;
+      var p=cur(); if(p&&CF[p.id]&&sel(p.id)){ setSel(p.id,0);
+        if(SAME[p.id]){ e.stopPropagation(); e.preventDefault(); /* HQ aus: auf Rec: Pbj zurueck (nicht weiterschalten) */
+          var was=false; try{ was=(typeof isPlaying==="function")&&isPlaying(); }catch(x){} try{ putSong(p.id,{line:0,time:0}); }catch(x){} try{ play(PRAYERS.indexOf(p),true,was); }catch(x){} } } }catch(x){} },true);
   window.bppSvd535=function(){ var p=cur(); return {id:p&&p.id,sel:p?sel(p.id):0,audio:p&&p.audio,marks:p&&p.marksFile,seq:p&&p.seqFile,yt:p&&p.youtube}; };
   function wrapS(){ /* Rec: SVD: ohne Zeitvorschlag keine geschaetzte Strophenfolge (Anzeige bleibt bei Strophe 1); mit Vorschlag: nach der letzten Marke keine Schaetzung. Eigene Zeiten (N/Klick auf Strophe) gelten weiter. */
     var f=window.bppStarts; if(typeof f!=="function"||f.__v535) return;
-    var w=function(p){ var st=f.apply(this,arguments); try{ var c=cur(); if(c&&CF[c.id]&&sel(c.id)&&Array.isArray(st)){
+    var w=function(p){ var st=f.apply(this,arguments); try{ var c=cur(); if(c&&CF[c.id]&&!SAME[c.id]&&sel(c.id)&&Array.isArray(st)){
         var u=(typeof bppUserMarks==="function")?bppUserMarks(c.id):{}; if(Object.keys(u).length) return st;
         var pr=proposed(c.id,sel(c.id)), last=-1; if(pr) pr.forEach(function(x,g){ if(typeof x==="number") last=g; });
         return st.map(function(x,g){ return g<=last?x:(g?1e7+g:0); }); } }catch(e){} return st; };
