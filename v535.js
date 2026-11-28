@@ -86,7 +86,7 @@ window.BPP_BUILD="5.37"; window.BPP_SHOW="5.37";
     if(m&&p&&CF[p]){ var n=m[1]?parseInt(m[1],10):1; if(n>=1&&n<=CF[p].length) setSel(p,n); } else if(r&&p&&CF[p]) setSel(p,0); }catch(e){} })();
   function place(){
     var t=document.getElementById("lyrTitle"), p=cur(); var b=document.getElementById("bppSvd535"), tg=document.getElementById("bppSvdTag535");
-    if(!t||!p||!CF[p.id]){ if(b) b.style.display="none"; if(tg) tg.style.display="none"; recMark(false); return; }
+    if(!t||!p||!CF[p.id]){ if(b) b.style.display="none"; if(tg) tg.style.display="none"; var mm=document.getElementById("bppRecMtj537"); if(mm) mm.style.display="none"; recMark(false); return; }
     if(!b){ b=document.createElement("button"); b.type="button"; b.id="bppSvd535"; b.className="bppRec svd535";
       
       b.addEventListener("click",function(e){ e.stopPropagation(); var q=cur(); if(!q||!CF[q.id]) return;
@@ -99,7 +99,19 @@ window.BPP_BUILD="5.37"; window.BPP_SHOW="5.37";
     b.style.display=""; recMark(!!s);
     var pr=s?proposed(p.id,s):null; tg.textContent=TAG[lg()]; tg.style.display=(s&&!pr&&many(p))?"":"none"; if(pr) b.title=TIP2[lg()];
     if(b.parentNode!==t){ var sh=document.getElementById("bppShare"); if(sh&&sh.parentNode===t) t.insertBefore(b,sh); else t.appendChild(b); }
-    if(tg.parentNode!==t||tg.previousSibling!==b) t.insertBefore(tg,b.nextSibling); }
+    if(tg.parentNode!==t||tg.previousSibling!==b) t.insertBefore(tg,b.nextSibling);
+    mtjBtn(t,p,b,tg,s); }
+  /* V5.37: Gayatri (Guruji): die bisherige Aufnahme (hohe Frauenstimme) bekommt den Knopf "Rec: Mtj" wie die anderen Gebete; "Rec: HQ" daneben. Keine neue Aufnahme, keine Zeiten. */
+  var MTJ_ONLY={"guruji-gayatri":1};
+  var MTJ_TIP={"de":"Aufnahme Matajis","en":"Recording Matajis","fr":"Enregistrement Matajis","es":"Grabación Matajis","ru":"Запись Матаджис","hi":"माताजीस रिकॉर्डिंग","pt":"Gravação Matajis"};
+  function mtjBtn(t,p,b,tg,s){ var m=document.getElementById("bppRecMtj537");
+    if(!MTJ_ONLY[p.id]){ if(m) m.style.display="none"; return; }
+    if(!m){ m=document.createElement("button"); m.type="button"; m.id="bppRecMtj537"; m.className="bppRec"; m.textContent="Rec: Mtj";
+      m.addEventListener("click",function(e){ e.stopPropagation(); var q=cur(); if(!q||!MTJ_ONLY[q.id]) return; if(!sel(q.id)) return; setSel(q.id,0);
+        var was=false; try{ was=(typeof isPlaying==="function")&&isPlaying(); }catch(x){}
+        try{ putSong(q.id,{line:0,time:0}); }catch(x){} try{ play(PRAYERS.indexOf(q),true,was); }catch(x){} }); }
+    m.title=MTJ_TIP[lg()]||MTJ_TIP.en; m.setAttribute("aria-pressed",s?"false":"true"); m.style.display="";
+    if(m.parentNode!==t||m.previousSibling!==tg) t.insertBefore(m,tg.nextSibling); }
   document.addEventListener("click",function(e){ /* andere Rec-Tasten (Mtj/Pbj/SPN) schalten SVD aus */
     try{ var el=e.target&&e.target.closest?e.target.closest(".bppRec,#bppRec402,#bppRec408"):null; if(!el||el.id==="bppSvd535") return;
       var p=cur(); if(p&&CF[p.id]&&sel(p.id)) setSel(p.id,0); }catch(x){} },true);
